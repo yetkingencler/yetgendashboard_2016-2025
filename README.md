@@ -1,20 +1,48 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🚀 YetGen Etki Raporu (2016 - 2025)
 
-# Run and deploy your AI Studio app
+Yetkin Gençler (YetGen) ekosisteminin 2016'dan günümüze uzanan yolculuğunu, kitle etkisini ve başarı hikayelerini verilerle sunan profesyonel dashboard uygulaması.
 
-This contains everything you need to run your app locally.
+## 📊 Proje Hakkında
 
-View your app in AI Studio: https://ai.studio/apps/877188c8-1eba-4491-8331-ed8a22e7c6dd
+Bu dashboard, YetGen'in 10 yıllık kümülatif başarısını ve toplumsal etkisini şeffaf bir şekilde sergilemek amacıyla geliştirilmiştir. Mezun sayıları, katılımcı demografisi, coğrafi yayılım ve akademik profiller gibi kritik metrikleri interaktif ve estetik bir Bento-Grid yapısında sunar.
 
-## Run Locally
+## ✨ Temel Özellikler
 
-**Prerequisites:**  Node.js
+- **10 Yıllık Hafıza:** 2016'daki pilot uygulamadan 2025'teki devasa ekosisteme kadar her yılın verisi (Katılımcı, Mezun, Cinsiyet, Yaş).
+- **Öğretmen Eğitimi Entegrasyonu:** O-22, O-23, O-24 ve O-25 programlarına ait özelleştirilmiş veriler.
+- **İnteraktif Görselleştirme:** Recharts ve Framer Motion ile güçlendirilmiş dinamik grafikler.
+- **Şehir ve Okul Analizi:** Türkiye'nin 81 ilinden gelen başvuruların ve en aktif okul/bölümlerin detaylı dağılımı.
+- **Modern UI/UX:** Premium Bento-Grid tasarımı, cam morfizmi (glassmorphism) etkileri ve akıcı geçiş animasyonları.
 
+## 🛠️ Teknolojiler
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- **Frontend:** React 18, Vite
+- **Stil:** Tailwind CSS
+- **Animasyon:** Framer Motion
+- **Grafik:** Recharts
+- **İkonlar:** Lucide React
+
+## 🚀 Hızlı Başlangıç
+
+1. Bağımlılıkları yükleyin:
+   ```bash
+   npm install
+   ```
+
+2. Geliştirme sunucusunu başlatın:
+   ```bash
+   npm run dev
+   ```
+
+## 📈 Veri Yapısı
+
+Uygulama, `yearlyData` mimarisi üzerine kuruludur. Her yıl nesnesi şunları içerir:
+- Katılımcı ve Mezun sayıları
+- Cinsiyet dağılımı (Kadın/Erkek/Diğer)
+- Yaş grupları ve Doğum Yılı verileri
+- Coğrafi başvuru yayılımı
+- Akademik profil ve en aktif fakülteler
+
+---
+**YetGen:** Geleceğin yetkin liderlerini bugünden şekillendiren, Türkiye'nin en büyük 21. yüzyıl yetkinlik ekosistemi.
+
