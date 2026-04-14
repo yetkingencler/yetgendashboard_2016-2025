@@ -1394,8 +1394,7 @@ export default function App() {
                                   <Users className="w-4 h-4" />
                                 </div>
                                 <div>
-                                  <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Yaş & Doğum Yılı</div>
-                                  <div className="text-xs font-bold text-slate-900 leading-tight">Gerçek Veri Dağılımı</div>
+                                  <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Yaş Aralığı</div>
                                 </div>
                               </div>
                               <div className="h-[220px] w-full mt-4">
@@ -1430,7 +1429,6 @@ export default function App() {
                                 </div>
                                 <div>
                                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Eğitim Durumu</p>
-                                  <p className="text-xs font-bold text-slate-900 leading-tight">Mevcut Seviyeler</p>
                                 </div>
                               </div>
                               <div className="space-y-4 mt-2">
@@ -1474,7 +1472,6 @@ export default function App() {
                                 </div>
                                 <div>
                                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Cinsiyet Dengesi</p>
-                                  <p className="text-xs font-bold text-slate-900 leading-tight">Gerçek Veri Dağılımı</p>
                                 </div>
                               </div>
                               <div className="flex items-center justify-between gap-1">
@@ -1791,9 +1788,15 @@ export default function App() {
 
                     {/* Partners Bento */}
                     <div className="bg-white rounded-[2rem] lg:rounded-[3rem] border border-slate-200 p-6 md:p-10 shadow-sm overflow-hidden">
-                      <div className="text-center md:text-left mb-8 md:mb-10">
-                        <h3 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight font-display">Partnerler</h3>
-                        <p className="text-sm text-slate-500 font-medium mt-1">Bu yolculukta yanımızda olan kurumlar</p>
+                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-12 border-b border-slate-100 pb-8">
+                        <div>
+                          <div className="flex items-center gap-3 mb-3">
+                            <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
+                            <span className="text-[10px] sm:text-xs font-black text-blue-600 uppercase tracking-[0.2em]">Ekosistem Ağı</span>
+                          </div>
+                          <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight font-display mb-2">Stratejik Partnerler</h3>
+                          <p className="text-sm md:text-base text-slate-500 font-medium max-w-xl leading-relaxed">Etki alanımızı genişletirken vizyonumuzu paylaşan, bu dönüşüm yolculuğuna güç katan değerli kurumlar.</p>
+                        </div>
                       </div>
                       <div className="flex flex-wrap justify-center md:justify-start gap-4 sm:gap-6">
                         {selectedYearData?.sponsors.map((sponsor, i) => (
@@ -1801,14 +1804,22 @@ export default function App() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.4, ease: "easeOut" }}
+                            transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
                             key={sponsor}
-                            className="flex items-center justify-center min-h-[5rem] px-8 py-5 bg-slate-50/50 rounded-[2rem] border border-slate-100/80 group hover:bg-white hover:border-slate-200 hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto sm:min-w-[200px]"
+                            className="relative flex items-center justify-center min-h-[6rem] md:min-h-[7rem] px-10 py-6 bg-white rounded-[2rem] border border-slate-100 group hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all duration-500 w-full sm:w-auto sm:min-w-[220px] overflow-hidden"
                           >
-                            <div className="flex w-full h-full items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
-                              {/* İleride logoları (PNG) koyacağınız zaman yandaki metni silip bu img etiketini açın: */}
-                              <span className="text-sm md:text-base font-bold text-slate-400 group-hover:text-slate-800 text-center tracking-wide">{sponsor}</span>
-                              {/* <img src={`/partners/${sponsor.toLowerCase().replace(/ /g, '-')}.png`} alt={sponsor} className="h-8 sm:h-10 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" /> */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="relative flex w-full h-full items-center justify-center">
+                              <img 
+                                src={`/partners/${sponsor.toLowerCase().replace(/ /g, '-')}.png`} 
+                                alt={sponsor} 
+                                className="max-h-12 w-auto object-contain grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-out drop-shadow-sm"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = 'none';
+                                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                                }}
+                              />
+                              <span className="hidden text-sm md:text-base font-bold text-slate-400 group-hover:text-blue-950 text-center tracking-wide transition-colors">{sponsor}</span>
                             </div>
                           </motion.div>
                         ))}
