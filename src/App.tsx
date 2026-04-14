@@ -745,12 +745,78 @@ const yearlyData = [
           { age: '30+', count: 14 }
         ],
         cities: [
-          { name: 'İstanbul', count: 823 },
+          { name: 'Adana', count: 42 },
+          { name: 'Adıyaman', count: 8 },
+          { name: 'Afyonkarahisar', count: 3 },
+          { name: 'Ağrı', count: 1 },
+          { name: 'Aksaray', count: 3 },
+          { name: 'Amasya', count: 2 },
           { name: 'Ankara', count: 260 },
-          { name: 'İzmir', count: 174 },
+          { name: 'Antalya', count: 25 },
+          { name: 'Ardahan', count: 1 },
+          { name: 'Artvin', count: 1 },
+          { name: 'Aydın', count: 16 },
+          { name: 'Balıkesir', count: 16 },
+          { name: 'Batman', count: 3 },
+          { name: 'Bilecik', count: 5 },
+          { name: 'Bingöl', count: 1 },
+          { name: 'Bitlis', count: 3 },
+          { name: 'Bolu', count: 1 },
+          { name: 'Burdur', count: 3 },
           { name: 'Bursa', count: 65 },
+          { name: 'Çanakkale', count: 6 },
+          { name: 'Çankırı', count: 1 },
+          { name: 'Çorum', count: 2 },
+          { name: 'Denizli', count: 14 },
+          { name: 'Diyarbakır', count: 18 },
+          { name: 'Düzce', count: 5 },
+          { name: 'Edirne', count: 3 },
+          { name: 'Elazığ', count: 6 },
+          { name: 'Erzurum', count: 10 },
           { name: 'Eskişehir', count: 49 },
-          { name: 'Diğer', count: 670 }
+          { name: 'Gaziantep', count: 32 },
+          { name: 'Giresun', count: 4 },
+          { name: 'Hatay', count: 19 },
+          { name: 'Iğdır', count: 3 },
+          { name: 'Isparta', count: 4 },
+          { name: 'İstanbul', count: 823 },
+          { name: 'İzmir', count: 174 },
+          { name: 'Kahramanmaraş', count: 6 },
+          { name: 'Karabük', count: 4 },
+          { name: 'Karaman', count: 3 },
+          { name: 'Kars', count: 3 },
+          { name: 'Kastamonu', count: 6 },
+          { name: 'Kayseri', count: 35 },
+          { name: 'Kilis', count: 4 },
+          { name: 'Kırıkkale', count: 6 },
+          { name: 'Kırklareli', count: 8 },
+          { name: 'Kocaeli', count: 47 },
+          { name: 'Konya', count: 26 },
+          { name: 'Kütahya', count: 10 },
+          { name: 'Malatya', count: 13 },
+          { name: 'Manisa', count: 46 },
+          { name: 'Mardin', count: 5 },
+          { name: 'Mersin', count: 23 },
+          { name: 'Muğla', count: 14 },
+          { name: 'Muş', count: 3 },
+          { name: 'Nevşehir', count: 1 },
+          { name: 'Niğde', count: 1 },
+          { name: 'Ordu', count: 5 },
+          { name: 'Osmaniye', count: 9 },
+          { name: 'Rize', count: 3 },
+          { name: 'Sakarya', count: 16 },
+          { name: 'Samsun', count: 14 },
+          { name: 'Şanlıurfa', count: 17 },
+          { name: 'Siirt', count: 4 },
+          { name: 'Sivas', count: 7 },
+          { name: 'Tekirdağ', count: 16 },
+          { name: 'Tokat', count: 3 },
+          { name: 'Trabzon', count: 11 },
+          { name: 'Tunceli', count: 2 },
+          { name: 'Uşak', count: 3 },
+          { name: 'Van', count: 5 },
+          { name: 'Yalova', count: 3 },
+          { name: 'Zonguldak', count: 6 }
         ],
         educationLevels: [],
         topDepartments: [
@@ -1149,12 +1215,14 @@ export default function App() {
           if (city.name.includes('81')) tooltipData[plate] = city.name;
         } else {
           tooltipData[plate] = `${city.name}: ${city.count} Katılımcı`;
-          const ratio = city.count / maxCount;
-          if (ratio > 0.8) colorData[plate] = '#312e81'; // hover:indigo-900 
-          else if (ratio > 0.5) colorData[plate] = '#4338ca'; // indigo-700
-          else if (ratio > 0.2) colorData[plate] = '#6366f1'; // indigo-500
-          else if (ratio > 0.05) colorData[plate] = '#a5b4fc'; // indigo-300
-          else colorData[plate] = '#e0e7ff'; // indigo-100
+          
+          // Eşik tabanlı renklendirme (İstanbul = 823 gibi uç değerler haritayı bozmasın diye)
+          if (city.count >= 200) colorData[plate] = '#312e81'; // Çok Yüksek (indigo-900)
+          else if (city.count >= 100) colorData[plate] = '#4338ca'; // Yüksek (indigo-700)
+          else if (city.count >= 40) colorData[plate] = '#4f46e5'; // Orta-Yüksek (indigo-600)
+          else if (city.count >= 15) colorData[plate] = '#818cf8'; // Orta (indigo-400)
+          else if (city.count >= 5) colorData[plate] = '#c7d2fe'; // Orta-Düşük (indigo-200)
+          else colorData[plate] = '#e0e7ff'; // Düşük (indigo-100)
         }
       }
     });
