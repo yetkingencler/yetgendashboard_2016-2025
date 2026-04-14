@@ -40,6 +40,8 @@ import { cn } from '@/src/lib/utils';
 import { StatCard } from './components/StatCard';
 import { ChartContainer } from './components/ChartContainer';
 import { BackgroundEffects } from './components/BackgroundEffects';
+import { CustomTurkeyMap as TurkeyMap } from './components/CustomTurkeyMap';
+import { getPlate } from './lib/cities';
 
 // --- Data Preparation ---
 
@@ -1127,10 +1129,41 @@ export default function App() {
   const hasEduData = !!(selectedYearData?.educationLevels && selectedYearData.educationLevels.length > 0);
   const hasCityData = !!(selectedYearData?.cities && selectedYearData.cities.length > 0);
   const hasDeptData = !!((selectedYearData?.topSchools && selectedYearData.topSchools.length > 0) || (selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0));
-  const totalRawCards = [hasAgeData, hasEduData, hasCityData, true, hasDeptData].filter(Boolean).length;
-  // If all 5 cards exist, stack Gender and Cities to fit nicely into 4 grid columns.
-  const shouldStackGenderAndCities = totalRawCards === 5;
-  const computedGridCols = shouldStackGenderAndCities ? 4 : totalRawCards;
+
+  const mapData = useMemo(() => {
+    const colorData: Record<string, string> = {};
+    const tooltipData: Record<string, string> = {};
+
+    if (!selectedYearData?.cities || selectedYearData.cities.length === 0) {
+      return { colorData, tooltipData };
+    }
+
+    const validCities = selectedYearData.cities.filter((c: any) => c.name !== 'Diğer');
+    const maxCount = Math.max(...validCities.map((c: any) => c.count || 0));
+
+    validCities.forEach((city: any) => {
+      const plate = getPlate(city.name);
+      if (plate) {
+        if (!city.count) {
+          colorData[plate] = '#cbd5e1'; // slate-300
+          if (city.name.includes('81')) tooltipData[plate] = city.name;
+        } else {
+          tooltipData[plate] = `${city.name}: ${city.count} Katılımcı`;
+          const ratio = city.count / maxCount;
+          if (ratio > 0.8) colorData[plate] = '#312e81'; // hover:indigo-900 
+          else if (ratio > 0.5) colorData[plate] = '#4338ca'; // indigo-700
+          else if (ratio > 0.2) colorData[plate] = '#6366f1'; // indigo-500
+          else if (ratio > 0.05) colorData[plate] = '#a5b4fc'; // indigo-300
+          else colorData[plate] = '#e0e7ff'; // indigo-100
+        }
+      }
+    });
+
+    return { colorData, tooltipData };
+  }, [selectedYearData]);
+  const totalRawCards = [hasAgeData, hasEduData, true, hasDeptData].filter(Boolean).length;
+  // Top cards grid size is based on remaining cards (up to 4)
+  const computedGridCols = totalRawCards || 1;
 
   const heroContent = getHeroContent(selectedYear, selectedYearData);
 
@@ -1453,17 +1486,11 @@ export default function App() {
                           </div>
                         )}
 
-                        {/* Combined Stack for Gender & Cities OR Unstacked Contents */}
-                        <div className={cn(
-                          "w-full",
-                          shouldStackGenderAndCities
-                            ? "flex flex-col gap-4 md:gap-6 self-start"
-                            : "contents"
-                        )}>
+                        {/* Gender Unstacked Contents */}
+                        <div className="contents">
                           {/* Gender Donut Chart */}
                           <div className={cn(
-                            "bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col relative overflow-hidden hover:shadow-xl hover:shadow-pink-100/40 transition-all justify-start",
-                            shouldStackGenderAndCities ? "w-full" : "h-full"
+                            "bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-pink-100/40 transition-all justify-start"
                           )}>
                             <div>
                               <div className="flex items-center gap-3 mb-2">
@@ -1534,75 +1561,7 @@ export default function App() {
                               </div>
                             </div>
                           </div>
-
-                          {/* Top Cities Ranking */}
-                          {selectedYearData?.cities && selectedYearData.cities.length > 0 && (
-                            <div className={cn(
-                              "bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col relative overflow-hidden hover:shadow-xl hover:shadow-emerald-100/40 transition-all justify-start",
-                              shouldStackGenderAndCities ? "w-full" : "h-full"
-                            )}>
-                              <div>
-                                <div className="flex items-center gap-3 mb-4">
-                                  <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-500 flex items-center justify-center shrink-0">
-                                    <Globe className="w-4 h-4" />
-                                  </div>
-                                  <div>
-                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">En Aktif Şehirler</p>
-                                    <p className="text-xs font-bold text-slate-900 leading-tight">Katılım Yoğunluğu (Top 5)</p>
-                                  </div>
-                                </div>
-                                <div className="space-y-3.5">
-                                  {(selectedYearData.cities.filter((c: any) => c.name !== 'Diğer').slice(0, 5) as any[]).map((city, i) => {
-                                    const percentage = city.count ? Math.round((city.count / selectedYearData.participants) * 100) : 0;
-                                    const colors = ['bg-emerald-500', 'bg-emerald-400', 'bg-emerald-300', 'bg-emerald-200', 'bg-slate-200'];
-                                    const colorClass = colors[i] || 'bg-slate-100';
-
-                                    return (
-                                      <div key={city.name} className="flex items-center gap-3 group">
-                                        <span className="text-[10px] font-black text-slate-400 w-3">{i + 1}.</span>
-                                        <div className="flex-1">
-                                          <div className="flex justify-between items-start text-xs mb-1.5 gap-2">
-                                            <span className="font-bold text-slate-700 group-hover:text-emerald-600 transition-colors" style={{ wordBreak: 'break-word', lineHeight: '1.2' }}>{city.name}</span>
-                                            {city.count ? (
-                                              <div className="flex items-center gap-1.5 whitespace-nowrap">
-                                                <span className="font-bold text-[10px] text-slate-500 pt-0.5">{city.count} Kişi</span>
-                                                <span className="font-black text-slate-900">%{percentage}</span>
-                                              </div>
-                                            ) : (
-                                              <span className="font-black text-slate-900">{city.name.includes('81') ? '%100' : ''}</span>
-                                            )}
-                                          </div>
-                                          <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                                            <motion.div
-                                              initial={{ width: 0 }}
-                                              whileInView={{ width: city.count ? `${percentage}%` : (city.name.includes('81') ? '100%' : '50%') }}
-                                              transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
-                                              className={cn("h-full rounded-full", colorClass)}
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                                {(['o-22', 'o-23', 'o-24', 'o-25'].includes(selectedYearData?.id)) && (
-                                  <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-center">
-                                    <motion.p 
-                                      initial={{ opacity: 0, y: 10 }}
-                                      animate={{ opacity: 1, y: 0 }}
-                                      className="text-[11px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-4 py-2 rounded-full inline-flex items-center gap-2 shadow-sm"
-                                    >
-                                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                      <span>Türkiye'nin <span className="font-black text-emerald-700">
-                                        {selectedYearData?.id === 'o-22' ? '74' : 
-                                         selectedYearData?.id === 'o-23' ? '68' : 
-                                         selectedYearData?.id === 'o-24' ? '63' : '62'} farklı şehrinden</span> başvuru alınmıştır!</span>
-                                    </motion.p>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          )}
+                          {/* Turkey Map was removed from here. */}
                         </div>
 
                         {/* Academic Profile Ranking */}
@@ -1690,6 +1649,50 @@ export default function App() {
                         )}
 
                       </div>
+
+                      {/* HUGE TURKEY MAP CONTAINER */}
+                      {hasCityData && (
+                        <div className="mt-8 mb-12 bg-white rounded-[2rem] lg:rounded-[3rem] border border-slate-100 shadow-sm flex flex-col relative hover:shadow-2xl hover:shadow-indigo-100/50 transition-all justify-center items-center w-full group min-h-[400px] sm:min-h-[500px]">
+                          {/* Subtle Background Pattern */}
+                          <div className="absolute inset-0 rounded-[2rem] lg:rounded-[3rem] overflow-hidden pointer-events-none z-0">
+                            <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 group-hover:opacity-80 transition-opacity duration-1000"></div>
+                          </div>
+                          
+                          {/* Professional Standalone Header */}
+                          <div className="w-full flex flex-col items-start px-8 md:px-14 pt-10 z-20 pointer-events-none">
+                            <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-black text-slate-900 tracking-tighter leading-none mb-2 drop-shadow-sm">
+                              Türkiye <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">Katılım Haritası</span>
+                            </h2>
+                            <p className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-[0.3em] ml-1">
+                              Genel Yoğunluk ve Dağılım
+                            </p>
+                          </div>
+                          
+                          <div className="w-full max-w-[1100px] aspect-[1.3/1] sm:aspect-[2/1] flex items-center justify-center relative mt-4 md:mt-2 mb-8 z-10 px-4 transition-transform duration-700 group-hover:scale-[1.01]">
+                            <TurkeyMap 
+                              showTooltip={true}
+                              colorData={mapData.colorData}
+                              tooltipData={mapData.tooltipData}
+                            />
+                          </div>
+
+                          {(['o-22', 'o-23', 'o-24', 'o-25'].includes(selectedYearData?.id)) && (
+                            <div className="mt-10 pt-8 border-t border-slate-100 flex items-center justify-center w-full max-w-3xl">
+                              <motion.p 
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="text-sm sm:text-base font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 px-8 py-4 rounded-full inline-flex items-center gap-3 shadow-sm"
+                              >
+                                <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse" />
+                                <span>Türkiye'nin <span className="font-black text-indigo-700">
+                                  {selectedYearData?.id === 'o-22' ? '74' : 
+                                   selectedYearData?.id === 'o-23' ? '68' : 
+                                   selectedYearData?.id === 'o-24' ? '63' : '62'} farklı şehrinden</span> başvuru alınmıştır!</span>
+                              </motion.p>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
 
                     {/* All Years Trend Chart */}
