@@ -39,7 +39,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/src/lib/utils';
 import { StatCard } from './components/StatCard';
 import { ChartContainer } from './components/ChartContainer';
-import { WelcomeModal } from './components/WelcomeModal';
 import { BackgroundEffects } from './components/BackgroundEffects';
 
 // --- Data Preparation ---
@@ -830,18 +829,18 @@ const skills = [
 const getHeroContent = (selectedYear: string, selectedProgramData?: any) => {
   let content = {
     title1: 'YetGen',
-    title2: '21.Yüzyıl Yetkinlikleri',
-    subtitle: 'Farkındalık Programı',
-    text: 'Pasif öğrenenleri, 21. yüzyıl yetkinlikleri ve uygulama odaklı modellerle aktif üreticilere dönüştürüyoruz.',
+    title2: 'Stratejik Etki Raporu',
+    subtitle: '21. Yüzyıl Yetkinlikleri Programı',
+    text: 'Gençleri 21. yüzyıl yetkinlikleri ve uygulama odaklı modellerle donatarak geleceğin üretici liderlerine dönüştürüyoruz.',
     statusText: 'Aktif & Büyüyor'
   };
 
   if (selectedYear === 'all') {
     content = {
       title1: 'YetGen',
-      title2: '21.Yüzyıl Yetkinlikleri',
-      subtitle: 'Etki Raporu & Farkındalık Ekosistemi',
-      text: 'Pasif öğrenenleri, 21. yüzyıl yetkinlikleri ve uygulama odaklı modellerle aktif üreticilere dönüştürüyor; geleceğin donanımlı liderlerini bugünden şekillendirerek devasa bir ekosistem inşa ediyoruz.',
+      title2: 'Stratejik Etki Raporu',
+      subtitle: 'Farkındalık Ekosistemi',
+      text: 'Gençleri 21. yüzyıl yetkinlikleri ve yaratıcı projelerle donatarak güçlü liderler haline getiriyor; büyük bir ekosistem inşa ediyoruz.',
       statusText: 'Ekosistem Aktif'
     };
   } else if (selectedYear === '2025') {
@@ -1031,6 +1030,7 @@ export default function App() {
       });
 
     const cities = Object.entries(cityCount)
+      .filter(([name]) => name !== 'Diğer')
       .sort((a, b) => b[1] - a[1])
       .map(([name, count]) => ({ name, count }))
       .slice(0, 5);
@@ -1053,7 +1053,6 @@ export default function App() {
 
   const selectedYearData = useMemo(() => {
     if (selectedYear === 'all') return allYearsData;
-    if (selectedYear === '2026') return null;
     const yearData = yearlyData.find(d => d.year === selectedYear);
 
     if (yearData && selectedProgram) {
@@ -1084,16 +1083,7 @@ export default function App() {
         title: "Büyüme Endeksi",
         value: "29.1x",
         subValue: "2016 Lansmanından beri",
-        trend: { value: "Eksponansiyel", isPositive: true }
-      };
-    }
-
-    if (selectedYear === '2026') {
-      return {
-        title: "Hedef Büyüme",
-        value: "2.5x",
-        subValue: "Öngörülen Kapasite",
-        trend: { value: "Agresif Büyüme", isPositive: true }
+        trend: { value: "Sürekli Büyüme", isPositive: true }
       };
     }
 
@@ -1109,7 +1099,7 @@ export default function App() {
         value: `${growth > 0 ? '+' : ''}${growth.toFixed(1)}%`,
         subValue: "Geçen yıla göre",
         trend: {
-          value: growth > 0 ? "Yükseliş Trendi" : "Konsolidasyon",
+          value: growth > 0 ? "Yükseliş Trendi" : "Dönemsel Denge",
           isPositive: growth >= 0
         }
       };
@@ -1146,7 +1136,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 selection:bg-blue-100 relative">
-      <WelcomeModal />
       <BackgroundEffects trigger={selectedYear} />
 
       {/* Top Navigation Timeline */}
@@ -1175,7 +1164,7 @@ export default function App() {
             <div className="h-4 w-px bg-slate-200/60 mx-1 shrink-0" />
 
             <div className="flex items-center gap-1 overflow-x-auto no-scrollbar w-full sm:max-w-none px-1 py-0.5">
-              {yearlyData.map((d) => (
+              {[...yearlyData].reverse().map((d) => (
                 <button
                   key={d.year}
                   onClick={() => setSelectedYear(d.year)}
@@ -1196,26 +1185,6 @@ export default function App() {
                   {d.year}
                 </button>
               ))}
-
-              <button
-                onClick={() => setSelectedYear('2026')}
-                className={cn(
-                  "px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-[11px] font-bold transition-all uppercase tracking-[0.1em] sm:tracking-[0.15em] shrink-0 relative group font-display",
-                  selectedYear === '2026'
-                    ? "text-white"
-                    : "text-slate-400 hover:text-indigo-600 hover:bg-slate-50/80"
-                )}
-              >
-                {selectedYear === '2026' && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute inset-0 bg-indigo-600 rounded-full -z-10 shadow-lg shadow-indigo-200"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-                2026
-                <div className="absolute -top-1 -right-1 h-2 w-2 bg-indigo-400 rounded-full animate-ping opacity-40" />
-              </button>
             </div>
           </div>
         </div>
@@ -1238,6 +1207,43 @@ export default function App() {
             transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col w-full"
           >
+            {/* Sub-Program Selection (Secondary Timeline) */}
+            {selectedYear !== 'all' && yearlyData.find(d => d.year === selectedYear)?.programs && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-10 flex flex-col items-center sm:items-start"
+              >
+                <div className="flex items-center gap-2 p-1.5 md:p-2 bg-white/80 backdrop-blur-md rounded-full border border-slate-200 shadow-md shadow-slate-200/50 overflow-x-auto no-scrollbar max-w-full">
+                  <button
+                    onClick={() => setSelectedProgram(null)}
+                    className={cn(
+                      "px-6 md:px-8 py-3 md:py-3.5 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.15em] shrink-0",
+                      selectedProgram === null
+                        ? "bg-slate-900 text-white shadow-xl shadow-slate-300"
+                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                    )}
+                  >
+                    Genel Bakış
+                  </button>
+                  {yearlyData.find(d => d.year === selectedYear)?.programs?.map(p => (
+                    <button
+                      key={p.id}
+                      onClick={() => setSelectedProgram(p.id)}
+                      className={cn(
+                        "px-6 md:px-8 py-3 md:py-3.5 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.15em] shrink-0",
+                        selectedProgram === p.id
+                          ? "bg-slate-900 text-white shadow-xl shadow-slate-300"
+                          : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                      )}
+                    >
+                      {p.name}
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
             {/* Header */}
             <header className="mb-10 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8">
               <div>
@@ -1312,43 +1318,7 @@ export default function App() {
               />
             </div>
 
-            {/* Sub-Program Selection (Secondary Timeline) */}
-            {selectedYear !== 'all' && selectedYear !== '2026' && yearlyData.find(d => d.year === selectedYear)?.programs && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mb-12 md:mb-16 flex flex-col items-center px-4"
-              >
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-6">Program Seçimi</p>
-                <div className="flex items-center gap-2 p-1.5 md:p-2 bg-white rounded-full border border-slate-100 shadow-2xl shadow-slate-200/60 overflow-x-auto no-scrollbar max-w-full">
-                  <button
-                    onClick={() => setSelectedProgram(null)}
-                    className={cn(
-                      "px-6 md:px-8 py-3 md:py-3.5 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.15em] shrink-0",
-                      selectedProgram === null
-                        ? "bg-blue-600 text-white shadow-xl shadow-blue-200"
-                        : "text-slate-400 hover:text-slate-600 hover:bg-slate-50"
-                    )}
-                  >
-                    Genel Bakış
-                  </button>
-                  {yearlyData.find(d => d.year === selectedYear)?.programs?.map(p => (
-                    <button
-                      key={p.id}
-                      onClick={() => setSelectedProgram(p.id)}
-                      className={cn(
-                        "px-6 md:px-8 py-3 md:py-3.5 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.15em] shrink-0",
-                        selectedProgram === p.id
-                          ? "bg-blue-600 text-white shadow-xl shadow-blue-200"
-                          : "text-slate-400 hover:text-slate-600 hover:bg-slate-50"
-                      )}
-                    >
-                      {p.name}
-                    </button>
-                  ))}
-                </div>
-              </motion.div>
-            )}
+
 
             {/* Dynamic Content Area */}
             <div className="relative min-h-[800px]">
@@ -1362,82 +1332,6 @@ export default function App() {
               )}
 
               <div className="space-y-12 w-full">
-                {selectedYear === '2026' ? (
-                  /* 2026 Coming Soon View */
-                  <div className="bg-[#0B0F19] rounded-[3.5rem] overflow-hidden shadow-2xl relative min-h-[600px] flex items-center justify-center p-8 md:p-20 border border-slate-800">
-                    {/* Abstract Ambient Background */}
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                      <motion.div
-                        animate={{
-                          scale: [1, 1.2, 1],
-                          rotate: [0, 90, 0],
-                          opacity: [0.1, 0.2, 0.1]
-                        }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-blue-600/40 via-indigo-600/20 to-transparent blur-[120px] rounded-full mix-blend-screen"
-                      />
-                      <div className="absolute inset-0 bg-[#0B0F19]/60 backdrop-blur-[50px]" />
-                      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay" />
-                    </div>
-
-                    <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
-                      {/* Badge */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 md:mb-12 shadow-2xl shadow-blue-900/20"
-                      >
-                        <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
-                        <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-blue-200">Çok Yakında</span>
-                      </motion.div>
-
-                      {/* Main Typography */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                      >
-                        <h2 className="text-[5rem] sm:text-[7rem] md:text-[10rem] font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/10 tracking-tighter leading-[0.8] mb-6 md:mb-8 font-display drop-shadow-2xl">
-                          2026
-                        </h2>
-                        <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-8">
-                          Yeni Dönem. <br className="md:hidden" />
-                          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Yeni Nesil Liderler.</span>
-                        </h3>
-                      </motion.div>
-
-                      {/* Subtitle */}
-                      <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-slate-400 text-lg md:text-xl font-medium max-w-2xl leading-relaxed mb-12"
-                      >
-                        21. yüzyıl yetkinlikleri programımız her zamankinden daha güçlü ve kapsayıcı bir müfredatla güncelleniyor. Başvuru süreci çok yakında açılıyor.
-                      </motion.p>
-
-                      {/* Early Access Form Mockup */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="w-full max-w-md flex flex-col sm:flex-row gap-3"
-                      >
-                        <div className="relative flex-1">
-                          <input
-                            type="email"
-                            placeholder="E-posta adresiniz"
-                            pointer-events-auto
-                            className="w-full h-14 bg-white/5 border border-white/10 rounded-2xl px-6 outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all text-white placeholder:text-slate-500 font-medium"
-                          />
-                        </div>
-                        <button className="h-14 px-8 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black transition-all shadow-lg shadow-blue-500/25 shrink-0 pointer-events-auto">
-                          Haber Ver
-                        </button>
-                      </motion.div>
-                    </div>
-                  </div>
-                ) : (
                   <div className="space-y-12">
                     {/* Bento Grid Layout */}
                     <div className="space-y-6 md:space-y-8 w-full">
@@ -1661,7 +1555,7 @@ export default function App() {
                                   </div>
                                 </div>
                                 <div className="space-y-3.5">
-                                  {(selectedYearData.cities.slice(0, 5) as any[]).map((city, i) => {
+                                  {(selectedYearData.cities.filter((c: any) => c.name !== 'Diğer').slice(0, 5) as any[]).map((city, i) => {
                                     const percentage = city.count ? Math.round((city.count / selectedYearData.participants) * 100) : 0;
                                     const colors = ['bg-emerald-500', 'bg-emerald-400', 'bg-emerald-300', 'bg-emerald-200', 'bg-slate-200'];
                                     const colorClass = colors[i] || 'bg-slate-100';
@@ -1921,7 +1815,6 @@ export default function App() {
                       </div>
                     </div>
                   </div>
-                )}
               </div>
             </div>
           </motion.div>
