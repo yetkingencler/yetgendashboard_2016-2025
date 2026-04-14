@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { geoMercator, geoPath } from 'd3-geo';
-import turkeyGeoJson from '../../public/turkey-provinces.json';
+import turkeyGeoJson from '../data/turkey-provinces.json';
 
 interface CustomTurkeyMapProps {
   colorData?: Record<string, string>;
