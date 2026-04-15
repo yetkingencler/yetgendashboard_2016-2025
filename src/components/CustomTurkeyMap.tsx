@@ -104,10 +104,31 @@ export const CustomTurkeyMap: React.FC<CustomTurkeyMapProps> = ({
               <span className="text-sm font-bold text-slate-400">Katılım Yok</span>
             )}
           </div>
-          {/* Tooltip Arrow Element */}
+      {/* Tooltip Arrow Element */}
           <div className="w-5 h-5 bg-white/90 backdrop-blur-2xl border-b border-r border-white absolute -bottom-2 transform rotate-45 shadow-[4px_4px_10px_rgba(0,0,0,0.05)]"></div>
         </div>
       )}
+
+      {/* Modern High-End Horizontal Legend */}
+      <div className="absolute bottom-0 sm:bottom-2 left-1/2 -translate-x-1/2 w-max max-w-[95%] pointer-events-none flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 z-10">
+        <h4 className="text-[9px] font-black text-slate-400 uppercase tracking-[0.15em] sm:border-r sm:border-slate-300 sm:pr-6 shrink-0">Katılım Yoğunluğu</h4>
+        <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2.5 sm:gap-4">
+          {[
+            { color: '#312e81', label: '200+' },
+            { color: '#4338ca', label: '100-199' },
+            { color: '#4f46e5', label: '40-99' },
+            { color: '#818cf8', label: '15-39' },
+            { color: '#c7d2fe', label: '5-14' },
+            { color: '#e0e7ff', label: '1-4' },
+            { color: '#cbd5e1', label: 'Yok' }
+          ].map((item, idx) => (
+            <div key={idx} className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] shrink-0" style={{ backgroundColor: item.color }} />
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-600 leading-none whitespace-nowrap">{item.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
