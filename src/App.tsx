@@ -843,12 +843,67 @@ const yearlyData = [
           { age: '30+', count: 72 }
         ],
         cities: [
-          { name: 'İstanbul', count: 134 },
+          { name: 'Adana', count: 12 },
+          { name: 'Adıyaman', count: 1 },
+          { name: 'Afyonkarahisar', count: 6 },
+          { name: 'Aksaray', count: 2 },
+          { name: 'Amasya', count: 1 },
           { name: 'Ankara', count: 61 },
+          { name: 'Antalya', count: 10 },
+          { name: 'Aydın', count: 1 },
+          { name: 'Balıkesir', count: 6 },
+          { name: 'Batman', count: 5 },
+          { name: 'Bolu', count: 1 },
+          { name: 'Burdur', count: 1 },
           { name: 'Bursa', count: 19 },
-          { name: 'Kocaeli', count: 19 },
+          { name: 'Çanakkale', count: 4 },
+          { name: 'Çankırı', count: 1 },
+          { name: 'Çorum', count: 1 },
+          { name: 'Denizli', count: 8 },
+          { name: 'Diyarbakır', count: 2 },
+          { name: 'Düzce', count: 1 },
+          { name: 'Edirne', count: 3 },
+          { name: 'Elazığ', count: 1 },
+          { name: 'Erzincan', count: 1 },
+          { name: 'Erzurum', count: 3 },
+          { name: 'Eskişehir', count: 14 },
+          { name: 'Gaziantep', count: 10 },
+          { name: 'Giresun', count: 4 },
+          { name: 'Hatay', count: 10 },
+          { name: 'Isparta', count: 2 },
+          { name: 'İstanbul', count: 134 },
           { name: 'İzmir', count: 16 },
-          { name: 'Diğer', count: 215 }
+          { name: 'Kahramanmaraş', count: 1 },
+          { name: 'Kars', count: 1 },
+          { name: 'Kastamonu', count: 2 },
+          { name: 'Kayseri', count: 12 },
+          { name: 'Kilis', count: 2 },
+          { name: 'Kırklareli', count: 3 },
+          { name: 'Kırşehir', count: 1 },
+          { name: 'Kocaeli', count: 18 },
+          { name: 'Konya', count: 6 },
+          { name: 'Kütahya', count: 2 },
+          { name: 'Malatya', count: 2 },
+          { name: 'Manisa', count: 4 },
+          { name: 'Mersin', count: 11 },
+          { name: 'Muğla', count: 7 },
+          { name: 'Nevşehir', count: 1 },
+          { name: 'Ordu', count: 3 },
+          { name: 'Osmaniye', count: 1 },
+          { name: 'Rize', count: 3 },
+          { name: 'Sakarya', count: 2 },
+          { name: 'Samsun', count: 4 },
+          { name: 'Şanlıurfa', count: 1 },
+          { name: 'Siirt', count: 2 },
+          { name: 'Sinop', count: 1 },
+          { name: 'Sivas', count: 4 },
+          { name: 'Tekirdağ', count: 5 },
+          { name: 'Tokat', count: 1 },
+          { name: 'Trabzon', count: 5 },
+          { name: 'Uşak', count: 2 },
+          { name: 'Van', count: 2 },
+          { name: 'Yalova', count: 2 },
+          { name: 'Yozgat', count: 1 }
         ],
         educationLevels: [],
         topDepartments: [
@@ -907,7 +962,7 @@ const getHeroContent = (selectedYear: string, selectedProgramData?: any) => {
     content = {
       title1: 'YetGen',
       title2: 'Stratejik Etki Raporu',
-      subtitle: 'Farkındalık Ekosistemi',
+      subtitle: '',
       text: 'Gençleri 21. yüzyıl yetkinlikleri ve yaratıcı projelerle donatarak güçlü liderler haline getiriyor; büyük bir ekosistem inşa ediyoruz.',
       statusText: 'Ekosistem Aktif'
     };
@@ -1353,10 +1408,15 @@ export default function App() {
                   animate={{ opacity: 1, y: 0 }}
                   className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-slate-900 leading-[1.1] font-display"
                 >
-                  {heroContent.title1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">{heroContent.title2}</span> <br className="hidden md:block" />
-                  <span className="text-slate-800">
-                    {heroContent.subtitle}
-                  </span>
+                  {heroContent.title1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">{heroContent.title2}</span>
+                  {heroContent.subtitle && (
+                    <>
+                      <br className="hidden md:block" />
+                      <span className="text-slate-800">
+                        {heroContent.subtitle}
+                      </span>
+                    </>
+                  )}
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0 }}
@@ -1743,22 +1803,6 @@ export default function App() {
                               tooltipData={mapData.tooltipData}
                             />
                           </div>
-
-                          {(['o-22', 'o-23', 'o-24', 'o-25'].includes(selectedYearData?.id)) && (
-                            <div className="mt-10 pt-8 border-t border-slate-100 flex items-center justify-center w-full max-w-3xl">
-                              <motion.p 
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="text-sm sm:text-base font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 px-8 py-4 rounded-full inline-flex items-center gap-3 shadow-sm"
-                              >
-                                <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse" />
-                                <span>Türkiye'nin <span className="font-black text-indigo-700">
-                                  {selectedYearData?.id === 'o-22' ? '74' : 
-                                   selectedYearData?.id === 'o-23' ? '68' : 
-                                   selectedYearData?.id === 'o-24' ? '63' : '62'} farklı şehrinden</span> başvuru alınmıştır!</span>
-                              </motion.p>
-                            </div>
-                          )}
                         </div>
                       )}
                     </div>
