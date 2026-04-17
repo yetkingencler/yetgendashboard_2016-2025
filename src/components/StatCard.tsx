@@ -11,6 +11,7 @@ interface StatCardProps {
   trend?: {
     value: string;
     isPositive: boolean;
+    label?: string;
   };
   className?: string;
   delay?: number;
@@ -57,7 +58,7 @@ export const StatCard: React.FC<StatCardProps> = ({
           )}>
             {trend.isPositive ? '↑' : '↓'} {trend.value}
           </span>
-          <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">vs geçen yıl</span>
+          <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">{trend.label || 'vs geçen yıl'}</span>
         </div>
       )}
       

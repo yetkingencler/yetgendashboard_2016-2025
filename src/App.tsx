@@ -42,10 +42,11 @@ import { ChartContainer } from './components/ChartContainer';
 import { BackgroundEffects } from './components/BackgroundEffects';
 import { CustomTurkeyMap as TurkeyMap } from './components/CustomTurkeyMap';
 import { getPlate } from './lib/cities';
+import { IYearlyData, ICity, IProgramData, IDepartment } from './types';
 
 // --- Data Preparation ---
 
-const yearlyData = [
+const yearlyData: IYearlyData[] = [
   {
     year: '2016',
     participants: 73,
@@ -949,7 +950,7 @@ const skills = [
   { name: 'Girişimcilik', icon: Rocket, color: 'text-rose-400' },
 ];
 
-const getHeroContent = (selectedYear: string, selectedProgramData?: any) => {
+const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData | IProgramData) => {
   let content = {
     title1: 'YetGen',
     title2: 'Stratejik Etki Raporu',
@@ -1091,7 +1092,7 @@ export default function App() {
       });
 
       // Cities
-      const collectCities = (arr: any[]) => {
+      const collectCities = (arr: ICity[]) => {
         (arr || []).forEach(city => {
           if (typeof city === 'object' && city.name && city.count) {
             cityCount[city.name] = (cityCount[city.name] || 0) + city.count;
@@ -1206,7 +1207,7 @@ export default function App() {
         title: "Büyüme Endeksi",
         value: "29.1x",
         subValue: "2016 Lansmanından beri",
-        trend: { value: "Sürekli Büyüme", isPositive: true }
+        trend: { value: "Sürekli Büyüme", isPositive: true, label: 'Genel Durum' }
       };
     }
 
@@ -1259,10 +1260,10 @@ export default function App() {
       return { colorData, tooltipData };
     }
 
-    const validCities = selectedYearData.cities.filter((c: any) => c.name !== 'Diğer');
-    const maxCount = Math.max(...validCities.map((c: any) => c.count || 0));
+    const validCities = selectedYearData.cities.filter((c: ICity) => c.name !== 'Diğer');
+    const maxCount = Math.max(...validCities.map((c: ICity) => c.count || 0));
 
-    validCities.forEach((city: any) => {
+    validCities.forEach((city: ICity) => {
       const plate = getPlate(city.name);
       if (plate) {
         if (!city.count) {
@@ -1450,7 +1451,7 @@ export default function App() {
                 value={selectedYearData?.participants.toLocaleString() || '0'}
                 subValue={selectedYear === 'all' ? "10 yıllık süreçte" : `${selectedYear} yılı verisi`}
                 icon={Users}
-                trend={selectedYear === 'all' ? { value: "%7.6", isPositive: true } : undefined}
+                trend={selectedYear === 'all' ? { value: "%7.6", isPositive: true, label: "Tüm Yıllar Artışı" } : undefined}
                 delay={0.1}
               />
               <StatCard
@@ -1458,7 +1459,7 @@ export default function App() {
                 value={selectedYearData?.graduates.toLocaleString() || '0'}
                 subValue="Sertifikalı Alumniler"
                 icon={GraduationCap}
-                trend={selectedYear === 'all' ? { value: "%12.4", isPositive: true } : undefined}
+                trend={selectedYear === 'all' ? { value: "%12.4", isPositive: true, label: "Mezun Bazında" } : undefined}
                 delay={0.2}
               />
               <StatCard
@@ -1466,7 +1467,7 @@ export default function App() {
                 value={`%${selectedYearData?.participants ? ((selectedYearData.graduates / selectedYearData.participants) * 100).toFixed(1) : '0'}`}
                 subValue="Program Verimliliği"
                 icon={ShieldCheck}
-                trend={selectedYear === 'all' ? { value: "%2.1", isPositive: true } : undefined}
+                trend={selectedYear === 'all' ? { value: "%2.1", isPositive: true, label: "Artan Başarı" } : undefined}
                 delay={0.3}
               />
               <StatCard

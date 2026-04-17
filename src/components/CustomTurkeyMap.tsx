@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { geoMercator, geoPath } from 'd3-geo';
 import turkeyGeoJson from '../data/turkey-provinces.json';
 
@@ -8,13 +8,23 @@ interface CustomTurkeyMapProps {
   showTooltip?: boolean;
 }
 
+interface ITurkeyGeoFeature {
+  type: string;
+  properties?: {
+    name?: string;
+    plate?: number | string;
+    number?: number | string;
+  };
+  geometry: any; // GeoJSON geometry
+}
+
 export const CustomTurkeyMap: React.FC<CustomTurkeyMapProps> = ({
   colorData = {},
   tooltipData = {},
   showTooltip = true,
 }) => {
   const [hoveredCity, setHoveredCity] = useState<string | null>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const tooltipRef = useRef<HTMLDivElement>(null);
 
   // D3 Geo Projection for Turkey Focus (Auto scales to fit the entire viewBox perfectly)
   const projection = useMemo(() => {
@@ -24,7 +34,10 @@ export const CustomTurkeyMap: React.FC<CustomTurkeyMapProps> = ({
   const pathGenerator = useMemo(() => geoPath().projection(projection as any), [projection]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
+    if (tooltipRef.current) {
+      tooltipRef.current.style.left = `${e.clientX}px`;
+      tooltipRef.current.style.top = `${e.clientY}px`;
+    }
   };
 
   return (
@@ -33,14 +46,14 @@ export const CustomTurkeyMap: React.FC<CustomTurkeyMapProps> = ({
         viewBox="0 0 800 400"
         className="w-full h-full drop-shadow-[0_10px_20px_rgba(0,0,0,0.05)]"
       >
-        {[...turkeyGeoJson.features].sort((a: any, b: any) => {
+        {(turkeyGeoJson.features as ITurkeyGeoFeature[]).sort((a, b) => {
           // Hovered city must be rendered last to appear on top of adjacent borders
           const plateA = String(a.properties?.number || a.properties?.plate || '').padStart(2, '0');
           const plateB = String(b.properties?.number || b.properties?.plate || '').padStart(2, '0');
           if (plateA === hoveredCity) return 1;
           if (plateB === hoveredCity) return -1;
           return 0;
-        }).map((feature: any, index: number) => {
+        }).map((feature, index: number) => {
           let plate = '';
           if (feature.properties) {
             plate = String(feature.properties.number || feature.properties.plate || '').padStart(2, '0');
@@ -56,13 +69,13 @@ export const CustomTurkeyMap: React.FC<CustomTurkeyMapProps> = ({
           }
 
           let cx = 0, cy = 0;
-          try {
-            const centroid = pathGenerator.centroid(feature);
+          if (feature.geometry) {
+            const centroid = pathGenerator.centroid(feature as any);
             if (centroid && !isNaN(centroid[0]) && !isNaN(centroid[1])) {
               cx = centroid[0];
               cy = centroid[1];
             }
-          } catch(e) {}
+          }
 
           const hasCentroid = cx !== 0 && cy !== 0;
           const cityName = feature.properties?.name || '';
@@ -76,7 +89,13 @@ export const CustomTurkeyMap: React.FC<CustomTurkeyMapProps> = ({
               strokeWidth={isHovered ? 2.5 : 0.5}
               strokeLinejoin="round"
               className={isHovered ? "transition-none cursor-pointer outline-none relative" : "transition-colors duration-300 cursor-pointer outline-none hover:brightness-95 relative"}
-              onMouseEnter={() => setHoveredCity(plate)}
+              onMouseEnter={(e) => {
+                setHoveredCity(plate);
+                if (tooltipRef.current) {
+                  tooltipRef.current.style.left = `${e.clientX}px`;
+                  tooltipRef.current.style.top = `${e.clientY}px`;
+                }
+              }}
               onMouseLeave={() => setHoveredCity(null)}
               onMouseMove={handleMouseMove}
               style={isHovered ? { filter: 'drop-shadow(0px 0px 8px rgba(0,0,0,0.5))' } : {}}
@@ -88,14 +107,11 @@ export const CustomTurkeyMap: React.FC<CustomTurkeyMapProps> = ({
       {/* Modern High-End Floating Tooltip */}
       {showTooltip && hoveredCity && (
         <div
+          ref={tooltipRef}
           className="fixed z-[999] pointer-events-none transform -translate-x-1/2 -translate-y-[130%] flex flex-col items-center"
-          style={{
-            left: `${mousePos.x}px`,
-            top: `${mousePos.y}px`,
-          }}
         >
           <div className="bg-white/90 backdrop-blur-2xl border border-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] px-6 py-4 rounded-3xl min-w-[160px] flex flex-col gap-1 items-center justify-center animate-in zoom-in-95 fade-in duration-200">
-            <span className="text-xs font-black text-slate-400 uppercase tracking-widest">{turkeyGeoJson.features.find((f: any) => String(f.properties?.number || f.properties?.plate).padStart(2, '0') === hoveredCity)?.properties?.name || 'Bilinmiyor'}</span>
+            <span className="text-xs font-black text-slate-400 uppercase tracking-widest">{(turkeyGeoJson.features as ITurkeyGeoFeature[]).find((f) => String(f.properties?.number || f.properties?.plate).padStart(2, '0') === hoveredCity)?.properties?.name || 'Bilinmiyor'}</span>
             {tooltipData[hoveredCity] && tooltipData[hoveredCity].match(/\d+/) ? (
               <span className="text-2xl font-black text-indigo-600 leading-none drop-shadow-sm">
                 {parseInt(tooltipData[hoveredCity].match(/\d+/)?.[0] || '0', 10)} <span className="text-xs font-bold text-indigo-400/80 tracking-tight lowercase">kişi</span>
