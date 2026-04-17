@@ -41,6 +41,7 @@ import { StatCard } from './components/StatCard';
 import { ChartContainer } from './components/ChartContainer';
 import { BackgroundEffects } from './components/BackgroundEffects';
 import { CustomTurkeyMap as TurkeyMap } from './components/CustomTurkeyMap';
+import { ContactModal } from './components/ContactModal';
 import { getPlate } from './lib/cities';
 import { IYearlyData, ICity, IProgramData, IDepartment } from './types';
 
@@ -1060,6 +1061,7 @@ export default function App() {
   const [selectedYear, setSelectedYear] = React.useState('all');
   const [selectedProgram, setSelectedProgram] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = React.useState(false);
 
   // Reset program when year changes
   React.useEffect(() => {
@@ -1294,6 +1296,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 selection:bg-blue-100 relative">
       <BackgroundEffects trigger={selectedYear} />
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
 
       {/* Top Navigation Timeline */}
       <nav className="sticky top-4 sm:top-6 z-[100] flex justify-center px-2 sm:px-6 w-full max-w-full pointer-events-none">
@@ -1402,17 +1405,17 @@ export default function App() {
             )}
 
             {/* Header */}
-            <header className="mb-10 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8">
-              <div>
+            <header className="mb-10 sm:mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8">
+              <div className="flex-1 min-w-0">
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-slate-900 leading-[1.1] font-display"
+                  className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900 leading-[1.1] font-display break-words"
                 >
-                  {heroContent.title1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">{heroContent.title2}</span>
+                  {heroContent.title1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 selection:text-blue-700">{heroContent.title2}</span>
                   {heroContent.subtitle && (
                     <>
-                      <br className="hidden md:block" />
+                      <br className="hidden lg:block" />
                       <span className="text-slate-800">
                         {heroContent.subtitle}
                       </span>
@@ -1423,7 +1426,7 @@ export default function App() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="mt-6 text-lg md:text-xl text-slate-500 max-w-2xl font-medium leading-relaxed"
+                  className="mt-6 text-lg lg:text-xl text-slate-500 max-w-2xl font-medium leading-relaxed"
                 >
                   {heroContent.text}
                 </motion.p>
@@ -1432,12 +1435,12 @@ export default function App() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex items-center gap-4 sm:gap-5 bg-white border border-slate-200 shadow-sm rounded-3xl p-4 md:p-5 w-full md:w-auto"
+                className="flex items-center gap-4 sm:gap-5 bg-white border border-slate-200 shadow-sm rounded-3xl p-4 lg:p-5 w-full lg:w-auto shrink-0"
               >
-                <div className="text-left md:text-right flex-1 md:flex-none">
-                  <p className="text-[10px] md:text-xs text-slate-400 uppercase font-bold tracking-widest">Program Durumu</p>
-                  <p className="text-sm md:text-base font-bold text-emerald-600 flex items-center gap-2 md:justify-end">
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <div className="text-left lg:text-right flex-1 lg:flex-none">
+                  <p className="text-[10px] lg:text-xs text-slate-400 uppercase font-bold tracking-widest">Program Durumu</p>
+                  <p className="text-sm lg:text-base font-bold text-emerald-600 flex items-center gap-2 lg:justify-end">
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                     {heroContent.statusText}
                   </p>
                 </div>
@@ -1549,7 +1552,7 @@ export default function App() {
                       )}>
                         {/* Age Distribution Mini Chart */}
                         {selectedYearData?.hasAgeData !== false && (
-                          <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                          <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full min-w-0 relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
                             <div>
                               <div className="flex items-center gap-3 mb-4">
                                 <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
@@ -1583,7 +1586,7 @@ export default function App() {
 
                         {/* Education Level */}
                         {selectedYearData?.educationLevels && selectedYearData.educationLevels.length > 0 && (
-                          <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                          <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
                             <div>
                               <div className="flex items-center gap-3 mb-4">
                                 <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
@@ -1619,7 +1622,7 @@ export default function App() {
                         <div className="contents">
                           {/* Gender Donut Chart */}
                           <div className={cn(
-                            "bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-pink-100/40 transition-all justify-start"
+                            "bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-pink-100/40 transition-all justify-start"
                           )}>
                             <div>
                               <div className="flex items-center gap-3 mb-2">
@@ -1695,7 +1698,7 @@ export default function App() {
 
                         {/* Academic Profile Ranking */}
                         {((selectedYearData?.topSchools && selectedYearData.topSchools.length > 0) || (selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0)) && (
-                        <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
+                        <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
                           <div>
                             {selectedYearData?.topSchools ? (
                               <>
@@ -1960,7 +1963,10 @@ export default function App() {
           </div>
 
           <div className="flex gap-6 w-full md:w-auto">
-            <button className="w-full md:w-auto px-10 py-5 rounded-3xl bg-slate-900 text-white font-black hover:bg-slate-800 transition-all hover:shadow-xl hover:-translate-y-1 active:scale-95">
+            <button 
+              onClick={() => setIsContactModalOpen(true)}
+              className="w-full md:w-auto px-10 py-5 rounded-3xl bg-slate-900 text-white font-black hover:bg-slate-800 transition-all hover:shadow-xl hover:-translate-y-1 active:scale-95"
+            >
               Bizimle Partner Olun
             </button>
           </div>

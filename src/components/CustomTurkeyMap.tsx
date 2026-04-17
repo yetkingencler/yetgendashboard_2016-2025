@@ -25,6 +25,7 @@ export const CustomTurkeyMap: React.FC<CustomTurkeyMapProps> = ({
 }) => {
   const [hoveredCity, setHoveredCity] = useState<string | null>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
+  const mapContainerRef = useRef<HTMLDivElement>(null);
 
   // D3 Geo Projection for Turkey Focus (Auto scales to fit the entire viewBox perfectly)
   const projection = useMemo(() => {
@@ -33,15 +34,41 @@ export const CustomTurkeyMap: React.FC<CustomTurkeyMapProps> = ({
 
   const pathGenerator = useMemo(() => geoPath().projection(projection as any), [projection]);
 
+  // Sayfa kaydırıldığında (scroll) veya dokunarak kaydırma yapıldığında tooltip'i kapat
+  useEffect(() => {
+    const handleScroll = () => {
+      if (hoveredCity) setHoveredCity(null);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('touchmove', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('touchmove', handleScroll);
+    };
+  }, [hoveredCity]);
+
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (tooltipRef.current) {
-      tooltipRef.current.style.left = `${e.clientX}px`;
-      tooltipRef.current.style.top = `${e.clientY}px`;
+    if (tooltipRef.current && mapContainerRef.current) {
+      const rect = mapContainerRef.current.getBoundingClientRect();
+      tooltipRef.current.style.left = `${e.clientX - rect.left}px`;
+      tooltipRef.current.style.top = `${e.clientY - rect.top}px`;
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (tooltipRef.current && mapContainerRef.current && e.touches.length > 0) {
+      const rect = mapContainerRef.current.getBoundingClientRect();
+      tooltipRef.current.style.left = `${e.touches[0].clientX - rect.left}px`;
+      tooltipRef.current.style.top = `${e.touches[0].clientY - rect.top}px`;
     }
   };
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center">
+    <div 
+      ref={mapContainerRef}
+      className="relative w-full h-full flex items-center justify-center"
+      onMouseLeave={() => setHoveredCity(null)}
+    >
       <svg
         viewBox="0 0 800 400"
         className="w-full h-full drop-shadow-[0_10px_20px_rgba(0,0,0,0.05)]"
@@ -91,13 +118,24 @@ export const CustomTurkeyMap: React.FC<CustomTurkeyMapProps> = ({
               className={isHovered ? "transition-none cursor-pointer outline-none relative" : "transition-colors duration-300 cursor-pointer outline-none hover:brightness-95 relative"}
               onMouseEnter={(e) => {
                 setHoveredCity(plate);
-                if (tooltipRef.current) {
-                  tooltipRef.current.style.left = `${e.clientX}px`;
-                  tooltipRef.current.style.top = `${e.clientY}px`;
+                if (tooltipRef.current && mapContainerRef.current) {
+                  const rect = mapContainerRef.current.getBoundingClientRect();
+                  tooltipRef.current.style.left = `${e.clientX - rect.left}px`;
+                  tooltipRef.current.style.top = `${e.clientY - rect.top}px`;
+                }
+              }}
+              onTouchStart={(e) => {
+                setHoveredCity(plate);
+                if (tooltipRef.current && mapContainerRef.current && e.touches.length > 0) {
+                  const rect = mapContainerRef.current.getBoundingClientRect();
+                  tooltipRef.current.style.left = `${e.touches[0].clientX - rect.left}px`;
+                  tooltipRef.current.style.top = `${e.touches[0].clientY - rect.top}px`;
                 }
               }}
               onMouseLeave={() => setHoveredCity(null)}
+              onTouchEnd={() => setHoveredCity(null)}
               onMouseMove={handleMouseMove}
+              onTouchMove={handleTouchMove}
               style={isHovered ? { filter: 'drop-shadow(0px 0px 8px rgba(0,0,0,0.5))' } : {}}
             />
           );
@@ -108,7 +146,7 @@ export const CustomTurkeyMap: React.FC<CustomTurkeyMapProps> = ({
       {showTooltip && hoveredCity && (
         <div
           ref={tooltipRef}
-          className="fixed z-[999] pointer-events-none transform -translate-x-1/2 -translate-y-[130%] flex flex-col items-center"
+          className="absolute z-[999] pointer-events-none transform -translate-x-1/2 -translate-y-[130%] flex flex-col items-center"
         >
           <div className="bg-white/90 backdrop-blur-2xl border border-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] px-6 py-4 rounded-3xl min-w-[160px] flex flex-col gap-1 items-center justify-center animate-in zoom-in-95 fade-in duration-200">
             <span className="text-xs font-black text-slate-400 uppercase tracking-widest">{(turkeyGeoJson.features as ITurkeyGeoFeature[]).find((f) => String(f.properties?.number || f.properties?.plate).padStart(2, '0') === hoveredCity)?.properties?.name || 'Bilinmiyor'}</span>
