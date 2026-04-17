@@ -33,7 +33,9 @@ import {
   AreaChart,
   Area,
   Legend,
-  LabelList
+  LabelList,
+  ComposedChart,
+  Line
 } from 'recharts';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/src/lib/utils';
@@ -41,7 +43,8 @@ import { StatCard } from './components/StatCard';
 import { ChartContainer } from './components/ChartContainer';
 import { BackgroundEffects } from './components/BackgroundEffects';
 import { CustomTurkeyMap as TurkeyMap } from './components/CustomTurkeyMap';
-import { ContactModal } from './components/ContactModal';
+import { FormModal } from './components/FormModal';
+import { YearlyJourney } from './components/YearlyJourney';
 import { getPlate } from './lib/cities';
 import { IYearlyData, ICity, IProgramData, IDepartment } from './types';
 
@@ -1061,7 +1064,7 @@ export default function App() {
   const [selectedYear, setSelectedYear] = React.useState('all');
   const [selectedProgram, setSelectedProgram] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [isContactModalOpen, setIsContactModalOpen] = React.useState(false);
+  const [isFormModalOpen, setIsFormModalOpen] = React.useState(false);
 
   // Reset program when year changes
   React.useEffect(() => {
@@ -1296,7 +1299,11 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 selection:bg-blue-100 relative">
       <BackgroundEffects trigger={selectedYear} />
-      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+      <FormModal 
+        isOpen={isFormModalOpen} 
+        onClose={() => setIsFormModalOpen(false)} 
+        formUrl="https://docs.google.com/forms/d/e/1FAIpQLSd65oa6o4MP_H-mf9FlYK5NqHuYj8LBnzHOSN1yuhnra9H6YA/viewform?embedded=true" 
+      />
 
       {/* Top Navigation Timeline */}
       <nav className="sticky top-4 sm:top-6 z-[100] flex justify-center px-2 sm:px-6 w-full max-w-full pointer-events-none">
@@ -1811,69 +1818,30 @@ export default function App() {
                       )}
                     </div>
 
-                    {/* All Years Trend Chart */}
+                    {/* MASSIVE ANALYTICS TREND CONTAINER */}
                     {selectedYear === 'all' && (
-                      <ChartContainer
-                        title="Katılım Trendi"
-                        subtitle="Yıllara göre katılımcı ve mezun sayısı gelişimi"
-                        className="rounded-[2rem] sm:rounded-[3rem]"
-                      >
-                        <div className="h-[250px] sm:h-[350px] w-full">
-                          <ResponsiveContainer width="100%" height="100%">
-                            <AreaChart data={yearlyData}>
-                              <defs>
-                                <linearGradient id="colorPart" x1="0" y1="0" x2="0" y2="1">
-                                  <stop offset="5%" stopColor="#2563eb" stopOpacity={0.3} />
-                                  <stop offset="95%" stopColor="#2563eb" stopOpacity={0} />
-                                </linearGradient>
-                                <linearGradient id="colorGrad" x1="0" y1="0" x2="0" y2="1">
-                                  <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
-                                  <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
-                                </linearGradient>
-                              </defs>
-                              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                              <XAxis
-                                dataKey="year"
-                                axisLine={false}
-                                tickLine={false}
-                                tick={{ fill: '#94a3b8', fontSize: 12, fontWeight: 600 }}
-                                dy={10}
-                              />
-                              <YAxis
-                                axisLine={false}
-                                tickLine={false}
-                                tick={{ fill: '#94a3b8', fontSize: 12, fontWeight: 600 }}
-                              />
-                              <Tooltip
-                                contentStyle={{
-                                  backgroundColor: '#fff',
-                                  borderRadius: '1rem',
-                                  border: '1px solid #e2e8f0',
-                                  boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)'
-                                }}
-                              />
-                              <Area
-                                type="monotone"
-                                dataKey="participants"
-                                name="Katılımcı"
-                                stroke="#2563eb"
-                                strokeWidth={4}
-                                fillOpacity={1}
-                                fill="url(#colorPart)"
-                              />
-                              <Area
-                                type="monotone"
-                                dataKey="graduates"
-                                name="Mezun"
-                                stroke="#10b981"
-                                strokeWidth={4}
-                                fillOpacity={1}
-                                fill="url(#colorGrad)"
-                              />
-                            </AreaChart>
-                          </ResponsiveContainer>
+                      <div className="mt-8 mb-12 bg-white rounded-[2rem] lg:rounded-[3rem] border border-slate-100 shadow-sm flex flex-col relative hover:shadow-2xl hover:shadow-indigo-100/50 transition-all justify-center items-start w-full group min-h-[400px] sm:min-h-[550px] overflow-hidden">
+                        {/* Subtle Background Radial Pattern */}
+                        <div className="absolute inset-0 z-0 pointer-events-none">
+                          <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 group-hover:opacity-80 transition-opacity duration-1000"></div>
+                          {/* Inner soft glow */}
+                          <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-blue-50/50 to-transparent"></div>
                         </div>
-                      </ChartContainer>
+
+                        {/* Professional Standalone Header */}
+                        <div className="w-full flex-col px-8 md:px-14 pt-10 z-20 pointer-events-none flex">
+                          <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-black text-slate-900 tracking-tighter leading-none mb-2 drop-shadow-sm">
+                            Yıllık Katılım <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">Büyüme Ekseni</span>
+                          </h2>
+                          <p className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-[0.3em] ml-1">
+                            Yıllara Göre Katılımcı ve Mezun İvmesi
+                          </p>
+                        </div>
+                        
+                        <div className="w-full relative mt-6 md:mt-8 mb-4 z-10 px-4 sm:px-6 md:px-10">
+                          <YearlyJourney data={yearlyData} />
+                        </div>
+                      </div>
                     )}
 
                     {/* Secondary Bento Grid */}
@@ -1964,7 +1932,7 @@ export default function App() {
 
           <div className="flex gap-6 w-full md:w-auto">
             <button 
-              onClick={() => setIsContactModalOpen(true)}
+              onClick={() => setIsFormModalOpen(true)}
               className="w-full md:w-auto px-10 py-5 rounded-3xl bg-slate-900 text-white font-black hover:bg-slate-800 transition-all hover:shadow-xl hover:-translate-y-1 active:scale-95"
             >
               Bizimle Partner Olun
