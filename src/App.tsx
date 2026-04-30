@@ -45,6 +45,7 @@ import { BackgroundEffects } from './components/BackgroundEffects';
 import { CustomTurkeyMap as TurkeyMap } from './components/CustomTurkeyMap';
 import { FormModal } from './components/FormModal';
 import { YearlyJourney } from './components/YearlyJourney';
+import { Footer } from './components/Footer';
 import { getPlate } from './lib/cities';
 import { IYearlyData, ICity, IProgramData, IDepartment } from './types';
 
@@ -56,7 +57,7 @@ const yearlyData: IYearlyData[] = [
     participants: 1162,
     graduates: 674,
     description: 'İlk 5 yılın özeti. Pilot uygulamadan dijital dönüşüme uzanan, YetGen\'in temelinin atıldığı ve hızla büyüdüğü kuruluş yılları.',
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200',
+    image: '/partners/ilkkk.png',
     hasAgeData: false,
     gender: { female: 576, male: 579, other: 6 },
     cities: [],
@@ -79,7 +80,7 @@ const yearlyData: IYearlyData[] = [
       { name: 'İktisat', val: 20 },
       { name: 'Psikoloji', val: 18 }
     ],
-    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler']
+    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler', 'MEF Üniversitesi']
   },
   {
     year: '2021',
@@ -187,7 +188,7 @@ const yearlyData: IYearlyData[] = [
       { name: 'Bilgisayar Mühendisliği', val: 158 },
       { name: 'Psikoloji', val: 65 }
     ],
-    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler'],
+    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler', 'MEF Üniversitesi'],
     programs: [
       {
         id: 'basic-1',
@@ -563,7 +564,7 @@ const yearlyData: IYearlyData[] = [
       { name: 'Hukuk', val: 114 },
       { name: 'Sınıf Öğretmenliği', val: 100 }
     ],
-    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler'],
+    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler', 'MEF Üniversitesi'],
     programs: [
       {
         id: 'b-22-1',
@@ -999,7 +1000,7 @@ const yearlyData: IYearlyData[] = [
       { name: 'Psikoloji', val: 106 },
       { name: 'İşletme', val: 42 }
     ],
-    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler'],
+    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler', 'MEF Üniversitesi'],
     programs: [
       {
         id: 'b-23-1',
@@ -1422,7 +1423,7 @@ const yearlyData: IYearlyData[] = [
       { name: 'Hukuk', val: 75 },
       { name: 'Psikoloji', val: 46 }
     ],
-    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler'],
+    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler', 'MEF Üniversitesi'],
     programs: [
       {
         id: 'b-24-1',
@@ -1799,7 +1800,7 @@ const yearlyData: IYearlyData[] = [
       { name: 'İşletme', val: 60 },
       { name: 'Hukuk', val: 56 }
     ],
-    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler'],
+    sponsors: ['Mehmet Zorlu Vakfı', 'Yetkin Gençler', 'MEF Üniversitesi'],
     programs: [
       {
         id: 'b-25',
@@ -2501,7 +2502,7 @@ export default function App() {
             )}
 
             {/* Header */}
-            <header className="mb-10 sm:mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8">
+            <header className="mb-10 sm:mb-16 flex flex-col lg:flex-row lg:items-center justify-between gap-8 sm:gap-12 relative z-10">
               <div className="flex-1 min-w-0">
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
@@ -2527,24 +2528,27 @@ export default function App() {
                   {heroContent.text}
                 </motion.p>
               </div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex items-center gap-4 sm:gap-5 bg-white border border-slate-200 shadow-sm rounded-3xl p-4 lg:p-5 w-full lg:w-auto shrink-0"
+              
+              {/* Professional Right Logo */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95, x: 20 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                transition={{ duration: 1, ease: [0.23, 1, 0.32, 1], delay: 0.3 }}
+                className="hidden lg:flex shrink-0 relative items-center justify-center lg:w-80 xl:w-96 bg-white/60 backdrop-blur-md border border-slate-200/60 rounded-[2rem] p-8 shadow-[0_2px_15px_-3px_rgba(6,81,237,0.05)] hover:shadow-lg hover:bg-white/90 transition-all duration-500"
               >
-                <div className="text-left lg:text-right flex-1 lg:flex-none">
-                  <p className="text-[10px] lg:text-xs text-slate-400 uppercase font-bold tracking-widest">Program Durumu</p>
-                  <p className="text-sm lg:text-base font-bold text-emerald-600 flex items-center gap-2 lg:justify-end">
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                    {heroContent.statusText}
-                  </p>
-                </div>
+                <img 
+                  src="/partners/yetgen-logo-transparent.png" 
+                  alt="YetGen" 
+                  className="w-full object-contain relative z-10 hover:scale-105 transition-transform duration-500 ease-out" 
+                />
               </motion.div>
             </header>
 
             {/* KPI Grid */}
-            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4 mb-10 md:mb-16">
+            <div className={cn(
+              "grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 mb-10 md:mb-16",
+              selectedYear === '2016-2020' ? "lg:grid-cols-3" : "lg:grid-cols-4"
+            )}>
               <StatCard
                 title={selectedYear === 'all' ? "Toplam Katılımcı" : `${selectedYear} Katılımcı`}
                 value={selectedYearData?.participants.toLocaleString() || '0'}
@@ -2569,14 +2573,16 @@ export default function App() {
                 trend={selectedYear === 'all' ? { value: "%2.1", isPositive: true, label: "Artan Başarı" } : undefined}
                 delay={0.3}
               />
-              <StatCard
-                title={growthMetrics.title}
-                value={growthMetrics.value}
-                subValue={growthMetrics.subValue}
-                icon={TrendingUp}
-                trend={growthMetrics.trend}
-                delay={0.4}
-              />
+              {selectedYear !== '2016-2020' && (
+                <StatCard
+                  title={growthMetrics.title}
+                  value={growthMetrics.value}
+                  subValue={growthMetrics.subValue}
+                  icon={TrendingUp}
+                  trend={growthMetrics.trend}
+                  delay={0.4}
+                />
+              )}
             </div>
 
 
@@ -2602,7 +2608,7 @@ export default function App() {
                           <img
                             src={selectedYearData?.image}
                             alt={selectedYear}
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
+                            className="absolute inset-0 w-full h-full object-cover brightness-[1.05] contrast-[1.1] saturate-[1.1] transition-transform duration-[2s] group-hover:scale-110"
                             referrerPolicy="no-referrer"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90" />
@@ -2718,80 +2724,83 @@ export default function App() {
                         <div className="contents">
                           {/* Gender Donut Chart */}
                           <div className={cn(
-                            "bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-pink-100/40 transition-all justify-start"
+                            "bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-pink-100/40 transition-all"
                           )}>
-                            <div>
-                              <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center shrink-0">
-                                  <Sparkles className="w-4 h-4" />
-                                </div>
-                                <div>
-                                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Cinsiyet Dengesi</p>
-                                </div>
+                            {/* Header */}
+                            <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                              <div className="w-8 h-8 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center shrink-0">
+                                <Sparkles className="w-4 h-4" />
                               </div>
-                              <div className="flex items-center justify-between gap-1">
-                                <div className="h-[120px] w-[120px] relative shrink-0 -ml-2">
-                                  <ResponsiveContainer width="100%" height="100%">
-                                    <PieChart>
-                                      <Pie
-                                        data={[
-                                          { name: 'Kadın', value: selectedYearData?.gender?.female || 64, color: '#ec4899' },
-                                          { name: 'Erkek', value: selectedYearData?.gender?.male || 36, color: '#3b82f6' },
-                                          ...(selectedYearData?.gender?.other ? [{ name: 'Diğer', value: selectedYearData.gender.other, color: '#94a3b8' }] : [])
-                                        ]}
-                                        cx="50%"
-                                        cy="50%"
-                                        innerRadius={35}
-                                        outerRadius={48}
-                                        paddingAngle={5}
-                                        dataKey="value"
-                                        stroke="none"
-                                      >
-                                        {
-                                          [
-                                            { name: 'Kadın', color: '#ec4899' },
-                                            { name: 'Erkek', color: '#3b82f6' },
-                                            { name: 'Diğer', color: '#94a3b8' }
-                                          ].map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={entry.color} />
-                                          ))
-                                        }
-                                      </Pie>
-                                      <Tooltip cursor={false} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} itemStyle={{ fontSize: '12px', fontWeight: 'bold' }} />
-                                    </PieChart>
-                                  </ResponsiveContainer>
-                                </div>
-                                <div className="flex flex-col gap-3 justify-center">
-                                  <div className="flex items-center gap-3 group" title={`${selectedYearData?.gender?.female || 0} Kişi`}>
-                                    <div className="w-3 h-3 rounded-full bg-pink-500 shadow-sm shadow-pink-200 group-hover:scale-125 transition-transform" />
-                                    <div className="flex flex-col">
-                                      <span className="text-[10px] font-bold text-slate-400 uppercase leading-none mb-1">Kadın</span>
-                                      <span className="text-xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData?.gender?.female || 0) / (selectedYearData?.participants || 1) * 100) || 64}</span>
-                                    </div>
+                              <div>
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Cinsiyet Dengesi</p>
+                              </div>
+                            </div>
+                            
+                            {/* Centered Chart Content */}
+                            <div className="flex-1 w-full flex flex-col items-center justify-center mt-4 mb-2">
+                              {/* Donut Chart */}
+                              <div className="h-[160px] w-[160px] sm:h-[180px] sm:w-[180px] relative shrink-0 mb-8">
+                                <ResponsiveContainer width="100%" height="100%">
+                                  <PieChart>
+                                    <Pie
+                                      data={[
+                                        { name: 'Kadın', value: selectedYearData?.gender?.female || 64, color: '#ec4899' },
+                                        { name: 'Erkek', value: selectedYearData?.gender?.male || 36, color: '#3b82f6' },
+                                        ...(selectedYearData?.gender?.other ? [{ name: 'Diğer', value: selectedYearData.gender.other, color: '#94a3b8' }] : [])
+                                      ]}
+                                      cx="50%"
+                                      cy="50%"
+                                      innerRadius={55}
+                                      outerRadius={75}
+                                      paddingAngle={5}
+                                      dataKey="value"
+                                      stroke="none"
+                                    >
+                                      {
+                                        [
+                                          { name: 'Kadın', color: '#ec4899' },
+                                          { name: 'Erkek', color: '#3b82f6' },
+                                          { name: 'Diğer', color: '#94a3b8' }
+                                        ].map((entry, index) => (
+                                          <Cell key={`cell-${index}`} fill={entry.color} />
+                                        ))
+                                      }
+                                    </Pie>
+                                    <Tooltip cursor={false} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} itemStyle={{ fontSize: '12px', fontWeight: 'bold' }} />
+                                  </PieChart>
+                                </ResponsiveContainer>
+                              </div>
+                              
+                              {/* Horizontal Legend Below Chart */}
+                              <div className="flex items-center justify-center gap-8 sm:gap-12 w-full px-2">
+                                <div className="flex flex-col items-center group" title={`${selectedYearData?.gender?.female || 0} Kişi`}>
+                                  <div className="flex items-center gap-1.5 mb-1.5">
+                                    <div className="w-3.5 h-3.5 rounded-full bg-pink-500 shadow-sm shadow-pink-200 group-hover:scale-125 transition-transform" />
+                                    <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Kadın</span>
                                   </div>
-                                  <div className="flex items-center gap-3 group" title={`${selectedYearData?.gender?.male || 0} Kişi`}>
-                                    <div className="w-3 h-3 rounded-full bg-blue-500 shadow-sm shadow-blue-200 group-hover:scale-125 transition-transform" />
-                                    <div className="flex flex-col">
-                                      <span className="text-[10px] font-bold text-slate-400 uppercase leading-none mb-1">Erkek</span>
-                                      <span className="text-xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData?.gender?.male || 0) / (selectedYearData?.participants || 1) * 100) || 36}</span>
-                                    </div>
-                                  </div>
-                                  {(selectedYearData?.gender?.other && Math.round((selectedYearData.gender.other / selectedYearData.participants) * 100) > 0) ? (
-                                    <div className="flex items-center gap-3 group" title={`${selectedYearData?.gender?.other || 0} Kişi`}>
-                                      <div className="w-3 h-3 rounded-full bg-slate-400 shadow-sm shadow-slate-200 group-hover:scale-125 transition-transform" />
-                                      <div className="flex flex-col">
-                                        <span className="text-[10px] font-bold text-slate-400 uppercase leading-none mb-1">Diğer</span>
-                                        <span className="text-lg font-black text-slate-900 leading-none">%{Math.round((selectedYearData.gender.other / selectedYearData.participants) * 100)}</span>
-                                      </div>
-                                    </div>
-                                  ) : null}
+                                  <span className="text-3xl sm:text-4xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData?.gender?.female || 0) / (selectedYearData?.participants || 1) * 100) || 64}</span>
                                 </div>
+                                <div className="flex flex-col items-center group" title={`${selectedYearData?.gender?.male || 0} Kişi`}>
+                                  <div className="flex items-center gap-1.5 mb-1.5">
+                                    <div className="w-3.5 h-3.5 rounded-full bg-blue-500 shadow-sm shadow-blue-200 group-hover:scale-125 transition-transform" />
+                                    <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Erkek</span>
+                                  </div>
+                                  <span className="text-3xl sm:text-4xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData?.gender?.male || 0) / (selectedYearData?.participants || 1) * 100) || 36}</span>
+                                </div>
+                                {(selectedYearData?.gender?.other && Math.round((selectedYearData.gender.other / selectedYearData.participants) * 100) > 0) ? (
+                                  <div className="flex flex-col items-center group" title={`${selectedYearData?.gender?.other || 0} Kişi`}>
+                                    <div className="flex items-center gap-1.5 mb-1.5">
+                                      <div className="w-3.5 h-3.5 rounded-full bg-slate-400 shadow-sm shadow-slate-200 group-hover:scale-125 transition-transform" />
+                                      <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Diğer</span>
+                                    </div>
+                                    <span className="text-2xl sm:text-3xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData.gender.other / selectedYearData.participants) * 100)}</span>
+                                  </div>
+                                ) : null}
                               </div>
                             </div>
                           </div>
-                          {/* Turkey Map was removed from here. */}
                         </div>
-
+                        
                         {/* Academic Profile Ranking */}
                         {((selectedYearData?.topSchools && selectedYearData.topSchools.length > 0) || (selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0)) && (
                         <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
@@ -2964,40 +2973,40 @@ export default function App() {
                     </div>
 
                     {/* Partners Bento */}
-                    <div className="bg-white rounded-[2rem] lg:rounded-[3rem] border border-slate-200 p-6 md:p-10 shadow-sm overflow-hidden">
-                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-12 border-b border-slate-100 pb-8">
+                    <div className="bg-white rounded-[2rem] lg:rounded-[3rem] border border-slate-200 p-8 md:p-12 shadow-sm overflow-hidden">
+                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-slate-100 pb-8">
                         <div>
                           <div className="flex items-center gap-3 mb-3">
-                            <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
-                            <span className="text-[10px] sm:text-xs font-black text-blue-600 uppercase tracking-[0.2em]">Ekosistem Ağı</span>
+                            <span className="h-2 w-2 rounded-full bg-blue-600" />
+                            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">Ekosistem Ağı</span>
                           </div>
                           <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight font-display mb-2">Stratejik Partnerler</h3>
-                          <p className="text-sm md:text-base text-slate-500 font-medium max-w-xl leading-relaxed">Etki alanımızı genişletirken vizyonumuzu paylaşan, bu dönüşüm yolculuğuna güç katan değerli kurumlar.</p>
+                          <p className="text-sm md:text-base text-slate-500 font-medium max-w-xl leading-relaxed">
+                            Gençlerin 21. yüzyıl yetkinlikleri ile donatılması vizyonumuzda bizimle yürüyen değerli kurumlar.
+                          </p>
                         </div>
                       </div>
-                      <div className="flex flex-wrap justify-center md:justify-start gap-4 sm:gap-6">
-                        {selectedYearData?.sponsors.map((sponsor, i) => (
+
+                      <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 lg:gap-8">
+                        {selectedYearData?.sponsors.filter(sponsor => sponsor !== 'Yetkin Gençler').map((sponsor, i) => (
                           <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 15 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
                             key={sponsor}
-                            className="relative flex items-center justify-center min-h-[6rem] md:min-h-[7rem] px-10 py-6 bg-white rounded-[2rem] border border-slate-100 group hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all duration-500 w-full sm:w-auto sm:min-w-[220px] overflow-hidden"
+                            className="group relative flex items-center justify-center w-full sm:w-[240px] h-[120px] bg-slate-50/50 rounded-2xl border border-slate-100 hover:bg-white hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300"
                           >
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            <div className="relative flex w-full h-full items-center justify-center">
-                              <img 
-                                src={`/partners/${sponsor.toLowerCase().replace(/ /g, '-')}.png`} 
-                                alt={sponsor} 
-                                className="max-h-12 w-auto object-contain grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-out drop-shadow-sm"
-                                onError={(e) => {
-                                  e.currentTarget.style.display = 'none';
-                                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                                }}
-                              />
-                              <span className="hidden text-sm md:text-base font-bold text-slate-400 group-hover:text-blue-950 text-center tracking-wide transition-colors">{sponsor}</span>
-                            </div>
+                            <img 
+                              src={sponsor === 'Mehmet Zorlu Vakfı' ? '/partners/mzv-logo.png' : sponsor === 'MEF Üniversitesi' ? '/partners/mefunii_transparent.png' : `/partners/${sponsor.toLowerCase().replace(/ /g, '-')}.png`} 
+                              alt={sponsor} 
+                              className="max-h-16 max-w-[80%] object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300 ease-out"
+                              onError={(e) => {
+                                e.currentTarget.style.display = 'none';
+                                e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                              }}
+                            />
+                            <span className="hidden text-sm font-bold text-slate-500 group-hover:text-slate-900 text-center tracking-wide px-4">{sponsor}</span>
                           </motion.div>
                         ))}
                       </div>
@@ -3010,8 +3019,8 @@ export default function App() {
 
 
 
-        {/* Footer / CTA */}
-        <footer className="border-t border-slate-200 pt-16 flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
+        {/* CTA */}
+        <div className="border-t border-slate-200 pt-16 flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <img src="/partners/yetgen-logo-transparent.png" alt="YetGen Logo" className="h-16 object-contain shrink-0" />
             <div>
@@ -3028,8 +3037,10 @@ export default function App() {
               Bizimle Partner Olun
             </button>
           </div>
-        </footer>
+        </div>
       </div>
+      
+      <Footer />
     </div>
   );
 }
