@@ -125,14 +125,10 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <motion.div 
           variants={itemVariants}
-          className="mt-12 pt-8 border-t border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10"
+          className="mt-12 pt-8 border-t border-slate-200/60 flex flex-col items-center justify-center gap-4 relative z-10"
         >
           <p className="text-xs font-bold text-slate-400">
             © {new Date().getFullYear()} YetGen. Tüm hakları saklıdır.
-          </p>
-          <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest flex items-center gap-1.5">
-            Developed by 
-            <span className="text-slate-400">YetGen & Intedo</span>
           </p>
         </motion.div>
 
