@@ -17,7 +17,10 @@ import {
   ArrowRight,
   ShieldCheck,
   Globe,
-  Sparkles
+  Sparkles,
+  FileSpreadsheet,
+  Briefcase,
+  Presentation
 } from 'lucide-react';
 import {
   BarChart,
@@ -134,7 +137,7 @@ const yearlyData: IYearlyData[] = [
     "participants": 3661,
     "graduates": 2565,
     "description": "Rekor katılım yılı! Dijital araçların kullanımıyla Türkiye genelinde 3 farklı programla binlerce gence ulaşıldı.",
-    "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1200",
+    "image": "/partners/online.jpg",
     "hasAgeData": false,
     "gender": {
       "female": 2474,
@@ -915,7 +918,7 @@ const yearlyData: IYearlyData[] = [
     "participants": 4394,
     "graduates": 2812,
     "description": "Eğitim içeriği \"Geleceğin Dünyası\" vizyonuyla tamamen yenilendi. Proje odaklı üretim ön plana çıktı.",
-    "image": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1200",
+    "image": "/partners/yetgenphoto.webp",
     "hasAgeData": true,
     "ageData": [
       {
@@ -2136,7 +2139,7 @@ const yearlyData: IYearlyData[] = [
     "participants": 3222,
     "graduates": 2126,
     "description": "Kalite ve derinlik yılı. Mentorluk sistemleri ve asenkron içerik kütüphanesi zenginleştirildi.",
-    "image": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1200",
+    "image": "/partners/stepup.jpg",
     "hasAgeData": true,
     "ageData": [
       {
@@ -3291,7 +3294,7 @@ const yearlyData: IYearlyData[] = [
     "participants": 2174,
     "graduates": 1233,
     "description": "Yapay zeka ve yeni nesil teknolojiler müfredatın merkezine yerleştirildi.",
-    "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200",
+    "image": "/partners/2021.jpg",
     "hasAgeData": false,
     "gender": {
       "female": 1639,
@@ -4367,7 +4370,7 @@ const yearlyData: IYearlyData[] = [
     "participants": 2505,
     "graduates": 1042,
     "description": "Güncel dönem. Sürdürülebilir gelişim ve küresel yetkinlikler odağında eğitimler devam ediyor.",
-    "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200",
+    "image": "/partners/2025.jpg",
     "hasAgeData": true,
     "ageData": [
       {
@@ -5426,6 +5429,9 @@ const skills = [
   { name: 'İletişim & Takım', icon: MessageSquare, color: 'text-emerald-400' },
   { name: 'Dijital Okuryazarlık', icon: Laptop, color: 'text-orange-400' },
   { name: 'Girişimcilik', icon: Rocket, color: 'text-rose-400' },
+  { name: 'Excel İle Modelleme', icon: FileSpreadsheet, color: 'text-green-500' },
+  { name: 'Kariyer Planlama', icon: Briefcase, color: 'text-amber-500' },
+  { name: 'Sunum Teknikleri', icon: Presentation, color: 'text-indigo-400' },
 ];
 
 const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData | IProgramData) => {
@@ -5642,7 +5648,7 @@ export default function App() {
       participants,
       graduates,
       description: 'YetGen\'in tüm yıllar boyunca yarattığı kümülatif etki ve ulaştığı geniş kitle.',
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200',
+      image: '/partners/2025.jpg',
       hasAgeData,
       ageData,
       gender: { female, male, other },
@@ -5793,7 +5799,9 @@ export default function App() {
   const heroContent = getHeroContent(selectedYear, selectedYearData);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 selection:bg-blue-100 relative">
+    <div className="min-h-screen bg-slate-50/50 text-slate-900 selection:bg-blue-100 relative">
+      {/* Global premium background */}
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-50/40 via-slate-50/20 to-slate-50/20 transition-colors duration-1000"></div>
       <BackgroundEffects trigger={selectedYear} />
       <FormModal 
         isOpen={isFormModalOpen} 
@@ -5927,7 +5935,7 @@ export default function App() {
                   animate={{ opacity: 1, y: 0 }}
                   className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900 leading-[1.1] font-display break-words"
                 >
-                  {heroContent.title1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 selection:text-blue-700">{heroContent.title2}</span>
+                  {heroContent.title1} <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 selection:text-blue-700 drop-shadow-sm">{heroContent.title2}</span>
                   {heroContent.subtitle && (
                     <>
                       <br className="hidden lg:block" />
@@ -6026,12 +6034,18 @@ export default function App() {
                           <img
                             src={selectedYearData?.image}
                             alt={selectedYear}
-                            className="absolute inset-0 w-full h-full object-cover brightness-[1.05] contrast-[1.1] saturate-[1.1] transition-transform duration-[2s] group-hover:scale-110"
+                            className={cn(
+                              "absolute inset-0 w-full h-full object-cover brightness-[1.05] contrast-[1.1] saturate-[1.1] transition-transform duration-[2s] group-hover:scale-110",
+                              selectedYear === 'all' ? "object-[center_70%]" : 
+                              selectedYear === '2022' ? "object-[center_75%]" : 
+                              "object-[center_20%]"
+                            )}
                             referrerPolicy="no-referrer"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90" />
+                          <div className="absolute inset-0 bg-slate-900/30" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent" />
                           <div className="absolute inset-0 p-8 md:p-12 lg:p-16 flex flex-col justify-end z-10">
-                            <div className="max-w-2xl">
+                            <div className="max-w-2xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
                               <motion.span
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -6052,7 +6066,7 @@ export default function App() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.2 }}
-                                className="text-white/80 text-lg md:text-xl font-medium leading-relaxed max-w-xl"
+                                className="text-slate-100 text-lg md:text-xl font-medium leading-relaxed max-w-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                               >
                                 {selectedYearData?.description}
                               </motion.p>
@@ -6072,7 +6086,7 @@ export default function App() {
                       )}>
                         {/* Age Distribution Mini Chart */}
                         {selectedYearData?.hasAgeData !== false && (
-                          <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full min-w-0 relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                          <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full min-w-0 relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
                             <div>
                               <div className="flex items-center gap-3 mb-4">
                                 <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
@@ -6106,7 +6120,7 @@ export default function App() {
 
                         {/* Education Level */}
                         {selectedYearData?.educationLevels && selectedYearData.educationLevels.length > 0 && (
-                          <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                          <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
                             <div>
                               <div className="flex items-center gap-3 mb-4">
                                 <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
@@ -6142,7 +6156,7 @@ export default function App() {
                         <div className="contents">
                           {/* Gender Donut Chart */}
                           <div className={cn(
-                            "bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-pink-100/40 transition-all"
+                            "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-pink-100/40 transition-all"
                           )}>
                             {/* Header */}
                             <div className="flex items-center gap-3 mb-4 sm:mb-6">
@@ -6219,9 +6233,32 @@ export default function App() {
                           </div>
                         </div>
                         
+                        {/* 2016-2020 Specific Slogan Card */}
+                        {selectedYear === '2016-2020' && (
+                          <div className="bg-slate-900 rounded-[2rem] lg:rounded-[2.5rem] border border-slate-800 p-6 sm:p-8 md:p-10 shadow-2xl flex flex-col min-w-0 h-full relative overflow-hidden group justify-center items-center text-center hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] transition-all duration-500">
+                            {/* Decorative Background Elements */}
+                            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900 opacity-80"></div>
+                            <div className="absolute -top-32 -right-32 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all duration-700"></div>
+                            <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all duration-700"></div>
+                            
+                            <div className="relative z-10 flex flex-col items-center">
+                              <div className="w-14 h-14 rounded-2xl bg-white/5 backdrop-blur-xl flex items-center justify-center mb-6 border border-white/10 shadow-inner group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
+                                <img src="/partners/yetgen-logo-transparent.png" alt="YetGen Logo" className="w-8 h-8 object-contain" />
+                              </div>
+                              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight mb-4 font-display leading-[1.1]">
+                                Yetkinliklerin <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Temelleri</span>
+                              </h3>
+                              <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mb-5 opacity-50 group-hover:w-20 group-hover:opacity-100 transition-all duration-500"></div>
+                              <p className="text-slate-400 text-xs sm:text-sm font-medium leading-relaxed max-w-[260px]">
+                                2016-2020 dönemi, binlerce gencin 21. yüzyıl yetkinlikleriyle tanıştığı öncü yıllar oldu. Bu miras, geleceğe ilham veriyor.
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                        
                         {/* Academic Profile Ranking */}
-                        {((selectedYearData?.topSchools && selectedYearData.topSchools.length > 0) || (selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0)) && (
-                        <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
+                        {selectedYear !== '2016-2020' && ((selectedYearData?.topSchools && selectedYearData.topSchools.length > 0) || (selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0)) && (
+                        <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
                           <div>
                             {selectedYearData?.topSchools ? (
                               <>
@@ -6307,7 +6344,7 @@ export default function App() {
 
                       {/* HUGE TURKEY MAP CONTAINER */}
                       {hasCityData && (
-                        <div className="mt-8 mb-12 bg-white rounded-[2rem] lg:rounded-[3rem] border border-slate-100 shadow-sm flex flex-col relative hover:shadow-2xl hover:shadow-indigo-100/50 transition-all justify-center items-center w-full group min-h-[400px] sm:min-h-[500px]">
+                        <div className="mt-8 mb-12 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[3rem] border flex flex-col relative hover:shadow-2xl hover:shadow-indigo-100/50 transition-all justify-center items-center w-full group min-h-[400px] sm:min-h-[500px]">
                           {/* Subtle Background Pattern */}
                           <div className="absolute inset-0 rounded-[2rem] lg:rounded-[3rem] overflow-hidden pointer-events-none z-0">
                             <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 group-hover:opacity-80 transition-opacity duration-1000"></div>
@@ -6337,7 +6374,7 @@ export default function App() {
 
                     {/* MASSIVE ANALYTICS TREND CONTAINER */}
                     {selectedYear === 'all' && (
-                      <div className="mt-8 mb-12 bg-white rounded-[2rem] lg:rounded-[3rem] border border-slate-100 shadow-sm flex flex-col relative hover:shadow-2xl hover:shadow-indigo-100/50 transition-all justify-center items-start w-full group min-h-[400px] sm:min-h-[550px] overflow-hidden">
+                      <div className="mt-8 mb-12 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[3rem] border flex flex-col relative hover:shadow-2xl hover:shadow-indigo-100/50 transition-all justify-center items-start w-full group min-h-[400px] sm:min-h-[550px] overflow-hidden">
                         {/* Subtle Background Radial Pattern */}
                         <div className="absolute inset-0 z-0 pointer-events-none">
                           <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 group-hover:opacity-80 transition-opacity duration-1000"></div>
@@ -6370,7 +6407,7 @@ export default function App() {
                           subtitle="Geliştirilen temel yetkinlikler"
                           className="h-full rounded-[2rem] sm:rounded-[3rem]"
                         >
-                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 pt-2">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 pt-2">
                             {skills.map((skill, idx) => (
                               <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -6391,7 +6428,7 @@ export default function App() {
                     </div>
 
                     {/* Partners Bento */}
-                    <div className="bg-white rounded-[2rem] lg:rounded-[3rem] border border-slate-200 p-8 md:p-12 shadow-sm overflow-hidden">
+                    <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[3rem] border p-8 md:p-12 overflow-hidden">
                       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-slate-100 pb-8">
                         <div>
                           <div className="flex items-center gap-3 mb-3">
@@ -6413,7 +6450,7 @@ export default function App() {
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
                             key={sponsor}
-                            className="group relative flex items-center justify-center w-full sm:w-[240px] h-[120px] bg-slate-50/50 rounded-2xl border border-slate-100 hover:bg-white hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300"
+                            className="group relative flex items-center justify-center w-full sm:w-[240px] h-[120px] bg-white/50 backdrop-blur-md rounded-2xl border border-white/50 shadow-sm hover:bg-white hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300"
                           >
                             <img 
                               src={sponsor === 'Mehmet Zorlu Vakfı' ? '/partners/mzv-logo.png' : sponsor === 'MEF Üniversitesi' ? '/partners/mefunii_transparent.png' : `/partners/${sponsor.toLowerCase().replace(/ /g, '-')}.png`} 
