@@ -20,7 +20,8 @@ import {
   Sparkles,
   FileSpreadsheet,
   Briefcase,
-  Presentation
+  Presentation,
+  Info
 } from 'lucide-react';
 import {
   BarChart,
@@ -3291,44 +3292,44 @@ const yearlyData: IYearlyData[] = [
   },
   {
     "year": "2024",
-    "participants": 2174,
-    "graduates": 1233,
+    "participants": 4036,
+    "graduates": 2214,
     "description": "Yapay zeka ve yeni nesil teknolojiler müfredatın merkezine yerleştirildi.",
     "image": "/partners/2021.jpg",
     "hasAgeData": false,
     "gender": {
-      "female": 1639,
-      "male": 528,
-      "other": 5
+      "female": 3006,
+      "male": 1012,
+      "other": 12
     },
     "cities": [
       {
         "name": "Adana",
-        "count": 43
+        "count": 66
       },
       {
         "name": "Adıyaman",
-        "count": 9
+        "count": 26
       },
       {
         "name": "Afyonkarahisar",
-        "count": 6
+        "count": 13
       },
       {
         "name": "Aksaray",
-        "count": 5
+        "count": 12
       },
       {
         "name": "Amasya",
-        "count": 1
+        "count": 6
       },
       {
         "name": "Ankara",
-        "count": 295
+        "count": 396
       },
       {
         "name": "Antalya",
-        "count": 24
+        "count": 46
       },
       {
         "name": "Ardahan",
@@ -3340,19 +3341,23 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Aydın",
-        "count": 11
+        "count": 23
+      },
+      {
+        "name": "Ağrı",
+        "count": 4
       },
       {
         "name": "Balıkesir",
-        "count": 21
+        "count": 34
       },
       {
         "name": "Bartın",
-        "count": 2
+        "count": 4
       },
       {
         "name": "Batman",
-        "count": 2
+        "count": 9
       },
       {
         "name": "Bayburt",
@@ -3360,247 +3365,227 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Bilecik",
-        "count": 1
+        "count": 4
       },
       {
         "name": "Bingöl",
-        "count": 3
+        "count": 6
       },
       {
         "name": "Bitlis",
-        "count": 2
-      },
-      {
-        "name": "Bolu",
-        "count": 6
-      },
-      {
-        "name": "Burdur",
-        "count": 6
-      },
-      {
-        "name": "Bursa",
-        "count": 52
-      },
-      {
-        "name": "Çanakkale",
-        "count": 10
-      },
-      {
-        "name": "Çankırı",
-        "count": 1
-      },
-      {
-        "name": "Çorum",
-        "count": 3
-      },
-      {
-        "name": "Denizli",
-        "count": 19
-      },
-      {
-        "name": "Diyarbakır",
-        "count": 19
-      },
-      {
-        "name": "Düzce",
-        "count": 2
-      },
-      {
-        "name": "Edirne",
-        "count": 8
-      },
-      {
-        "name": "Elazığ",
-        "count": 18
-      },
-      {
-        "name": "Erzincan",
-        "count": 4
-      },
-      {
-        "name": "Erzurum",
-        "count": 4
-      },
-      {
-        "name": "Eskişehir",
-        "count": 40
-      },
-      {
-        "name": "Gaziantep",
-        "count": 32
-      },
-      {
-        "name": "Giresun",
-        "count": 4
-      },
-      {
-        "name": "Gümüşhane",
-        "count": 1
-      },
-      {
-        "name": "Hatay",
-        "count": 17
-      },
-      {
-        "name": "Iğdır",
-        "count": 2
-      },
-      {
-        "name": "Isparta",
         "count": 7
       },
       {
-        "name": "İstanbul",
-        "count": 965
+        "name": "Bolu",
+        "count": 11
       },
       {
-        "name": "İzmir",
-        "count": 140
-      },
-      {
-        "name": "Kahramanmaraş",
-        "count": 9
-      },
-      {
-        "name": "Karabük",
+        "name": "Burdur",
         "count": 8
       },
       {
-        "name": "Karaman",
+        "name": "Bursa",
+        "count": 74
+      },
+      {
+        "name": "Denizli",
+        "count": 27
+      },
+      {
+        "name": "Diyarbakır",
+        "count": 43
+      },
+      {
+        "name": "Düzce",
+        "count": 4
+      },
+      {
+        "name": "Edirne",
+        "count": 15
+      },
+      {
+        "name": "Elazığ",
+        "count": 25
+      },
+      {
+        "name": "Erzincan",
+        "count": 8
+      },
+      {
+        "name": "Erzurum",
+        "count": 15
+      },
+      {
+        "name": "Eskişehir",
+        "count": 48
+      },
+      {
+        "name": "Gaziantep",
+        "count": 60
+      },
+      {
+        "name": "Giresun",
+        "count": 5
+      },
+      {
+        "name": "Gümüşhane",
         "count": 3
+      },
+      {
+        "name": "Hakkâri",
+        "count": 7
+      },
+      {
+        "name": "Hatay",
+        "count": 35
+      },
+      {
+        "name": "Isparta",
+        "count": 9
+      },
+      {
+        "name": "Iğdır",
+        "count": 4
+      },
+      {
+        "name": "Kahramanmaraş",
+        "count": 20
+      },
+      {
+        "name": "Karabük",
+        "count": 9
+      },
+      {
+        "name": "Karaman",
+        "count": 5
       },
       {
         "name": "Kars",
-        "count": 1
-      },
-      {
-        "name": "Kastamonu",
-        "count": 3
-      },
-      {
-        "name": "Kayseri",
-        "count": 32
-      },
-      {
-        "name": "Kırıkkale",
         "count": 2
       },
       {
-        "name": "Kırklareli",
+        "name": "Kastamonu",
+        "count": 5
+      },
+      {
+        "name": "Kayseri",
+        "count": 54
+      },
+      {
+        "name": "Kilis",
+        "count": 5
+      },
+      {
+        "name": "Kocaeli",
+        "count": 62
+      },
+      {
+        "name": "Konya",
+        "count": 60
+      },
+      {
+        "name": "Kütahya",
         "count": 9
+      },
+      {
+        "name": "Kırklareli",
+        "count": 10
+      },
+      {
+        "name": "Kırıkkale",
+        "count": 8
       },
       {
         "name": "Kırşehir",
         "count": 3
       },
       {
-        "name": "Kocaeli",
-        "count": 42
-      },
-      {
-        "name": "Konya",
+        "name": "Malatya",
         "count": 22
       },
       {
-        "name": "Kütahya",
-        "count": 5
-      },
-      {
-        "name": "Malatya",
-        "count": 7
-      },
-      {
         "name": "Manisa",
-        "count": 36
+        "count": 43
       },
       {
         "name": "Mardin",
-        "count": 3
-      },
-      {
-        "name": "Mersin",
-        "count": 15
-      },
-      {
-        "name": "Muğla",
-        "count": 15
-      },
-      {
-        "name": "Muş",
-        "count": 1
-      },
-      {
-        "name": "Nevşehir",
-        "count": 1
-      },
-      {
-        "name": "Niğde",
-        "count": 5
-      },
-      {
-        "name": "Ordu",
-        "count": 7
-      },
-      {
-        "name": "Osmaniye",
-        "count": 7
-      },
-      {
-        "name": "Rize",
-        "count": 6
-      },
-      {
-        "name": "Sakarya",
-        "count": 25
-      },
-      {
-        "name": "Samsun",
-        "count": 18
-      },
-      {
-        "name": "Siirt",
-        "count": 2
-      },
-      {
-        "name": "Sinop",
-        "count": 1
-      },
-      {
-        "name": "Sivas",
-        "count": 8
-      },
-      {
-        "name": "Şanlıurfa",
-        "count": 8
-      },
-      {
-        "name": "Şırnak",
-        "count": 5
-      },
-      {
-        "name": "Tekirdağ",
-        "count": 21
-      },
-      {
-        "name": "Tokat",
-        "count": 8
-      },
-      {
-        "name": "Trabzon",
         "count": 13
       },
       {
-        "name": "Tunceli",
+        "name": "Mersin",
+        "count": 23
+      },
+      {
+        "name": "Muğla",
+        "count": 18
+      },
+      {
+        "name": "Muş",
+        "count": 3
+      },
+      {
+        "name": "Nevşehir",
         "count": 2
       },
       {
-        "name": "Uşak",
+        "name": "Niğde",
+        "count": 7
+      },
+      {
+        "name": "Ordu",
+        "count": 9
+      },
+      {
+        "name": "Osmaniye",
+        "count": 19
+      },
+      {
+        "name": "Rize",
+        "count": 7
+      },
+      {
+        "name": "Sakarya",
+        "count": 36
+      },
+      {
+        "name": "Samsun",
+        "count": 25
+      },
+      {
+        "name": "Siirt",
         "count": 6
       },
       {
-        "name": "Van",
+        "name": "Sinop",
+        "count": 2
+      },
+      {
+        "name": "Sivas",
+        "count": 14
+      },
+      {
+        "name": "Tekirdağ",
+        "count": 30
+      },
+      {
+        "name": "Tokat",
+        "count": 11
+      },
+      {
+        "name": "Trabzon",
+        "count": 19
+      },
+      {
+        "name": "Tunceli",
         "count": 4
+      },
+      {
+        "name": "Uşak",
+        "count": 9
+      },
+      {
+        "name": "Van",
+        "count": 17
       },
       {
         "name": "Yalova",
@@ -3608,11 +3593,39 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Yozgat",
-        "count": 2
+        "count": 4
       },
       {
         "name": "Zonguldak",
-        "count": 3
+        "count": 7
+      },
+      {
+        "name": "Çanakkale",
+        "count": 16
+      },
+      {
+        "name": "Çankırı",
+        "count": 2
+      },
+      {
+        "name": "Çorum",
+        "count": 5
+      },
+      {
+        "name": "İstanbul",
+        "count": 1127
+      },
+      {
+        "name": "İzmir",
+        "count": 187
+      },
+      {
+        "name": "Şanlıurfa",
+        "count": 21
+      },
+      {
+        "name": "Şırnak",
+        "count": 6
       }
     ],
     "educationLevels": [
@@ -3622,23 +3635,23 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Lise",
-        "count": 180
+        "count": 613
       },
       {
-        "name": "Ön Lisans",
-        "count": 48
+        "name": "Lise Mezunu",
+        "count": 367
       },
       {
         "name": "Lisans Mezunu",
         "count": 130
       },
       {
-        "name": "Lise Mezunu",
-        "count": 33
-      },
-      {
         "name": "Lisansüstü",
         "count": 79
+      },
+      {
+        "name": "Ön Lisans",
+        "count": 48
       },
       {
         "name": "Diğer",
@@ -4362,6 +4375,337 @@ const yearlyData: IYearlyData[] = [
             "val": 17
           }
         ]
+      },
+      {
+        "id": "doping-2024",
+        "name": "Doping Hafıza Eğitimi",
+        "image": "/partners/dopinghafızaa.png",
+        "participants": 1862,
+        "graduates": 981,
+        "gender": {
+          "female": 1367,
+          "male": 484,
+          "other": 7
+        },
+        "hasAgeData": false,
+        "ageData": [],
+        "cities": [
+          {
+            "name": "Adana",
+            "count": 23
+          },
+          {
+            "name": "Adıyaman",
+            "count": 17
+          },
+          {
+            "name": "Afyonkarahisar",
+            "count": 7
+          },
+          {
+            "name": "Ağrı",
+            "count": 4
+          },
+          {
+            "name": "Aksaray",
+            "count": 7
+          },
+          {
+            "name": "Amasya",
+            "count": 5
+          },
+          {
+            "name": "Ankara",
+            "count": 101
+          },
+          {
+            "name": "Antalya",
+            "count": 22
+          },
+          {
+            "name": "Aydın",
+            "count": 12
+          },
+          {
+            "name": "Balıkesir",
+            "count": 13
+          },
+          {
+            "name": "Bartın",
+            "count": 2
+          },
+          {
+            "name": "Batman",
+            "count": 7
+          },
+          {
+            "name": "Bilecik",
+            "count": 3
+          },
+          {
+            "name": "Bingöl",
+            "count": 3
+          },
+          {
+            "name": "Bitlis",
+            "count": 5
+          },
+          {
+            "name": "Bolu",
+            "count": 5
+          },
+          {
+            "name": "Burdur",
+            "count": 2
+          },
+          {
+            "name": "Bursa",
+            "count": 22
+          },
+          {
+            "name": "Çanakkale",
+            "count": 6
+          },
+          {
+            "name": "Çankırı",
+            "count": 1
+          },
+          {
+            "name": "Çorum",
+            "count": 2
+          },
+          {
+            "name": "Denizli",
+            "count": 8
+          },
+          {
+            "name": "Diyarbakır",
+            "count": 24
+          },
+          {
+            "name": "Düzce",
+            "count": 2
+          },
+          {
+            "name": "Edirne",
+            "count": 7
+          },
+          {
+            "name": "Elazığ",
+            "count": 7
+          },
+          {
+            "name": "Erzincan",
+            "count": 4
+          },
+          {
+            "name": "Erzurum",
+            "count": 11
+          },
+          {
+            "name": "Eskişehir",
+            "count": 8
+          },
+          {
+            "name": "Gaziantep",
+            "count": 28
+          },
+          {
+            "name": "Giresun",
+            "count": 1
+          },
+          {
+            "name": "Gümüşhane",
+            "count": 2
+          },
+          {
+            "name": "Hakkâri",
+            "count": 7
+          },
+          {
+            "name": "Hatay",
+            "count": 18
+          },
+          {
+            "name": "Iğdır",
+            "count": 2
+          },
+          {
+            "name": "Isparta",
+            "count": 2
+          },
+          {
+            "name": "İstanbul",
+            "count": 162
+          },
+          {
+            "name": "İzmir",
+            "count": 47
+          },
+          {
+            "name": "Kahramanmaraş",
+            "count": 11
+          },
+          {
+            "name": "Karabük",
+            "count": 1
+          },
+          {
+            "name": "Karaman",
+            "count": 2
+          },
+          {
+            "name": "Kars",
+            "count": 1
+          },
+          {
+            "name": "Kastamonu",
+            "count": 2
+          },
+          {
+            "name": "Kayseri",
+            "count": 22
+          },
+          {
+            "name": "Kilis",
+            "count": 5
+          },
+          {
+            "name": "Kırıkkale",
+            "count": 6
+          },
+          {
+            "name": "Kırklareli",
+            "count": 1
+          },
+          {
+            "name": "Kocaeli",
+            "count": 20
+          },
+          {
+            "name": "Konya",
+            "count": 38
+          },
+          {
+            "name": "Kütahya",
+            "count": 4
+          },
+          {
+            "name": "Malatya",
+            "count": 15
+          },
+          {
+            "name": "Manisa",
+            "count": 7
+          },
+          {
+            "name": "Mardin",
+            "count": 10
+          },
+          {
+            "name": "Mersin",
+            "count": 8
+          },
+          {
+            "name": "Muğla",
+            "count": 3
+          },
+          {
+            "name": "Muş",
+            "count": 2
+          },
+          {
+            "name": "Nevşehir",
+            "count": 1
+          },
+          {
+            "name": "Niğde",
+            "count": 2
+          },
+          {
+            "name": "Ordu",
+            "count": 2
+          },
+          {
+            "name": "Osmaniye",
+            "count": 12
+          },
+          {
+            "name": "Rize",
+            "count": 1
+          },
+          {
+            "name": "Sakarya",
+            "count": 11
+          },
+          {
+            "name": "Samsun",
+            "count": 7
+          },
+          {
+            "name": "Şanlıurfa",
+            "count": 13
+          },
+          {
+            "name": "Siirt",
+            "count": 4
+          },
+          {
+            "name": "Sinop",
+            "count": 1
+          },
+          {
+            "name": "Sivas",
+            "count": 6
+          },
+          {
+            "name": "Şırnak",
+            "count": 1
+          },
+          {
+            "name": "Tekirdağ",
+            "count": 9
+          },
+          {
+            "name": "Tokat",
+            "count": 3
+          },
+          {
+            "name": "Trabzon",
+            "count": 6
+          },
+          {
+            "name": "Tunceli",
+            "count": 2
+          },
+          {
+            "name": "Uşak",
+            "count": 3
+          },
+          {
+            "name": "Van",
+            "count": 13
+          },
+          {
+            "name": "Yozgat",
+            "count": 2
+          },
+          {
+            "name": "Zonguldak",
+            "count": 4
+          }
+        ],
+        "educationLevels": [
+          {
+            "name": "Lise",
+            "count": 433
+          },
+          {
+            "name": "Lise Mezunu",
+            "count": 334
+          }
+        ],
+        "topDepartments": []
       }
     ]
   },
@@ -6036,6 +6380,7 @@ export default function App() {
                             alt={selectedYear}
                             className={cn(
                               "absolute inset-0 w-full h-full object-cover brightness-[1.05] contrast-[1.1] saturate-[1.1] transition-transform duration-[2s] group-hover:scale-110",
+                              selectedProgram === 'doping-2024' ? "object-[right_35%]" :
                               selectedYear === 'all' ? "object-[center_70%]" : 
                               selectedYear === '2022' ? "object-[center_75%]" : 
                               "object-[center_20%]"
@@ -6077,12 +6422,14 @@ export default function App() {
 
                       {/* 4 or 5 Interactive Charts Row */}
                       <div className={cn(
-                        "grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-6 sm:mt-8",
-                        {
-                          3: "xl:grid-cols-3",
-                          4: "xl:grid-cols-4",
-                          5: "xl:grid-cols-5"
-                        }[computedGridCols] || "xl:grid-cols-4"
+                        "grid gap-6 md:gap-8 mt-6 sm:mt-8",
+                        selectedProgram === 'doping-2024' 
+                          ? "grid-cols-1 lg:grid-cols-12 items-stretch" 
+                          : cn("grid-cols-1 md:grid-cols-2", {
+                              3: "xl:grid-cols-3",
+                              4: "xl:grid-cols-4",
+                              5: "xl:grid-cols-5"
+                            }[computedGridCols] || "xl:grid-cols-4")
                       )}>
                         {/* Age Distribution Mini Chart */}
                         {selectedYearData?.hasAgeData !== false && (
@@ -6120,7 +6467,10 @@ export default function App() {
 
                         {/* Education Level */}
                         {selectedYearData?.educationLevels && selectedYearData.educationLevels.length > 0 && (
-                          <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                          <div className={cn(
+                            "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start",
+                            selectedProgram === 'doping-2024' ? "lg:col-span-3 lg:order-1" : ""
+                          )}>
                             <div>
                               <div className="flex items-center gap-3 mb-4">
                                 <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
@@ -6148,12 +6498,22 @@ export default function App() {
                                   </div>
                                 ))}
                               </div>
+                              
+                              {selectedProgram === 'doping-2024' && (
+                                <div className="mt-6 flex items-start gap-2 bg-indigo-50/50 p-3 rounded-xl border border-indigo-100/50">
+                                  <Info className="w-4 h-4 text-indigo-500 mt-0.5 shrink-0" />
+                                  <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
+                                    <span className="font-bold text-indigo-600 mr-1">Not:</span> 
+                                    Bu eğitim 2 dönem yapılmıştır. Eğitim durumu bilgileri yalnızca 1. döneme aittir.
+                                  </p>
+                                </div>
+                              )}
                             </div>
                           </div>
                         )}
 
                         {/* Gender Unstacked Contents */}
-                        <div className="contents">
+                        <div className={cn(selectedProgram === 'doping-2024' ? "lg:col-span-3 lg:order-3" : "contents")}>
                           {/* Gender Donut Chart */}
                           <div className={cn(
                             "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-pink-100/40 transition-all"
@@ -6233,6 +6593,40 @@ export default function App() {
                           </div>
                         </div>
                         
+                        {/* Map for doping-2024 inside Charts Row */}
+                        {selectedProgram === 'doping-2024' && hasCityData && (
+                          <div className="lg:col-span-6 lg:order-2 flex flex-col h-full bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start items-center group min-h-[400px]">
+                            <div className="absolute inset-0 rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden pointer-events-none z-0">
+                              <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 group-hover:opacity-80 transition-opacity duration-1000"></div>
+                            </div>
+                            <div className="w-full flex flex-col items-start px-6 sm:px-8 pt-8 z-20 pointer-events-none">
+                              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tighter leading-none mb-1 drop-shadow-sm">
+                                Türkiye <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">Katılım Haritası</span>
+                              </h2>
+                              <p className="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] ml-1">
+                                Genel Yoğunluk ve Dağılım
+                              </p>
+                            </div>
+                            <div className="w-full max-w-[900px] flex-1 flex items-center justify-center relative mt-2 mb-4 z-10 px-4 transition-transform duration-700 group-hover:scale-[1.01]">
+                              <TurkeyMap 
+                                showTooltip={true}
+                                colorData={mapData.colorData}
+                                tooltipData={mapData.tooltipData}
+                                legendData={mapData.legendData}
+                              />
+                            </div>
+                            <div className="w-full px-6 sm:px-8 pb-6 z-20 relative mt-auto">
+                              <div className="flex items-start gap-2 bg-indigo-50/50 p-3 rounded-xl border border-indigo-100/50">
+                                <Info className="w-4 h-4 text-indigo-500 mt-0.5 shrink-0" />
+                                <p className="text-[10px] md:text-[11px] text-slate-600 leading-relaxed font-medium">
+                                  <span className="font-bold text-indigo-600 mr-1">Not:</span> 
+                                  Bu eğitim 2 dönem yapılmıştır. Haritada görünen şehir bilgileri yalnızca 1. döneme aittir.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
                         {/* 2016-2020 Specific Slogan Card */}
                         {selectedYear === '2016-2020' && (
                           <div className="bg-slate-900 rounded-[2rem] lg:rounded-[2.5rem] border border-slate-800 p-6 sm:p-8 md:p-10 shadow-2xl flex flex-col min-w-0 h-full relative overflow-hidden group justify-center items-center text-center hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] transition-all duration-500">
@@ -6343,7 +6737,7 @@ export default function App() {
                       </div>
 
                       {/* HUGE TURKEY MAP CONTAINER */}
-                      {hasCityData && (
+                      {selectedProgram !== 'doping-2024' && hasCityData && (
                         <div className="mt-8 mb-12 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[3rem] border flex flex-col relative hover:shadow-2xl hover:shadow-indigo-100/50 transition-all justify-center items-center w-full group min-h-[400px] sm:min-h-[500px]">
                           {/* Subtle Background Pattern */}
                           <div className="absolute inset-0 rounded-[2rem] lg:rounded-[3rem] overflow-hidden pointer-events-none z-0">
