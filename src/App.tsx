@@ -918,10 +918,10 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "id": "jump-softtech-2021",
-        "name": "Softtech Eğitim Programı",
+        "name": "Jump Softtech Programı",
         "participants": 245,
         "graduates": 121,
-        "description": "Java ve .NET alanlarına yönelik YetGen’in ilk dikey programıdır. Katılımcılar 8 hafta boyunca Udemy üzerinden eğitim aldı ve alanında uzman konuklarla kariyer sohbetleri gerçekleştirdi. Başarıyla bitiren 121 mezunumuz Softtech başta olmak üzere çeşitli kurumlarda işe yerleştirildi.",
+        "description": "Java ve .NET odaklı ilk dikey YetGen programıdır. 250 mezunla başlayıp 8 haftalık teknik eğitimler (171 Java, 77 .NET) verildi. Sertifika alan 121 katılımcının istihdam süreçleri devam etmektedir.",
         "gender": {
           "female": 0,
           "male": 0,
@@ -3453,6 +3453,38 @@ const yearlyData: IYearlyData[] = [
           }
         ],
         "topDepartments": []
+      },
+      {
+        "id": "core-python-2-2023",
+        "name": "YetGen Core Python Eğitim Programı #2",
+        "participants": 147,
+        "graduates": 112,
+        "description": "Yazılım ve kodlama dünyasına ilgi duymasına rağmen farklı nedenlerden dolayı bu alanlarda kendini geliştiremeyen YetGenlileri başlangıç seviyesinden orta-ileri seviyeye kadar donanımlı hale getirip farkındalık kazandırmayı amaçlayan ve Flipped Learning eğitim modeli ile kurgulanan 12 haftalık programdır.",
+        "gender": {
+          "female": 94,
+          "male": 53,
+          "other": 0
+        },
+        "hasAgeData": false,
+        "ageData": [],
+        "cities": [],
+        "educationLevels": [],
+        "topSchools": [
+          { "name": "Marmara Üniversitesi", "val": 10 },
+          { "name": "İstanbul Üniversitesi", "val": 10 },
+          { "name": "Boğaziçi Üniversitesi", "val": 7 },
+          { "name": "İstanbul Teknik Üni.", "val": 7 },
+          { "name": "Yıldız Teknik Üni.", "val": 6 },
+          { "name": "Diğer", "val": 107 }
+        ],
+        "topDepartments": [
+          { "name": "Endüstri Mühendisliği", "val": 22 },
+          { "name": "Psikoloji", "val": 12 },
+          { "name": "İşletme", "val": 6 },
+          { "name": "Bilgisayar Mühendisliği", "val": 6 },
+          { "name": "Siyaset Bilimi ve Uluslararası İlişkiler", "val": 4 },
+          { "name": "Diğer", "val": 97 }
+        ]
       }
     ]
   },
@@ -6389,7 +6421,7 @@ const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData 
     content = {
       title1: 'Büyük Atılım &',
       title2: 'İlk Güçlü Kıvılcım',
-      subtitle: '2021 Lansman Yılı',
+      subtitle: '',
       text: 'Büyük ve cesur dijital hareketin temellerinin atıldığı, sınırları aştığımız ve YetGen kültürünün güçlü köklerinin toprağa sıkı sıkıya tutunduğu ilk altın dönüm noktamız.',
       statusText: 'Tamamlandı'
     };
@@ -6436,10 +6468,10 @@ const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData 
   }
 
   if (selectedProgramData?.isProgram) {
-    content.subtitle = `${selectedProgramData.programName} İnovasyon Eğitim Raporu`;
-    if (selectedProgramData.program?.description) {
-      content.text = selectedProgramData.program.description;
-    } else if (selectedProgramData.description) {
+    content.title1 = selectedProgramData.programName;
+    content.title2 = ' Raporu';
+    content.subtitle = '';
+    if (selectedProgramData.description) {
       content.text = selectedProgramData.description;
     }
   }
@@ -6632,7 +6664,7 @@ export default function App() {
         return {
           ...yearData,
           ...program,
-          description: `${program.name} programı kapsamında gerçekleştirilen eğitim ve gelişim süreci.`,
+          description: program.description || `${program.name} programı kapsamında gerçekleştirilen eğitim ve gelişim süreci.`,
           isProgram: true,
           programName: program.name
         };
@@ -6993,7 +7025,10 @@ export default function App() {
                     <div className="space-y-6 md:space-y-8 w-full">
                       {/* Main Hero Cinematic Banner */}
                       <div className="bg-white rounded-[2rem] md:rounded-[3.5rem] border border-slate-200 shadow-2xl shadow-slate-200/40 relative overflow-hidden group">
-                        <div className="relative h-[300px] sm:h-[400px] md:h-[450px]">
+                        <div className={cn(
+                          "relative",
+                          selectedProgram ? "min-h-[400px] sm:min-h-[450px] md:min-h-[500px] flex flex-col" : "h-[300px] sm:h-[400px] md:h-[450px]"
+                        )}>
                           <img
                             src={selectedYearData?.image}
                             alt={selectedYear}
@@ -7008,7 +7043,7 @@ export default function App() {
                           />
                           <div className="absolute inset-0 bg-slate-900/30" />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent" />
-                          <div className="absolute inset-0 p-8 md:p-12 lg:p-16 flex flex-col justify-end z-10">
+                          <div className="relative w-full h-full min-h-[inherit] p-8 pt-16 md:p-12 md:pt-20 lg:p-16 lg:pt-24 flex flex-col justify-end z-10">
                             <div className="max-w-2xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
                               <motion.span
                                 initial={{ opacity: 0, y: 10 }}
@@ -7286,86 +7321,87 @@ export default function App() {
                           </div>
                         )}
                         
-                        {/* Academic Profile Ranking */}
-                        {selectedYear !== '2016-2020' && ((selectedYearData?.topSchools && selectedYearData.topSchools.length > 0) || (selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0)) && (
+                        {/* Academic Profile Ranking - Schools */}
+                        {selectedYear !== '2016-2020' && selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 && (
                         <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
                           <div>
-                            {selectedYearData?.topSchools ? (
-                              <>
-                                <div className="flex items-center gap-3 mb-4">
-                                  <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
-                                    <Globe className="w-4 h-4" />
-                                  </div>
-                                  <div>
-                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Akademik Profil</p>
-                                    <p className="text-xs font-bold text-slate-900 leading-tight">En Aktif Okullar</p>
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
+                                <Globe className="w-4 h-4" />
+                              </div>
+                              <div>
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Akademik Profil</p>
+                                <p className="text-xs font-bold text-slate-900 leading-tight">En Aktif Okullar</p>
+                              </div>
+                            </div>
+                            <div className="space-y-3.5 mt-2">
+                              {selectedYearData.topSchools.slice(0, 5).map((school, i) => (
+                                <div key={school.name} className="flex items-center gap-3 group">
+                                  <span className="text-[10px] font-black text-slate-400 w-3">{i + 1}.</span>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex justify-between items-start text-xs mb-1.5 gap-2">
+                                      <span className="font-bold text-slate-700 group-hover:text-blue-600 transition-colors" style={{ wordBreak: 'break-word', lineHeight: '1.2' }}>{school.name}</span>
+                                      <span className="text-[10px] whitespace-nowrap pt-0.5 font-black text-slate-900">{school.val} Kişi</span>
+                                    </div>
+                                    <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                      <motion.div
+                                        initial={{ width: 0 }}
+                                        whileInView={{ width: `${(school.val / selectedYearData.topSchools[0].val) * 100}%` }}
+                                        transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
+                                        className="h-full rounded-full bg-blue-500"
+                                      />
+                                    </div>
                                   </div>
                                 </div>
-                                <div className="space-y-3.5 mt-2">
-                                  {selectedYearData.topSchools.slice(0, 5).map((school, i) => (
-                                    <div key={school.name} className="flex items-center gap-3 group">
-                                      <span className="text-[10px] font-black text-slate-400 w-3">{i + 1}.</span>
-                                      <div className="flex-1 min-w-0">
-                                        <div className="flex justify-between items-start text-xs mb-1.5 gap-2">
-                                          <span className="font-bold text-slate-700 group-hover:text-blue-600 transition-colors" style={{ wordBreak: 'break-word', lineHeight: '1.2' }}>{school.name}</span>
-                                          <span className="text-[10px] whitespace-nowrap pt-0.5 font-black text-slate-900">{school.val} Kişi</span>
-                                        </div>
-                                        <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                                          <motion.div
-                                            initial={{ width: 0 }}
-                                            whileInView={{ width: `${(school.val / selectedYearData.topSchools[0].val) * 100}%` }}
-                                            transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
-                                            className="h-full rounded-full bg-blue-500"
-                                          />
-                                        </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        )}
+
+                        {/* Academic Profile Ranking - Departments */}
+                        {selectedYear !== '2016-2020' && selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0 && (
+                        <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
+                          <div>
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
+                                <GraduationCap className="w-4 h-4" />
+                              </div>
+                              <div>
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Akademik Profil</p>
+                                <p className="text-xs font-bold text-slate-900 leading-tight">En Aktif Bölümler</p>
+                              </div>
+                            </div>
+                            <div className="space-y-3.5 mt-2">
+                              {selectedYearData.topDepartments.slice(0, 5).map((dept, i) => {
+                                const deptName = typeof dept === 'string' ? dept : dept.name;
+                                const deptVal = typeof dept === 'string' ? null : dept.val;
+                                const maxVal = typeof selectedYearData.topDepartments[0] === 'string' ? 100 : selectedYearData.topDepartments[0].val;
+                                const widthVal = deptVal === null ? `${100 - (i * 15)}%` : `${(deptVal / maxVal) * 100}%`;
+
+                                return (
+                                  <div key={deptName} className="flex items-center gap-3 group">
+                                    <span className="text-[10px] font-black text-slate-400 w-3">{i + 1}.</span>
+                                    <div className="flex-1 min-w-0">
+                                      <div className="flex justify-between items-start text-xs mb-1.5 gap-2">
+                                        <span className="font-bold text-slate-700 group-hover:text-blue-600 transition-colors" style={{ wordBreak: 'break-word', lineHeight: '1.2' }}>{deptName}</span>
+                                        {deptVal !== null && (
+                                          <span className="text-[10px] whitespace-nowrap pt-0.5 font-black text-slate-900">{deptVal} Kişi</span>
+                                        )}
+                                      </div>
+                                      <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                        <motion.div
+                                          initial={{ width: 0 }}
+                                          whileInView={{ width: widthVal }}
+                                          transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
+                                          className="h-full rounded-full bg-blue-500"
+                                        />
                                       </div>
                                     </div>
-                                  ))}
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                <div className="flex items-center gap-3 mb-4">
-                                  <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
-                                    <GraduationCap className="w-4 h-4" />
                                   </div>
-                                  <div>
-                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Akademik Profil</p>
-                                    <p className="text-xs font-bold text-slate-900 leading-tight">En Aktif Bölümler</p>
-                                  </div>
-                                </div>
-                                <div className="space-y-3.5 mt-2">
-                                  {selectedYearData?.topDepartments?.slice(0, 5).map((dept, i) => {
-                                    const deptName = typeof dept === 'string' ? dept : dept.name;
-                                    const deptVal = typeof dept === 'string' ? null : dept.val;
-                                    const maxVal = typeof selectedYearData.topDepartments[0] === 'string' ? 100 : selectedYearData.topDepartments[0].val;
-                                    const widthVal = deptVal === null ? `${100 - (i * 15)}%` : `${(deptVal / maxVal) * 100}%`;
-
-                                    return (
-                                      <div key={deptName} className="flex items-center gap-3 group">
-                                        <span className="text-[10px] font-black text-slate-400 w-3">{i + 1}.</span>
-                                        <div className="flex-1 min-w-0">
-                                          <div className="flex justify-between items-start text-xs mb-1.5 gap-2">
-                                            <span className="font-bold text-slate-700 group-hover:text-blue-600 transition-colors" style={{ wordBreak: 'break-word', lineHeight: '1.2' }}>{deptName}</span>
-                                            {deptVal !== null && (
-                                              <span className="text-[10px] whitespace-nowrap pt-0.5 font-black text-slate-900">{deptVal} Kişi</span>
-                                            )}
-                                          </div>
-                                          <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                                            <motion.div
-                                              initial={{ width: 0 }}
-                                              whileInView={{ width: widthVal }}
-                                              transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
-                                              className="h-full rounded-full bg-blue-500"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                              </>
-                            )}
+                                );
+                              })}
+                            </div>
                           </div>
                         </div>
                         )}
