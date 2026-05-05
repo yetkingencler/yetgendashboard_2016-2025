@@ -135,8 +135,8 @@ const yearlyData: IYearlyData[] = [
   },
   {
     "year": "2021",
-    "participants": 3661,
-    "graduates": 2565,
+    "participants": 3906,
+    "graduates": 2686,
     "description": "Rekor katılım yılı! Dijital araçların kullanımıyla Türkiye genelinde 3 farklı programla binlerce gence ulaşıldı.",
     "image": "/partners/online.jpg",
     "hasAgeData": false,
@@ -147,12 +147,8 @@ const yearlyData: IYearlyData[] = [
     },
     "cities": [
       {
-        "name": "Diğer",
-        "count": 6
-      },
-      {
         "name": "Adana",
-        "count": 55
+        "count": 60
       },
       {
         "name": "Adıyaman",
@@ -160,7 +156,7 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Afyonkarahisar",
-        "count": 8
+        "count": 9
       },
       {
         "name": "Ağrı",
@@ -172,15 +168,15 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Amasya",
-        "count": 8
+        "count": 10
       },
       {
         "name": "Ankara",
-        "count": 261
+        "count": 278
       },
       {
         "name": "Antalya",
-        "count": 59
+        "count": 61
       },
       {
         "name": "Ardahan",
@@ -196,7 +192,7 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Balıkesir",
-        "count": 28
+        "count": 29
       },
       {
         "name": "Bartın",
@@ -224,7 +220,7 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Bolu",
-        "count": 8
+        "count": 9
       },
       {
         "name": "Burdur",
@@ -232,7 +228,7 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Bursa",
-        "count": 112
+        "count": 114
       },
       {
         "name": "Çanakkale",
@@ -251,6 +247,10 @@ const yearlyData: IYearlyData[] = [
         "count": 20
       },
       {
+        "name": "Diğer",
+        "count": 11
+      },
+      {
         "name": "Diyarbakır",
         "count": 12
       },
@@ -260,11 +260,11 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Edirne",
-        "count": 22
+        "count": 23
       },
       {
         "name": "Elazığ",
-        "count": 6
+        "count": 8
       },
       {
         "name": "Erzincan",
@@ -272,15 +272,15 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Erzurum",
-        "count": 5
+        "count": 7
       },
       {
         "name": "Eskişehir",
-        "count": 59
+        "count": 70
       },
       {
         "name": "Gaziantep",
-        "count": 30
+        "count": 35
       },
       {
         "name": "Giresun",
@@ -304,15 +304,15 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Isparta",
-        "count": 9
+        "count": 10
       },
       {
         "name": "İstanbul",
-        "count": 1542
+        "count": 1675
       },
       {
         "name": "İzmir",
-        "count": 204
+        "count": 218
       },
       {
         "name": "Kahramanmaraş",
@@ -320,7 +320,7 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Karabük",
-        "count": 10
+        "count": 14
       },
       {
         "name": "Karaman",
@@ -336,11 +336,11 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Kayseri",
-        "count": 31
+        "count": 38
       },
       {
         "name": "Kırıkkale",
-        "count": 5
+        "count": 7
       },
       {
         "name": "Kırklareli",
@@ -356,23 +356,23 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Kocaeli",
-        "count": 83
+        "count": 90
       },
       {
         "name": "Konya",
-        "count": 41
+        "count": 42
       },
       {
         "name": "Kütahya",
-        "count": 8
+        "count": 9
       },
       {
         "name": "Malatya",
-        "count": 12
+        "count": 15
       },
       {
         "name": "Manisa",
-        "count": 41
+        "count": 42
       },
       {
         "name": "Mardin",
@@ -384,7 +384,7 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Muğla",
-        "count": 18
+        "count": 19
       },
       {
         "name": "Nevşehir",
@@ -408,11 +408,11 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Sakarya",
-        "count": 32
+        "count": 34
       },
       {
         "name": "Samsun",
-        "count": 25
+        "count": 27
       },
       {
         "name": "Siirt",
@@ -428,7 +428,7 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Şanlıurfa",
-        "count": 9
+        "count": 10
       },
       {
         "name": "Şırnak",
@@ -436,7 +436,7 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Tekirdağ",
-        "count": 59
+        "count": 61
       },
       {
         "name": "Tokat",
@@ -444,7 +444,7 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Trabzon",
-        "count": 20
+        "count": 23
       },
       {
         "name": "Tunceli",
@@ -460,7 +460,7 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "name": "Yalova",
-        "count": 9
+        "count": 10
       },
       {
         "name": "Yozgat",
@@ -474,27 +474,31 @@ const yearlyData: IYearlyData[] = [
     "educationLevels": [
       {
         "name": "Lisans",
-        "count": 2902
+        "count": 3130
       },
       {
         "name": "Lise",
         "count": 490
       },
       {
+        "name": "Lisans Mezunu",
+        "count": 109
+      },
+      {
         "name": "Lise Mezunu",
         "count": 100
       },
       {
-        "name": "Lisans Mezunu",
-        "count": 98
-      },
-      {
         "name": "Lisansüstü",
-        "count": 38
+        "count": 41
       },
       {
         "name": "Diğer",
         "count": 33
+      },
+      {
+        "name": "Lisansüstü Mezunu",
+        "count": 1
       }
     ],
     "topDepartments": [
@@ -909,6 +913,168 @@ const yearlyData: IYearlyData[] = [
           {
             "name": "Psikoloji",
             "val": 65
+          }
+        ]
+      },
+      {
+        "id": "jump-softtech-2021",
+        "name": "Softtech Eğitim Programı",
+        "participants": 245,
+        "graduates": 121,
+        "description": "Java ve .NET alanlarına yönelik YetGen’in ilk dikey programıdır. Katılımcılar 8 hafta boyunca Udemy üzerinden eğitim aldı ve alanında uzman konuklarla kariyer sohbetleri gerçekleştirdi. Başarıyla bitiren 121 mezunumuz Softtech başta olmak üzere çeşitli kurumlarda işe yerleştirildi.",
+        "gender": {
+          "female": 0,
+          "male": 0,
+          "other": 0
+        },
+        "hasAgeData": false,
+        "ageData": [],
+        "cities": [
+          {
+            "name": "Adana",
+            "count": 5
+          },
+          {
+            "name": "Afyonkarahisar",
+            "count": 1
+          },
+          {
+            "name": "Amasya",
+            "count": 2
+          },
+          {
+            "name": "Ankara",
+            "count": 17
+          },
+          {
+            "name": "Antalya",
+            "count": 2
+          },
+          {
+            "name": "Balıkesir",
+            "count": 1
+          },
+          {
+            "name": "Bolu",
+            "count": 1
+          },
+          {
+            "name": "Bursa",
+            "count": 2
+          },
+          {
+            "name": "Diğer",
+            "count": 5
+          },
+          {
+            "name": "Edirne",
+            "count": 1
+          },
+          {
+            "name": "Elazığ",
+            "count": 2
+          },
+          {
+            "name": "Erzurum",
+            "count": 2
+          },
+          {
+            "name": "Eskişehir",
+            "count": 11
+          },
+          {
+            "name": "Gaziantep",
+            "count": 5
+          },
+          {
+            "name": "Isparta",
+            "count": 1
+          },
+          {
+            "name": "İstanbul",
+            "count": 133
+          },
+          {
+            "name": "İzmir",
+            "count": 14
+          },
+          {
+            "name": "Karabük",
+            "count": 4
+          },
+          {
+            "name": "Kayseri",
+            "count": 7
+          },
+          {
+            "name": "Kırıkkale",
+            "count": 2
+          },
+          {
+            "name": "Kocaeli",
+            "count": 7
+          },
+          {
+            "name": "Konya",
+            "count": 1
+          },
+          {
+            "name": "Kütahya",
+            "count": 1
+          },
+          {
+            "name": "Malatya",
+            "count": 3
+          },
+          {
+            "name": "Manisa",
+            "count": 1
+          },
+          {
+            "name": "Muğla",
+            "count": 1
+          },
+          {
+            "name": "Sakarya",
+            "count": 2
+          },
+          {
+            "name": "Samsun",
+            "count": 2
+          },
+          {
+            "name": "Şanlıurfa",
+            "count": 1
+          },
+          {
+            "name": "Tekirdağ",
+            "count": 2
+          },
+          {
+            "name": "Trabzon",
+            "count": 3
+          },
+          {
+            "name": "Yalova",
+            "count": 1
+          }
+        ],
+        "educationLevels": [
+          {
+            "name": "Lisans",
+            "count": 228
+          },
+          {
+            "name": "Lisans Mezunu",
+            "count": 11
+          },
+          {
+            "name": "Lisansüstü",
+            "count": 3
+          },
+          {
+            "name": "Lisansüstü Mezunu",
+            "count": 1
           }
         ]
       }
@@ -5739,6 +5905,398 @@ const yearlyData: IYearlyData[] = [
             "val": 27
           }
         ]
+      },
+      {
+        "id": "doping-2025",
+        "name": "Doping Hafıza Eğitimi",
+        "image": "/partners/dopinghafızaa.png",
+        "participants": 650,
+        "graduates": 500,
+        "gender": {
+          "female": 500,
+          "male": 142,
+          "other": 8
+        },
+        "hasAgeData": true,
+        "ageData": [
+          {
+            "age": "10",
+            "count": 2
+          },
+          {
+            "age": "11",
+            "count": 48
+          },
+          {
+            "age": "12",
+            "count": 90
+          },
+          {
+            "age": "13",
+            "count": 117
+          },
+          {
+            "age": "14",
+            "count": 190
+          },
+          {
+            "age": "15",
+            "count": 101
+          },
+          {
+            "age": "16",
+            "count": 48
+          },
+          {
+            "age": "17",
+            "count": 19
+          },
+          {
+            "age": "18",
+            "count": 9
+          },
+          {
+            "age": "19",
+            "count": 10
+          },
+          {
+            "age": "20",
+            "count": 4
+          },
+          {
+            "age": "21",
+            "count": 4
+          },
+          {
+            "age": "22",
+            "count": 2
+          },
+          {
+            "age": "23",
+            "count": 6
+          }
+        ],
+        "cities": [
+          {
+            "name": "Adana",
+            "count": 18
+          },
+          {
+            "name": "Adıyaman",
+            "count": 7
+          },
+          {
+            "name": "Afyonkarahisar",
+            "count": 7
+          },
+          {
+            "name": "Ağrı",
+            "count": 3
+          },
+          {
+            "name": "Aksaray",
+            "count": 5
+          },
+          {
+            "name": "Amasya",
+            "count": 1
+          },
+          {
+            "name": "Ankara",
+            "count": 58
+          },
+          {
+            "name": "Antalya",
+            "count": 16
+          },
+          {
+            "name": "Ardahan",
+            "count": 1
+          },
+          {
+            "name": "Artvin",
+            "count": 2
+          },
+          {
+            "name": "Aydın",
+            "count": 8
+          },
+          {
+            "name": "Balıkesir",
+            "count": 12
+          },
+          {
+            "name": "Bartın",
+            "count": 1
+          },
+          {
+            "name": "Batman",
+            "count": 4
+          },
+          {
+            "name": "Bayburt",
+            "count": 2
+          },
+          {
+            "name": "Bilecik",
+            "count": 3
+          },
+          {
+            "name": "Bingöl",
+            "count": 3
+          },
+          {
+            "name": "Bitlis",
+            "count": 3
+          },
+          {
+            "name": "Bolu",
+            "count": 1
+          },
+          {
+            "name": "Bursa",
+            "count": 24
+          },
+          {
+            "name": "Çanakkale",
+            "count": 3
+          },
+          {
+            "name": "Çankırı",
+            "count": 2
+          },
+          {
+            "name": "Çorum",
+            "count": 2
+          },
+          {
+            "name": "Denizli",
+            "count": 8
+          },
+          {
+            "name": "Diyarbakır",
+            "count": 10
+          },
+          {
+            "name": "Düzce",
+            "count": 2
+          },
+          {
+            "name": "Edirne",
+            "count": 6
+          },
+          {
+            "name": "Elazığ",
+            "count": 6
+          },
+          {
+            "name": "Erzincan",
+            "count": 2
+          },
+          {
+            "name": "Erzurum",
+            "count": 14
+          },
+          {
+            "name": "Eskişehir",
+            "count": 7
+          },
+          {
+            "name": "Gaziantep",
+            "count": 21
+          },
+          {
+            "name": "Giresun",
+            "count": 1
+          },
+          {
+            "name": "Hakkâri",
+            "count": 5
+          },
+          {
+            "name": "Hatay",
+            "count": 13
+          },
+          {
+            "name": "Iğdır",
+            "count": 6
+          },
+          {
+            "name": "Isparta",
+            "count": 2
+          },
+          {
+            "name": "İstanbul",
+            "count": 97
+          },
+          {
+            "name": "İzmir",
+            "count": 37
+          },
+          {
+            "name": "Kahramanmaraş",
+            "count": 8
+          },
+          {
+            "name": "Karabük",
+            "count": 1
+          },
+          {
+            "name": "Karaman",
+            "count": 3
+          },
+          {
+            "name": "Kars",
+            "count": 3
+          },
+          {
+            "name": "Kayseri",
+            "count": 21
+          },
+          {
+            "name": "Kilis",
+            "count": 4
+          },
+          {
+            "name": "Kırıkkale",
+            "count": 3
+          },
+          {
+            "name": "Kırklareli",
+            "count": 1
+          },
+          {
+            "name": "Kırşehir",
+            "count": 3
+          },
+          {
+            "name": "Kocaeli",
+            "count": 17
+          },
+          {
+            "name": "Konya",
+            "count": 19
+          },
+          {
+            "name": "Kütahya",
+            "count": 3
+          },
+          {
+            "name": "Malatya",
+            "count": 8
+          },
+          {
+            "name": "Manisa",
+            "count": 4
+          },
+          {
+            "name": "Mardin",
+            "count": 9
+          },
+          {
+            "name": "Mersin",
+            "count": 17
+          },
+          {
+            "name": "Muğla",
+            "count": 10
+          },
+          {
+            "name": "Muş",
+            "count": 2
+          },
+          {
+            "name": "Nevşehir",
+            "count": 1
+          },
+          {
+            "name": "Niğde",
+            "count": 2
+          },
+          {
+            "name": "Ordu",
+            "count": 1
+          },
+          {
+            "name": "Osmaniye",
+            "count": 6
+          },
+          {
+            "name": "Rize",
+            "count": 1
+          },
+          {
+            "name": "Sakarya",
+            "count": 8
+          },
+          {
+            "name": "Samsun",
+            "count": 4
+          },
+          {
+            "name": "Şanlıurfa",
+            "count": 10
+          },
+          {
+            "name": "Siirt",
+            "count": 2
+          },
+          {
+            "name": "Sinop",
+            "count": 1
+          },
+          {
+            "name": "Sivas",
+            "count": 6
+          },
+          {
+            "name": "Şırnak",
+            "count": 2
+          },
+          {
+            "name": "Tekirdağ",
+            "count": 13
+          },
+          {
+            "name": "Tokat",
+            "count": 4
+          },
+          {
+            "name": "Trabzon",
+            "count": 4
+          },
+          {
+            "name": "Tunceli",
+            "count": 1
+          },
+          {
+            "name": "Van",
+            "count": 11
+          },
+          {
+            "name": "Yalova",
+            "count": 2
+          },
+          {
+            "name": "Yozgat",
+            "count": 3
+          },
+          {
+            "name": "Zonguldak",
+            "count": 6
+          }
+        ],
+        "educationLevels": [
+          {
+            "name": "Lise",
+            "count": 414
+          },
+          {
+            "name": "Lise Mezunu",
+            "count": 236
+          }
+        ],
+        "topDepartments": []
       }
     ]
   }
@@ -5879,10 +6437,82 @@ const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData 
 
   if (selectedProgramData?.isProgram) {
     content.subtitle = `${selectedProgramData.programName} İnovasyon Eğitim Raporu`;
+    if (selectedProgramData.program?.description) {
+      content.text = selectedProgramData.program.description;
+    } else if (selectedProgramData.description) {
+      content.text = selectedProgramData.description;
+    }
   }
 
   return content;
 };
+
+const normalizedYearlyData: IYearlyData[] = yearlyData.map(year => {
+  if (!year.programs || year.programs.length === 0) return year;
+
+  let p = 0, g = 0;
+  let f = 0, m = 0, o = 0;
+  const eduCount: Record<string, number> = {};
+  const cityCount: Record<string, number> = {};
+  const ageCount: Record<string, number> = {};
+  const deptCount: Record<string, number> = {};
+  let hasAge = false;
+
+  year.programs.forEach(prog => {
+    p += prog.participants || 0;
+    g += prog.graduates || 0;
+    if (prog.gender) {
+      f += prog.gender.female || 0;
+      m += prog.gender.male || 0;
+      o += prog.gender.other || 0;
+    }
+    if (prog.educationLevels) {
+      prog.educationLevels.forEach(e => { eduCount[e.name] = (eduCount[e.name] || 0) + e.count; });
+    }
+    if (prog.cities) {
+      prog.cities.forEach(c => { cityCount[c.name] = (cityCount[c.name] || 0) + c.count; });
+    }
+    if (prog.ageData && prog.ageData.length > 0) {
+      hasAge = true;
+      prog.ageData.forEach(a => {
+        let bucket = a.age;
+        if (!bucket.includes('-') && !bucket.includes('<') && !bucket.includes('+')) {
+          const ageNum = parseInt(bucket, 10);
+          if (!isNaN(ageNum)) {
+            if (ageNum < 18) bucket = '<18';
+            else if (ageNum <= 20) bucket = '18-20';
+            else if (ageNum <= 23) bucket = '21-23';
+            else if (ageNum <= 26) bucket = '24-26';
+            else if (ageNum <= 29) bucket = '27-29';
+            else bucket = '30+';
+          }
+        }
+        ageCount[bucket] = (ageCount[bucket] || 0) + a.count;
+      });
+    }
+    if (prog.topDepartments) {
+      prog.topDepartments.forEach(d => {
+        if (typeof d === 'string') deptCount[d] = (deptCount[d] || 0) + 1;
+        else if (d && typeof d === 'object' && d.name) deptCount[d.name] = (deptCount[d.name] || 0) + (d.val || 1);
+      });
+    }
+  });
+
+  if (p >= year.participants) {
+    return {
+      ...year,
+      participants: p,
+      graduates: g,
+      gender: { female: f, male: m, other: o },
+      educationLevels: Object.entries(eduCount).map(([name, count]) => ({name, count})).sort((a,b) => b.count - a.count),
+      cities: Object.entries(cityCount).map(([name, count]) => ({name, count})).sort((a,b) => b.count - a.count),
+      hasAgeData: hasAge,
+      ageData: Object.entries(ageCount).map(([age, count]) => ({age, count})).sort((a,b) => b.count - a.count),
+      topDepartments: Object.entries(deptCount).map(([name, val]) => ({name, val})).sort((a,b) => b.val - a.val)
+    };
+  }
+  return year;
+});
 
 export default function App() {
   const [selectedYear, setSelectedYear] = React.useState('all');
@@ -5895,13 +6525,13 @@ export default function App() {
     setSelectedProgram(null);
   }, [selectedYear]);
 
-  const totalParticipants = useMemo(() => yearlyData.reduce((acc, curr) => acc + curr.participants, 0), []);
-  const totalGraduates = useMemo(() => yearlyData.reduce((acc, curr) => acc + curr.graduates, 0), []);
+  const totalParticipants = useMemo(() => normalizedYearlyData.reduce((acc, curr) => acc + curr.participants, 0), []);
+  const totalGraduates = useMemo(() => normalizedYearlyData.reduce((acc, curr) => acc + curr.graduates, 0), []);
   const avgCompletionRate = useMemo(() => ((totalGraduates / totalParticipants) * 100).toFixed(1), [totalGraduates, totalParticipants]);
 
   const allYearsData = useMemo(() => {
-    const participants = yearlyData.reduce((acc, curr) => acc + curr.participants, 0);
-    const graduates = yearlyData.reduce((acc, curr) => acc + curr.graduates, 0);
+    const participants = normalizedYearlyData.reduce((acc, curr) => acc + curr.participants, 0);
+    const graduates = normalizedYearlyData.reduce((acc, curr) => acc + curr.graduates, 0);
 
     const deptCount: Record<string, number> = {};
     let female = 0, male = 0, other = 0;
@@ -5910,26 +6540,24 @@ export default function App() {
     const cityCount: Record<string, number> = {};
     let hasAgeData = false;
 
-    yearlyData.forEach(d => {
+    normalizedYearlyData.forEach(d => {
       // Departments
       (d.topDepartments || []).forEach(dept => {
         if (typeof dept === 'string') {
-          deptCount[dept] = (deptCount[dept] || 0) + 1; // legacy fallback
+          deptCount[dept] = (deptCount[dept] || 0) + 1;
         } else if (dept && typeof dept === 'object' && dept.name) {
           deptCount[dept.name] = (deptCount[dept.name] || 0) + (dept.val || 1);
         }
       });
 
       // Cities
-      const collectCities = (arr: ICity[]) => {
-        (arr || []).forEach(city => {
+      if (d.cities) {
+        d.cities.forEach(city => {
           if (typeof city === 'object' && city.name && city.count) {
             cityCount[city.name] = (cityCount[city.name] || 0) + city.count;
           }
         });
-      };
-      if (d.programs && d.programs.length > 0) d.programs.forEach(p => collectCities(p.cities));
-      else collectCities(d.cities);
+      }
 
       // Gender
       if (d.gender) {
@@ -5945,17 +6573,8 @@ export default function App() {
         });
       }
 
-      // Age (Check top level or programs)
-      if (d.programs && d.programs.length > 0) {
-        d.programs.forEach(p => {
-          if (p.ageData) {
-            hasAgeData = true;
-            p.ageData.forEach(a => {
-              ageCount[a.age] = (ageCount[a.age] || 0) + a.count;
-            });
-          }
-        });
-      } else if (d.ageData) {
+      // Age
+      if (d.ageData && d.ageData.length > 0) {
         hasAgeData = true;
         d.ageData.forEach(a => {
           ageCount[a.age] = (ageCount[a.age] || 0) + a.count;
@@ -5999,13 +6618,13 @@ export default function App() {
       cities: cities.length > 0 ? cities : [{ name: '81 İl + KKTC', count: null }],
       educationLevels,
       topDepartments,
-      sponsors: Array.from(new Set(yearlyData.flatMap(d => d.sponsors || [])))
+      sponsors: Array.from(new Set(normalizedYearlyData.flatMap(d => d.sponsors || [])))
     };
   }, []);
 
   const selectedYearData = useMemo(() => {
     if (selectedYear === 'all') return allYearsData;
-    const yearData = yearlyData.find(d => d.year === selectedYear);
+    const yearData = normalizedYearlyData.find(d => d.year === selectedYear);
 
     if (yearData && selectedProgram) {
       const program = yearData.programs?.find(p => p.id === selectedProgram);
@@ -6039,11 +6658,11 @@ export default function App() {
       };
     }
 
-    const currentIndex = yearlyData.findIndex(d => d.year === selectedYear);
+    const currentIndex = normalizedYearlyData.findIndex(d => d.year === selectedYear);
     const isProgram = selectedYearData && 'isProgram' in selectedYearData;
 
     if (currentIndex > 0 && selectedYearData && !isProgram) {
-      const prevData = yearlyData[currentIndex - 1];
+      const prevData = normalizedYearlyData[currentIndex - 1];
       const growth = ((selectedYearData.participants - prevData.participants) / prevData.participants) * 100;
 
       return {
@@ -6058,7 +6677,7 @@ export default function App() {
     }
 
     if (isProgram) {
-      const totalYearParticipants = yearlyData[currentIndex]?.participants || 1;
+      const totalYearParticipants = normalizedYearlyData[currentIndex]?.participants || 1;
       return {
         title: "Dönem Payı",
         value: `${((selectedYearData.participants / totalYearParticipants) * 100).toFixed(0)}%`,
@@ -6190,7 +6809,7 @@ export default function App() {
             <div className="h-4 w-px bg-slate-200/60 mx-1 shrink-0" />
 
             <div className="flex items-center gap-1 overflow-x-auto no-scrollbar w-full sm:max-w-none px-1 py-0.5">
-              {[...yearlyData].reverse().map((d) => (
+              {[...normalizedYearlyData].reverse().map((d) => (
                 <button
                   key={d.year}
                   onClick={() => setSelectedYear(d.year)}
@@ -6235,7 +6854,7 @@ export default function App() {
             className="flex flex-col w-full"
           >
             {/* Sub-Program Selection (Secondary Timeline) */}
-            {selectedYear !== 'all' && yearlyData.find(d => d.year === selectedYear)?.programs && (
+            {selectedYear !== 'all' && normalizedYearlyData.find(d => d.year === selectedYear)?.programs && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -6253,7 +6872,7 @@ export default function App() {
                   >
                     Genel Bakış
                   </button>
-                  {yearlyData.find(d => d.year === selectedYear)?.programs?.map(p => (
+                  {normalizedYearlyData.find(d => d.year === selectedYear)?.programs?.map(p => (
                     <button
                       key={p.id}
                       onClick={() => setSelectedProgram(p.id)}
@@ -6445,20 +7064,37 @@ export default function App() {
                               </div>
                               <div className="h-[220px] w-full mt-4">
                                 <ResponsiveContainer width="100%" height="100%">
-                                  <BarChart layout="vertical" data={Math.max((selectedYearData?.ageData?.length || 0), 0) > 0 ? selectedYearData?.ageData : [
-                                    { age: '15-18', count: 12 },
-                                    { age: '18-22', count: 48 },
-                                    { age: '23-26', count: 28 },
-                                    { age: '26+', count: 12 },
-                                  ]} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-                                    <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#E2E8F0" opacity={0.5} />
-                                    <XAxis type="number" hide />
-                                    <YAxis dataKey="age" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b', fontWeight: 700 }} width={45} />
-                                    <Tooltip cursor={{ fill: '#F1F5F9' }} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
-                                    <Bar dataKey="count" fill="#6366f1" radius={[0, 4, 4, 0]} barSize={16}>
-                                      <LabelList dataKey="count" position="right" style={{ fill: '#64748b', fontSize: 10, fontWeight: 800 }} />
-                                    </Bar>
-                                  </BarChart>
+                                  {(() => {
+                                    let ageData = Math.max((selectedYearData?.ageData?.length || 0), 0) > 0 ? selectedYearData?.ageData : [
+                                      { age: '15-18', count: 12 },
+                                      { age: '18-22', count: 48 },
+                                      { age: '23-26', count: 28 },
+                                      { age: '26+', count: 12 },
+                                    ];
+                                    
+                                    if (selectedProgram === 'doping-2025') {
+                                      ageData = [
+                                        { age: '10-12 Yaş', count: 140 },
+                                        { age: '13 Yaş', count: 117 },
+                                        { age: '14 Yaş', count: 190 },
+                                        { age: '15 Yaş', count: 101 },
+                                        { age: '16-17 Yaş', count: 67 },
+                                        { age: '18+ Yaş', count: 35 }
+                                      ];
+                                    }
+                                    
+                                    return (
+                                      <BarChart layout="vertical" data={ageData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                                        <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#E2E8F0" opacity={0.5} />
+                                        <XAxis type="number" hide />
+                                        <YAxis dataKey="age" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b', fontWeight: 700 }} width={45} interval={0} />
+                                        <Tooltip cursor={{ fill: '#F1F5F9' }} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
+                                        <Bar dataKey="count" fill="#6366f1" radius={[0, 4, 4, 0]} barSize={16}>
+                                          <LabelList dataKey="count" position="right" style={{ fill: '#64748b', fontSize: 10, fontWeight: 800 }} />
+                                        </Bar>
+                                      </BarChart>
+                                    );
+                                  })()}
                                 </ResponsiveContainer>
                               </div>
                             </div>

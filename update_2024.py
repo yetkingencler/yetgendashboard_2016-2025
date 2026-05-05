@@ -155,3 +155,4 @@ with open("src/App.tsx", "w", encoding="utf-8") as f:
     f.write(new_content)
 
 print("Successfully updated App.tsx")
+""
