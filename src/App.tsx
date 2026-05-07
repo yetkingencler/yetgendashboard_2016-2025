@@ -6389,7 +6389,7 @@ const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData 
     content = {
       title1: 'Sürdürülebilirlik &',
       title2: 'Küresel Vizyon',
-      subtitle: '2025 Ekosistemi',
+      subtitle: '',
       text: 'Geleceğin iş modellerini ve sürdürülebilir yetkinlikleri merkeze alarak, global küreselde rekabet edecek yeni nesil yetenekleri ve vizyoner teknoloji üreticilerini liderler olarak eğitiyoruz.',
       statusText: 'Tamamlandı'
     };
@@ -6397,7 +6397,7 @@ const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData 
     content = {
       title1: 'İnovasyon &',
       title2: 'Teknolojik Dönüşüm',
-      subtitle: '2024 Altın Zirvesi',
+      subtitle: '',
       text: 'Yapay zeka, dijital dönüşüm ve ileri teknolojiye tam entegre, kendi girişimlerini kurabilen cesur liderlerin sahne aldığı tam bir teknoloji yılı.',
       statusText: 'Tamamlandı'
     };
@@ -6405,7 +6405,7 @@ const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData 
     content = {
       title1: 'Derin Uzmanlık &',
       title2: 'Kalite Odağı',
-      subtitle: '2023 Etki Dönemi',
+      subtitle: '',
       text: 'Güçlü mentorluk stüdyoları ve çok boyutlu asenkron altyapısıyla, bireysel yetkinlik gelişimini maksimize ederek rekor seviyede yüksek nitelikli mezunlar verdik.',
       statusText: 'Tamamlandı'
     };
@@ -6413,7 +6413,7 @@ const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData 
     content = {
       title1: 'Kapsayıcılık &',
       title2: 'Dev Büyüme Hareketi',
-      subtitle: '2022 Genişlemesi',
+      subtitle: '',
       text: 'Eğitimde fırsat eşitliğini bayraklaştırarak, Türkiye\'nin dört bir yanından gelen binlerce pırıl pırıl gencin en kritik dijital araçlarla donatılarak sisteme entegre olduğu özel yıl.',
       statusText: 'Tamamlandı'
     };
