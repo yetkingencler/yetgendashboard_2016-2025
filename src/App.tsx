@@ -3485,6 +3485,32 @@ const yearlyData: IYearlyData[] = [
           { "name": "Siyaset Bilimi ve Uluslararası İlişkiler", "val": 4 },
           { "name": "Diğer", "val": 97 }
         ]
+      },
+      {
+        "id": "yetgen-gs-2023",
+        "name": "YetGen & Galatasaray Lisesi",
+        "participants": 31,
+        "graduates": 22,
+        "description": "Mayıs 2023 döneminde Galatasaray Lisesi ile gerçekleştirilen, öğretmenlere yönelik 4 hafta ve 8 eğitim gününden oluşan 'Değişen Çağda Yetkinlikler ve Beceriler' pilot programıdır.",
+        "image": "/partners/2023.jpg",
+        "gender": {
+          "female": 0,
+          "male": 0,
+          "other": 0
+        },
+        "hasAgeData": false,
+        "ageData": [],
+        "cities": [
+          {
+            "name": "İstanbul",
+            "count": 31
+          }
+        ],
+        "educationLevels": [],
+        "topDepartments": [],
+        "sponsors": [
+          "Yetkin Gençler"
+        ]
       }
     ]
   },
@@ -6551,6 +6577,7 @@ export default function App() {
   const [selectedProgram, setSelectedProgram] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = React.useState(false);
+  const [isReportModalOpen, setIsReportModalOpen] = React.useState(false);
 
   // Reset program when year changes
   React.useEffect(() => {
@@ -6866,6 +6893,12 @@ export default function App() {
   const computedGridCols = totalRawCards || 1;
 
   const heroContent = getHeroContent(selectedYear, selectedYearData);
+  const galatasarayReportUrl = '/partners/yetgen-galatasaray-2023-raporu.pdf';
+  const isGalatasarayProgram = selectedProgram === 'yetgen-gs-2023';
+  const hasMeaningfulGenderData =
+    ((selectedYearData?.gender?.female || 0) +
+      (selectedYearData?.gender?.male || 0) +
+      (selectedYearData?.gender?.other || 0)) > 0;
 
   return (
     <div className="min-h-screen bg-slate-50/50 text-slate-900 selection:bg-blue-100 relative">
@@ -7021,6 +7054,18 @@ export default function App() {
                 >
                   {heroContent.text}
                 </motion.p>
+                {selectedProgram === 'yetgen-gs-2023' && (
+                  <motion.button
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    onClick={() => setIsReportModalOpen(true)}
+                    className="mt-5 inline-flex items-center gap-2 rounded-xl border border-indigo-200 bg-white/90 px-4 py-2.5 text-sm font-bold text-indigo-700 shadow-sm hover:bg-indigo-50 hover:border-indigo-300 transition-colors"
+                  >
+                    Raporu İncele (PDF)
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.button>
+                )}
               </div>
               
               {/* Professional Right Logo */}
@@ -7040,42 +7085,77 @@ export default function App() {
 
             {/* KPI Grid */}
             <div className={cn(
-              "grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 mb-10 md:mb-16",
+              "grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 mb-10 md:mb-16 items-stretch",
               selectedYear === '2016-2020' ? "lg:grid-cols-3" : "lg:grid-cols-4"
             )}>
-              <StatCard
-                title={selectedYear === 'all' ? "Toplam Katılımcı" : `${selectedYear} Katılımcı`}
-                value={selectedYearData?.participants.toLocaleString() || '0'}
-                subValue={selectedYear === 'all' ? "10 yıllık süreçte" : `${selectedYear} yılı verisi`}
-                icon={Users}
-                trend={selectedYear === 'all' ? { value: "%7.6", isPositive: true, label: "Tüm Yıllar Artışı" } : undefined}
-                delay={0.1}
-              />
-              <StatCard
-                title={selectedYear === 'all' ? "Toplam Mezun" : `${selectedYear} Mezun`}
-                value={selectedYearData?.graduates.toLocaleString() || '0'}
-                subValue="Sertifikalı Alumniler"
-                icon={GraduationCap}
-                trend={selectedYear === 'all' ? { value: "%12.4", isPositive: true, label: "Mezun Bazında" } : undefined}
-                delay={0.2}
-              />
-              <StatCard
-                title="Tamamlama Oranı"
-                value={`%${selectedYearData?.participants ? ((selectedYearData.graduates / selectedYearData.participants) * 100).toFixed(1) : '0'}`}
-                subValue="Program Verimliliği"
-                icon={ShieldCheck}
-                trend={selectedYear === 'all' ? { value: "%2.1", isPositive: true, label: "Artan Başarı" } : undefined}
-                delay={0.3}
-              />
-              {selectedYear !== '2016-2020' && (
-                <StatCard
-                  title={growthMetrics.title}
-                  value={growthMetrics.value}
-                  subValue={growthMetrics.subValue}
-                  icon={TrendingUp}
-                  trend={growthMetrics.trend}
-                  delay={0.4}
-                />
+              {isGalatasarayProgram ? (
+                <>
+                  <StatCard
+                    title="Program Katılımcısı"
+                    value={selectedYearData?.participants.toLocaleString() || '0'}
+                    subValue="Galatasaray Lisesi öğretmenleri"
+                    icon={Users}
+                    delay={0.1}
+                  />
+                  <StatCard
+                    title="Program Süresi"
+                    value="4 Hafta"
+                    subValue="Mayıs 2023 pilot uygulama"
+                    icon={Target}
+                    delay={0.2}
+                  />
+                  <StatCard
+                    title="Eğitim Yapısı"
+                    value="8 Gün"
+                    subValue="Canlı oturum + asenkron içerik"
+                    icon={Presentation}
+                    delay={0.3}
+                  />
+                  <StatCard
+                    title="Program Odağı"
+                    value="Öğretmen"
+                    subValue="Öğretmen Akademisi odağı"
+                    icon={Sparkles}
+                    delay={0.4}
+                  />
+                </>
+              ) : (
+                <>
+                  <StatCard
+                    title={selectedYear === 'all' ? "Toplam Katılımcı" : `${selectedYear} Katılımcı`}
+                    value={selectedYearData?.participants.toLocaleString() || '0'}
+                    subValue={selectedYear === 'all' ? "10 yıllık süreçte" : `${selectedYear} yılı verisi`}
+                    icon={Users}
+                    trend={selectedYear === 'all' ? { value: "%7.6", isPositive: true, label: "Tüm Yıllar Artışı" } : undefined}
+                    delay={0.1}
+                  />
+                  <StatCard
+                    title={selectedYear === 'all' ? "Toplam Mezun" : `${selectedYear} Mezun`}
+                    value={selectedYearData?.graduates.toLocaleString() || '0'}
+                    subValue="Sertifikalı Alumniler"
+                    icon={GraduationCap}
+                    trend={selectedYear === 'all' ? { value: "%12.4", isPositive: true, label: "Mezun Bazında" } : undefined}
+                    delay={0.2}
+                  />
+                  <StatCard
+                    title="Tamamlama Oranı"
+                    value={`%${selectedYearData?.participants ? ((selectedYearData.graduates / selectedYearData.participants) * 100).toFixed(1) : '0'}`}
+                    subValue="Program Verimliliği"
+                    icon={ShieldCheck}
+                    trend={selectedYear === 'all' ? { value: "%2.1", isPositive: true, label: "Artan Başarı" } : undefined}
+                    delay={0.3}
+                  />
+                  {selectedYear !== '2016-2020' && (
+                    <StatCard
+                      title={growthMetrics.title}
+                      value={growthMetrics.value}
+                      subValue={growthMetrics.subValue}
+                      icon={TrendingUp}
+                      trend={growthMetrics.trend}
+                      delay={0.4}
+                    />
+                  )}
+                </>
               )}
             </div>
 
@@ -7257,6 +7337,7 @@ export default function App() {
                         )}
 
                         {/* Gender Unstacked Contents */}
+                        {hasMeaningfulGenderData && !isGalatasarayProgram && (
                         <div className={cn(selectedProgram === 'doping-2024' ? "lg:col-span-3 lg:order-3" : "contents")}>
                           {/* Gender Donut Chart */}
                           <div className={cn(
@@ -7280,8 +7361,8 @@ export default function App() {
                                   <PieChart>
                                     <Pie
                                       data={[
-                                        { name: 'Kadın', value: selectedYearData?.gender?.female || 64, color: '#ec4899' },
-                                        { name: 'Erkek', value: selectedYearData?.gender?.male || 36, color: '#3b82f6' },
+                                        { name: 'Kadın', value: selectedYearData?.gender?.female || 0, color: '#ec4899' },
+                                        { name: 'Erkek', value: selectedYearData?.gender?.male || 0, color: '#3b82f6' },
                                         ...(selectedYearData?.gender?.other ? [{ name: 'Diğer', value: selectedYearData.gender.other, color: '#94a3b8' }] : [])
                                       ]}
                                       cx="50%"
@@ -7314,14 +7395,14 @@ export default function App() {
                                     <div className="w-3.5 h-3.5 rounded-full bg-pink-500 shadow-sm shadow-pink-200 group-hover:scale-125 transition-transform" />
                                     <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Kadın</span>
                                   </div>
-                                  <span className="text-3xl sm:text-4xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData?.gender?.female || 0) / (selectedYearData?.participants || 1) * 100) || 64}</span>
+                                  <span className="text-3xl sm:text-4xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData?.gender?.female || 0) / (selectedYearData?.participants || 1) * 100)}</span>
                                 </div>
                                 <div className="flex flex-col items-center group" title={`${selectedYearData?.gender?.male || 0} Kişi`}>
                                   <div className="flex items-center gap-1.5 mb-1.5">
                                     <div className="w-3.5 h-3.5 rounded-full bg-blue-500 shadow-sm shadow-blue-200 group-hover:scale-125 transition-transform" />
                                     <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Erkek</span>
                                   </div>
-                                  <span className="text-3xl sm:text-4xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData?.gender?.male || 0) / (selectedYearData?.participants || 1) * 100) || 36}</span>
+                                  <span className="text-3xl sm:text-4xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData?.gender?.male || 0) / (selectedYearData?.participants || 1) * 100)}</span>
                                 </div>
                                 {(selectedYearData?.gender?.other && Math.round((selectedYearData.gender.other / selectedYearData.participants) * 100) > 0) ? (
                                   <div className="flex flex-col items-center group" title={`${selectedYearData?.gender?.other || 0} Kişi`}>
@@ -7336,6 +7417,7 @@ export default function App() {
                             </div>
                           </div>
                         </div>
+                        )}
                         
                         {/* Map for doping-2024 inside Charts Row */}
                         {selectedProgram === 'doping-2024' && hasCityData && (
@@ -7617,6 +7699,37 @@ export default function App() {
 
         {/* The CTA has been moved above */}
       </div>
+      {isReportModalOpen && (
+        <div className="fixed inset-0 z-[200] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6">
+          <div className="w-full max-w-6xl h-[88vh] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col">
+            <div className="h-14 px-4 sm:px-6 border-b border-slate-200 flex items-center justify-between">
+              <h3 className="text-sm sm:text-base font-bold text-slate-900">YETGEN & GALATASARAY LİSESİ - Program Raporu</h3>
+              <button
+                onClick={() => setIsReportModalOpen(false)}
+                className="h-9 w-9 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors"
+                aria-label="Rapor penceresini kapat"
+              >
+                ×
+              </button>
+            </div>
+            <iframe
+              src={galatasarayReportUrl}
+              title="YetGen Galatasaray Lisesi Program Raporu"
+              className="w-full flex-1"
+            />
+            <div className="h-12 px-4 sm:px-6 border-t border-slate-200 flex items-center justify-end">
+              <a
+                href={galatasarayReportUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs sm:text-sm font-semibold text-indigo-700 hover:text-indigo-900"
+              >
+                Yeni sekmede aç
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
       
       <Footer />
     </div>

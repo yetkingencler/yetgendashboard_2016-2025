@@ -33,7 +33,7 @@ export const StatCard: React.FC<StatCardProps> = ({
       viewport={{ once: true }}
       transition={{ duration: 0.35, delay: delay * 0.5, ease: [0.23, 1, 0.32, 1] }}
       className={cn(
-        "relative overflow-hidden rounded-[20px] border border-slate-200/60 bg-white/95 backdrop-blur-xl p-4 sm:p-5 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] transition-all hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-0.5 h-fit flex flex-col group",
+        "relative overflow-hidden rounded-[20px] border border-slate-200/60 bg-white/95 backdrop-blur-xl p-4 sm:p-5 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] transition-all hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-0.5 h-full flex flex-col group",
         className
       )}
     >
