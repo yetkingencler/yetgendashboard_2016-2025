@@ -6673,6 +6673,80 @@ export default function App() {
     return yearData;
   }, [selectedYear, allYearsData, selectedProgram]);
 
+  const partnerCards = useMemo(() => {
+    const programPartnerOverrides: Record<string, string[]> = {
+      'jump-softtech-2021': ['Softtech'],
+      'doping-2024': ['Doping Hafıza'],
+      'doping-2025': ['Doping Hafıza'],
+    };
+
+    const mapSponsorToLogo = (sponsor: string) => {
+      const normalizedSponsor = sponsor.toLowerCase();
+      if (sponsor === 'Mehmet Zorlu Vakfı') return '/partners/mzv-logo.png';
+      if (sponsor === 'MEF Üniversitesi') return '/partners/mefunii_transparent.png';
+      if (normalizedSponsor.includes('doping')) return '/partners/doping.png';
+      if (normalizedSponsor === 'softtech' || normalizedSponsor === 'softech') return '/partners/softech.png';
+      return `/partners/${normalizedSponsor.replace(/ /g, '-')}.png`;
+    };
+
+    if (selectedYear === 'all') {
+      return [
+        { name: 'Mehmet Zorlu Vakfı', logo: '/partners/mzv-logo.png' },
+        { name: 'MEF Üniversitesi', logo: '/partners/mefunii_transparent.png' },
+        { name: 'Akbank', logo: '/partners/akbank.png' },
+        { name: 'Paribu', logo: '/partners/paribu.png' },
+        { name: 'Paribu Hub', logo: '/partners/paribuhub.png' },
+        { name: 'Doping Hafıza', logo: '/partners/doping.png' },
+        { name: 'Doritos', logo: '/partners/doritos.png' },
+        { name: 'İş Bankası', logo: '/partners/isb.png' },
+        { name: 'Miuul', logo: '/partners/miuul.png' },
+        { name: 'Şişli Belediyesi', logo: '/partners/sisli-belediyesi.png' },
+        { name: 'Softtech', logo: '/partners/softech.png' },
+      ];
+    }
+
+    const yearData = normalizedYearlyData.find((d) => d.year === selectedYear);
+    if (!yearData) return [];
+
+    let sponsorPool: string[] = [];
+
+    if (selectedProgram) {
+      sponsorPool = (selectedYearData?.sponsors || []).filter((sponsor) => sponsor !== 'Yetkin Gençler');
+    } else {
+      const yearSponsors = (yearData.sponsors || []).filter((sponsor) => sponsor !== 'Yetkin Gençler');
+      const programSponsors = (yearData.programs || [])
+        .flatMap((program) => program.sponsors || [])
+        .filter((sponsor) => sponsor !== 'Yetkin Gençler');
+      sponsorPool = [...yearSponsors, ...programSponsors];
+    }
+
+    const uniqueSponsors = new Map<string, string>();
+    sponsorPool.forEach((sponsor) => {
+      const key = sponsor.trim().toLowerCase();
+      if (!uniqueSponsors.has(key)) uniqueSponsors.set(key, sponsor.trim());
+    });
+
+    const addSponsorIfMissing = (sponsorName: string) => {
+      const key = sponsorName.trim().toLowerCase();
+      if (!uniqueSponsors.has(key)) uniqueSponsors.set(key, sponsorName.trim());
+    };
+
+    if (selectedProgram) {
+      (programPartnerOverrides[selectedProgram] || []).forEach(addSponsorIfMissing);
+    } else {
+      (yearData.programs || []).forEach((program) => {
+        (programPartnerOverrides[program.id] || []).forEach(addSponsorIfMissing);
+      });
+    }
+
+    const resolvedSponsors = Array.from(uniqueSponsors.values());
+
+    return resolvedSponsors.map((sponsor) => ({
+      name: sponsor,
+      logo: mapSponsorToLogo(sponsor),
+    }));
+  }, [selectedYear, selectedProgram, selectedYearData]);
+
   React.useEffect(() => {
     setIsLoading(true);
     const timer = setTimeout(() => setIsLoading(false), 150);
@@ -7493,40 +7567,42 @@ export default function App() {
                     </div>
 
                     {/* Partners Bento */}
-                    <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[3rem] border p-8 md:p-12 overflow-hidden">
-                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-slate-100 pb-8">
+                    <div className="relative bg-white/90 backdrop-blur-3xl border border-slate-200/80 shadow-[0_16px_45px_rgba(15,23,42,0.08)] rounded-[2rem] lg:rounded-[3rem] p-8 md:p-12 overflow-hidden">
+                      <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-indigo-50/70 to-transparent pointer-events-none" />
+                      <div className="relative flex flex-col gap-6 mb-10 border-b border-slate-200/70 pb-8">
                         <div>
                           <div className="flex items-center gap-3 mb-3">
-                            <span className="h-2 w-2 rounded-full bg-blue-600" />
-                            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">Ekosistem Ağı</span>
+                            <span className="h-2 w-2 rounded-full bg-indigo-600" />
+                            <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest">İş Birliği Ekosistemi</span>
                           </div>
-                          <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight font-display mb-2">Stratejik Partnerler</h3>
-                          <p className="text-sm md:text-base text-slate-500 font-medium max-w-xl leading-relaxed">
-                            Gençlerin 21. yüzyıl yetkinlikleri ile donatılması vizyonumuzda bizimle yürüyen değerli kurumlar.
+                          <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight font-display mb-2">Stratejik Partnerlerimiz</h3>
+                          <p className="text-sm md:text-base text-slate-600 font-medium max-w-2xl leading-relaxed">
+                            Bu etki raporundaki dönüşüm, eğitimden teknolojiye uzanan güçlü iş birlikleriyle mümkün oldu. Her logo, gençlerin geleceğine yapılan somut bir katkıyı temsil eder.
                           </p>
                         </div>
                       </div>
 
-                      <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 lg:gap-8">
-                        {selectedYearData?.sponsors.filter(sponsor => sponsor !== 'Yetkin Gençler').map((sponsor, i) => (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
+                        {partnerCards.map((partner, i) => (
                           <motion.div
                             initial={{ opacity: 0, y: 15 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
-                            key={sponsor}
-                            className="group relative flex items-center justify-center w-full sm:w-[240px] h-[120px] bg-white/50 backdrop-blur-md rounded-2xl border border-white/50 shadow-sm hover:bg-white hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300"
+                            transition={{ delay: i * 0.08, duration: 0.55, ease: "easeOut" }}
+                            key={partner.name}
+                            className="group relative flex items-center justify-center h-[132px] md:h-[142px] bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:shadow-indigo-900/10 hover:-translate-y-1 transition-all duration-300 px-5 py-4 overflow-hidden"
                           >
+                            <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-indigo-100/40 to-transparent translate-x-[-120%] group-hover:translate-x-[120%]" />
                             <img 
-                              src={sponsor === 'Mehmet Zorlu Vakfı' ? '/partners/mzv-logo.png' : sponsor === 'MEF Üniversitesi' ? '/partners/mefunii_transparent.png' : `/partners/${sponsor.toLowerCase().replace(/ /g, '-')}.png`} 
-                              alt={sponsor} 
-                              className="max-h-16 max-w-[80%] object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300 ease-out"
+                              src={partner.logo}
+                              alt={partner.name}
+                              className="max-h-[76px] md:max-h-[84px] w-full object-contain opacity-100 transition-transform duration-300 ease-out group-hover:scale-[1.04]"
                               onError={(e) => {
                                 e.currentTarget.style.display = 'none';
                                 e.currentTarget.nextElementSibling?.classList.remove('hidden');
                               }}
                             />
-                            <span className="hidden text-sm font-bold text-slate-500 group-hover:text-slate-900 text-center tracking-wide px-4">{sponsor}</span>
+                            
                           </motion.div>
                         ))}
                       </div>
