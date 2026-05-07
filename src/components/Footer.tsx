@@ -66,8 +66,7 @@ export const Footer: React.FC = () => {
               />
             </div>
             <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-3 font-display">
-              21. Yüzyıl Yetkinlikleri<br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Farkındalık Programı</span>
+              YetGen Eğitim Kooperatifi
             </h3>
             <p className="text-slate-500 leading-relaxed max-w-sm font-medium">
               Gençlerin potansiyellerini keşfetmelerine ve geleceğin yetkinlikleriyle donanmalarına öncülük ediyoruz.

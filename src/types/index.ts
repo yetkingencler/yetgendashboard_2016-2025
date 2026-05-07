@@ -1,6 +1,6 @@
 export interface ICity {
   name: string;
-  count: number;
+  count: number | null;
 }
 
 export interface IDepartment {

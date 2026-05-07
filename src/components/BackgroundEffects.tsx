@@ -1,9 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'motion/react';
 
 interface BackgroundEffectsProps {
   trigger?: string;
 }
+
+type ParticleSeed = {
+  xVw: number;
+  yVh: number;
+  opacity: number;
+  durationSec: number;
+  delaySec: number;
+};
+
+const PARTICLE_COUNT = 15;
+
+const BackgroundParticle: React.FC<{
+  seed: ParticleSeed;
+  index: number;
+  springX: ReturnType<typeof useSpring>;
+}> = ({ seed, index, springX }) => {
+  const x = useTransform(springX, [0, 1920], [index * 2, -index * 2]);
+
+  return (
+    <motion.div
+      initial={{
+        x: `${seed.xVw}vw`,
+        y: `${seed.yVh}vh`,
+        opacity: seed.opacity,
+      }}
+      animate={{
+        y: [null, '-100vh'],
+      }}
+      style={{ x }}
+      transition={{
+        y: {
+          duration: seed.durationSec,
+          repeat: Infinity,
+          ease: 'linear',
+          delay: seed.delaySec,
+        },
+      }}
+      className="absolute w-1 h-1 bg-blue-400 rounded-full blur-[1px]"
+    />
+  );
+};
 
 export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ trigger }) => {
   const { scrollYProgress } = useScroll();
@@ -26,6 +67,18 @@ export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ trigger })
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -400]);
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 45]);
+
+  const particleSeeds = useMemo<ParticleSeed[]>(
+    () =>
+      Array.from({ length: PARTICLE_COUNT }, () => ({
+        xVw: Math.random() * 100,
+        yVh: Math.random() * 100,
+        opacity: Math.random() * 0.3 + 0.1,
+        durationSec: Math.random() * 20 + 20,
+        delaySec: -Math.random() * 20,
+      })),
+    [],
+  );
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -65,30 +118,8 @@ export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ trigger })
       />
 
       {/* Floating Particles */}
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          initial={{ 
-            x: Math.random() * 100 + 'vw', 
-            y: Math.random() * 100 + 'vh',
-            opacity: Math.random() * 0.3 + 0.1
-          }}
-          animate={{
-            y: [null, '-100vh'],
-          }}
-          style={{
-            x: useTransform(springX, [0, 1920], [i * 2, -i * 2]),
-          }}
-          transition={{
-            y: {
-              duration: Math.random() * 20 + 20,
-              repeat: Infinity,
-              ease: "linear",
-              delay: -Math.random() * 20
-            }
-          }}
-          className="absolute w-1 h-1 bg-blue-400 rounded-full blur-[1px]"
-        />
+      {particleSeeds.map((seed, i) => (
+        <BackgroundParticle key={i} seed={seed} index={i} springX={springX} />
       ))}
       
       <motion.div

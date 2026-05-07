@@ -10,6 +10,21 @@ export default defineConfig(({mode}) => {
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
+    build: {
+      chunkSizeWarningLimit: 700,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (!id.includes('node_modules')) return;
+            if (id.includes('recharts')) return 'recharts';
+            if (id.includes('motion')) return 'motion';
+            if (id.includes('d3-geo')) return 'd3';
+            if (id.includes('lucide-react')) return 'icons';
+            if (id.includes('xlsx')) return 'xlsx';
+          },
+        },
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

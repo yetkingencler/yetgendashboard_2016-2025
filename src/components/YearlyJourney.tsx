@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { IYearlyData } from '../types';
+import { IDepartment, IEducationLevel, IYearlyData } from '../types';
 import { Users, GraduationCap, TrendingUp, Sparkles, Brain } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -15,6 +15,11 @@ export const YearlyJourney: React.FC<YearlyJourneyProps> = ({ data }) => {
   const activeData = data.find((d) => d.year === activeYear);
 
   if (!activeData) return null;
+
+  const getDepartmentNameAndVal = (dept: string | IDepartment) => {
+    if (typeof dept === 'string') return { name: dept, val: null as number | null };
+    return { name: dept.name, val: dept.val };
+  };
 
   // İstatistiksel veriler
   const previousData = data.find((d) => parseInt(d.year) === parseInt(activeYear) - 1);
@@ -201,13 +206,12 @@ export const YearlyJourney: React.FC<YearlyJourneyProps> = ({ data }) => {
                     <h4 className="font-bold text-slate-900 uppercase tracking-widest text-xs">Öne Çıkan Bölümler</h4>
                   </div>
                   <div className="flex flex-wrap gap-2 sm:gap-3">
-                    {activeData.topDepartments?.slice(0, 6).map((dept: any, i: number) => {
-                      const name = typeof dept === 'string' ? dept : dept.name;
-                      const val = typeof dept === 'string' ? null : dept.val;
+                    {activeData.topDepartments?.slice(0, 6).map((dept, i) => {
+                      const { name, val } = getDepartmentNameAndVal(dept);
                       return (
                         <div key={i} className="px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-2xl text-sm font-semibold text-slate-700 flex items-center gap-3 hover:bg-slate-100 transition-colors group">
                           <span>{name}</span>
-                          {val && (
+                          {typeof val === 'number' && val > 0 && (
                             <span className="text-purple-600 font-black bg-purple-100 px-2 py-0.5 rounded-lg text-xs group-hover:bg-purple-200 transition-colors">
                               {val}
                             </span>
@@ -227,7 +231,7 @@ export const YearlyJourney: React.FC<YearlyJourneyProps> = ({ data }) => {
                     <h4 className="font-bold text-slate-900 uppercase tracking-widest text-xs">Eğitim Seviyeleri</h4>
                   </div>
                   <div className="flex flex-col gap-4">
-                    {activeData.educationLevels?.slice(0, 4).map((lvl: any, i: number) => {
+                    {activeData.educationLevels?.slice(0, 4).map((lvl: IEducationLevel, i: number) => {
                       const percentage = activeData.participants > 0 ? (lvl.count / activeData.participants) * 100 : 0;
                       return (
                         <div key={i} className="flex items-center justify-between group">

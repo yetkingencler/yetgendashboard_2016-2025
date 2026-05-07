@@ -6805,20 +6805,9 @@ export default function App() {
       />
 
       {/* Top Navigation Timeline */}
-      <nav className="sticky top-4 sm:top-6 z-[100] flex justify-center w-full max-w-7xl mx-auto px-4 sm:px-6 pointer-events-none relative">
-        {/* Floating Partner Button */}
-        <div className="absolute right-4 sm:right-6 top-0 pointer-events-auto hidden md:block">
-          <button 
-            onClick={() => setIsFormModalOpen(true)}
-            className="group flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900/95 backdrop-blur-md text-white text-xs sm:text-sm font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 hover:shadow-xl active:scale-95 border border-slate-700/50"
-          >
-            Bizimle Partner Olun
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
-
-        <div className="pointer-events-auto w-full max-w-[100vw] sm:max-w-fit flex justify-center">
-          <div className="flex items-center gap-0.5 sm:gap-1 p-1 sm:p-1.5 bg-white/90 backdrop-blur-2xl rounded-full border border-slate-200/50 shadow-[0_15px_40px_rgba(0,0,0,0.08)] w-full max-w-full">
+      <nav className="sticky top-4 sm:top-6 z-[100] flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 w-full max-w-7xl mx-auto px-4 sm:px-6 pointer-events-none relative">
+        <div className="pointer-events-auto w-full md:flex-1 md:min-w-0 flex justify-center md:justify-start">
+          <div className="flex items-center gap-0.5 sm:gap-1 p-1 sm:p-1.5 bg-white/90 backdrop-blur-2xl rounded-full border border-slate-200/50 shadow-[0_15px_40px_rgba(0,0,0,0.08)] w-full md:w-auto md:max-w-full">
             <button
               onClick={() => setSelectedYear('all')}
               className={cn(
@@ -6840,7 +6829,7 @@ export default function App() {
 
             <div className="h-4 w-px bg-slate-200/60 mx-1 shrink-0" />
 
-            <div className="flex items-center gap-1 overflow-x-auto no-scrollbar w-full sm:max-w-none px-1 py-0.5">
+            <div className="flex items-center gap-1 overflow-x-auto no-scrollbar w-full md:w-auto md:max-w-none px-1 py-0.5">
               {[...normalizedYearlyData].reverse().map((d) => (
                 <button
                   key={d.year}
@@ -6865,6 +6854,16 @@ export default function App() {
             </div>
           </div>
         </div>
+
+        <div className="pointer-events-auto w-full md:w-auto md:shrink-0">
+          <button 
+            onClick={() => setIsFormModalOpen(true)}
+            className="group w-full md:w-auto flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-full bg-slate-900/95 backdrop-blur-md text-white text-xs sm:text-sm font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 hover:shadow-xl active:scale-95 border border-slate-700/50"
+          >
+            Bizimle Partner Olun
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
       </nav>
 
 
@@ -6875,7 +6874,7 @@ export default function App() {
         <div className="absolute -bottom-[10%] left-[20%] h-[40%] w-[40%] rounded-full bg-emerald-500/5 blur-[120px]" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-16">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-16 overflow-x-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={`${selectedYear}-${selectedProgram}`}
@@ -7278,7 +7277,7 @@ export default function App() {
                                 Genel Yoğunluk ve Dağılım
                               </p>
                             </div>
-                            <div className="w-full max-w-[900px] flex-1 flex items-center justify-center relative mt-2 mb-4 z-10 px-4 transition-transform duration-700 group-hover:scale-[1.01]">
+                            <div className="w-full max-w-[900px] aspect-[1.3/1] sm:aspect-[2/1] flex items-center justify-center relative mt-2 mb-4 z-10 px-4 transition-transform duration-700 group-hover:scale-[1.01]">
                               <TurkeyMap 
                                 showTooltip={true}
                                 colorData={mapData.colorData}
