@@ -45,6 +45,7 @@ export interface IProgramData {
   sponsors?: string[];
   description?: string;
   image?: string;
+  certificationBased?: boolean;
   isProgram?: boolean;
   programName?: string;
 }

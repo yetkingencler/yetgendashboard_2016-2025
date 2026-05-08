@@ -3490,7 +3490,8 @@ const yearlyData: IYearlyData[] = [
         "id": "yetgen-gs-2023",
         "name": "YetGen & Galatasaray Lisesi",
         "participants": 31,
-        "graduates": 22,
+        "graduates": 0,
+        "certificationBased": false,
         "description": "Mayıs 2023 döneminde Galatasaray Lisesi ile gerçekleştirilen, öğretmenlere yönelik 4 hafta ve 8 eğitim gününden oluşan 'Değişen Çağda Yetkinlikler ve Beceriler' pilot programıdır.",
         "image": "/partners/2023.jpg",
         "gender": {
@@ -3507,10 +3508,156 @@ const yearlyData: IYearlyData[] = [
           }
         ],
         "educationLevels": [],
+        "topSchools": [],
         "topDepartments": [],
         "sponsors": [
           "Yetkin Gençler"
         ]
+      },
+      {
+        "id": "birlikte-iyilesiyoruz-2023",
+        "name": "Birlikte İyileşiyoruz Seminer Programı",
+        "participants": 4000,
+        "graduates": 0,
+        "certificationBased": false,
+        "description": "2023 yılında 5 ana oturumdan oluşan seminer serisi ile duygu regülasyonu, yas, mindfulness, psikolojik ilk yardım ve içimizdeki çocuk başlıklarında geniş katılımlı bir farkındalık ve dayanıklılık programı yürütüldü.",
+        "image": "/partners/2023.jpg",
+        "gender": {
+          "female": 0,
+          "male": 0,
+          "other": 0
+        },
+        "hasAgeData": false,
+        "ageData": [],
+        "cities": [],
+        "educationLevels": [],
+        "topSchools": [],
+        "topDepartments": [],
+        "sponsors": [
+          "Yetkin Gençler"
+        ]
+      },
+      {
+        "id": "ilk-ders-2023",
+        "name": "İlk Ders Semineri",
+        "participants": 3110,
+        "graduates": 0,
+        "certificationBased": false,
+        "description": "Kahramanmaraş merkezli depremler sonrası eğitimcilerin sınıf içi iletişimlerine destek olmak için planlanan “İlk Ders” semineri. Afet sonrası eğitimde psikolojik ilk yardım odağında, 18 Şubat 2023 Cumartesi 19.00-20.00 saatleri arasında gerçekleştirildi.",
+        "image": "/partners/2023.jpg",
+        "gender": { "female": 0, "male": 0, "other": 0 },
+        "hasAgeData": false,
+        "ageData": [],
+        "cities": [
+          { "name": "İstanbul", "count": 1480 },
+          { "name": "İzmir", "count": 212 },
+          { "name": "Ankara", "count": 208 },
+          { "name": "Kocaeli", "count": 106 },
+          { "name": "Antalya", "count": 101 },
+          { "name": "Bursa", "count": 81 },
+          { "name": "Mersin", "count": 77 },
+          { "name": "Tekirdağ", "count": 67 },
+          { "name": "Muğla", "count": 53 },
+          { "name": "Balıkesir", "count": 52 },
+          { "name": "Manisa", "count": 44 },
+          { "name": "Sakarya", "count": 38 },
+          { "name": "Eskişehir", "count": 36 },
+          { "name": "Gaziantep", "count": 36 },
+          { "name": "Konya", "count": 36 },
+          { "name": "Adana", "count": 33 },
+          { "name": "Kayseri", "count": 29 },
+          { "name": "Diyarbakır", "count": 28 },
+          { "name": "Samsun", "count": 26 },
+          { "name": "Çanakkale", "count": 23 },
+          { "name": "Şanlıurfa", "count": 23 },
+          { "name": "Sinop", "count": 17 },
+          { "name": "Trabzon", "count": 17 },
+          { "name": "Giresun", "count": 16 },
+          { "name": "Batman", "count": 13 },
+          { "name": "Edirne", "count": 12 },
+          { "name": "Erzurum", "count": 12 },
+          { "name": "Aydın", "count": 11 },
+          { "name": "Isparta", "count": 11 },
+          { "name": "Denizli", "count": 10 },
+          { "name": "Van", "count": 10 },
+          { "name": "Niğde", "count": 9 },
+          { "name": "Düzce", "count": 8 },
+          { "name": "Mardin", "count": 8 },
+          { "name": "Muş", "count": 8 },
+          { "name": "Afyonkarahisar", "count": 7 },
+          { "name": "Karaman", "count": 7 },
+          { "name": "Amasya", "count": 6 },
+          { "name": "Kastamonu", "count": 6 },
+          { "name": "Kütahya", "count": 6 },
+          { "name": "Ağrı", "count": 5 },
+          { "name": "Bingöl", "count": 5 },
+          { "name": "Erzincan", "count": 5 },
+          { "name": "Karabük", "count": 5 },
+          { "name": "Kırklareli", "count": 5 },
+          { "name": "Malatya", "count": 5 },
+          { "name": "Ordu", "count": 5 },
+          { "name": "Siirt", "count": 5 },
+          { "name": "Sivas", "count": 5 },
+          { "name": "Zonguldak", "count": 5 },
+          { "name": "Şırnak", "count": 5 },
+          { "name": "Artvin", "count": 4 },
+          { "name": "Bilecik", "count": 4 },
+          { "name": "Bolu", "count": 4 },
+          { "name": "Elazığ", "count": 4 },
+          { "name": "Hatay", "count": 4 },
+          { "name": "Çorum", "count": 4 },
+          { "name": "Aksaray", "count": 3 },
+          { "name": "Ardahan", "count": 3 },
+          { "name": "Nevşehir", "count": 3 },
+          { "name": "Tunceli", "count": 3 },
+          { "name": "Yalova", "count": 3 },
+          { "name": "Bartın", "count": 2 },
+          { "name": "Gümüşhane", "count": 2 },
+          { "name": "Kars", "count": 2 },
+          { "name": "Kırşehir", "count": 2 },
+          { "name": "Osmaniye", "count": 2 },
+          { "name": "Rize", "count": 2 },
+          { "name": "Uşak", "count": 2 },
+          { "name": "Çankırı", "count": 2 },
+          { "name": "Adıyaman", "count": 1 },
+          { "name": "Bayburt", "count": 1 },
+          { "name": "Bitlis", "count": 1 },
+          { "name": "Burdur", "count": 1 },
+          { "name": "Girne KKTC", "count": 1 },
+          { "name": "Hakkâri", "count": 1 },
+          { "name": "Iğdır", "count": 1 },
+          { "name": "Kahramanmaraş", "count": 1 },
+          { "name": "Kilis", "count": 1 },
+          { "name": "Kıbrıs", "count": 1 },
+          { "name": "Kırıkkale", "count": 1 },
+          { "name": "Londra", "count": 1 },
+          { "name": "Mağusa", "count": 1 },
+          { "name": "Tokat", "count": 1 },
+          { "name": "Yozgat", "count": 1 },
+          { "name": "Çalışmıyorum", "count": 1 },
+          { "name": "Çalışmıyorum, henüz atanmadım", "count": 1 }
+        ],
+        "educationLevels": [],
+        "topSchools": [
+          { "name": "Devlete Bağlı Eğitim Kurumu", "val": 1884 },
+          { "name": "Özel Eğitim Kurumu", "val": 1096 },
+          { "name": "Üniversite", "val": 9 },
+          { "name": "Öğrenci", "val": 7 },
+          { "name": "Özel okul", "val": 6 }
+        ],
+        "topDepartments": [
+          { "name": "Psikolojik Danışma ve Rehberlik (Okul Psikologu, PDR Öğretmeni)", "val": 633 },
+          { "name": "Yabancı Dil Öğretmeni", "val": 428 },
+          { "name": "Sınıf Öğretmeni", "val": 398 },
+          { "name": "Matematik Öğretmeni", "val": 306 },
+          { "name": "Türk Dili ve Edebiyatı Öğretmeni", "val": 154 },
+          { "name": "Türkçe Öğretmeni", "val": 130 },
+          { "name": "Fen Bilimleri ve Teknolojileri Öğretmeni", "val": 126 },
+          { "name": "Coğrafya Öğretmeni", "val": 87 },
+          { "name": "Din Kültürü ve Ahlâk Bilgisi Öğretmeni", "val": 83 },
+          { "name": "Okul öncesi öğretmeni", "val": 73 }
+        ],
+        "sponsors": ["Yetkin Gençler"]
       }
     ]
   },
@@ -6584,9 +6731,38 @@ export default function App() {
     setSelectedProgram(null);
   }, [selectedYear]);
 
-  const totalParticipants = useMemo(() => normalizedYearlyData.reduce((acc, curr) => acc + curr.participants, 0), []);
-  const totalGraduates = useMemo(() => normalizedYearlyData.reduce((acc, curr) => acc + curr.graduates, 0), []);
-  const avgCompletionRate = useMemo(() => ((totalGraduates / totalParticipants) * 100).toFixed(1), [totalGraduates, totalParticipants]);
+  const totalParticipants = useMemo(
+    () => normalizedYearlyData.reduce((acc, curr) => acc + curr.participants, 0),
+    [normalizedYearlyData],
+  );
+  const totalGraduates = useMemo(
+    () => normalizedYearlyData.reduce((acc, curr) => acc + curr.graduates, 0),
+    [normalizedYearlyData],
+  );
+  const certificationParticipantBaseAllYears = useMemo(
+    () =>
+      normalizedYearlyData.reduce((acc, year) => {
+        if (year.programs?.length) {
+          return (
+            acc +
+            year.programs.reduce(
+              (programAcc, program) =>
+                programAcc + (program.certificationBased === false ? 0 : program.participants || 0),
+              0,
+            )
+          );
+        }
+        return acc + (year.participants || 0);
+      }, 0),
+    [normalizedYearlyData],
+  );
+  const avgCompletionRate = useMemo(
+    () =>
+      certificationParticipantBaseAllYears > 0
+        ? ((totalGraduates / certificationParticipantBaseAllYears) * 100).toFixed(1)
+        : '0.0',
+    [totalGraduates, certificationParticipantBaseAllYears],
+  );
 
   const allYearsData = useMemo(() => {
     const participants = normalizedYearlyData.reduce((acc, curr) => acc + curr.participants, 0);
@@ -6679,7 +6855,7 @@ export default function App() {
       topDepartments,
       sponsors: Array.from(new Set(normalizedYearlyData.flatMap(d => d.sponsors || [])))
     };
-  }, []);
+  }, [normalizedYearlyData, totalGraduates, totalParticipants]);
 
   const selectedYearData = useMemo(() => {
     if (selectedYear === 'all') return allYearsData;
@@ -6895,10 +7071,67 @@ export default function App() {
   const heroContent = getHeroContent(selectedYear, selectedYearData);
   const galatasarayReportUrl = '/partners/yetgen-galatasaray-2023-raporu.pdf';
   const isGalatasarayProgram = selectedProgram === 'yetgen-gs-2023';
+  const isBiSeminerProgram = selectedProgram === 'birlikte-iyilesiyoruz-2023';
+  const isIlkDersProgram = selectedProgram === 'ilk-ders-2023';
+  const ilkDersYoutubeUrl = 'https://www.youtube.com/watch?v=OMJ92D2QV2k';
+  const biSeminerPlaylistUrl =
+    'https://www.youtube.com/watch?v=wSFcriI0OLs&list=PL98DQy3xBiLc3DFtEFJFLdwvK4EhFlBaE&pp=sAgC';
+  const biSeminerSessions = [
+    { title: 'Duygu Regülasyonu ve Psikolojik Sağlamlık', slido: 1299, youtube: 479 },
+    { title: 'Kayıp ve Yas', slido: 443, youtube: 193 },
+    { title: 'Mindfulness ve Stres Egzersizi', slido: 334, youtube: 163 },
+    { title: 'Psikolojik İlk Yardım', slido: 167, youtube: 45 },
+    { title: 'İçimizdeki Çocuk', slido: 61, youtube: 37 },
+  ];
   const hasMeaningfulGenderData =
     ((selectedYearData?.gender?.female || 0) +
       (selectedYearData?.gender?.male || 0) +
       (selectedYearData?.gender?.other || 0)) > 0;
+  const genderFemale = selectedYearData?.gender?.female ?? 0;
+  const genderMale = selectedYearData?.gender?.male ?? 0;
+  const genderOther = selectedYearData?.gender?.other ?? 0;
+  const genderKnownTotal = genderFemale + genderMale + genderOther;
+  const genderPieSegments = [
+    { name: 'Kadın', value: genderFemale, color: '#ec4899' },
+    { name: 'Erkek', value: genderMale, color: '#3b82f6' },
+    ...(genderOther > 0 ? ([{ name: 'Diğer', value: genderOther, color: '#94a3b8' }] as const) : []),
+  ].filter((s) => s.value > 0);
+
+  const formatGenderPctLabel = (count: number): string => {
+    if (genderKnownTotal <= 0) return '—';
+    if (count <= 0) return '0%';
+    const p = Math.round((count / genderKnownTotal) * 100);
+    if (p === 0) return '<1%';
+    return `${p}%`;
+  };
+
+  const completionRateParticipantBase = useMemo(() => {
+    if (selectedProgram) {
+      const yearData = normalizedYearlyData.find((d) => d.year === selectedYear);
+      const currentProgram = yearData?.programs?.find((p) => p.id === selectedProgram);
+      if (!currentProgram) return selectedYearData?.participants || 0;
+      return currentProgram.certificationBased === false ? 0 : currentProgram.participants || 0;
+    }
+
+    if (selectedYear === 'all') {
+      return certificationParticipantBaseAllYears;
+    }
+
+    const yearData = normalizedYearlyData.find((d) => d.year === selectedYear);
+    if (yearData?.programs?.length) {
+      return yearData.programs.reduce(
+        (acc, program) => acc + (program.certificationBased === false ? 0 : program.participants || 0),
+        0,
+      );
+    }
+
+    return selectedYearData?.participants || 0;
+  }, [
+    selectedProgram,
+    selectedYear,
+    selectedYearData,
+    certificationParticipantBaseAllYears,
+  ]);
 
   return (
     <div className="min-h-screen bg-slate-50/50 text-slate-900 selection:bg-blue-100 relative">
@@ -6998,11 +7231,11 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 className="mb-10 flex flex-col items-center sm:items-start"
               >
-                <div className="flex items-center gap-2 p-1.5 md:p-2 bg-white/80 backdrop-blur-md rounded-full border border-slate-200 shadow-md shadow-slate-200/50 overflow-x-auto no-scrollbar max-w-full">
+                <div className="flex items-center gap-2 p-1.5 md:p-2 bg-white/80 backdrop-blur-md rounded-full border border-slate-200 shadow-md shadow-slate-200/50 overflow-x-auto no-scrollbar max-w-full mask-fade-edges">
                   <button
                     onClick={() => setSelectedProgram(null)}
                     className={cn(
-                      "px-6 md:px-8 py-3 md:py-3.5 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.15em] shrink-0",
+                      "px-5 md:px-7 py-2.5 md:py-3 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.15em] shrink-0",
                       selectedProgram === null
                         ? "bg-slate-900 text-white shadow-xl shadow-slate-300"
                         : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
@@ -7015,11 +7248,12 @@ export default function App() {
                       key={p.id}
                       onClick={() => setSelectedProgram(p.id)}
                       className={cn(
-                        "px-6 md:px-8 py-3 md:py-3.5 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.15em] shrink-0",
+                        "px-5 md:px-7 py-2.5 md:py-3 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.15em] shrink-0 whitespace-normal break-words leading-tight text-center",
                         selectedProgram === p.id
                           ? "bg-slate-900 text-white shadow-xl shadow-slate-300"
                           : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                       )}
+                      title={p.name}
                     >
                       {p.name}
                     </button>
@@ -7065,6 +7299,20 @@ export default function App() {
                     Raporu İncele (PDF)
                     <ArrowRight className="w-4 h-4" />
                   </motion.button>
+                )}
+                {selectedProgram === 'ilk-ders-2023' && (
+                  <motion.a
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    href={ilkDersYoutubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 rounded-xl border border-red-200 bg-white/90 px-4 py-2.5 text-sm font-bold text-red-700 shadow-sm hover:bg-red-50 hover:border-red-300 transition-colors"
+                  >
+                    YouTube Yayınını Aç
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.a>
                 )}
               </div>
               
@@ -7119,6 +7367,68 @@ export default function App() {
                     delay={0.4}
                   />
                 </>
+              ) : isBiSeminerProgram ? (
+                <>
+                  <StatCard
+                    title="Toplam Kayıt"
+                    value="4.000"
+                    subValue="Seminer serisine kayıt"
+                    icon={Users}
+                    delay={0.1}
+                  />
+                  <StatCard
+                    title="Toplam Katılım"
+                    value="1.778"
+                    subValue="Canlı/izleme toplam erişim"
+                    icon={TrendingUp}
+                    delay={0.2}
+                  />
+                  <StatCard
+                    title="Seminer Sayısı"
+                    value="5"
+                    subValue="Program boyunca oturum"
+                    icon={Presentation}
+                    delay={0.3}
+                  />
+                  <StatCard
+                    title="İzleme Kanalı"
+                    value="YouTube"
+                    subValue="Playlist üzerinden erişim"
+                    icon={Globe}
+                    delay={0.4}
+                  />
+                </>
+              ) : isIlkDersProgram ? (
+                <>
+                  <StatCard
+                    title="Toplam Kayıt"
+                    value={selectedYearData?.participants.toLocaleString('tr-TR') || '0'}
+                    subValue="Eğitimci katılımcı listesi"
+                    icon={Users}
+                    delay={0.1}
+                  />
+                  <StatCard
+                    title="Tarih"
+                    value="18 Şubat 2023"
+                    subValue="Cumartesi"
+                    icon={Target}
+                    delay={0.2}
+                  />
+                  <StatCard
+                    title="Saat"
+                    value="19.00–20.00"
+                    subValue="1 saat seminer"
+                    icon={Presentation}
+                    delay={0.3}
+                  />
+                  <StatCard
+                    title="Yayın"
+                    value="YouTube"
+                    subValue="Tekil video yayını"
+                    icon={Globe}
+                    delay={0.4}
+                  />
+                </>
               ) : (
                 <>
                   <StatCard
@@ -7139,7 +7449,7 @@ export default function App() {
                   />
                   <StatCard
                     title="Tamamlama Oranı"
-                    value={`%${selectedYearData?.participants ? ((selectedYearData.graduates / selectedYearData.participants) * 100).toFixed(1) : '0'}`}
+                    value={`%${completionRateParticipantBase > 0 ? ((selectedYearData.graduates / completionRateParticipantBase) * 100).toFixed(1) : '0'}`}
                     subValue="Program Verimliliği"
                     icon={ShieldCheck}
                     trend={selectedYear === 'all' ? { value: "%2.1", isPositive: true, label: "Artan Başarı" } : undefined}
@@ -7230,7 +7540,7 @@ export default function App() {
                       {/* 4 or 5 Interactive Charts Row */}
                       <div className={cn(
                         "grid gap-6 md:gap-8 mt-6 sm:mt-8",
-                        selectedProgram === 'doping-2024' 
+                        (selectedProgram === 'doping-2024' || isIlkDersProgram)
                           ? "grid-cols-1 lg:grid-cols-12 items-stretch" 
                           : cn("grid-cols-1 md:grid-cols-2", {
                               3: "xl:grid-cols-3",
@@ -7238,6 +7548,53 @@ export default function App() {
                               5: "xl:grid-cols-5"
                             }[computedGridCols] || "xl:grid-cols-4")
                       )}>
+                        {isBiSeminerProgram && (
+                          <div className="md:col-span-2 xl:col-span-4 relative bg-white/90 backdrop-blur-3xl border border-slate-200/80 shadow-[0_16px_45px_rgba(15,23,42,0.08)] rounded-[2rem] p-6 sm:p-8 md:p-10 overflow-hidden">
+                            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-violet-50/80 to-transparent pointer-events-none" />
+                            <div className="relative flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+                              <div>
+                                <p className="text-[10px] font-black text-violet-600 uppercase tracking-[0.2em] mb-2">Seminer Serisi</p>
+                                <h4 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Birlikte İyileşiyoruz Program Oturumları</h4>
+                              </div>
+                            </div>
+                            <div className="relative mb-5 rounded-2xl border border-slate-200 bg-gradient-to-r from-red-50/70 to-white p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+                              <img
+                                src="https://img.youtube.com/vi/wSFcriI0OLs/hqdefault.jpg"
+                                alt="Birlikte İyileşiyoruz YouTube Oynatma Listesi"
+                                className="w-full sm:w-44 h-24 object-cover rounded-xl border border-red-100"
+                              />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-[11px] font-black text-red-600 uppercase tracking-[0.16em] mb-1">YouTube Oynatma Listesi</p>
+                                <h5 className="text-sm sm:text-base font-black text-slate-900 leading-tight">
+                                  Birlikte İyileşiyoruz Seminer Kayıtları
+                                </h5>
+                              </div>
+                              <a
+                                href={biSeminerPlaylistUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 rounded-xl border border-red-200/80 bg-white px-4 py-2 text-xs sm:text-sm font-bold text-red-700 shadow-sm hover:bg-red-50 hover:border-red-300 transition-colors shrink-0"
+                              >
+                                Oynatma Listesini Aç
+                                <ArrowRight className="w-4 h-4" />
+                              </a>
+                            </div>
+                            <div className="relative grid grid-cols-1 md:grid-cols-5 gap-3 mb-4">
+                              {biSeminerSessions.map((session) => (
+                                <div key={session.title} className="group rounded-2xl border border-slate-200 bg-white p-4 hover:shadow-lg hover:shadow-slate-900/5 transition-all">
+                                  <p className="text-[13px] font-bold text-slate-800 leading-snug min-h-[42px]">{session.title}</p>
+                                  <div className="mt-3 pt-3 border-t border-slate-100 space-y-1.5">
+                                    <p className="text-xs text-slate-500 font-semibold">Slido: <span className="text-slate-900 font-black">{session.slido}</span></p>
+                                    <p className="text-xs text-slate-500 font-semibold">YouTube: <span className="text-slate-900 font-black">{session.youtube}</span></p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            <p className="text-xs text-slate-500 font-medium">
+                              Not: Slido ve YouTube değerleri seminerlerin canlı yayın anındaki katılım/izlenme sayılarını göstermektedir. Toplam kayıt 4.000, toplam katılım 1.778 olarak raporlanmıştır.
+                            </p>
+                          </div>
+                        )}
                         {/* Age Distribution Mini Chart */}
                         {selectedYearData?.hasAgeData !== false && (
                           <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full min-w-0 relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
@@ -7341,7 +7698,7 @@ export default function App() {
                         <div className={cn(selectedProgram === 'doping-2024' ? "lg:col-span-3 lg:order-3" : "contents")}>
                           {/* Gender Donut Chart */}
                           <div className={cn(
-                            "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-pink-100/40 transition-all"
+                            "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-x-clip overflow-y-visible hover:shadow-xl hover:shadow-pink-100/40 transition-all"
                           )}>
                             {/* Header */}
                             <div className="flex items-center gap-3 mb-4 sm:mb-6">
@@ -7354,73 +7711,86 @@ export default function App() {
                             </div>
                             
                             {/* Centered Chart Content */}
-                            <div className="flex-1 w-full flex flex-col items-center justify-center mt-4 mb-2">
+                            <div className="flex-1 w-full min-w-0 flex flex-col items-center justify-center mt-2 mb-2">
                               {/* Donut Chart */}
-                              <div className="h-[160px] w-[160px] sm:h-[180px] sm:w-[180px] relative shrink-0 mb-8">
+                              <div className="h-[152px] w-[152px] sm:h-[168px] sm:w-[168px] relative shrink-0 mb-5">
                                 <ResponsiveContainer width="100%" height="100%">
                                   <PieChart>
                                     <Pie
-                                      data={[
-                                        { name: 'Kadın', value: selectedYearData?.gender?.female || 0, color: '#ec4899' },
-                                        { name: 'Erkek', value: selectedYearData?.gender?.male || 0, color: '#3b82f6' },
-                                        ...(selectedYearData?.gender?.other ? [{ name: 'Diğer', value: selectedYearData.gender.other, color: '#94a3b8' }] : [])
-                                      ]}
+                                      data={genderPieSegments}
                                       cx="50%"
                                       cy="50%"
-                                      innerRadius={55}
-                                      outerRadius={75}
-                                      paddingAngle={5}
+                                      innerRadius={52}
+                                      outerRadius={72}
+                                      paddingAngle={4}
                                       dataKey="value"
                                       stroke="none"
                                     >
-                                      {
-                                        [
-                                          { name: 'Kadın', color: '#ec4899' },
-                                          { name: 'Erkek', color: '#3b82f6' },
-                                          { name: 'Diğer', color: '#94a3b8' }
-                                        ].map((entry, index) => (
-                                          <Cell key={`cell-${index}`} fill={entry.color} />
-                                        ))
-                                      }
+                                      {genderPieSegments.map((seg, index) => (
+                                        <Cell key={`gender-seg-${seg.name}-${index}`} fill={seg.color} />
+                                      ))}
                                     </Pie>
                                     <Tooltip cursor={false} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} itemStyle={{ fontSize: '12px', fontWeight: 'bold' }} />
                                   </PieChart>
                                 </ResponsiveContainer>
                               </div>
                               
-                              {/* Horizontal Legend Below Chart */}
-                              <div className="flex items-center justify-center gap-8 sm:gap-12 w-full px-2">
-                                <div className="flex flex-col items-center group" title={`${selectedYearData?.gender?.female || 0} Kişi`}>
-                                  <div className="flex items-center gap-1.5 mb-1.5">
-                                    <div className="w-3.5 h-3.5 rounded-full bg-pink-500 shadow-sm shadow-pink-200 group-hover:scale-125 transition-transform" />
-                                    <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Kadın</span>
+                              {/* Legend — grid keeps three columns readable on narrow widths */}
+                              <div
+                                className={cn(
+                                  'grid w-full max-w-full min-w-0 gap-x-3 gap-y-5 px-1',
+                                  genderOther > 0 ? 'grid-cols-3' : 'grid-cols-2 max-w-[16rem]',
+                                )}
+                              >
+                                <div
+                                  className="min-w-0 flex flex-col items-center text-center justify-start gap-y-2"
+                                  title={`${genderFemale.toLocaleString('tr-TR')} kişi`}
+                                >
+                                  <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-1 w-full px-0.5">
+                                    <span className="inline-block w-3 h-3 rounded-full bg-pink-500 shrink-0 mx-auto sm:mx-0" />
+                                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider truncate max-w-full">Kadın</span>
                                   </div>
-                                  <span className="text-3xl sm:text-4xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData?.gender?.female || 0) / (selectedYearData?.participants || 1) * 100)}</span>
+                                  <span className="text-xl sm:text-2xl font-black tabular-nums tracking-tight text-slate-900 leading-none whitespace-nowrap">
+                                    {formatGenderPctLabel(genderFemale)}
+                                  </span>
                                 </div>
-                                <div className="flex flex-col items-center group" title={`${selectedYearData?.gender?.male || 0} Kişi`}>
-                                  <div className="flex items-center gap-1.5 mb-1.5">
-                                    <div className="w-3.5 h-3.5 rounded-full bg-blue-500 shadow-sm shadow-blue-200 group-hover:scale-125 transition-transform" />
-                                    <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Erkek</span>
+                                <div
+                                  className="min-w-0 flex flex-col items-center text-center justify-start gap-y-2"
+                                  title={`${genderMale.toLocaleString('tr-TR')} kişi`}
+                                >
+                                  <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-1 w-full px-0.5">
+                                    <span className="inline-block w-3 h-3 rounded-full bg-blue-500 shrink-0 mx-auto sm:mx-0" />
+                                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider truncate max-w-full">Erkek</span>
                                   </div>
-                                  <span className="text-3xl sm:text-4xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData?.gender?.male || 0) / (selectedYearData?.participants || 1) * 100)}</span>
+                                  <span className="text-xl sm:text-2xl font-black tabular-nums tracking-tight text-slate-900 leading-none whitespace-nowrap">
+                                    {formatGenderPctLabel(genderMale)}
+                                  </span>
                                 </div>
-                                {(selectedYearData?.gender?.other && Math.round((selectedYearData.gender.other / selectedYearData.participants) * 100) > 0) ? (
-                                  <div className="flex flex-col items-center group" title={`${selectedYearData?.gender?.other || 0} Kişi`}>
-                                    <div className="flex items-center gap-1.5 mb-1.5">
-                                      <div className="w-3.5 h-3.5 rounded-full bg-slate-400 shadow-sm shadow-slate-200 group-hover:scale-125 transition-transform" />
-                                      <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Diğer</span>
+                                {genderOther > 0 ? (
+                                  <div
+                                    className="min-w-0 flex flex-col items-center text-center justify-start gap-y-2"
+                                    title={`${genderOther.toLocaleString('tr-TR')} kişi`}
+                                  >
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-1 w-full px-0.5">
+                                      <span className="inline-block w-3 h-3 rounded-full bg-slate-400 shrink-0 mx-auto sm:mx-0" />
+                                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider truncate max-w-full">Diğer</span>
                                     </div>
-                                    <span className="text-2xl sm:text-3xl font-black text-slate-900 leading-none">%{Math.round((selectedYearData.gender.other / selectedYearData.participants) * 100)}</span>
+                                    <span className="text-lg sm:text-xl font-black tabular-nums tracking-tight text-slate-900 leading-none whitespace-nowrap">
+                                      {formatGenderPctLabel(genderOther)}
+                                    </span>
                                   </div>
                                 ) : null}
                               </div>
+                              <p className="mt-5 text-[9px] sm:text-[10px] font-medium text-slate-400 text-center max-w-[18rem] leading-snug uppercase tracking-[0.12em]">
+                                Oranlar, cinsiyet bilgisinin bildirildiği kayıtlar üzerinden
+                              </p>
                             </div>
                           </div>
                         </div>
                         )}
                         
-                        {/* Map for doping-2024 inside Charts Row */}
-                        {selectedProgram === 'doping-2024' && hasCityData && (
+                        {/* Map for selected programs inside Charts Row */}
+                        {(selectedProgram === 'doping-2024' || isIlkDersProgram) && hasCityData && (
                           <div className="lg:col-span-6 lg:order-2 flex flex-col h-full bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start items-center group min-h-[400px]">
                             <div className="absolute inset-0 rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden pointer-events-none z-0">
                               <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 group-hover:opacity-80 transition-opacity duration-1000"></div>
@@ -7442,13 +7812,15 @@ export default function App() {
                               />
                             </div>
                             <div className="w-full px-6 sm:px-8 pb-6 z-20 relative mt-auto">
-                              <div className="flex items-start gap-2 bg-indigo-50/50 p-3 rounded-xl border border-indigo-100/50">
-                                <Info className="w-4 h-4 text-indigo-500 mt-0.5 shrink-0" />
-                                <p className="text-[10px] md:text-[11px] text-slate-600 leading-relaxed font-medium">
-                                  <span className="font-bold text-indigo-600 mr-1">Not:</span> 
-                                  Bu eğitim 2 dönem yapılmıştır. Haritada görünen şehir bilgileri yalnızca 1. döneme aittir.
-                                </p>
-                              </div>
+                              {selectedProgram === 'doping-2024' && (
+                                <div className="flex items-start gap-2 bg-indigo-50/50 p-3 rounded-xl border border-indigo-100/50">
+                                  <Info className="w-4 h-4 text-indigo-500 mt-0.5 shrink-0" />
+                                  <p className="text-[10px] md:text-[11px] text-slate-600 leading-relaxed font-medium">
+                                    <span className="font-bold text-indigo-600 mr-1">Not:</span> 
+                                    Bu eğitim 2 dönem yapılmıştır. Haritada görünen şehir bilgileri yalnızca 1. döneme aittir.
+                                  </p>
+                                </div>
+                              )}
                             </div>
                           </div>
                         )}
@@ -7478,7 +7850,10 @@ export default function App() {
                         
                         {/* Academic Profile Ranking - Schools */}
                         {selectedYear !== '2016-2020' && selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 && (
-                        <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
+                        <div className={cn(
+                          "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start",
+                          isIlkDersProgram ? "lg:col-span-3 lg:order-1" : ""
+                        )}>
                           <div>
                             <div className="flex items-center gap-3 mb-4">
                               <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
@@ -7516,7 +7891,10 @@ export default function App() {
 
                         {/* Academic Profile Ranking - Departments */}
                         {selectedYear !== '2016-2020' && selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0 && (
-                        <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
+                        <div className={cn(
+                          "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start",
+                          isIlkDersProgram ? "lg:col-span-3 lg:order-3" : ""
+                        )}>
                           <div>
                             <div className="flex items-center gap-3 mb-4">
                               <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
@@ -7564,7 +7942,7 @@ export default function App() {
                       </div>
 
                       {/* HUGE TURKEY MAP CONTAINER */}
-                      {selectedProgram !== 'doping-2024' && hasCityData && (
+                      {selectedProgram !== 'doping-2024' && !isIlkDersProgram && hasCityData && (
                         <div className="mt-8 mb-12 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[3rem] border flex flex-col relative hover:shadow-2xl hover:shadow-indigo-100/50 transition-all justify-center items-center w-full group min-h-[400px] sm:min-h-[500px]">
                           {/* Subtle Background Pattern */}
                           <div className="absolute inset-0 rounded-[2rem] lg:rounded-[3rem] overflow-hidden pointer-events-none z-0">
