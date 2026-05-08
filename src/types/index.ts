@@ -43,6 +43,10 @@ export interface IProgramData {
   topDepartments?: (string | IDepartment)[];
   topSchools?: ISchool[];
   sponsors?: string[];
+  /** Sekmede kısa `name` kullanılırken tam başlık için ipucu (title). */
+  longName?: string;
+  /** Kısa özet; rapor başlığının altındaki açık zeminli alan için. Görsel banner metni `description` ile verilir. */
+  summary?: string;
   description?: string;
   image?: string;
   certificationBased?: boolean;
@@ -64,6 +68,8 @@ export interface IYearlyData {
   topSchools?: ISchool[];
   topDepartments?: (string | IDepartment)[];
   sponsors?: string[];
+  /** Program seçildiğinde birleşik görünümde rapor özet metni (opsiyonel). */
+  summary?: string;
   programs?: IProgramData[];
   isProgram?: boolean;
   programName?: string;

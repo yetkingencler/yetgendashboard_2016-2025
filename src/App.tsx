@@ -43,6 +43,7 @@ import {
 } from 'recharts';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/src/lib/utils';
+import { RAPOR } from './lib/publicAssets';
 import { StatCard } from './components/StatCard';
 import { ChartContainer } from './components/ChartContainer';
 import { BackgroundEffects } from './components/BackgroundEffects';
@@ -51,6 +52,7 @@ import { FormModal } from './components/FormModal';
 import { YearlyJourney } from './components/YearlyJourney';
 import { Footer } from './components/Footer';
 import { getPlate } from './lib/cities';
+import { normalizeAgeBucket, rollupPrograms } from './lib/aggregatePrograms';
 import { IYearlyData, ICity, IProgramData, IDepartment } from './types';
 
 // --- Data Preparation ---
@@ -62,7 +64,15 @@ const yearlyData: IYearlyData[] = [
     "graduates": 674,
     "description": "İlk 5 yılın özeti. Pilot uygulamadan dijital dönüşüme uzanan, YetGen'in temelinin atıldığı ve hızla büyüdüğü kuruluş yılları.",
     "image": "/partners/ilkkk.png",
-    "hasAgeData": false,
+    "hasAgeData": true,
+    "ageData": [
+      { "age": "<18", "count": 73 },
+      { "age": "18-20", "count": 240 },
+      { "age": "21-23", "count": 256 },
+      { "age": "24-26", "count": 248 },
+      { "age": "27-29", "count": 135 },
+      { "age": "30+", "count": 210 }
+    ],
     "gender": {
       "female": 576,
       "male": 579,
@@ -139,7 +149,15 @@ const yearlyData: IYearlyData[] = [
     "graduates": 2686,
     "description": "Rekor katılım yılı! Dijital araçların kullanımıyla Türkiye genelinde 3 farklı programla binlerce gence ulaşıldı.",
     "image": "/partners/online.jpg",
-    "hasAgeData": false,
+    "hasAgeData": true,
+    "ageData": [
+      { "age": "<18", "count": 245 },
+      { "age": "18-20", "count": 806 },
+      { "age": "21-23", "count": 860 },
+      { "age": "24-26", "count": 834 },
+      { "age": "27-29", "count": 456 },
+      { "age": "30+", "count": 705 }
+    ],
     "gender": {
       "female": 2474,
       "male": 1169,
@@ -539,8 +557,15 @@ const yearlyData: IYearlyData[] = [
           "male": 1169,
           "other": 18
         },
-        "hasAgeData": false,
-        "ageData": [],
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 230 },
+          { "age": "18-20", "count": 755 },
+          { "age": "21-23", "count": 806 },
+          { "age": "24-26", "count": 782 },
+          { "age": "27-29", "count": 427 },
+          { "age": "30+", "count": 661 }
+        ],
         "cities": [
           {
             "name": "Adana",
@@ -927,8 +952,15 @@ const yearlyData: IYearlyData[] = [
           "male": 0,
           "other": 0
         },
-        "hasAgeData": false,
-        "ageData": [],
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 15 },
+          { "age": "18-20", "count": 51 },
+          { "age": "21-23", "count": 54 },
+          { "age": "24-26", "count": 52 },
+          { "age": "27-29", "count": 29 },
+          { "age": "30+", "count": 44 }
+        ],
         "cities": [
           {
             "name": "Adana",
@@ -2275,7 +2307,19 @@ const yearlyData: IYearlyData[] = [
             "count": 4
           }
         ],
-        "educationLevels": [],
+        "educationLevels": [
+          { "name": "Lisans", "count": 374 },
+          { "name": "Lisans Mezunu", "count": 346 },
+          { "name": "Lisansüstü Öğrencisi", "count": 128 },
+          { "name": "Lisansüstü Mezunu", "count": 119 },
+          { "name": "Doktora Öğrencisi", "count": 17 },
+          { "name": "Yüksek Lisans", "count": 8 },
+          { "name": "Doktora Mezunu", "count": 8 },
+          { "name": "Lisans (3. ve 4. sınıf)", "count": 4 },
+          { "name": "Lisansüstü", "count": 4 },
+          { "name": "Lise", "count": 4 },
+          { "name": "Ön Lisans", "count": 4 }
+        ],
         "topDepartments": [
           {
             "name": "Rehberlik ve Psikolojik Danışmanlık",
@@ -3465,10 +3509,25 @@ const yearlyData: IYearlyData[] = [
           "male": 53,
           "other": 0
         },
-        "hasAgeData": false,
-        "ageData": [],
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 9 },
+          { "age": "18-20", "count": 30 },
+          { "age": "21-23", "count": 32 },
+          { "age": "24-26", "count": 32 },
+          { "age": "27-29", "count": 17 },
+          { "age": "30+", "count": 27 }
+        ],
         "cities": [],
-        "educationLevels": [],
+        "educationLevels": [
+          { "name": "Lisans", "count": 108 },
+          { "name": "Lise", "count": 18 },
+          { "name": "Lise Mezunu", "count": 10 },
+          { "name": "Lisans Mezunu", "count": 6 },
+          { "name": "Ön Lisans", "count": 2 },
+          { "name": "Lisansüstü", "count": 2 },
+          { "name": "Diğer", "count": 1 }
+        ],
         "topSchools": [
           { "name": "Marmara Üniversitesi", "val": 10 },
           { "name": "İstanbul Üniversitesi", "val": 10 },
@@ -3499,15 +3558,27 @@ const yearlyData: IYearlyData[] = [
           "male": 0,
           "other": 0
         },
-        "hasAgeData": false,
-        "ageData": [],
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 0 },
+          { "age": "18-20", "count": 0 },
+          { "age": "21-23", "count": 1 },
+          { "age": "24-26", "count": 4 },
+          { "age": "27-29", "count": 4 },
+          { "age": "30+", "count": 22 }
+        ],
         "cities": [
           {
             "name": "İstanbul",
             "count": 31
           }
         ],
-        "educationLevels": [],
+        "educationLevels": [
+          { "name": "Lisans Mezunu", "count": 18 },
+          { "name": "Lisansüstü Mezunu", "count": 7 },
+          { "name": "Lisansüstü", "count": 5 },
+          { "name": "Doktora", "count": 1 }
+        ],
         "topSchools": [],
         "topDepartments": [],
         "sponsors": [
@@ -3527,10 +3598,25 @@ const yearlyData: IYearlyData[] = [
           "male": 0,
           "other": 0
         },
-        "hasAgeData": false,
-        "ageData": [],
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 251 },
+          { "age": "18-20", "count": 825 },
+          { "age": "21-23", "count": 881 },
+          { "age": "24-26", "count": 854 },
+          { "age": "27-29", "count": 467 },
+          { "age": "30+", "count": 722 }
+        ],
         "cities": [],
-        "educationLevels": [],
+        "educationLevels": [
+          { "name": "Lisans", "count": 2944 },
+          { "name": "Lise", "count": 475 },
+          { "name": "Lise Mezunu", "count": 275 },
+          { "name": "Lisans Mezunu", "count": 161 },
+          { "name": "Ön Lisans", "count": 63 },
+          { "name": "Lisansüstü", "count": 48 },
+          { "name": "Diğer", "count": 34 }
+        ],
         "topSchools": [],
         "topDepartments": [],
         "sponsors": [
@@ -3546,8 +3632,15 @@ const yearlyData: IYearlyData[] = [
         "description": "Kahramanmaraş merkezli depremler sonrası eğitimcilerin sınıf içi iletişimlerine destek olmak için planlanan “İlk Ders” semineri. Afet sonrası eğitimde psikolojik ilk yardım odağında, 18 Şubat 2023 Cumartesi 19.00-20.00 saatleri arasında gerçekleştirildi.",
         "image": "/partners/2023.jpg",
         "gender": { "female": 0, "male": 0, "other": 0 },
-        "hasAgeData": false,
-        "ageData": [],
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 0 },
+          { "age": "18-20", "count": 0 },
+          { "age": "21-23", "count": 77 },
+          { "age": "24-26", "count": 456 },
+          { "age": "27-29", "count": 404 },
+          { "age": "30+", "count": 2173 }
+        ],
         "cities": [
           { "name": "İstanbul", "count": 1480 },
           { "name": "İzmir", "count": 212 },
@@ -3637,7 +3730,16 @@ const yearlyData: IYearlyData[] = [
           { "name": "Çalışmıyorum", "count": 1 },
           { "name": "Çalışmıyorum, henüz atanmadım", "count": 1 }
         ],
-        "educationLevels": [],
+        "educationLevels": [
+          { "name": "Lisans Mezunu", "count": 1799 },
+          { "name": "Lisansüstü Mezunu", "count": 655 },
+          { "name": "Lisansüstü", "count": 488 },
+          { "name": "Doktora", "count": 60 },
+          { "name": "Lisans", "count": 48 },
+          { "name": "Doktora Mezunu", "count": 36 },
+          { "name": "Yüksek Lisans", "count": 18 },
+          { "name": "Ön Lisans", "count": 6 }
+        ],
         "topSchools": [
           { "name": "Devlete Bağlı Eğitim Kurumu", "val": 1884 },
           { "name": "Özel Eğitim Kurumu", "val": 1096 },
@@ -3663,11 +3765,19 @@ const yearlyData: IYearlyData[] = [
   },
   {
     "year": "2024",
-    "participants": 4036,
-    "graduates": 2214,
+    "participants": 4555,
+    "graduates": 2447,
     "description": "Yapay zeka ve yeni nesil teknolojiler müfredatın merkezine yerleştirildi.",
     "image": "/partners/2021.jpg",
-    "hasAgeData": false,
+    "hasAgeData": true,
+    "ageData": [
+      { "age": "<18", "count": 253 },
+      { "age": "18-20", "count": 833 },
+      { "age": "21-23", "count": 889 },
+      { "age": "24-26", "count": 861 },
+      { "age": "27-29", "count": 471 },
+      { "age": "30+", "count": 729 }
+    ],
     "gender": {
       "female": 3006,
       "male": 1012,
@@ -4067,8 +4177,15 @@ const yearlyData: IYearlyData[] = [
           "male": 486,
           "other": 4
         },
-        "hasAgeData": false,
-        "ageData": [],
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 121 },
+          { "age": "18-20", "count": 397 },
+          { "age": "21-23", "count": 424 },
+          { "age": "24-26", "count": 411 },
+          { "age": "27-29", "count": 225 },
+          { "age": "30+", "count": 348 }
+        ],
         "cities": [
           {
             "name": "Adana",
@@ -4417,6 +4534,40 @@ const yearlyData: IYearlyData[] = [
         ]
       },
       {
+        "id": "core-python-3-2024",
+        "name": "Core Python #3",
+        "longName": "YetGen Core Python Eğitim Programı #3 (2024)",
+        "participants": 88,
+        "graduates": 69,
+        "summary": "2024 Core Python #3: Flipped Learning ile Python programı; 398 başvuru, 88 katılımcı, 69 sertifika.",
+        "description": "17 Mayıs – 16 Ağustos 2024. Haftada iki gün senkron ders ve atölye; 398 başvurudan 88 katılımcı, 69 sertifika (%92 tamamlama).",
+        "gender": {
+          "female": 0,
+          "male": 0,
+          "other": 0
+        },
+        "hasAgeData": false,
+        "ageData": [],
+        "cities": [],
+        "educationLevels": [],
+        "topSchools": [
+          { "name": "Yıldız Teknik Üniversitesi", "val": 9 },
+          { "name": "Hacettepe Üniversitesi", "val": 5 },
+          { "name": "Atılım Üniversitesi", "val": 3 },
+          { "name": "İstanbul Üniversitesi", "val": 3 },
+          { "name": "Diğer", "val": 68 }
+        ],
+        "topDepartments": [
+          { "name": "Endüstri Mühendisliği", "val": 11 },
+          { "name": "Bilgisayar Mühendisliği", "val": 11 },
+          { "name": "Makine Mühendisliği", "val": 3 },
+          { "name": "Yönetim Bilişim Sistemleri", "val": 2 },
+          { "name": "İstatistik", "val": 2 },
+          { "name": "Diğer", "val": 59 }
+        ],
+        "sponsors": ["Yetkin Gençler"]
+      },
+      {
         "id": "o-24",
         "name": "Öğretmen Eğitimi 2024",
         "participants": 248,
@@ -4426,8 +4577,15 @@ const yearlyData: IYearlyData[] = [
           "male": 42,
           "other": 1
         },
-        "hasAgeData": false,
-        "ageData": [],
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 0 },
+          { "age": "18-20", "count": 0 },
+          { "age": "21-23", "count": 6 },
+          { "age": "24-26", "count": 37 },
+          { "age": "27-29", "count": 32 },
+          { "age": "30+", "count": 173 }
+        ],
         "cities": [
           {
             "name": "Adana",
@@ -4758,8 +4916,15 @@ const yearlyData: IYearlyData[] = [
           "male": 484,
           "other": 7
         },
-        "hasAgeData": false,
-        "ageData": [],
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 117 },
+          { "age": "18-20", "count": 384 },
+          { "age": "21-23", "count": 410 },
+          { "age": "24-26", "count": 398 },
+          { "age": "27-29", "count": 217 },
+          { "age": "30+", "count": 336 }
+        ],
         "cities": [
           {
             "name": "Adana",
@@ -5077,6 +5242,129 @@ const yearlyData: IYearlyData[] = [
           }
         ],
         "topDepartments": []
+      },
+      {
+        "id": "habitat-empower-me-2024",
+        "name": "Empower Me · Habitat 2024",
+        "image": "/partners/2021.jpg",
+        "participants": 29,
+        "graduates": 29,
+        "certificationBased": true,
+        "summary": "12–14 Aralık 2024 Empower Me Zirvesi kapsamındaki 21. yüzyıl yetkinlikleri eğitmen eğitimine ilişkin katılım ve değerlendirme özeti.",
+        "description": "Habitat Derneği ve Yetkin Gençler iş birliğinde üç gün süren yüz yüze program; 21. yüzyıl yetkinlik modülleri uygulamalı çalışmalar ve eğitmen sunumu pratiğiyle 29 kişilik grupta tamamlandı.",
+        "gender": {
+          "female": 0,
+          "male": 0,
+          "other": 0
+        },
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 0 },
+          { "age": "18-20", "count": 0 },
+          { "age": "21-23", "count": 1 },
+          { "age": "24-26", "count": 4 },
+          { "age": "27-29", "count": 4 },
+          { "age": "30+", "count": 20 }
+        ],
+        "cities": [
+          { "name": "İstanbul", "count": 29 }
+        ],
+        "educationLevels": [
+          { "name": "Eğitmen eğitimi katılımcısı (cohort)", "count": 29 }
+        ],
+        "topSchools": [],
+        "topDepartments": [],
+        "sponsors": ["Habitat Derneği", "Yetkin Gençler"]
+      },
+      {
+        "id": "isbank-finansal-okuryazarlik-2024",
+        "name": "İş Bankası · Finansal Okuryazarlık '24",
+        "longName": "YetGen & İş Bankası Finansal Okuryazarlık Eğitimi Programı 2024",
+        "image": "/partners/2021.jpg",
+        "participants": 402,
+        "graduates": 135,
+        "certificationBased": true,
+        "summary": "15–20 Kasım 2024 finansal okuryazarlık programına ilişkin başvuru, katılım ve sertifikasyon metriklerinin özeti.",
+        "description": "İki gün çevrimiçi eğitim ve İş Kuleleri saha gezisiyle üç günlük akış; bankacılık, finansal okuryazarlık ve yeni teknolojilerde 16 saat senkron oturum ile 32 kişilik saha gezisi içerdi.",
+        "gender": {
+          "female": 0,
+          "male": 0,
+          "other": 0
+        },
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 25 },
+          { "age": "18-20", "count": 83 },
+          { "age": "21-23", "count": 88 },
+          { "age": "24-26", "count": 86 },
+          { "age": "27-29", "count": 47 },
+          { "age": "30+", "count": 73 }
+        ],
+        "cities": [
+          { "name": "İstanbul", "count": 158 },
+          { "name": "Ankara", "count": 51 },
+          { "name": "İzmir", "count": 24 },
+          { "name": "Eskişehir", "count": 18 },
+          { "name": "Adana", "count": 15 },
+          { "name": "Kocaeli", "count": 15 },
+          { "name": "Bursa", "count": 11 },
+          { "name": "Diğer", "count": 7 },
+          { "name": "Kayseri", "count": 6 },
+          { "name": "Elazığ", "count": 5 },
+          { "name": "Isparta", "count": 5 },
+          { "name": "Edirne", "count": 5 },
+          { "name": "Bolu", "count": 5 },
+          { "name": "Gaziantep", "count": 5 },
+          { "name": "Konya", "count": 4 },
+          { "name": "Sakarya", "count": 4 },
+          { "name": "Antalya", "count": 4 },
+          { "name": "Yalova", "count": 4 },
+          { "name": "Belirtilmedi", "count": 4 },
+          { "name": "Aydın", "count": 3 },
+          { "name": "Nevşehir", "count": 3 },
+          { "name": "Manisa", "count": 3 },
+          { "name": "Burdur", "count": 3 },
+          { "name": "Trabzon", "count": 3 },
+          { "name": "Sivas", "count": 3 },
+          { "name": "Çanakkale", "count": 2 },
+          { "name": "Iğdır", "count": 2 },
+          { "name": "Kastamonu", "count": 2 },
+          { "name": "Samsun", "count": 2 },
+          { "name": "Mersin", "count": 2 },
+          { "name": "Bitlis", "count": 2 },
+          { "name": "Balıkesir", "count": 2 },
+          { "name": "Afyonkarahisar", "count": 2 },
+          { "name": "Malatya", "count": 2 },
+          { "name": "Diyarbakır", "count": 2 },
+          { "name": "Kırklareli", "count": 2 },
+          { "name": "Kırıkkale", "count": 2 },
+          { "name": "Denizli", "count": 1 },
+          { "name": "Karabük", "count": 1 },
+          { "name": "Düzce", "count": 1 },
+          { "name": "Muş", "count": 1 },
+          { "name": "Amasya", "count": 1 },
+          { "name": "Aksaray", "count": 1 },
+          { "name": "Erzurum", "count": 1 },
+          { "name": "Rize", "count": 1 },
+          { "name": "Giresun", "count": 1 },
+          { "name": "Hatay", "count": 1 }
+        ],
+        "educationLevels": [
+          { "name": "Lisans", "count": 255 },
+          { "name": "Üniversite Mezunu (Lisans)", "count": 72 },
+          { "name": "Lise", "count": 23 },
+          { "name": "Lise Mezunu", "count": 17 },
+          { "name": "Yüksek Lisans Öğrencisi", "count": 12 },
+          { "name": "Yüksek Lisans Mezunu", "count": 9 },
+          { "name": "Ön Lisans Öğrencisi", "count": 5 },
+          { "name": "Belirtilmedi", "count": 4 },
+          { "name": "Açık Öğretim Öğrencisi", "count": 2 },
+          { "name": "Ön Lisans Mezunu", "count": 2 },
+          { "name": "Doktora Öğrencisi", "count": 1 }
+        ],
+        "topSchools": [],
+        "topDepartments": [],
+        "sponsors": ["İş Bankası", "Yetkin Gençler"]
       }
     ]
   },
@@ -5424,7 +5712,15 @@ const yearlyData: IYearlyData[] = [
         "count": 6
       }
     ],
-    "educationLevels": [],
+    "educationLevels": [
+      { "name": "Lisans", "count": 1442 },
+      { "name": "Lise", "count": 523 },
+      { "name": "Lise Mezunu", "count": 313 },
+      { "name": "Lisans Mezunu", "count": 111 },
+      { "name": "Lisansüstü", "count": 67 },
+      { "name": "Ön Lisans", "count": 41 },
+      { "name": "Diğer", "count": 8 }
+    ],
     "topDepartments": [
       {
         "name": "Bilgisayar Mühendisliği",
@@ -5780,7 +6076,15 @@ const yearlyData: IYearlyData[] = [
             "count": 6
           }
         ],
-        "educationLevels": [],
+        "educationLevels": [
+          { "name": "Lisans", "count": 1176 },
+          { "name": "Lise", "count": 426 },
+          { "name": "Lise Mezunu", "count": 255 },
+          { "name": "Lisans Mezunu", "count": 90 },
+          { "name": "Lisansüstü", "count": 55 },
+          { "name": "Ön Lisans", "count": 33 },
+          { "name": "Diğer", "count": 6 }
+        ],
         "topDepartments": [
           {
             "name": "Bilgisayar Mühendisliği",
@@ -6087,7 +6391,19 @@ const yearlyData: IYearlyData[] = [
             "count": 1
           }
         ],
-        "educationLevels": [],
+        "educationLevels": [
+          { "name": "Lisans", "count": 171 },
+          { "name": "Lisans Mezunu", "count": 158 },
+          { "name": "Lisansüstü Öğrencisi", "count": 58 },
+          { "name": "Lisansüstü Mezunu", "count": 54 },
+          { "name": "Doktora Öğrencisi", "count": 7 },
+          { "name": "Yüksek Lisans", "count": 4 },
+          { "name": "Doktora Mezunu", "count": 4 },
+          { "name": "Lisans (3. ve 4. sınıf)", "count": 2 },
+          { "name": "Lisansüstü", "count": 2 },
+          { "name": "Lise", "count": 2 },
+          { "name": "Ön Lisans", "count": 2 }
+        ],
         "topDepartments": [
           {
             "name": "Sınıf Öğretmenliği",
@@ -6502,6 +6818,329 @@ const yearlyData: IYearlyData[] = [
           }
         ],
         "topDepartments": []
+      },
+      {
+        "id": "iyi-niyet-2025",
+        "name": "İyi Niyet Programı 2025",
+        "participants": 360,
+        "graduates": 0,
+        "certificationBased": false,
+        "summary": "Bu rapor; İyi Niyet Programı 2025 kapsamındaki katılım yapısını, coğrafi dağılımı ve öğrenim profillerini ölçülebilir göstergelerle derler. Amaç, programın kapsamını ve üniversite gençliği üzerindeki öğrenme etkisini şeffaf, denetlenebilir bir çerçevede sunmaktır.",
+        "description": "İyi Niyet Programı, farklı disiplinlerden üniversite öğrencilerini ortak bir öğrenme kültüründe buluşturur; akademik derinliği uygulamalı modüllerle, bireysel gelişimi ekip içi üretim pratiğiyle bir araya getirir. Katılımcılar; iş birliği, iletişim ve 21. yüzyıl yetkinliklerini güçlendirirken sosyal etki odağında sürdürülebilir çıktılar üretmeye yönlendirilir.",
+        "image": "/partners/2025.jpg",
+        "gender": {
+          "female": 0,
+          "male": 0,
+          "other": 0
+        },
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 23 },
+          { "age": "18-20", "count": 74 },
+          { "age": "21-23", "count": 79 },
+          { "age": "24-26", "count": 77 },
+          { "age": "27-29", "count": 42 },
+          { "age": "30+", "count": 65 }
+        ],
+        "cities":         [
+          {
+            "name": "İstanbul",
+            "count": 119
+          },
+          {
+            "name": "Ankara",
+            "count": 37
+          },
+          {
+            "name": "Diyarbakır",
+            "count": 21
+          },
+          {
+            "name": "İzmir",
+            "count": 18
+          },
+          {
+            "name": "Batman",
+            "count": 12
+          },
+          {
+            "name": "Van",
+            "count": 11
+          },
+          {
+            "name": "Eskişehir",
+            "count": 9
+          },
+          {
+            "name": "Bursa",
+            "count": 8
+          },
+          {
+            "name": "Trabzon",
+            "count": 8
+          },
+          {
+            "name": "Antalya",
+            "count": 7
+          },
+          {
+            "name": "Denizli",
+            "count": 7
+          },
+          {
+            "name": "Erzurum",
+            "count": 7
+          },
+          {
+            "name": "Sakarya",
+            "count": 7
+          },
+          {
+            "name": "Kocaeli",
+            "count": 5
+          },
+          {
+            "name": "Mersin",
+            "count": 5
+          },
+          {
+            "name": "Şanlıurfa",
+            "count": 5
+          },
+          {
+            "name": "Adıyaman",
+            "count": 4
+          },
+          {
+            "name": "Balıkesir",
+            "count": 4
+          },
+          {
+            "name": "Siirt",
+            "count": 4
+          },
+          {
+            "name": "Zonguldak",
+            "count": 4
+          },
+          {
+            "name": "Aksaray",
+            "count": 3
+          },
+          {
+            "name": "Aydın",
+            "count": 3
+          },
+          {
+            "name": "Elazığ",
+            "count": 3
+          },
+          {
+            "name": "Konya",
+            "count": 3
+          },
+          {
+            "name": "Kütahya",
+            "count": 3
+          },
+          {
+            "name": "Malatya",
+            "count": 3
+          },
+          {
+            "name": "Mardin",
+            "count": 3
+          },
+          {
+            "name": "Sivas",
+            "count": 3
+          },
+          {
+            "name": "Adana",
+            "count": 2
+          },
+          {
+            "name": "Bilecik",
+            "count": 2
+          },
+          {
+            "name": "Düzce",
+            "count": 2
+          },
+          {
+            "name": "Erzincan",
+            "count": 2
+          },
+          {
+            "name": "Hatay",
+            "count": 2
+          },
+          {
+            "name": "Kayseri",
+            "count": 2
+          },
+          {
+            "name": "Manisa",
+            "count": 2
+          },
+          {
+            "name": "Nevşehir",
+            "count": 2
+          },
+          {
+            "name": "Tunceli",
+            "count": 2
+          },
+          {
+            "name": "Uşak",
+            "count": 2
+          },
+          {
+            "name": "Yalova",
+            "count": 2
+          },
+          {
+            "name": "Yozgat",
+            "count": 2
+          },
+          {
+            "name": "Edirne",
+            "count": 1
+          },
+          {
+            "name": "Gaziantep",
+            "count": 1
+          },
+          {
+            "name": "Giresun",
+            "count": 1
+          },
+          {
+            "name": "Isparta",
+            "count": 1
+          },
+          {
+            "name": "Karabük",
+            "count": 1
+          },
+          {
+            "name": "Kars",
+            "count": 1
+          },
+          {
+            "name": "Kırıkkale",
+            "count": 1
+          },
+          {
+            "name": "Niğde",
+            "count": 1
+          },
+          {
+            "name": "Osmaniye",
+            "count": 1
+          },
+          {
+            "name": "Çanakkale",
+            "count": 1
+          }
+        ],
+        "educationLevels": [
+          {
+            "name": "4. Sınıf",
+            "count": 87
+          },
+          {
+            "name": "2. Sınıf",
+            "count": 86
+          },
+          {
+            "name": "3. Sınıf",
+            "count": 81
+          },
+          {
+            "name": "1. Sınıf",
+            "count": 60
+          },
+          {
+            "name": "5. Sınıf",
+            "count": 20
+          },
+          {
+            "name": "6. Sınıf",
+            "count": 12
+          },
+          {
+            "name": "Hazırlık",
+            "count": 10
+          },
+          {
+            "name": "Belirtilmedi",
+            "count": 4
+          }
+        ],
+        "topSchools": [
+          {
+            "name": "İstanbul Teknik Üniversitesi",
+            "val": 22
+          },
+          {
+            "name": "Dicle Üniversitesi",
+            "val": 21
+          },
+          {
+            "name": "İstanbul Üniversitesi - Cerrahpaşa",
+            "val": 16
+          },
+          {
+            "name": "Yıldız Teknik Üniversitesi",
+            "val": 14
+          },
+          {
+            "name": "Marmara Üniversitesi",
+            "val": 12
+          },
+          {
+            "name": "Batman Üniversitesi",
+            "val": 12
+          },
+          {
+            "name": "Diğer",
+            "val": 263
+          }
+        ],
+        "topDepartments": [
+          {
+            "name": "Tıp Fakültesi",
+            "val": 141
+          },
+          {
+            "name": "Diş Hekimliği",
+            "val": 25
+          },
+          {
+            "name": "Bilgisayar Mühendisliği",
+            "val": 22
+          },
+          {
+            "name": "Hemşirelik",
+            "val": 20
+          },
+          {
+            "name": "Hukuk",
+            "val": 14
+          },
+          {
+            "name": "Uçak Mühendisliği",
+            "val": 7
+          },
+          {
+            "name": "Diğer",
+            "val": 122
+          }
+        ],
+        "sponsors": [
+          "Yetkin Gençler"
+        ]
       }
     ]
   }
@@ -6644,8 +7283,9 @@ const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData 
     content.title1 = selectedProgramData.programName;
     content.title2 = ' Raporu';
     content.subtitle = '';
-    if (selectedProgramData.description) {
-      content.text = selectedProgramData.description;
+    const lead = selectedProgramData.summary || selectedProgramData.description;
+    if (lead) {
+      content.text = lead;
     }
   }
 
@@ -6655,65 +7295,19 @@ const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData 
 const normalizedYearlyData: IYearlyData[] = yearlyData.map(year => {
   if (!year.programs || year.programs.length === 0) return year;
 
-  let p = 0, g = 0;
-  let f = 0, m = 0, o = 0;
-  const eduCount: Record<string, number> = {};
-  const cityCount: Record<string, number> = {};
-  const ageCount: Record<string, number> = {};
-  const deptCount: Record<string, number> = {};
-  let hasAge = false;
+  const roll = rollupPrograms(year.programs);
 
-  year.programs.forEach(prog => {
-    p += prog.participants || 0;
-    g += prog.graduates || 0;
-    if (prog.gender) {
-      f += prog.gender.female || 0;
-      m += prog.gender.male || 0;
-      o += prog.gender.other || 0;
-    }
-    if (prog.educationLevels) {
-      prog.educationLevels.forEach(e => { eduCount[e.name] = (eduCount[e.name] || 0) + e.count; });
-    }
-    if (prog.cities) {
-      prog.cities.forEach(c => { cityCount[c.name] = (cityCount[c.name] || 0) + c.count; });
-    }
-    if (prog.ageData && prog.ageData.length > 0) {
-      hasAge = true;
-      prog.ageData.forEach(a => {
-        let bucket = a.age;
-        if (!bucket.includes('-') && !bucket.includes('<') && !bucket.includes('+')) {
-          const ageNum = parseInt(bucket, 10);
-          if (!isNaN(ageNum)) {
-            if (ageNum < 18) bucket = '<18';
-            else if (ageNum <= 20) bucket = '18-20';
-            else if (ageNum <= 23) bucket = '21-23';
-            else if (ageNum <= 26) bucket = '24-26';
-            else if (ageNum <= 29) bucket = '27-29';
-            else bucket = '30+';
-          }
-        }
-        ageCount[bucket] = (ageCount[bucket] || 0) + a.count;
-      });
-    }
-    if (prog.topDepartments) {
-      prog.topDepartments.forEach(d => {
-        if (typeof d === 'string') deptCount[d] = (deptCount[d] || 0) + 1;
-        else if (d && typeof d === 'object' && d.name) deptCount[d.name] = (deptCount[d.name] || 0) + (d.val || 1);
-      });
-    }
-  });
-
-  if (p >= year.participants) {
+  if (roll.participants >= year.participants) {
     return {
       ...year,
-      participants: p,
-      graduates: g,
-      gender: { female: f, male: m, other: o },
-      educationLevels: Object.entries(eduCount).map(([name, count]) => ({name, count})).sort((a,b) => b.count - a.count),
-      cities: Object.entries(cityCount).map(([name, count]) => ({name, count})).sort((a,b) => b.count - a.count),
-      hasAgeData: hasAge,
-      ageData: Object.entries(ageCount).map(([age, count]) => ({age, count})).sort((a,b) => b.count - a.count),
-      topDepartments: Object.entries(deptCount).map(([name, val]) => ({name, val})).sort((a,b) => b.val - a.val)
+      participants: roll.participants,
+      graduates: roll.graduates,
+      gender: { female: roll.female, male: roll.male, other: roll.other },
+      educationLevels: Object.entries(roll.eduCount).map(([name, count]) => ({name, count})).sort((a,b) => b.count - a.count),
+      cities: Object.entries(roll.cityCount).map(([name, count]) => ({name, count})).sort((a,b) => b.count - a.count),
+      hasAgeData: roll.hasAgeData,
+      ageData: Object.entries(roll.ageCount).map(([age, count]) => ({age, count})).sort((a,b) => b.count - a.count),
+      topDepartments: Object.entries(roll.deptCount).map(([name, val]) => ({name, val})).sort((a,b) => b.val - a.val)
     };
   }
   return year;
@@ -6725,11 +7319,24 @@ export default function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = React.useState(false);
   const [isReportModalOpen, setIsReportModalOpen] = React.useState(false);
+  const programTimelineRef = React.useRef<HTMLDivElement>(null);
 
   // Reset program when year changes
   React.useEffect(() => {
     setSelectedProgram(null);
   }, [selectedYear]);
+
+  // Aktif eğitim sekmesi kaydırma alanında kalsın (son öğeler sağda kaybolmasın)
+  React.useEffect(() => {
+    if (selectedYear === 'all') return;
+    const container = programTimelineRef.current;
+    if (!container) return;
+    const frame = requestAnimationFrame(() => {
+      const active = container.querySelector<HTMLElement>('button[data-timeline-active="true"]');
+      active?.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [selectedProgram, selectedYear]);
 
   const totalParticipants = useMemo(
     () => normalizedYearlyData.reduce((acc, curr) => acc + curr.participants, 0),
@@ -6775,44 +7382,77 @@ export default function App() {
     const cityCount: Record<string, number> = {};
     let hasAgeData = false;
 
-    normalizedYearlyData.forEach(d => {
-      // Departments
-      (d.topDepartments || []).forEach(dept => {
-        if (typeof dept === 'string') {
-          deptCount[dept] = (deptCount[dept] || 0) + 1;
-        } else if (dept && typeof dept === 'object' && dept.name) {
-          deptCount[dept.name] = (deptCount[dept.name] || 0) + (dept.val || 1);
-        }
-      });
+    normalizedYearlyData.forEach((d) => {
+      const roll = d.programs?.length ? rollupPrograms(d.programs) : null;
 
-      // Cities
-      if (d.cities) {
-        d.cities.forEach(city => {
-          if (typeof city === 'object' && city.name && city.count) {
+      const mergeDepartments = (src: typeof d.topDepartments) => {
+        (src || []).forEach((dept) => {
+          if (typeof dept === 'string') {
+            deptCount[dept] = (deptCount[dept] || 0) + 1;
+          } else if (dept && typeof dept === 'object' && dept.name) {
+            deptCount[dept.name] = (deptCount[dept.name] || 0) + (dept.val || 1);
+          }
+        });
+      };
+
+      const mergeCities = (src: typeof d.cities) => {
+        (src || []).forEach((city) => {
+          if (typeof city === 'object' && city?.name && city.count != null) {
             cityCount[city.name] = (cityCount[city.name] || 0) + city.count;
           }
         });
-      }
+      };
 
-      // Gender
-      if (d.gender) {
-        female += d.gender.female || 0;
-        male += d.gender.male || 0;
-        other += d.gender.other || 0;
-      }
-
-      // Education
-      if (d.educationLevels) {
-        d.educationLevels.forEach(edu => {
-          eduCount[edu.name] = (eduCount[edu.name] || 0) + edu.count;
+      mergeDepartments(d.topDepartments);
+      if (!d.topDepartments?.length && roll && Object.keys(roll.deptCount).length > 0) {
+        Object.entries(roll.deptCount).forEach(([name, val]) => {
+          deptCount[name] = (deptCount[name] || 0) + val;
         });
       }
 
-      // Age
+      mergeCities(d.cities);
+      const yearHasCityCounts = d.cities?.some((c) => typeof c === 'object' && c?.name && c.count != null);
+      if (!yearHasCityCounts && roll && Object.keys(roll.cityCount).length > 0) {
+        Object.entries(roll.cityCount).forEach(([name, count]) => {
+          cityCount[name] = (cityCount[name] || 0) + count;
+        });
+      }
+
+      const gYear =
+        (d.gender?.female || 0) + (d.gender?.male || 0) + (d.gender?.other || 0);
+      const gRoll = roll ? roll.female + roll.male + roll.other : 0;
+      if (gYear > 0) {
+        female += d.gender!.female || 0;
+        male += d.gender!.male || 0;
+        other += d.gender!.other || 0;
+      } else if (gRoll > 0) {
+        female += roll!.female;
+        male += roll!.male;
+        other += roll!.other;
+      }
+
+      if (d.educationLevels?.length) {
+        d.educationLevels.forEach((edu) => {
+          eduCount[edu.name] = (eduCount[edu.name] || 0) + edu.count;
+        });
+      } else if (roll && Object.keys(roll.eduCount).length > 0) {
+        Object.entries(roll.eduCount).forEach(([name, count]) => {
+          eduCount[name] = (eduCount[name] || 0) + count;
+        });
+      }
+
       if (d.ageData && d.ageData.length > 0) {
         hasAgeData = true;
-        d.ageData.forEach(a => {
-          ageCount[a.age] = (ageCount[a.age] || 0) + a.count;
+        d.ageData.forEach((a) => {
+          const raw = a.age;
+          if (raw == null || String(raw).trim() === '') return;
+          const bucket = normalizeAgeBucket(String(raw));
+          ageCount[bucket] = (ageCount[bucket] || 0) + a.count;
+        });
+      } else if (roll?.hasAgeData && Object.keys(roll.ageCount).length > 0) {
+        hasAgeData = true;
+        Object.entries(roll.ageCount).forEach(([age, count]) => {
+          ageCount[age] = (ageCount[age] || 0) + count;
         });
       }
     });
@@ -6853,9 +7493,16 @@ export default function App() {
       cities: cities.length > 0 ? cities : [{ name: '81 İl + KKTC', count: null }],
       educationLevels,
       topDepartments,
-      sponsors: Array.from(new Set(normalizedYearlyData.flatMap(d => d.sponsors || [])))
+      sponsors: Array.from(
+        new Set(
+          normalizedYearlyData.flatMap(d => [
+            ...(d.sponsors || []),
+            ...(d.programs?.flatMap(p => p.sponsors || []) ?? []),
+          ]),
+        ),
+      )
     };
-  }, [normalizedYearlyData, totalGraduates, totalParticipants]);
+  }, [normalizedYearlyData]);
 
   const selectedYearData = useMemo(() => {
     if (selectedYear === 'all') return allYearsData;
@@ -6888,6 +7535,8 @@ export default function App() {
       if (sponsor === 'Mehmet Zorlu Vakfı') return '/partners/mzv-logo.png';
       if (sponsor === 'MEF Üniversitesi') return '/partners/mefunii_transparent.png';
       if (normalizedSponsor.includes('doping')) return '/partners/doping.png';
+      if (normalizedSponsor.includes('habitat')) return '/partners/habitat-dernegi.svg';
+      if (normalizedSponsor.includes('iş bank') || normalizedSponsor.includes('is bank')) return '/partners/isb.png';
       if (normalizedSponsor === 'softtech' || normalizedSponsor === 'softech') return '/partners/softech.png';
       return `/partners/${normalizedSponsor.replace(/ /g, '-')}.png`;
     };
@@ -7003,10 +7652,59 @@ export default function App() {
     };
   }, [selectedYear, selectedYearData]);
 
-  const hasAgeData = selectedYearData?.hasAgeData !== false;
   const hasEduData = !!(selectedYearData?.educationLevels && selectedYearData.educationLevels.length > 0);
   const hasCityData = !!(selectedYearData?.cities && selectedYearData.cities.length > 0);
-  const hasDeptData = !!((selectedYearData?.topSchools && selectedYearData.topSchools.length > 0) || (selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0));
+  const hasMeaningfulGenderData =
+    ((selectedYearData?.gender?.female || 0) +
+      (selectedYearData?.gender?.male || 0) +
+      (selectedYearData?.gender?.other || 0)) > 0;
+
+  const isGalatasarayProgram = selectedProgram === 'yetgen-gs-2023';
+  const isBiSeminerProgram = selectedProgram === 'birlikte-iyilesiyoruz-2023';
+  const isIlkDersProgram = selectedProgram === 'ilk-ders-2023';
+  const isIyiNiyetProgram = selectedProgram === 'iyi-niyet-2025';
+  const isHabitatEmpowerProgram = selectedProgram === 'habitat-empower-me-2024';
+  const isIsbankFinans2024 = selectedProgram === 'isbank-finansal-okuryazarlik-2024';
+  const isCorePython3_2024 = selectedProgram === 'core-python-3-2024';
+  const isDoping2024Program = selectedProgram === 'doping-2024';
+  const usesWideMapProgramLayout = isIyiNiyetProgram || isHabitatEmpowerProgram || isIsbankFinans2024;
+  const usesTwelveColMapRow =
+    isIyiNiyetProgram ||
+    isHabitatEmpowerProgram ||
+    isIsbankFinans2024;
+
+  const showAgeChart =
+    selectedProgram === 'doping-2025' ||
+    (selectedYearData?.hasAgeData !== false && (selectedYearData?.ageData?.length ?? 0) > 0);
+  const showGenderCard = hasMeaningfulGenderData && !isGalatasarayProgram;
+  const showAcademicSchools =
+    selectedYear !== '2016-2020' &&
+    !isIyiNiyetProgram &&
+    !isHabitatEmpowerProgram &&
+    !isIsbankFinans2024 &&
+    !!(selectedYearData?.topSchools && selectedYearData.topSchools.length > 0);
+  const showAcademicDepts =
+    selectedYear !== '2016-2020' &&
+    !isIyiNiyetProgram &&
+    !isHabitatEmpowerProgram &&
+    !isIsbankFinans2024 &&
+    !!(selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0);
+
+  const standardChartCellCount =
+    (showAgeChart ? 1 : 0) +
+    (hasEduData ? 1 : 0) +
+    (showGenderCard ? 1 : 0) +
+    (showAcademicSchools ? 1 : 0) +
+    (showAcademicDepts ? 1 : 0);
+  const computedGridCols = Math.min(Math.max(standardChartCellCount, 1), 5);
+  const standardGridColsClass =
+    (['xl:grid-cols-1', 'xl:grid-cols-2', 'xl:grid-cols-3', 'xl:grid-cols-4', 'xl:grid-cols-5'] as const)[
+      computedGridCols - 1
+    ] ?? 'xl:grid-cols-4';
+
+  /** Stack age + education in one lg:col-span-3 on map rows. Skip İyi Niyet (üçlü sütun). İlk Ders ayrı üst grid + altta harita düzeninde. */
+  const mapRowLeftStack =
+    usesWideMapProgramLayout && !isIyiNiyetProgram && (showAgeChart || hasEduData);
 
   const mapData = useMemo(() => {
     const colorData: Record<string, string> = {};
@@ -7064,15 +7762,9 @@ export default function App() {
 
     return { colorData, tooltipData, legendData };
   }, [selectedYearData]);
-  const totalRawCards = [hasAgeData, hasEduData, true, hasDeptData].filter(Boolean).length;
-  // Top cards grid size is based on remaining cards (up to 4)
-  const computedGridCols = totalRawCards || 1;
 
   const heroContent = getHeroContent(selectedYear, selectedYearData);
-  const galatasarayReportUrl = '/partners/yetgen-galatasaray-2023-raporu.pdf';
-  const isGalatasarayProgram = selectedProgram === 'yetgen-gs-2023';
-  const isBiSeminerProgram = selectedProgram === 'birlikte-iyilesiyoruz-2023';
-  const isIlkDersProgram = selectedProgram === 'ilk-ders-2023';
+  const galatasarayReportUrl = RAPOR.galatasaray2023;
   const ilkDersYoutubeUrl = 'https://www.youtube.com/watch?v=OMJ92D2QV2k';
   const biSeminerPlaylistUrl =
     'https://www.youtube.com/watch?v=wSFcriI0OLs&list=PL98DQy3xBiLc3DFtEFJFLdwvK4EhFlBaE&pp=sAgC';
@@ -7083,10 +7775,6 @@ export default function App() {
     { title: 'Psikolojik İlk Yardım', slido: 167, youtube: 45 },
     { title: 'İçimizdeki Çocuk', slido: 61, youtube: 37 },
   ];
-  const hasMeaningfulGenderData =
-    ((selectedYearData?.gender?.female || 0) +
-      (selectedYearData?.gender?.male || 0) +
-      (selectedYearData?.gender?.other || 0)) > 0;
   const genderFemale = selectedYearData?.gender?.female ?? 0;
   const genderMale = selectedYearData?.gender?.male ?? 0;
   const genderOther = selectedYearData?.gender?.other ?? 0;
@@ -7231,11 +7919,16 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 className="mb-10 flex flex-col items-center sm:items-start"
               >
-                <div className="flex items-center gap-2 p-1.5 md:p-2 bg-white/80 backdrop-blur-md rounded-full border border-slate-200 shadow-md shadow-slate-200/50 overflow-x-auto no-scrollbar max-w-full mask-fade-edges">
+                <div
+                  ref={programTimelineRef}
+                  className="flex items-center gap-1 p-1 md:p-1.5 bg-white/80 backdrop-blur-md rounded-full border border-slate-200 shadow-md shadow-slate-200/50 overflow-x-auto no-scrollbar max-w-full mask-fade-edges scroll-px-2"
+                >
                   <button
+                    type="button"
+                    data-timeline-active={selectedProgram === null ? 'true' : undefined}
                     onClick={() => setSelectedProgram(null)}
                     className={cn(
-                      "px-5 md:px-7 py-2.5 md:py-3 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.15em] shrink-0",
+                      "px-3 md:px-4 py-2 md:py-2.5 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.08em] shrink-0",
                       selectedProgram === null
                         ? "bg-slate-900 text-white shadow-xl shadow-slate-300"
                         : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
@@ -7245,15 +7938,17 @@ export default function App() {
                   </button>
                   {normalizedYearlyData.find(d => d.year === selectedYear)?.programs?.map(p => (
                     <button
+                      type="button"
                       key={p.id}
+                      data-timeline-active={selectedProgram === p.id ? 'true' : undefined}
                       onClick={() => setSelectedProgram(p.id)}
                       className={cn(
-                        "px-5 md:px-7 py-2.5 md:py-3 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.15em] shrink-0 whitespace-normal break-words leading-tight text-center",
+                        "px-3 md:px-4 py-2 md:py-2.5 rounded-full text-[10px] md:text-[11px] font-black transition-all uppercase tracking-[0.08em] shrink-0 whitespace-normal break-words leading-tight text-center",
                         selectedProgram === p.id
                           ? "bg-slate-900 text-white shadow-xl shadow-slate-300"
                           : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                       )}
-                      title={p.name}
+                      title={p.longName || p.name}
                     >
                       {p.name}
                     </button>
@@ -7313,6 +8008,59 @@ export default function App() {
                     YouTube Yayınını Aç
                     <ArrowRight className="w-4 h-4" />
                   </motion.a>
+                )}
+                {isHabitatEmpowerProgram && (
+                  <motion.a
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    href={RAPOR.habitat}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 rounded-xl border border-teal-200 bg-white/90 px-4 py-2.5 text-sm font-bold text-teal-800 shadow-sm hover:bg-teal-50 hover:border-teal-300 transition-colors"
+                  >
+                    Değerlendirme Raporu (PDF)
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.a>
+                )}
+                {isIsbankFinans2024 && (
+                  <motion.a
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    href={RAPOR.isbankFinansalOkuryazarlik2024}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 rounded-xl border border-sky-200 bg-white/90 px-4 py-2.5 text-sm font-bold text-sky-900 shadow-sm hover:bg-sky-50 hover:border-sky-300 transition-colors"
+                  >
+                    Program Raporu (PDF)
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.a>
+                )}
+                {isCorePython3_2024 && (
+                  <motion.a
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    href={RAPOR.corePython3_2024}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 rounded-xl border border-violet-200 bg-white/90 px-4 py-2.5 text-sm font-bold text-violet-900 shadow-sm hover:bg-violet-50 hover:border-violet-300 transition-colors"
+                  >
+                    Değerlendirme Raporu (PDF)
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.a>
+                )}
+                {isIyiNiyetProgram && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="mt-5 inline-flex items-center gap-2 rounded-xl border border-emerald-200 bg-white/90 px-4 py-2.5 text-sm font-bold text-emerald-700 shadow-sm"
+                  >
+                    <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Eğitim Hala Devam Ediyor
+                  </motion.div>
                 )}
               </div>
               
@@ -7429,6 +8177,99 @@ export default function App() {
                     delay={0.4}
                   />
                 </>
+              ) : isHabitatEmpowerProgram ? (
+                <>
+                  <StatCard
+                    title="Eğitmen Eğitimi"
+                    value={selectedYearData?.participants.toLocaleString('tr-TR') || '29'}
+                    subValue="21. yy yetkinlik modülleri (PDF)"
+                    icon={Users}
+                    delay={0.1}
+                  />
+                  <StatCard
+                    title="Program Süresi"
+                    value="3 Gün"
+                    subValue="12–14 Aralık 2024, yüz yüze"
+                    icon={Target}
+                    delay={0.2}
+                  />
+                  <StatCard
+                    title="İçerik Derinliği"
+                    value="13 Modül"
+                    subValue="İlk gün 7 + sonraki günler 6 başlık"
+                    icon={Presentation}
+                    delay={0.3}
+                  />
+                  <StatCard
+                    title="Anket Memnuniyeti"
+                    value="4,57 / 5"
+                    subValue="Gün 2: 4,27 · Gün 3: 4,86 (anonim)"
+                    icon={TrendingUp}
+                    delay={0.4}
+                  />
+                </>
+              ) : isIsbankFinans2024 ? (
+                <>
+                  <StatCard
+                    title="Toplam Başvuru"
+                    value="447"
+                    subValue="PDF program özeti (analiz: 449)"
+                    icon={Users}
+                    delay={0.1}
+                  />
+                  <StatCard
+                    title="Program Katılımı"
+                    value={selectedYearData?.participants.toLocaleString('tr-TR') || '402'}
+                    subValue="Olumlu sonuç ile programa alınan"
+                    icon={Target}
+                    delay={0.2}
+                  />
+                  <StatCard
+                    title="Süreci Tamamlayan"
+                    value="260"
+                    subValue="Program sonuna kadar devam eden"
+                    icon={Presentation}
+                    delay={0.3}
+                  />
+                  <StatCard
+                    title="Sertifika Kazanan"
+                    value="135"
+                    subValue="Başarıyla tamamlayıp hak kazanan"
+                    icon={ShieldCheck}
+                    delay={0.4}
+                  />
+                </>
+              ) : isIyiNiyetProgram ? (
+                <>
+                  <StatCard
+                    title="Toplam Katılımcı"
+                    value={selectedYearData?.participants.toLocaleString('tr-TR') || '0'}
+                    subValue="CSV katılımcı listesi"
+                    icon={Users}
+                    delay={0.1}
+                  />
+                  <StatCard
+                    title="Program Durumu"
+                    value="Devam Ediyor"
+                    subValue="2025 döneminde aktif"
+                    icon={TrendingUp}
+                    delay={0.2}
+                  />
+                  <StatCard
+                    title="Sertifika Süreci"
+                    value="Devam Ediyor"
+                    subValue="Sertifikasyon değerlendirmesi sürüyor"
+                    icon={ShieldCheck}
+                    delay={0.3}
+                  />
+                  <StatCard
+                    title="Program Odağı"
+                    value="Üniversite Ağı"
+                    subValue="Okul, bölüm ve sınıf profili"
+                    icon={Globe}
+                    delay={0.4}
+                  />
+                </>
               ) : (
                 <>
                   <StatCard
@@ -7539,14 +8380,15 @@ export default function App() {
 
                       {/* 4 or 5 Interactive Charts Row */}
                       <div className={cn(
-                        "grid gap-6 md:gap-8 mt-6 sm:mt-8",
-                        (selectedProgram === 'doping-2024' || isIlkDersProgram)
-                          ? "grid-cols-1 lg:grid-cols-12 items-stretch" 
-                          : cn("grid-cols-1 md:grid-cols-2", {
-                              3: "xl:grid-cols-3",
-                              4: "xl:grid-cols-4",
-                              5: "xl:grid-cols-5"
-                            }[computedGridCols] || "xl:grid-cols-4")
+                        "mt-6 sm:mt-8 gap-6 md:gap-8",
+                        isDoping2024Program || isIlkDersProgram
+                          ? "flex flex-col"
+                          : cn(
+                              "grid",
+                              usesTwelveColMapRow
+                                ? "grid-cols-1 lg:grid-cols-12 items-stretch"
+                                : cn("grid-cols-1 md:grid-cols-2", standardGridColsClass),
+                            ),
                       )}>
                         {isBiSeminerProgram && (
                           <div className="md:col-span-2 xl:col-span-4 relative bg-white/90 backdrop-blur-3xl border border-slate-200/80 shadow-[0_16px_45px_rgba(15,23,42,0.08)] rounded-[2rem] p-6 sm:p-8 md:p-10 overflow-hidden">
@@ -7595,9 +8437,406 @@ export default function App() {
                             </p>
                           </div>
                         )}
-                        {/* Age Distribution Mini Chart */}
-                        {selectedYearData?.hasAgeData !== false && (
-                          <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full min-w-0 relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+
+                        {/* Doping 2024: eğitim + yaş + cinsiyet üst satırda yan yana; harita altta tam genişlikte */}
+                        {isDoping2024Program && (
+                          <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full items-stretch">
+                            {hasEduData && (
+                              <div className="flex-1 min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                                <div>
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
+                                      <GraduationCap className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Eğitim Durumu</p>
+                                    </div>
+                                  </div>
+                                  <div className="space-y-4 mt-2">
+                                    {selectedYearData.educationLevels.filter(ed => Math.round((ed.count / selectedYearData.participants) * 100) > 0).map((ed, i) => (
+                                      <div key={ed.name} className="flex flex-col gap-1.5" title={`${ed.count} Kişi`}>
+                                        <div className="flex justify-between items-center text-xs">
+                                          <span className="font-bold text-slate-700">{ed.name}</span>
+                                          <span className="font-black text-indigo-600">%{Math.round((ed.count / selectedYearData.participants) * 100)}</span>
+                                        </div>
+                                        <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                          <motion.div
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${(ed.count / selectedYearData.participants) * 100}%` }}
+                                            transition={{ duration: 1, delay: i * 0.1 }}
+                                            className="h-full bg-indigo-500 rounded-full"
+                                          />
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                  <div className="mt-6 flex items-start gap-2 bg-indigo-50/50 p-3 rounded-xl border border-indigo-100/50">
+                                    <Info className="w-4 h-4 text-indigo-500 mt-0.5 shrink-0" />
+                                    <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
+                                      <span className="font-bold text-indigo-600 mr-1">Not:</span>
+                                      Bu eğitim 2 dönem yapılmıştır. Eğitim durumu bilgileri yalnızca 1. döneme aittir.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            {showAgeChart && (
+                              <div className="flex-1 min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                                <div>
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
+                                      <Users className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Yaş Aralığı</div>
+                                    </div>
+                                  </div>
+                                  <div className="h-[220px] w-full mt-4 min-h-[200px]">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                      {(() => {
+                                        const ageData = selectedYearData?.ageData ?? [];
+                                        return (
+                                          <BarChart layout="vertical" data={ageData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                                            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#E2E8F0" opacity={0.5} />
+                                            <XAxis type="number" hide />
+                                            <YAxis dataKey="age" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b', fontWeight: 700 }} width={52} interval={0} />
+                                            <Tooltip cursor={{ fill: '#F1F5F9' }} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
+                                            <Bar dataKey="count" fill="#6366f1" radius={[0, 4, 4, 0]} barSize={16}>
+                                              <LabelList dataKey="count" position="right" style={{ fill: '#64748b', fontSize: 10, fontWeight: 800 }} />
+                                            </Bar>
+                                          </BarChart>
+                                        );
+                                      })()}
+                                    </ResponsiveContainer>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            {showGenderCard && (
+                              <div className="flex-1 min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-x-clip overflow-y-visible hover:shadow-xl hover:shadow-pink-100/40 transition-all justify-between">
+                                <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                                  <div className="w-8 h-8 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center shrink-0">
+                                    <Sparkles className="w-4 h-4" />
+                                  </div>
+                                  <div>
+                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Cinsiyet Dengesi</p>
+                                  </div>
+                                </div>
+                                <div className="flex-1 w-full min-w-0 flex flex-col items-center justify-center mt-2 mb-2">
+                                  <div className="h-[152px] w-[152px] sm:h-[168px] sm:w-[168px] relative shrink-0 mb-5">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                      <PieChart>
+                                        <Pie
+                                          data={genderPieSegments}
+                                          cx="50%"
+                                          cy="50%"
+                                          innerRadius={52}
+                                          outerRadius={72}
+                                          paddingAngle={4}
+                                          dataKey="value"
+                                          stroke="none"
+                                        >
+                                          {genderPieSegments.map((seg, index) => (
+                                            <Cell key={`gender-doping-seg-${seg.name}-${index}`} fill={seg.color} />
+                                          ))}
+                                        </Pie>
+                                        <Tooltip cursor={false} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} itemStyle={{ fontSize: '12px', fontWeight: 'bold' }} />
+                                      </PieChart>
+                                    </ResponsiveContainer>
+                                  </div>
+                                  <div
+                                    className={cn(
+                                      'grid w-full max-w-full min-w-0 gap-x-3 gap-y-5 px-1',
+                                      genderOther > 0 ? 'grid-cols-3' : 'grid-cols-2 max-w-[16rem]',
+                                    )}
+                                  >
+                                    <div
+                                      className="min-w-0 flex flex-col items-center text-center justify-start gap-y-2"
+                                      title={`${genderFemale.toLocaleString('tr-TR')} kişi`}
+                                    >
+                                      <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-1 w-full px-0.5">
+                                        <span className="inline-block w-3 h-3 rounded-full bg-pink-500 shrink-0 mx-auto sm:mx-0" />
+                                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider truncate max-w-full">Kadın</span>
+                                      </div>
+                                      <span className="text-xl sm:text-2xl font-black tabular-nums tracking-tight text-slate-900 leading-none whitespace-nowrap">
+                                        {formatGenderPctLabel(genderFemale)}
+                                      </span>
+                                    </div>
+                                    <div
+                                      className="min-w-0 flex flex-col items-center text-center justify-start gap-y-2"
+                                      title={`${genderMale.toLocaleString('tr-TR')} kişi`}
+                                    >
+                                      <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-1 w-full px-0.5">
+                                        <span className="inline-block w-3 h-3 rounded-full bg-blue-500 shrink-0 mx-auto sm:mx-0" />
+                                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider truncate max-w-full">Erkek</span>
+                                      </div>
+                                      <span className="text-xl sm:text-2xl font-black tabular-nums tracking-tight text-slate-900 leading-none whitespace-nowrap">
+                                        {formatGenderPctLabel(genderMale)}
+                                      </span>
+                                    </div>
+                                    {genderOther > 0 ? (
+                                      <div
+                                        className="min-w-0 flex flex-col items-center text-center justify-start gap-y-2"
+                                        title={`${genderOther.toLocaleString('tr-TR')} kişi`}
+                                      >
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-1 w-full px-0.5">
+                                          <span className="inline-block w-3 h-3 rounded-full bg-slate-400 shrink-0 mx-auto sm:mx-0" />
+                                          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider truncate max-w-full">Diğer</span>
+                                        </div>
+                                        <span className="text-lg sm:text-xl font-black tabular-nums tracking-tight text-slate-900 leading-none whitespace-nowrap">
+                                          {formatGenderPctLabel(genderOther)}
+                                        </span>
+                                      </div>
+                                    ) : null}
+                                  </div>
+                                  <p className="mt-5 text-[9px] sm:text-[10px] font-medium text-slate-400 text-center max-w-[18rem] leading-snug uppercase tracking-[0.12em]">
+                                    Oranlar, cinsiyet bilgisinin bildirildiği kayıtlar üzerinden
+                                  </p>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {/* İlk Ders 2023: yaş, eğitim, branş/kurum, branş özet üstte yan yana; harita altta tam genişlik */}
+                        {isIlkDersProgram && (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8 w-full items-stretch">
+                            {showAgeChart && (
+                              <div className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                                <div>
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
+                                      <Users className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Yaş Aralığı</div>
+                                    </div>
+                                  </div>
+                                  <div className="h-[220px] w-full mt-4 min-h-[200px]">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                      {(() => {
+                                        const ageData = selectedYearData?.ageData ?? [];
+                                        return (
+                                          <BarChart layout="vertical" data={ageData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                                            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#E2E8F0" opacity={0.5} />
+                                            <XAxis type="number" hide />
+                                            <YAxis dataKey="age" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b', fontWeight: 700 }} width={48} interval={0} />
+                                            <Tooltip cursor={{ fill: '#F1F5F9' }} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
+                                            <Bar dataKey="count" fill="#6366f1" radius={[0, 4, 4, 0]} barSize={16}>
+                                              <LabelList dataKey="count" position="right" style={{ fill: '#64748b', fontSize: 10, fontWeight: 800 }} />
+                                            </Bar>
+                                          </BarChart>
+                                        );
+                                      })()}
+                                    </ResponsiveContainer>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            {hasEduData && (
+                              <div className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                                <div>
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
+                                      <GraduationCap className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Eğitim Durumu</p>
+                                    </div>
+                                  </div>
+                                  <div className="space-y-4 mt-2">
+                                    {selectedYearData.educationLevels.filter(ed => Math.round((ed.count / selectedYearData.participants) * 100) > 0).map((ed, i) => (
+                                      <div key={ed.name} className="flex flex-col gap-1.5" title={`${ed.count} Kişi`}>
+                                        <div className="flex justify-between items-center text-xs gap-2">
+                                          <span className="font-bold text-slate-700 min-w-0 break-words">{ed.name}</span>
+                                          <span className="font-black text-indigo-600 shrink-0">%{Math.round((ed.count / selectedYearData.participants) * 100)}</span>
+                                        </div>
+                                        <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                          <motion.div
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${(ed.count / selectedYearData.participants) * 100}%` }}
+                                            transition={{ duration: 1, delay: i * 0.1 }}
+                                            className="h-full bg-indigo-500 rounded-full"
+                                          />
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            {selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 && (
+                              <div className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
+                                <div>
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
+                                      <Globe className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Branş</p>
+                                      <p className="text-xs font-bold text-slate-900 leading-tight">En Aktif Okullar</p>
+                                    </div>
+                                  </div>
+                                  <div className="space-y-3.5 mt-2">
+                                    {selectedYearData.topSchools.slice(0, 5).map((school, i) => (
+                                      <div key={school.name} className="flex items-center gap-3 group">
+                                        <span className="text-[10px] font-black text-slate-400 w-3 shrink-0">{i + 1}.</span>
+                                        <div className="flex-1 min-w-0">
+                                          <div className="flex justify-between items-start text-xs mb-1.5 gap-2">
+                                            <span className="font-bold text-slate-700 group-hover:text-blue-600 transition-colors break-words" style={{ lineHeight: '1.2' }}>{school.name}</span>
+                                            <span className="text-[10px] whitespace-nowrap pt-0.5 font-black text-slate-900 shrink-0">{school.val} Kişi</span>
+                                          </div>
+                                          <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                            <motion.div
+                                              initial={{ width: 0 }}
+                                              whileInView={{ width: `${(school.val / selectedYearData.topSchools[0].val) * 100}%` }}
+                                              transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
+                                              className="h-full rounded-full bg-blue-500"
+                                            />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            {selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0 && (
+                              <div className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
+                                <div>
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
+                                      <GraduationCap className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Branş</p>
+                                      <p className="text-xs font-bold text-slate-900 leading-tight">En Aktif Bölümler</p>
+                                    </div>
+                                  </div>
+                                  <div className="space-y-3.5 mt-2">
+                                    {selectedYearData.topDepartments.slice(0, 5).map((dept, i) => {
+                                      const deptName = typeof dept === 'string' ? dept : dept.name;
+                                      const deptVal = typeof dept === 'string' ? null : dept.val;
+                                      const maxVal = typeof selectedYearData.topDepartments[0] === 'string' ? 100 : selectedYearData.topDepartments[0].val;
+                                      const widthVal = deptVal === null ? `${100 - (i * 15)}%` : `${(deptVal / maxVal) * 100}%`;
+                                      return (
+                                        <div key={deptName} className="flex items-center gap-3 group">
+                                          <span className="text-[10px] font-black text-slate-400 w-3 shrink-0">{i + 1}.</span>
+                                          <div className="flex-1 min-w-0">
+                                            <div className="flex justify-between items-start text-xs mb-1.5 gap-2">
+                                              <span className="font-bold text-slate-700 group-hover:text-blue-600 transition-colors break-words" style={{ lineHeight: '1.2' }}>{deptName}</span>
+                                              {deptVal !== null && (
+                                                <span className="text-[10px] whitespace-nowrap pt-0.5 font-black text-slate-900 shrink-0">{deptVal} Kişi</span>
+                                              )}
+                                            </div>
+                                            <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                              <motion.div
+                                                initial={{ width: 0 }}
+                                                whileInView={{ width: widthVal }}
+                                                transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
+                                                className="h-full rounded-full bg-blue-500"
+                                              />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Age + education: one left column on 12-col map rows so a narrow "icon strip" never appears */}
+                        {!isDoping2024Program && !isIlkDersProgram && mapRowLeftStack && (
+                          <div className="lg:col-span-3 lg:order-1 flex flex-col gap-6 min-w-0">
+                            {showAgeChart && (
+                              <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full min-w-0 relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                                <div>
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
+                                      <Users className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Yaş Aralığı</div>
+                                    </div>
+                                  </div>
+                                  <div className="h-[220px] w-full mt-4">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                      {(() => {
+                                        const ageData =
+                                          selectedProgram === 'doping-2025'
+                                            ? [
+                                                { age: '10-12 Yaş', count: 140 },
+                                                { age: '13 Yaş', count: 117 },
+                                                { age: '14 Yaş', count: 190 },
+                                                { age: '15 Yaş', count: 101 },
+                                                { age: '16-17 Yaş', count: 67 },
+                                                { age: '18+ Yaş', count: 35 },
+                                              ]
+                                            : (selectedYearData?.ageData ?? []);
+
+                                        return (
+                                          <BarChart layout="vertical" data={ageData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                                            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#E2E8F0" opacity={0.5} />
+                                            <XAxis type="number" hide />
+                                            <YAxis dataKey="age" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b', fontWeight: 700 }} width={45} interval={0} />
+                                            <Tooltip cursor={{ fill: '#F1F5F9' }} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
+                                            <Bar dataKey="count" fill="#6366f1" radius={[0, 4, 4, 0]} barSize={16}>
+                                              <LabelList dataKey="count" position="right" style={{ fill: '#64748b', fontSize: 10, fontWeight: 800 }} />
+                                            </Bar>
+                                          </BarChart>
+                                        );
+                                      })()}
+                                    </ResponsiveContainer>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            {hasEduData && (
+                              <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                                <div>
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
+                                      <GraduationCap className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Eğitim Durumu</p>
+                                    </div>
+                                  </div>
+                                  <div className="space-y-4 mt-2">
+                                    {selectedYearData.educationLevels.filter(ed => Math.round((ed.count / selectedYearData.participants) * 100) > 0).map((ed, i) => (
+                                      <div key={ed.name} className="flex flex-col gap-1.5" title={`${ed.count} Kişi`}>
+                                        <div className="flex justify-between items-center text-xs">
+                                          <span className="font-bold text-slate-700">{ed.name}</span>
+                                          <span className="font-black text-indigo-600">%{Math.round((ed.count / selectedYearData.participants) * 100)}</span>
+                                        </div>
+                                        <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                          <motion.div
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${(ed.count / selectedYearData.participants) * 100}%` }}
+                                            transition={{ duration: 1, delay: i * 0.1 }}
+                                            className="h-full bg-indigo-500 rounded-full"
+                                          />
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Age Distribution Mini Chart (standard grid rows) */}
+                        {!isDoping2024Program && !isIlkDersProgram && !mapRowLeftStack && showAgeChart && (
+                          <div
+                            className={cn(
+                              'bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full min-w-0 relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start',
+                              isIyiNiyetProgram && usesTwelveColMapRow ? 'lg:col-span-3 lg:order-1' : '',
+                            )}
+                          >
                             <div>
                               <div className="flex items-center gap-3 mb-4">
                                 <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
@@ -7610,24 +8849,18 @@ export default function App() {
                               <div className="h-[220px] w-full mt-4">
                                 <ResponsiveContainer width="100%" height="100%">
                                   {(() => {
-                                    let ageData = Math.max((selectedYearData?.ageData?.length || 0), 0) > 0 ? selectedYearData?.ageData : [
-                                      { age: '15-18', count: 12 },
-                                      { age: '18-22', count: 48 },
-                                      { age: '23-26', count: 28 },
-                                      { age: '26+', count: 12 },
-                                    ];
-                                    
-                                    if (selectedProgram === 'doping-2025') {
-                                      ageData = [
-                                        { age: '10-12 Yaş', count: 140 },
-                                        { age: '13 Yaş', count: 117 },
-                                        { age: '14 Yaş', count: 190 },
-                                        { age: '15 Yaş', count: 101 },
-                                        { age: '16-17 Yaş', count: 67 },
-                                        { age: '18+ Yaş', count: 35 }
-                                      ];
-                                    }
-                                    
+                                    const ageData =
+                                      selectedProgram === 'doping-2025'
+                                        ? [
+                                            { age: '10-12 Yaş', count: 140 },
+                                            { age: '13 Yaş', count: 117 },
+                                            { age: '14 Yaş', count: 190 },
+                                            { age: '15 Yaş', count: 101 },
+                                            { age: '16-17 Yaş', count: 67 },
+                                            { age: '18+ Yaş', count: 35 },
+                                          ]
+                                        : (selectedYearData?.ageData ?? []);
+
                                     return (
                                       <BarChart layout="vertical" data={ageData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                                         <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#E2E8F0" opacity={0.5} />
@@ -7647,10 +8880,14 @@ export default function App() {
                         )}
 
                         {/* Education Level */}
-                        {selectedYearData?.educationLevels && selectedYearData.educationLevels.length > 0 && (
+                        {!isDoping2024Program && !isIlkDersProgram && !mapRowLeftStack && selectedYearData?.educationLevels && selectedYearData.educationLevels.length > 0 && (
                           <div className={cn(
                             "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start",
-                            selectedProgram === 'doping-2024' ? "lg:col-span-3 lg:order-1" : ""
+                            isIyiNiyetProgram && usesTwelveColMapRow
+                              ? "lg:col-span-3 lg:order-3"
+                              : usesWideMapProgramLayout
+                                ? "lg:col-span-3 lg:order-1"
+                                : ""
                           )}>
                             <div>
                               <div className="flex items-center gap-3 mb-4">
@@ -7679,23 +8916,19 @@ export default function App() {
                                   </div>
                                 ))}
                               </div>
-                              
-                              {selectedProgram === 'doping-2024' && (
-                                <div className="mt-6 flex items-start gap-2 bg-indigo-50/50 p-3 rounded-xl border border-indigo-100/50">
-                                  <Info className="w-4 h-4 text-indigo-500 mt-0.5 shrink-0" />
-                                  <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
-                                    <span className="font-bold text-indigo-600 mr-1">Not:</span> 
-                                    Bu eğitim 2 dönem yapılmıştır. Eğitim durumu bilgileri yalnızca 1. döneme aittir.
-                                  </p>
-                                </div>
-                              )}
                             </div>
                           </div>
                         )}
 
                         {/* Gender Unstacked Contents */}
-                        {hasMeaningfulGenderData && !isGalatasarayProgram && (
-                        <div className={cn(selectedProgram === 'doping-2024' ? "lg:col-span-3 lg:order-3" : "contents")}>
+                        {showGenderCard && !isDoping2024Program && (
+                        <div className={cn(
+                          isIyiNiyetProgram && usesTwelveColMapRow
+                            ? "lg:col-span-12 lg:order-4"
+                            : usesWideMapProgramLayout
+                              ? "lg:col-span-12 lg:order-3"
+                              : "contents"
+                        )}>
                           {/* Gender Donut Chart */}
                           <div className={cn(
                             "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-x-clip overflow-y-visible hover:shadow-xl hover:shadow-pink-100/40 transition-all"
@@ -7790,8 +9023,15 @@ export default function App() {
                         )}
                         
                         {/* Map for selected programs inside Charts Row */}
-                        {(selectedProgram === 'doping-2024' || isIlkDersProgram) && hasCityData && (
-                          <div className="lg:col-span-6 lg:order-2 flex flex-col h-full bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start items-center group min-h-[400px]">
+                        {usesTwelveColMapRow && hasCityData && (
+                          <div className={cn(
+                            "flex flex-col h-full bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start items-center group min-h-[400px]",
+                            isIyiNiyetProgram
+                              ? "lg:col-span-6 lg:order-2"
+                              : usesWideMapProgramLayout
+                                ? "lg:col-span-9 lg:order-2"
+                                : "lg:col-span-6 lg:order-2"
+                          )}>
                             <div className="absolute inset-0 rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden pointer-events-none z-0">
                               <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 group-hover:opacity-80 transition-opacity duration-1000"></div>
                             </div>
@@ -7803,24 +9043,18 @@ export default function App() {
                                 Genel Yoğunluk ve Dağılım
                               </p>
                             </div>
-                            <div className="w-full max-w-[900px] aspect-[1.3/1] sm:aspect-[2/1] flex items-center justify-center relative mt-2 mb-4 z-10 px-4 transition-transform duration-700 group-hover:scale-[1.01]">
+                            <div className={cn(
+                              "w-full flex items-center justify-center relative mt-2 mb-4 z-10 px-4 transition-transform duration-700 group-hover:scale-[1.01]",
+                              usesWideMapProgramLayout
+                                ? "w-full max-w-full aspect-[2.25/1] sm:aspect-[2.35/1]"
+                                : "max-w-[900px] aspect-[1.3/1] sm:aspect-[2/1]"
+                            )}>
                               <TurkeyMap 
                                 showTooltip={true}
                                 colorData={mapData.colorData}
                                 tooltipData={mapData.tooltipData}
                                 legendData={mapData.legendData}
                               />
-                            </div>
-                            <div className="w-full px-6 sm:px-8 pb-6 z-20 relative mt-auto">
-                              {selectedProgram === 'doping-2024' && (
-                                <div className="flex items-start gap-2 bg-indigo-50/50 p-3 rounded-xl border border-indigo-100/50">
-                                  <Info className="w-4 h-4 text-indigo-500 mt-0.5 shrink-0" />
-                                  <p className="text-[10px] md:text-[11px] text-slate-600 leading-relaxed font-medium">
-                                    <span className="font-bold text-indigo-600 mr-1">Not:</span> 
-                                    Bu eğitim 2 dönem yapılmıştır. Haritada görünen şehir bilgileri yalnızca 1. döneme aittir.
-                                  </p>
-                                </div>
-                              )}
                             </div>
                           </div>
                         )}
@@ -7849,11 +9083,8 @@ export default function App() {
                         )}
                         
                         {/* Academic Profile Ranking - Schools */}
-                        {selectedYear !== '2016-2020' && selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 && (
-                        <div className={cn(
-                          "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start",
-                          isIlkDersProgram ? "lg:col-span-3 lg:order-1" : ""
-                        )}>
+                        {selectedYear !== '2016-2020' && !isIyiNiyetProgram && !isHabitatEmpowerProgram && !isIsbankFinans2024 && !isIlkDersProgram && selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 && (
+                        <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
                           <div>
                             <div className="flex items-center gap-3 mb-4">
                               <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
@@ -7890,11 +9121,8 @@ export default function App() {
                         )}
 
                         {/* Academic Profile Ranking - Departments */}
-                        {selectedYear !== '2016-2020' && selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0 && (
-                        <div className={cn(
-                          "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start",
-                          isIlkDersProgram ? "lg:col-span-3 lg:order-3" : ""
-                        )}>
+                        {selectedYear !== '2016-2020' && !isIyiNiyetProgram && !isHabitatEmpowerProgram && !isIsbankFinans2024 && !isIlkDersProgram && selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0 && (
+                        <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
                           <div>
                             <div className="flex items-center gap-3 mb-4">
                               <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
@@ -7942,8 +9170,15 @@ export default function App() {
                       </div>
 
                       {/* HUGE TURKEY MAP CONTAINER */}
-                      {selectedProgram !== 'doping-2024' && !isIlkDersProgram && hasCityData && (
-                        <div className="mt-8 mb-12 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[3rem] border flex flex-col relative hover:shadow-2xl hover:shadow-indigo-100/50 transition-all justify-center items-center w-full group min-h-[400px] sm:min-h-[500px]">
+                      {!usesTwelveColMapRow && hasCityData && (
+                        <div
+                          className={cn(
+                            'mt-8 mb-12 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[3rem] border flex flex-col relative hover:shadow-2xl hover:shadow-indigo-100/50 transition-all justify-center items-center w-full group',
+                            isDoping2024Program || isIlkDersProgram
+                              ? 'min-h-[440px] sm:min-h-[560px]'
+                              : 'min-h-[400px] sm:min-h-[500px]',
+                          )}
+                        >
                           {/* Subtle Background Pattern */}
                           <div className="absolute inset-0 rounded-[2rem] lg:rounded-[3rem] overflow-hidden pointer-events-none z-0">
                             <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 group-hover:opacity-80 transition-opacity duration-1000"></div>
@@ -7959,7 +9194,14 @@ export default function App() {
                             </p>
                           </div>
                           
-                          <div className="w-full max-w-[1100px] aspect-[1.3/1] sm:aspect-[2/1] flex items-center justify-center relative mt-4 md:mt-2 mb-8 z-10 px-4 transition-transform duration-700 group-hover:scale-[1.01]">
+                          <div
+                            className={cn(
+                              'w-full flex items-center justify-center relative mt-4 md:mt-2 mb-4 z-10 px-4 transition-transform duration-700 group-hover:scale-[1.01]',
+                              isDoping2024Program || isIlkDersProgram
+                                ? 'max-w-[1200px] aspect-[1.25/1] sm:aspect-[2.1/1]'
+                                : 'max-w-[1100px] aspect-[1.3/1] sm:aspect-[2/1]',
+                            )}
+                          >
                             <TurkeyMap 
                               showTooltip={true}
                               colorData={mapData.colorData}
@@ -7967,6 +9209,17 @@ export default function App() {
                               legendData={mapData.legendData}
                             />
                           </div>
+                          {isDoping2024Program && (
+                            <div className="w-full max-w-4xl mx-auto px-8 md:px-14 pb-10 z-20">
+                              <div className="flex items-start gap-2 bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100/50">
+                                <Info className="w-4 h-4 text-indigo-500 mt-0.5 shrink-0" />
+                                <p className="text-[10px] md:text-[11px] text-slate-600 leading-relaxed font-medium">
+                                  <span className="font-bold text-indigo-600 mr-1">Not:</span>
+                                  Bu eğitim 2 dönem yapılmıştır. Haritada görünen şehir bilgileri yalnızca 1. döneme aittir.
+                                </p>
+                              </div>
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
