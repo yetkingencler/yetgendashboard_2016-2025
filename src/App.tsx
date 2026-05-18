@@ -549,7 +549,8 @@ const yearlyData: IYearlyData[] = [
     "programs": [
       {
         "id": "basic-2021",
-        "name": "BASIC 2021",
+        "name": "TEP",
+        "longName": "Temel Eğitim Programı",
         "participants": 3661,
         "graduates": 2565,
         "gender": {
@@ -1540,7 +1541,8 @@ const yearlyData: IYearlyData[] = [
     "programs": [
       {
         "id": "basic-2022",
-        "name": "BASIC 2022",
+        "name": "TEP",
+        "longName": "Temel Eğitim Programı",
         "participants": 3378,
         "graduates": 2341,
         "gender": {
@@ -2341,7 +2343,8 @@ const yearlyData: IYearlyData[] = [
             "name": "Matematik",
             "val": 53
           }
-        ]
+        ],
+        "sponsors": ["Zorlu Holding", "Yetkin Gençler"]
       }
     ]
   },
@@ -2769,7 +2772,8 @@ const yearlyData: IYearlyData[] = [
     "programs": [
       {
         "id": "basic-2023",
-        "name": "BASIC 2023",
+        "name": "TEP",
+        "longName": "Temel Eğitim Programı",
         "participants": 2698,
         "graduates": 1808,
         "gender": {
@@ -3496,7 +3500,8 @@ const yearlyData: IYearlyData[] = [
             "count": 1
           }
         ],
-        "topDepartments": []
+        "topDepartments": [],
+        "sponsors": ["Zorlu Holding", "Yetkin Gençler"]
       },
       {
         "id": "core-python-2-2023",
@@ -3547,7 +3552,8 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "id": "yetgen-gs-2023",
-        "name": "YetGen & Galatasaray Lisesi",
+        "name": "Galatasaray Lisesi",
+        "longName": "YetGen & Galatasaray Lisesi",
         "participants": 31,
         "graduates": 0,
         "certificationBased": false,
@@ -3587,7 +3593,8 @@ const yearlyData: IYearlyData[] = [
       },
       {
         "id": "birlikte-iyilesiyoruz-2023",
-        "name": "Birlikte İyileşiyoruz Seminer Programı",
+        "name": "Birlikte İyileşiyoruz",
+        "longName": "Birlikte İyileşiyoruz Seminer Programı",
         "participants": 4000,
         "graduates": 0,
         "certificationBased": false,
@@ -4164,14 +4171,17 @@ const yearlyData: IYearlyData[] = [
     "sponsors": [
       "Mehmet Zorlu Vakfı",
       "Yetkin Gençler",
-      "MEF Üniversitesi"
+      "MEF Üniversitesi",
+      "Habitat Derneği"
     ],
     "programs": [
       {
         "id": "basic-2024",
-        "name": "BASIC 2024",
+        "name": "TEP",
+        "longName": "Temel Eğitim Programı",
         "participants": 1926,
         "graduates": 1076,
+        "sponsors": ["Mehmet Zorlu Vakfı", "MEF Üniversitesi", "Şişli Belediyesi"],
         "gender": {
           "female": 1434,
           "male": 486,
@@ -4539,7 +4549,7 @@ const yearlyData: IYearlyData[] = [
         "longName": "YetGen Core Python Eğitim Programı #3 (2024)",
         "participants": 88,
         "graduates": 69,
-        "summary": "2024 Core Python #3: Flipped Learning ile Python programı; 398 başvuru, 88 katılımcı, 69 sertifika.",
+        "summary": "YetGen mezunlarına özel gerçekleştirilen ve Python programlama diline odaklanan, katılımcıların başlangıç seviyesinden orta ve ileri düzeye geçişini sağlayan bir eğitim programıdır.",
         "description": "17 Mayıs – 16 Ağustos 2024. Haftada iki gün senkron ders ve atölye; 398 başvurudan 88 katılımcı, 69 sertifika (%92 tamamlama).",
         "gender": {
           "female": 0,
@@ -4903,12 +4913,14 @@ const yearlyData: IYearlyData[] = [
             "name": "Rehberlik ve Psikolojik Danışmanlık",
             "val": 17
           }
-        ]
+        ],
+        "sponsors": ["Zorlu Holding", "Yetkin Gençler"]
       },
       {
         "id": "doping-2024",
         "name": "Doping Hafıza Eğitimi",
         "image": "/partners/dopinghafızaa.png",
+        "description": "Doping Hafıza kullanıcısı liselilere özel farkındalık programı.",
         "participants": 1862,
         "graduates": 981,
         "gender": {
@@ -5241,7 +5253,8 @@ const yearlyData: IYearlyData[] = [
             "count": 334
           }
         ],
-        "topDepartments": []
+        "topDepartments": [],
+        "sponsors": ["Doping Hafıza"]
       },
       {
         "id": "habitat-empower-me-2024",
@@ -5284,8 +5297,8 @@ const yearlyData: IYearlyData[] = [
         "participants": 402,
         "graduates": 135,
         "certificationBased": true,
-        "summary": "15–20 Kasım 2024 finansal okuryazarlık programına ilişkin başvuru, katılım ve sertifikasyon metriklerinin özeti.",
-        "description": "İki gün çevrimiçi eğitim ve İş Kuleleri saha gezisiyle üç günlük akış; bankacılık, finansal okuryazarlık ve yeni teknolojilerde 16 saat senkron oturum ile 32 kişilik saha gezisi içerdi.",
+        "summary": "Eğitim, YetGen mezunlarının finansal okuryazarlık farkındalığını ve 21. yüzyıl yetkinliklerini artırarak bankacılık sektörünü İş Bankası odağında tanımalarını ve potansiyel iş birliği olanaklarını değerlendirmelerini amaçlamaktadır.",
+        "description": "15–20 Kasım 2024. İki gün çevrimiçi eğitim ve İş Kuleleri saha gezisiyle üç günlük akış; 16 saat senkron oturum ve 32 kişilik saha gezisi.",
         "gender": {
           "female": 0,
           "male": 0,
@@ -5746,12 +5759,14 @@ const yearlyData: IYearlyData[] = [
     "sponsors": [
       "Mehmet Zorlu Vakfı",
       "Yetkin Gençler",
-      "MEF Üniversitesi"
+      "MEF Üniversitesi",
+      "GAİN"
     ],
     "programs": [
       {
         "id": "basic-2025",
-        "name": "BASIC 2025",
+        "name": "TEP",
+        "longName": "Temel Eğitim Programı",
         "participants": 2041,
         "graduates": 862,
         "gender": {
@@ -6425,12 +6440,14 @@ const yearlyData: IYearlyData[] = [
             "name": "Rehberlik ve Psikolojik Danışmanlık",
             "val": 27
           }
-        ]
+        ],
+        "sponsors": ["Zorlu Holding", "Yetkin Gençler"]
       },
       {
         "id": "doping-2025",
         "name": "Doping Hafıza Eğitimi",
         "image": "/partners/dopinghafızaa.png",
+        "description": "Doping Hafıza kullanıcısı liselilere özel farkındalık programı.",
         "participants": 650,
         "graduates": 500,
         "gender": {
@@ -6817,7 +6834,8 @@ const yearlyData: IYearlyData[] = [
             "count": 236
           }
         ],
-        "topDepartments": []
+        "topDepartments": [],
+        "sponsors": ["Doping Hafıza"]
       },
       {
         "id": "iyi-niyet-2025",
@@ -7169,7 +7187,7 @@ const ageData = [
   { year: '2008', count: 370 },
 ];
 
-const skills = [
+const defaultSkills = [
   { name: 'Analitik Düşünme', icon: Brain, color: 'text-purple-400' },
   { name: 'Problem Çözme', icon: Wrench, color: 'text-blue-400' },
   { name: 'İletişim & Takım', icon: MessageSquare, color: 'text-emerald-400' },
@@ -7179,6 +7197,141 @@ const skills = [
   { name: 'Kariyer Planlama', icon: Briefcase, color: 'text-amber-500' },
   { name: 'Sunum Teknikleri', icon: Presentation, color: 'text-indigo-400' },
 ];
+
+const pythonProgramSkills = [
+  { name: 'Algoritmik Temeller ve Kontrol Yapıları', icon: Brain, color: 'text-violet-500' },
+  { name: 'Veri Yapıları ve Manipülasyonu', icon: FileSpreadsheet, color: 'text-blue-500' },
+  { name: 'Fonksiyonel Programlama ve Verimlilik', icon: Wrench, color: 'text-emerald-500' },
+  { name: 'Hata Yönetimi ve Nesne Yönelimli Programlama', icon: Laptop, color: 'text-indigo-500' },
+  { name: 'Veri Bilimi ve Görselleştirme', icon: Presentation, color: 'text-rose-500' },
+];
+
+const isbankFinansSkills = [
+  { name: 'Temel Finansal Okuryazarlık', icon: FileSpreadsheet, color: 'text-sky-600' },
+  { name: 'Yeni Nesil Finansal Teknolojiler', icon: Laptop, color: 'text-blue-600' },
+  { name: 'Finansta Yapay Zeka Dönüşümü', icon: Brain, color: 'text-violet-600' },
+  { name: 'Bankacılık Vizyonu', icon: Target, color: 'text-indigo-600' },
+  { name: 'Kariyer Planlama', icon: Briefcase, color: 'text-amber-600' },
+];
+
+type ProgramBannerCopy = {
+  badge: string;
+  headline: [string, string];
+  tagline: string;
+};
+
+/** Rozet = program adı; büyük başlık = kısa etki sloganı (longName tekrarlanmaz). */
+const PROGRAM_BANNER_COPY: Record<string, ProgramBannerCopy> = {
+  'basic-2021': {
+    badge: 'Temel Eğitim Programı',
+    headline: ['Üniversite Gençliği', 'Yetkinlik Temeli'],
+    tagline: '21. yüzyıl becerilerine giriş ve mezuniyet yolculuğunun ilk ölçekli yılı.',
+  },
+  'jump-softtech-2021': {
+    badge: 'Softtech Jump',
+    headline: ['Teknoloji Kariyeri', 'Hızlandırılmış Yol'],
+    tagline: 'Softtech iş birliğiyle seçilmiş YetGenliler için yoğun staj ve mentorluk programı.',
+  },
+  'basic-2022': {
+    badge: 'Temel Eğitim Programı',
+    headline: ['Kapsayıcı Büyüme', 'Dijital Yetkinlik'],
+    tagline: 'Türkiye genelinde genişleyen katılım ve yüksek mezuniyet ivmesi.',
+  },
+  'basic-2023': {
+    badge: 'Temel Eğitim Programı',
+    headline: ['Derinleşen', 'Öğrenme Kalitesi'],
+    tagline: 'Mentorluk ve asenkron içerikle bireysel gelişimin güçlendiği yıl.',
+  },
+  'core-python-2-2023': {
+    badge: 'Core Python #2',
+    headline: ['Koddan Üretime', '12 Haftalık Yol'],
+    tagline: 'Flipped learning ile başlangıçtan orta-ileri Python yetkinliğine geçiş.',
+  },
+  'yetgen-gs-2023': {
+    badge: 'Galatasaray Lisesi',
+    headline: ['Öğretmenlere Özel', 'Pilot Program'],
+    tagline: 'Değişen çağda yetkinlikler — 4 hafta, 8 eğitim günü, 31 öğretmen.',
+  },
+  'birlikte-iyilesiyoruz-2023': {
+    badge: 'Birlikte İyileşiyoruz',
+    headline: ['Toplumsal', 'Dayanıklılık'],
+    tagline: 'Beş oturumluk seminer serisi: duygu regülasyonundan psikolojik ilk yardıma.',
+  },
+  'ilk-ders-2023': {
+    badge: 'İlk Ders Semineri',
+    headline: ['Eğitimde', 'İlk Adım'],
+    tagline: 'Deprem sonrası eğitimcilere yönelik sınıf içi iletişim ve psikolojik destek oturumu.',
+  },
+  'o-23': {
+    badge: 'Öğretmen Eğitimi 2023',
+    headline: ['Sınıfın', 'Geleceği'],
+    tagline: 'Öğretmen adayları ve aktif öğretmenler için 21. yy yetkinlik modülleri.',
+  },
+  'basic-2024': {
+    badge: 'Temel Eğitim Programı',
+    headline: ['Üniversite Gençliği', 'Yetkinlik Yolculuğu'],
+    tagline: '1.926 katılımcı, 1.076 mezun — Türkiye genelinde temel farkındalık ve sertifikasyon.',
+  },
+  'core-python-3-2024': {
+    badge: 'Core Python #3',
+    headline: ['Başlangıçtan', 'İleri Seviyeye'],
+    tagline: 'Mezunlara özel üç aylık program: algoritmadan veri görselleştirmeye Python.',
+  },
+  'o-24': {
+    badge: 'Öğretmen Eğitimi 2024',
+    headline: ['Eğitimciler İçin', '21. Yy Becerileri'],
+    tagline: 'Öğretmen ve öğretmen adaylarına yönelik uygulamalı yetkinlik geliştirme.',
+  },
+  'doping-2024': {
+    badge: 'Doping Hafıza · Liseliler',
+    headline: ['Liselilere Özel', 'Dijital Çağ'],
+    tagline: 'Doping Hafıza iş birliğiyle lise öğrencilerine farkındalık ve beceri programı.',
+  },
+  'habitat-empower-me-2024': {
+    badge: 'Empower Me · Habitat',
+    headline: ['Eğitmen', 'Eğitimi'],
+    tagline: 'Empower Me Zirvesi kapsamında yüz yüze 21. yy yetkinlik modülleri — 29 katılımcı.',
+  },
+  'isbank-finansal-okuryazarlik-2024': {
+    badge: 'İş Bankası · Finans',
+    headline: ['Finansal', 'Okuryazarlık'],
+    tagline: 'Mezunlara özel: dijital finans, yapay zeka ve bankacılık ekosistemine yakınlaşma.',
+  },
+  'basic-2025': {
+    badge: 'Temel Eğitim Programı',
+    headline: ['Yeni Dönem', 'Yetkin Gençler'],
+    tagline: 'Genişleyen üniversite ağı ve güncellenmiş modüllerle temel program.',
+  },
+  'doping-2025': {
+    badge: 'Doping Hafıza · Liseliler',
+    headline: ['Lise Öğrencileri', 'Yetkinlik Atölyesi'],
+    tagline: 'İkinci dönem lise programı — dijital çağ becerileri ve farkındalık.',
+  },
+  'iyi-niyet-2025': {
+    badge: 'İyi Niyet Programı',
+    headline: ['Sosyal Etki', 'Üniversite Ağı'],
+    tagline: 'Disiplinler arası öğrenme kültürü ve sürdürülebilir topluluk çıktıları.',
+  },
+};
+
+const getProgramBannerCopy = (program: IProgramData): ProgramBannerCopy => {
+  const preset = PROGRAM_BANNER_COPY[program.id];
+  if (preset) return preset;
+
+  const badge = program.name;
+  const tagline =
+    program.summary?.trim() ||
+    (program.description && program.description.length <= 160
+      ? program.description
+      : `${program.description?.slice(0, 157)}…`) ||
+    'Program katılım ve etki özeti.';
+
+  return {
+    badge,
+    headline: ['Program', 'Etki Özeti'],
+    tagline,
+  };
+};
 
 const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData | IProgramData) => {
   let content = {
@@ -7280,16 +7433,26 @@ const getHeroContent = (selectedYear: string, selectedProgramData?: IYearlyData 
   }
 
   if (selectedProgramData?.isProgram) {
-    content.title1 = selectedProgramData.programName;
-    content.title2 = ' Raporu';
+    const program = selectedProgramData as IProgramData;
+    const banner = getProgramBannerCopy(program);
+    content.title1 = banner.headline[0];
+    content.title2 = banner.headline[1];
     content.subtitle = '';
-    const lead = selectedProgramData.summary || selectedProgramData.description;
-    if (lead) {
-      content.text = lead;
-    }
+    content.text = banner.tagline;
   }
 
   return content;
+};
+
+const getProgramHeadingName = (program: IProgramData) => {
+  if (program.longName) return program.longName;
+  if (program.id.startsWith('basic-')) {
+    return '21. Yüzyıl Yetkinlikleri Farkındalık Eğitim Programı';
+  }
+  if (program.id === 'doping-2024' || program.id === 'doping-2025') {
+    return 'YetGen & Doping Hafıza Dijital Çağda Yetkinlikler ve Beceriler Farkındalık Programı';
+  }
+  return program.name;
 };
 
 const normalizedYearlyData: IYearlyData[] = yearlyData.map(year => {
@@ -7516,7 +7679,7 @@ export default function App() {
           ...program,
           description: program.description || `${program.name} programı kapsamında gerçekleştirilen eğitim ve gelişim süreci.`,
           isProgram: true,
-          programName: program.name
+          programName: getProgramHeadingName(program)
         };
       }
     }
@@ -7526,8 +7689,11 @@ export default function App() {
   const partnerCards = useMemo(() => {
     const programPartnerOverrides: Record<string, string[]> = {
       'jump-softtech-2021': ['Softtech'],
+      'basic-2024': ['Mehmet Zorlu Vakfı', 'MEF Üniversitesi', 'Şişli Belediyesi'],
       'doping-2024': ['Doping Hafıza'],
       'doping-2025': ['Doping Hafıza'],
+      'isbank-finansal-okuryazarlik-2024': ['İş Bankası'],
+      'habitat-empower-me-2024': ['Habitat Derneği'],
     };
 
     const mapSponsorToLogo = (sponsor: string) => {
@@ -7535,9 +7701,11 @@ export default function App() {
       if (sponsor === 'Mehmet Zorlu Vakfı') return '/partners/mzv-logo.png';
       if (sponsor === 'MEF Üniversitesi') return '/partners/mefunii_transparent.png';
       if (normalizedSponsor.includes('doping')) return '/partners/doping.png';
-      if (normalizedSponsor.includes('habitat')) return '/partners/habitat-dernegi.svg';
+      if (normalizedSponsor.includes('habitat')) return '/partners/Habitat_logo.jpg';
       if (normalizedSponsor.includes('iş bank') || normalizedSponsor.includes('is bank')) return '/partners/isb.png';
       if (normalizedSponsor === 'softtech' || normalizedSponsor === 'softech') return '/partners/softech.png';
+      if (sponsor === 'Zorlu Holding') return '/partners/Zorlu_Logo.png';
+      if (sponsor === 'GAİN') return '/partners/GAİN_LOGO.jpg';
       return `/partners/${normalizedSponsor.replace(/ /g, '-')}.png`;
     };
 
@@ -7545,6 +7713,7 @@ export default function App() {
       return [
         { name: 'Mehmet Zorlu Vakfı', logo: '/partners/mzv-logo.png' },
         { name: 'MEF Üniversitesi', logo: '/partners/mefunii_transparent.png' },
+        { name: 'Zorlu Holding', logo: '/partners/Zorlu_Logo.png' },
         { name: 'Akbank', logo: '/partners/akbank.png' },
         { name: 'Paribu', logo: '/partners/paribu.png' },
         { name: 'Paribu Hub', logo: '/partners/paribuhub.png' },
@@ -7554,6 +7723,8 @@ export default function App() {
         { name: 'Miuul', logo: '/partners/miuul.png' },
         { name: 'Şişli Belediyesi', logo: '/partners/sisli-belediyesi.png' },
         { name: 'Softtech', logo: '/partners/softech.png' },
+        { name: 'GAİN', logo: '/partners/GAİN_LOGO.jpg' },
+        { name: 'Habitat Derneği', logo: '/partners/Habitat_logo.jpg' },
       ];
     }
 
@@ -7564,6 +7735,8 @@ export default function App() {
 
     if (selectedProgram) {
       sponsorPool = (selectedYearData?.sponsors || []).filter((sponsor) => sponsor !== 'Yetkin Gençler');
+    } else if (selectedYear === '2024') {
+      sponsorPool = (yearData.sponsors || []).filter((sponsor) => sponsor !== 'Yetkin Gençler');
     } else {
       const yearSponsors = (yearData.sponsors || []).filter((sponsor) => sponsor !== 'Yetkin Gençler');
       const programSponsors = (yearData.programs || [])
@@ -7666,12 +7839,27 @@ export default function App() {
   const isHabitatEmpowerProgram = selectedProgram === 'habitat-empower-me-2024';
   const isIsbankFinans2024 = selectedProgram === 'isbank-finansal-okuryazarlik-2024';
   const isCorePython3_2024 = selectedProgram === 'core-python-3-2024';
+  const isPythonProgram = !!selectedProgram?.includes('core-python');
   const isDoping2024Program = selectedProgram === 'doping-2024';
-  const usesWideMapProgramLayout = isIyiNiyetProgram || isHabitatEmpowerProgram || isIsbankFinans2024;
-  const usesTwelveColMapRow =
-    isIyiNiyetProgram ||
-    isHabitatEmpowerProgram ||
-    isIsbankFinans2024;
+  const isDopingProgram = selectedProgram === 'doping-2024' || selectedProgram === 'doping-2025';
+  const usesWideMapProgramLayout = isIyiNiyetProgram || isIsbankFinans2024;
+  const usesTwelveColMapRow = isIyiNiyetProgram || isIsbankFinans2024;
+  const usesHabitatCompactLayout = isHabitatEmpowerProgram;
+  const usesGalatasarayCompactLayout = isGalatasarayProgram;
+  const usesCompactNoMapLayout = usesHabitatCompactLayout || usesGalatasarayCompactLayout;
+
+  const programFocusSkills = useMemo(() => {
+    if (isPythonProgram) return pythonProgramSkills;
+    if (isIsbankFinans2024) return isbankFinansSkills;
+    return defaultSkills;
+  }, [isPythonProgram, isIsbankFinans2024]);
+
+  const programBannerCopy = useMemo(() => {
+    if (!selectedProgram || !selectedYearData?.isProgram) return null;
+    return getProgramBannerCopy(selectedYearData as IProgramData);
+  }, [selectedProgram, selectedYearData]);
+
+  const showPartnersSection = !isCorePython3_2024 && partnerCards.length > 0;
 
   const showAgeChart =
     selectedProgram === 'doping-2025' ||
@@ -7921,7 +8109,12 @@ export default function App() {
               >
                 <div
                   ref={programTimelineRef}
-                  className="flex items-center gap-1 p-1 md:p-1.5 bg-white/80 backdrop-blur-md rounded-full border border-slate-200 shadow-md shadow-slate-200/50 overflow-x-auto no-scrollbar max-w-full mask-fade-edges scroll-px-2"
+                  className={cn(
+                    "flex items-center gap-1 p-1 md:p-1.5 bg-white/80 backdrop-blur-md rounded-full border border-slate-200 shadow-md shadow-slate-200/50 max-w-full scroll-px-2",
+                    selectedYear === '2023'
+                      ? "flex-wrap justify-center overflow-x-visible"
+                      : "overflow-x-auto no-scrollbar mask-fade-edges",
+                  )}
                 >
                   <button
                     type="button"
@@ -7963,7 +8156,12 @@ export default function App() {
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900 leading-[1.1] font-display break-words"
+                  className={cn(
+                    "font-black tracking-tighter text-slate-900 leading-[1.1] font-display break-words",
+                    isIsbankFinans2024
+                      ? "text-3xl sm:text-4xl lg:text-5xl"
+                      : "text-4xl sm:text-5xl lg:text-6xl",
+                  )}
                 >
                   {heroContent.title1} <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 selection:text-blue-700 drop-shadow-sm">{heroContent.title2}</span>
                   {heroContent.subtitle && (
@@ -8006,48 +8204,6 @@ export default function App() {
                     className="mt-5 inline-flex items-center gap-2 rounded-xl border border-red-200 bg-white/90 px-4 py-2.5 text-sm font-bold text-red-700 shadow-sm hover:bg-red-50 hover:border-red-300 transition-colors"
                   >
                     YouTube Yayınını Aç
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.a>
-                )}
-                {isHabitatEmpowerProgram && (
-                  <motion.a
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    href={RAPOR.habitat}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-2 rounded-xl border border-teal-200 bg-white/90 px-4 py-2.5 text-sm font-bold text-teal-800 shadow-sm hover:bg-teal-50 hover:border-teal-300 transition-colors"
-                  >
-                    Değerlendirme Raporu (PDF)
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.a>
-                )}
-                {isIsbankFinans2024 && (
-                  <motion.a
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    href={RAPOR.isbankFinansalOkuryazarlik2024}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-2 rounded-xl border border-sky-200 bg-white/90 px-4 py-2.5 text-sm font-bold text-sky-900 shadow-sm hover:bg-sky-50 hover:border-sky-300 transition-colors"
-                  >
-                    Program Raporu (PDF)
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.a>
-                )}
-                {isCorePython3_2024 && (
-                  <motion.a
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    href={RAPOR.corePython3_2024}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-2 rounded-xl border border-violet-200 bg-white/90 px-4 py-2.5 text-sm font-bold text-violet-900 shadow-sm hover:bg-violet-50 hover:border-violet-300 transition-colors"
-                  >
-                    Değerlendirme Raporu (PDF)
                     <ArrowRight className="w-4 h-4" />
                   </motion.a>
                 )}
@@ -8354,24 +8510,51 @@ export default function App() {
                                 animate={{ opacity: 1, y: 0 }}
                                 className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl mb-6 md:mb-8"
                               >
-                                {selectedProgram ? selectedYearData?.programName : (selectedYear === 'all' ? 'Genel Bakış' : `Yıl: ${selectedYear}`)}
+                                {programBannerCopy
+                                  ? programBannerCopy.badge
+                                  : selectedYear === 'all'
+                                    ? 'Genel Bakış'
+                                    : `Yıl: ${selectedYear}`}
                               </motion.span>
                               <motion.h3
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white tracking-tighter leading-[0.9] md:leading-[0.85] font-display mb-6 md:mb-8"
+                                className={cn(
+                                  "font-black text-white tracking-tighter leading-[0.95] font-display mb-4 md:mb-6",
+                                  selectedProgram
+                                    ? "text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+                                    : "text-4xl sm:text-5xl md:text-6xl lg:text-8xl mb-6 md:mb-8 leading-[0.9] md:leading-[0.85]",
+                                )}
                               >
-                                {selectedYear === 'all' ? '10 Yıllık' : selectedYear} <br />
-                                <span className="text-blue-400">{selectedProgram ? 'Özel Program' : (selectedYear === 'all' ? 'Etki Raporu' : 'Etki Yılı')}</span>
+                                {programBannerCopy ? (
+                                  <>
+                                    {programBannerCopy.headline[0]}
+                                    {programBannerCopy.headline[1] ? (
+                                      <>
+                                        <br />
+                                        <span className="text-blue-400">{programBannerCopy.headline[1]}</span>
+                                      </>
+                                    ) : null}
+                                  </>
+                                ) : (
+                                  <>
+                                    {selectedYear === 'all' ? '10 Yıllık' : selectedYear} <br />
+                                    <span className="text-blue-400">
+                                      {selectedYear === 'all' ? 'Etki Raporu' : 'Etki Yılı'}
+                                    </span>
+                                  </>
+                                )}
                               </motion.h3>
                               <motion.p
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.2 }}
-                                className="text-slate-100 text-lg md:text-xl font-medium leading-relaxed max-w-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                                className="text-slate-100 text-base md:text-lg font-medium leading-relaxed max-w-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                               >
-                                {selectedYearData?.description}
+                                {programBannerCopy
+                                  ? programBannerCopy.tagline
+                                  : selectedYearData?.description}
                               </motion.p>
                             </div>
                           </div>
@@ -8381,7 +8564,7 @@ export default function App() {
                       {/* 4 or 5 Interactive Charts Row */}
                       <div className={cn(
                         "mt-6 sm:mt-8 gap-6 md:gap-8",
-                        isDoping2024Program || isIlkDersProgram
+                        isDoping2024Program || isIlkDersProgram || usesCompactNoMapLayout || isBiSeminerProgram
                           ? "flex flex-col"
                           : cn(
                               "grid",
@@ -8421,10 +8604,10 @@ export default function App() {
                                 <ArrowRight className="w-4 h-4" />
                               </a>
                             </div>
-                            <div className="relative grid grid-cols-1 md:grid-cols-5 gap-3 mb-4">
+                            <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 mb-4">
                               {biSeminerSessions.map((session) => (
                                 <div key={session.title} className="group rounded-2xl border border-slate-200 bg-white p-4 hover:shadow-lg hover:shadow-slate-900/5 transition-all">
-                                  <p className="text-[13px] font-bold text-slate-800 leading-snug min-h-[42px]">{session.title}</p>
+                                  <p className="text-sm font-bold text-slate-800 leading-snug min-h-[42px]">{session.title}</p>
                                   <div className="mt-3 pt-3 border-t border-slate-100 space-y-1.5">
                                     <p className="text-xs text-slate-500 font-semibold">Slido: <span className="text-slate-900 font-black">{session.slido}</span></p>
                                     <p className="text-xs text-slate-500 font-semibold">YouTube: <span className="text-slate-900 font-black">{session.youtube}</span></p>
@@ -8598,16 +8781,252 @@ export default function App() {
                           </div>
                         )}
 
-                        {/* İlk Ders 2023: yaş, eğitim, branş/kurum, branş özet üstte yan yana; harita altta tam genişlik */}
+                        {/* Habitat 2024: yaş, eğitim ve program özeti yan yana; harita gösterilmez */}
+                        {usesHabitatCompactLayout && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full items-stretch"
+                          >
+                            {showAgeChart && (
+                              <motion.div
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start"
+                              >
+                                <motion.div className="flex items-center gap-3 mb-4">
+                                  <motion.div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
+                                    <Users className="w-4 h-4" />
+                                  </motion.div>
+                                  <div>
+                                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Yaş Aralığı</div>
+                                  </div>
+                                </motion.div>
+                                <motion.div className="h-[220px] w-full mt-4 min-h-[200px]">
+                                  <ResponsiveContainer width="100%" height="100%">
+                                    {(() => {
+                                      const ageData = selectedYearData?.ageData ?? [];
+                                      return (
+                                        <BarChart layout="vertical" data={ageData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                                          <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#E2E8F0" opacity={0.5} />
+                                          <XAxis type="number" hide />
+                                          <YAxis dataKey="age" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b', fontWeight: 700 }} width={48} interval={0} />
+                                          <Tooltip cursor={{ fill: '#F1F5F9' }} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
+                                          <Bar dataKey="count" fill="#6366f1" radius={[0, 4, 4, 0]} barSize={16}>
+                                            <LabelList dataKey="count" position="right" style={{ fill: '#64748b', fontSize: 10, fontWeight: 800 }} />
+                                          </Bar>
+                                        </BarChart>
+                                      );
+                                    })()}
+                                  </ResponsiveContainer>
+                                </motion.div>
+                              </motion.div>
+                            )}
+                            {hasEduData && (
+                              <motion.div
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start"
+                              >
+                                <div className="flex items-center gap-3 mb-4">
+                                  <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
+                                    <GraduationCap className="w-4 h-4" />
+                                  </div>
+                                  <div>
+                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Eğitim Durumu</p>
+                                  </div>
+                                </div>
+                                <div className="space-y-4 mt-2">
+                                  {selectedYearData.educationLevels.filter(ed => Math.round((ed.count / selectedYearData.participants) * 100) > 0).map((ed, i) => (
+                                    <div key={ed.name} className="flex flex-col gap-1.5" title={`${ed.count} Kişi`}>
+                                      <div className="flex justify-between items-center text-xs gap-2">
+                                        <span className="font-bold text-slate-700 min-w-0 break-words">{ed.name}</span>
+                                        <span className="font-black text-indigo-600 shrink-0">%{Math.round((ed.count / selectedYearData.participants) * 100)}</span>
+                                      </div>
+                                      <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                        <motion.div
+                                          initial={{ width: 0 }}
+                                          animate={{ width: `${(ed.count / selectedYearData.participants) * 100}%` }}
+                                          transition={{ duration: 1, delay: i * 0.1 }}
+                                          className="h-full bg-indigo-500 rounded-full"
+                                        />
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                            <motion.div
+                              initial={{ opacity: 0, y: 16 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-teal-100/40 transition-all justify-start"
+                            >
+                              <div className="flex items-center gap-3 mb-4">
+                                <div className="w-8 h-8 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+                                  <Target className="w-4 h-4" />
+                                </div>
+                                <div>
+                                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Program Özeti</p>
+                                  <p className="text-xs font-bold text-slate-900 leading-tight">Empower Me · Yüz Yüze</p>
+                                </div>
+                              </div>
+                              <ul className="space-y-4 mt-2 text-sm">
+                                <li className="flex justify-between gap-3 border-b border-slate-100 pb-3">
+                                  <span className="text-slate-600 font-medium">Katılımcı</span>
+                                  <span className="font-black text-slate-900">{selectedYearData?.participants ?? 29}</span>
+                                </li>
+                                <li className="flex justify-between gap-3 border-b border-slate-100 pb-3">
+                                  <span className="text-slate-600 font-medium">Süre</span>
+                                  <span className="font-black text-slate-900 text-right">12–14 Ara 2024</span>
+                                </li>
+                                <li className="flex justify-between gap-3 border-b border-slate-100 pb-3">
+                                  <span className="text-slate-600 font-medium">Konum</span>
+                                  <span className="font-black text-slate-900">İstanbul</span>
+                                </li>
+                                <li className="flex justify-between gap-3">
+                                  <span className="text-slate-600 font-medium">Memnuniyet</span>
+                                  <span className="font-black text-teal-700">4,57 / 5</span>
+                                </li>
+                              </ul>
+                              <p className="mt-5 text-[11px] text-slate-500 leading-relaxed">
+                                Katılımcıların tamamı İstanbul merkezli olduğundan coğrafi harita yerine program metrikleri öne çıkarılmıştır.
+                              </p>
+                            </motion.div>
+                          </motion.div>
+                        )}
+
+{usesGalatasarayCompactLayout && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full items-stretch"
+                          >
+                            {showAgeChart && (
+                              <motion.div
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-amber-100/40 transition-all justify-start"
+                              >
+                                <motion.div className="flex items-center gap-3 mb-4">
+                                  <motion.div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                                    <Users className="w-4 h-4" />
+                                  </motion.div>
+                                  <div>
+                                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Yaş Aralığı</div>
+                                  </div>
+                                </motion.div>
+                                <motion.div className="h-[220px] w-full mt-4 min-h-[200px]">
+                                  <ResponsiveContainer width="100%" height="100%">
+                                    {(() => {
+                                      const ageData = selectedYearData?.ageData ?? [];
+                                      return (
+                                        <BarChart layout="vertical" data={ageData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                                          <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#E2E8F0" opacity={0.5} />
+                                          <XAxis type="number" hide />
+                                          <YAxis dataKey="age" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b', fontWeight: 700 }} width={48} interval={0} />
+                                          <Tooltip cursor={{ fill: '#F1F5F9' }} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
+                                          <Bar dataKey="count" fill="#d97706" radius={[0, 4, 4, 0]} barSize={16}>
+                                            <LabelList dataKey="count" position="right" style={{ fill: '#64748b', fontSize: 10, fontWeight: 800 }} />
+                                          </Bar>
+                                        </BarChart>
+                                      );
+                                    })()}
+                                  </ResponsiveContainer>
+                                </motion.div>
+                              </motion.div>
+                            )}
+                            {hasEduData && (
+                              <motion.div
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-amber-100/40 transition-all justify-start"
+                              >
+                                <div className="flex items-center gap-3 mb-4">
+                                  <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                                    <GraduationCap className="w-4 h-4" />
+                                  </div>
+                                  <div>
+                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Eğitim Durumu</p>
+                                  </div>
+                                </div>
+                                <div className="space-y-4 mt-2">
+                                  {selectedYearData.educationLevels.filter(ed => Math.round((ed.count / selectedYearData.participants) * 100) > 0).map((ed, i) => (
+                                    <div key={ed.name} className="flex flex-col gap-1.5" title={`${ed.count} Kişi`}>
+                                      <div className="flex justify-between items-center text-xs gap-2">
+                                        <span className="font-bold text-slate-700 min-w-0 break-words">{ed.name}</span>
+                                        <span className="font-black text-amber-600 shrink-0">%{Math.round((ed.count / selectedYearData.participants) * 100)}</span>
+                                      </div>
+                                      <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                        <motion.div
+                                          initial={{ width: 0 }}
+                                          animate={{ width: `${(ed.count / selectedYearData.participants) * 100}%` }}
+                                          transition={{ duration: 1, delay: i * 0.1 }}
+                                          className="h-full bg-amber-500 rounded-full"
+                                        />
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                            <motion.div
+                              initial={{ opacity: 0, y: 16 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-amber-100/40 transition-all justify-start"
+                            >
+                              <div className="flex items-center gap-3 mb-4">
+                                <div className="w-8 h-8 rounded-xl bg-red-50 text-red-600 flex items-center justify-center shrink-0">
+                                  <Target className="w-4 h-4" />
+                                </div>
+                                <div>
+                                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Program Özeti</p>
+                                  <p className="text-xs font-bold text-slate-900 leading-tight">Galatasaray Lisesi Pilotu</p>
+                                </div>
+                              </div>
+                              <ul className="space-y-4 mt-2 text-sm">
+                                <li className="flex justify-between gap-3 border-b border-slate-100 pb-3">
+                                  <span className="text-slate-600 font-medium">Katılımcı</span>
+                                  <span className="font-black text-slate-900">{selectedYearData?.participants ?? 31} öğretmen</span>
+                                </li>
+                                <li className="flex justify-between gap-3 border-b border-slate-100 pb-3">
+                                  <span className="text-slate-600 font-medium">Süre</span>
+                                  <span className="font-black text-slate-900 text-right">Mayıs 2023</span>
+                                </li>
+                                <li className="flex justify-between gap-3 border-b border-slate-100 pb-3">
+                                  <span className="text-slate-600 font-medium">Konum</span>
+                                  <span className="font-black text-slate-900">Galatasaray Lisesi</span>
+                                </li>
+                                <li className="flex justify-between gap-3">
+                                  <span className="text-slate-600 font-medium">Odak</span>
+                                  <span className="font-black text-red-700 text-right">21. yy yetkinlikleri</span>
+                                </li>
+                              </ul>
+                              <p className="mt-5 text-[11px] text-slate-500 leading-relaxed">
+                                Tüm katılımcılar İstanbul/Galatasaray Lisesi merkezli olduğundan geniş harita yerine program metrikleri öne çıkarılmıştır.
+                              </p>
+                            </motion.div>
+                          </motion.div>
+                        )}
+
+                        
+                        {/* İlk Ders 2023: yaş, eğitim, branş üstte yan yana; harita altta tam genişlik */}
                         {isIlkDersProgram && (
                           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8 w-full items-stretch">
                             {showAgeChart && (
                               <div className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
                                 <div>
                                   <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
+                                    <motion.div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
                                       <Users className="w-4 h-4" />
-                                    </div>
+                                    </motion.div>
                                     <div>
                                       <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Yaş Aralığı</div>
                                     </div>
@@ -8634,7 +9053,7 @@ export default function App() {
                               </div>
                             )}
                             {hasEduData && (
-                              <div className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
+                              <motion.div className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
                                 <div>
                                   <div className="flex items-center gap-3 mb-4">
                                     <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0">
@@ -8663,11 +9082,11 @@ export default function App() {
                                     ))}
                                   </div>
                                 </div>
-                              </div>
+                              </motion.div>
                             )}
                             {selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 && (
                               <div className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
-                                <div>
+                                <motion.div>
                                   <div className="flex items-center gap-3 mb-4">
                                     <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
                                       <Globe className="w-4 h-4" />
@@ -8698,7 +9117,7 @@ export default function App() {
                                       </div>
                                     ))}
                                   </div>
-                                </div>
+                                </motion.div>
                               </div>
                             )}
                             {selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0 && (
@@ -8749,7 +9168,7 @@ export default function App() {
                         )}
 
                         {/* Age + education: one left column on 12-col map rows so a narrow "icon strip" never appears */}
-                        {!isDoping2024Program && !isIlkDersProgram && mapRowLeftStack && (
+                        {!isDoping2024Program && !isIlkDersProgram && !usesCompactNoMapLayout && mapRowLeftStack && (
                           <div className="lg:col-span-3 lg:order-1 flex flex-col gap-6 min-w-0">
                             {showAgeChart && (
                               <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full min-w-0 relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start">
@@ -8830,7 +9249,7 @@ export default function App() {
                         )}
 
                         {/* Age Distribution Mini Chart (standard grid rows) */}
-                        {!isDoping2024Program && !isIlkDersProgram && !mapRowLeftStack && showAgeChart && (
+                        {!isDoping2024Program && !isIlkDersProgram && !usesCompactNoMapLayout && !mapRowLeftStack && showAgeChart && (
                           <div
                             className={cn(
                               'bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full min-w-0 relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start',
@@ -8880,7 +9299,7 @@ export default function App() {
                         )}
 
                         {/* Education Level */}
-                        {!isDoping2024Program && !isIlkDersProgram && !mapRowLeftStack && selectedYearData?.educationLevels && selectedYearData.educationLevels.length > 0 && (
+                        {!isDoping2024Program && !isIlkDersProgram && !usesCompactNoMapLayout && !mapRowLeftStack && selectedYearData?.educationLevels && selectedYearData.educationLevels.length > 0 && (
                           <div className={cn(
                             "bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-start",
                             isIyiNiyetProgram && usesTwelveColMapRow
@@ -9170,7 +9589,7 @@ export default function App() {
                       </div>
 
                       {/* HUGE TURKEY MAP CONTAINER */}
-                      {!usesTwelveColMapRow && hasCityData && (
+                      {!usesTwelveColMapRow && !usesCompactNoMapLayout && hasCityData && (
                         <div
                           className={cn(
                             'mt-8 mb-12 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[3rem] border flex flex-col relative hover:shadow-2xl hover:shadow-indigo-100/50 transition-all justify-center items-center w-full group',
@@ -9259,8 +9678,8 @@ export default function App() {
                           subtitle="Geliştirilen temel yetkinlikler"
                           className="h-full rounded-[2rem] sm:rounded-[3rem]"
                         >
-                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 pt-2">
-                            {skills.map((skill, idx) => (
+                          <div className={cn("grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2", programFocusSkills.length <= 5 ? "lg:grid-cols-3 xl:grid-cols-5" : "md:grid-cols-4 xl:grid-cols-4")}>
+                            {programFocusSkills.map((skill, idx) => (
                               <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -9280,6 +9699,7 @@ export default function App() {
                     </div>
 
                     {/* Partners Bento */}
+                    {showPartnersSection && (
                     <div className="relative bg-white/90 backdrop-blur-3xl border border-slate-200/80 shadow-[0_16px_45px_rgba(15,23,42,0.08)] rounded-[2rem] lg:rounded-[3rem] p-8 md:p-12 overflow-hidden">
                       <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-indigo-50/70 to-transparent pointer-events-none" />
                       <div className="relative flex flex-col gap-6 mb-10 border-b border-slate-200/70 pb-8">
@@ -9290,7 +9710,7 @@ export default function App() {
                           </div>
                           <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight font-display mb-2">Stratejik Partnerlerimiz</h3>
                           <p className="text-sm md:text-base text-slate-600 font-medium max-w-2xl leading-relaxed">
-                            Bu etki raporundaki dönüşüm, eğitimden teknolojiye uzanan güçlü iş birlikleriyle mümkün oldu. Her logo, gençlerin geleceğine yapılan somut bir katkıyı temsil eder.
+                            Bu etki raporundaki dönüşüm, eğitimden teknolojiye uzanan güçlü iş birlikleriyle mümkün oldu.
                           </p>
                         </div>
                       </div>
@@ -9320,9 +9740,10 @@ export default function App() {
                         ))}
                       </div>
                     </div>
+                    )}
                   </div>
-              </div>
             </div>
+              </div>
           </motion.div>
         </AnimatePresence>
 
