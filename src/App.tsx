@@ -5386,7 +5386,7 @@ const yearlyData: IYearlyData[] = [
     "participants": 2505,
     "graduates": 1042,
     "description": "Güncel dönem. Sürdürülebilir gelişim ve küresel yetkinlikler odağında eğitimler devam ediyor.",
-    "image": "/partners/2025.jpg",
+    "image": "/partners/2025_1.jpg",
     "hasAgeData": true,
     "ageData": [
       {
@@ -5767,6 +5767,7 @@ const yearlyData: IYearlyData[] = [
         "id": "basic-2025",
         "name": "TEP",
         "longName": "Temel Eğitim Programı",
+        "image": "/partners/2025.jpg",
         "participants": 2041,
         "graduates": 862,
         "gender": {
@@ -6126,6 +6127,7 @@ const yearlyData: IYearlyData[] = [
       {
         "id": "o-25",
         "name": "Öğretmen Eğitimi 2025",
+        "image": "/partners/2025.jpg",
         "participants": 464,
         "graduates": 180,
         "gender": {
@@ -7159,6 +7161,55 @@ const yearlyData: IYearlyData[] = [
         "sponsors": [
           "Yetkin Gençler"
         ]
+      },
+      {
+        "id": "empowerme-2025",
+        "name": "EmpowerMe Zirvesi",
+        "longName": "EmpowerMe - Gençlik Zirvesi 21. Yüzyıl Yetkinlikleri Eğitmen Eğitimi",
+        "image": "/partners/empowerme_zirvesi.jpg",
+        "participants": 30,
+        "graduates": 30,
+        "certificationBased": true,
+        "summary": "27-29 Kasım 2025 tarihlerinde gerçekleşen 3 tam günlük EmpowerMe - Gençlik Zirvesi Eğitmen Eğitimi kapsamında katılım, memnuniyet ve yetkinlik gelişimi özeti.",
+        "description": "Gençlerin 21. yüzyıl becerileriyle güçlenmesini, öz farkındalık, takımdaşlık, liderlik, algoritmik düşünme ve Cursor ile vibe coding gibi modern teknolojileri kullanarak eğitici roller üstlenmesini hedefleyen uygulamalı eğitmen eğitimi.",
+        "gender": {
+          "female": 18,
+          "male": 12,
+          "other": 0
+        },
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "<18", "count": 0 },
+          { "age": "18-20", "count": 2 },
+          { "age": "21-23", "count": 14 },
+          { "age": "24-26", "count": 10 },
+          { "age": "27-29", "count": 3 },
+          { "age": "30+", "count": 1 }
+        ],
+        "cities": [
+          { "name": "İstanbul", "count": 30 }
+        ],
+        "educationLevels": [
+          { "name": "Lisans", "count": 22 },
+          { "name": "Lisans Mezunu", "count": 5 },
+          { "name": "Lisansüstü", "count": 3 }
+        ],
+        "topSchools": [
+          { "name": "İstanbul Üniversitesi", "val": 8 },
+          { "name": "Yıldız Teknik Üniversitesi", "val": 6 },
+          { "name": "Marmara Üniversitesi", "val": 5 },
+          { "name": "İstanbul Teknik Üniversitesi", "val": 4 },
+          { "name": "Boğaziçi Üniversitesi", "val": 3 },
+          { "name": "Diğer", "val": 4 }
+        ],
+        "topDepartments": [
+          { "name": "Hukuk", "val": 8 },
+          { "name": "Veterinerlik", "val": 7 },
+          { "name": "Diyetisyenlik", "val": 6 },
+          { "name": "İşletme", "val": 5 },
+          { "name": "Eğitim Bilimleri", "val": 4 }
+        ],
+        "sponsors": ["Habitat Derneği", "Yetkin Gençler"]
       }
     ]
   }
@@ -7311,6 +7362,11 @@ const PROGRAM_BANNER_COPY: Record<string, ProgramBannerCopy> = {
     badge: 'İyi Niyet Programı',
     headline: ['Sosyal Etki', 'Üniversite Ağı'],
     tagline: 'Disiplinler arası öğrenme kültürü ve sürdürülebilir topluluk çıktıları.',
+  },
+  'empowerme-2025': {
+    badge: 'EmpowerMe · Eğitmen Eğitimi',
+    headline: ['Gençlik Zirvesi', 'Eğitmen Eğitimi'],
+    tagline: '21. Yüzyıl Yetkinlikleri Eğitmen Eğitimi — gençlerin yapay zekâ, dijital üretim ve algoritmik düşünmeyle dönüştürücü liderler olarak güçlenmesi.',
   },
 };
 
@@ -7482,6 +7538,7 @@ export default function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = React.useState(false);
   const [isReportModalOpen, setIsReportModalOpen] = React.useState(false);
+  const [empowerMeTab, setEmpowerMeTab] = React.useState<'summary' | 'program' | 'metrics' | 'outcomes'>('summary');
   const programTimelineRef = React.useRef<HTMLDivElement>(null);
 
   // Reset program when year changes
@@ -7837,6 +7894,7 @@ export default function App() {
   const isIlkDersProgram = selectedProgram === 'ilk-ders-2023';
   const isIyiNiyetProgram = selectedProgram === 'iyi-niyet-2025';
   const isHabitatEmpowerProgram = selectedProgram === 'habitat-empower-me-2024';
+  const isEmpowerMe2025 = selectedProgram === 'empowerme-2025';
   const isIsbankFinans2024 = selectedProgram === 'isbank-finansal-okuryazarlik-2024';
   const isCorePython3_2024 = selectedProgram === 'core-python-3-2024';
   const isPythonProgram = !!selectedProgram?.includes('core-python');
@@ -7844,7 +7902,7 @@ export default function App() {
   const isDopingProgram = selectedProgram === 'doping-2024' || selectedProgram === 'doping-2025';
   const usesWideMapProgramLayout = isIyiNiyetProgram || isIsbankFinans2024;
   const usesTwelveColMapRow = isIyiNiyetProgram || isIsbankFinans2024;
-  const usesHabitatCompactLayout = isHabitatEmpowerProgram;
+  const usesHabitatCompactLayout = isHabitatEmpowerProgram || isEmpowerMe2025;
   const usesGalatasarayCompactLayout = isGalatasarayProgram;
   const usesCompactNoMapLayout = usesHabitatCompactLayout || usesGalatasarayCompactLayout;
 
@@ -8330,6 +8388,37 @@ export default function App() {
                     value="YouTube"
                     subValue="Tekil video yayını"
                     icon={Globe}
+                    delay={0.4}
+                  />
+                </>
+              ) : isEmpowerMe2025 ? (
+                <>
+                  <StatCard
+                    title="Eğitmen Eğitimi"
+                    value={selectedYearData?.participants.toLocaleString('tr-TR') || '30'}
+                    subValue="İstanbul, yüz yüze katılım"
+                    icon={Users}
+                    delay={0.1}
+                  />
+                  <StatCard
+                    title="Program Süresi"
+                    value="3 Tam Gün"
+                    subValue="27–29 Kasım 2025"
+                    icon={Target}
+                    delay={0.2}
+                  />
+                  <StatCard
+                    title="Yetkinlik Gelişimi"
+                    value="%70,3 Artış"
+                    subValue="Algoritmik düşünme son-test"
+                    icon={Presentation}
+                    delay={0.3}
+                  />
+                  <StatCard
+                    title="Memnuniyet"
+                    value="4,80 / 5"
+                    subValue="Genel zirve değerlendirmesi"
+                    icon={TrendingUp}
                     delay={0.4}
                   />
                 </>
@@ -8873,17 +8962,21 @@ export default function App() {
                                 </div>
                                 <div>
                                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Program Özeti</p>
-                                  <p className="text-xs font-bold text-slate-900 leading-tight">Empower Me · Yüz Yüze</p>
+                                  <p className="text-xs font-bold text-slate-900 leading-tight">
+                                    {isEmpowerMe2025 ? "EmpowerMe Zirvesi" : "Empower Me · Yüz Yüze"}
+                                  </p>
                                 </div>
                               </div>
                               <ul className="space-y-4 mt-2 text-sm">
                                 <li className="flex justify-between gap-3 border-b border-slate-100 pb-3">
                                   <span className="text-slate-600 font-medium">Katılımcı</span>
-                                  <span className="font-black text-slate-900">{selectedYearData?.participants ?? 29}</span>
+                                  <span className="font-black text-slate-900">{selectedYearData?.participants ?? (isEmpowerMe2025 ? 30 : 29)}</span>
                                 </li>
                                 <li className="flex justify-between gap-3 border-b border-slate-100 pb-3">
                                   <span className="text-slate-600 font-medium">Süre</span>
-                                  <span className="font-black text-slate-900 text-right">12–14 Ara 2024</span>
+                                  <span className="font-black text-slate-900 text-right">
+                                    {isEmpowerMe2025 ? "27–29 Kasım 2025" : "12–14 Ara 2024"}
+                                  </span>
                                 </li>
                                 <li className="flex justify-between gap-3 border-b border-slate-100 pb-3">
                                   <span className="text-slate-600 font-medium">Konum</span>
@@ -8891,7 +8984,9 @@ export default function App() {
                                 </li>
                                 <li className="flex justify-between gap-3">
                                   <span className="text-slate-600 font-medium">Memnuniyet</span>
-                                  <span className="font-black text-teal-700">4,57 / 5</span>
+                                  <span className="font-black text-teal-700">
+                                    {isEmpowerMe2025 ? "4,80 / 5" : "4,57 / 5"}
+                                  </span>
                                 </li>
                               </ul>
                               <p className="mt-5 text-[11px] text-slate-500 leading-relaxed">
@@ -9169,6 +9264,670 @@ export default function App() {
                           </div>
                         )}
 
+                        {/* EmpowerMe 2025: Cinsiyet Dengesi + Okullar + Bölümler Yan Yana */}
+                        {isEmpowerMe2025 && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 w-full items-stretch mt-6 sm:mt-8"
+                          >
+                            {/* Gender Donut Chart */}
+                            <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-x-clip overflow-y-visible hover:shadow-xl hover:shadow-pink-100/40 transition-all justify-between">
+                              {/* Header */}
+                              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                                <div className="w-8 h-8 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center shrink-0">
+                                  <Sparkles className="w-4 h-4" />
+                                </div>
+                                <div>
+                                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Cinsiyet Dengesi</p>
+                                </div>
+                              </div>
+                              
+                              {/* Centered Chart Content */}
+                              <div className="flex-1 w-full min-w-0 flex flex-col items-center justify-center mt-2 mb-2">
+                                {/* Donut Chart */}
+                                <div className="h-[152px] w-[152px] sm:h-[168px] sm:w-[168px] relative shrink-0 mb-5">
+                                  <ResponsiveContainer width="100%" height="100%">
+                                    <PieChart>
+                                      <Pie
+                                        data={genderPieSegments}
+                                        cx="50%"
+                                        cy="50%"
+                                        innerRadius={52}
+                                        outerRadius={72}
+                                        paddingAngle={4}
+                                        dataKey="value"
+                                        stroke="none"
+                                      >
+                                        {genderPieSegments.map((seg, index) => (
+                                          <Cell key={`gender-seg-empowerme-${seg.name}-${index}`} fill={seg.color} />
+                                        ))}
+                                      </Pie>
+                                      <Tooltip cursor={false} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} itemStyle={{ fontSize: '12px', fontWeight: 'bold' }} />
+                                    </PieChart>
+                                  </ResponsiveContainer>
+                                </div>
+                                
+                                {/* Legend */}
+                                <div
+                                  className={cn(
+                                    'grid w-full max-w-full min-w-0 gap-x-3 gap-y-5 px-1',
+                                    genderOther > 0 ? 'grid-cols-3' : 'grid-cols-2 max-w-[16rem]',
+                                  )}
+                                >
+                                  <div
+                                    className="min-w-0 flex flex-col items-center text-center justify-start gap-y-2"
+                                    title={`${genderFemale.toLocaleString('tr-TR')} kişi`}
+                                  >
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-1 w-full px-0.5">
+                                      <span className="inline-block w-3 h-3 rounded-full bg-pink-500 shrink-0 mx-auto sm:mx-0" />
+                                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider truncate max-w-full">Kadın</span>
+                                    </div>
+                                    <span className="text-xl sm:text-2xl font-black tabular-nums tracking-tight text-slate-900 leading-none whitespace-nowrap">
+                                      {formatGenderPctLabel(genderFemale)}
+                                    </span>
+                                  </div>
+                                  <div
+                                    className="min-w-0 flex flex-col items-center text-center justify-start gap-y-2"
+                                    title={`${genderMale.toLocaleString('tr-TR')} kişi`}
+                                  >
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-1 w-full px-0.5">
+                                      <span className="inline-block w-3 h-3 rounded-full bg-blue-500 shrink-0 mx-auto sm:mx-0" />
+                                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider truncate max-w-full">Erkek</span>
+                                    </div>
+                                    <span className="text-xl sm:text-2xl font-black tabular-nums tracking-tight text-slate-900 leading-none whitespace-nowrap">
+                                      {formatGenderPctLabel(genderMale)}
+                                    </span>
+                                  </div>
+                                </div>
+                                <p className="mt-5 text-[9px] sm:text-[10px] font-medium text-slate-400 text-center max-w-[18rem] leading-snug uppercase tracking-[0.12em]">
+                                  Oranlar, cinsiyet bilgisinin bildirildiği kayıtlar üzerinden
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* En Aktif Okullar */}
+                            {selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 && (
+                              <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
+                                <div>
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
+                                      <Globe className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Akademik Profil</p>
+                                      <p className="text-xs font-bold text-slate-900 leading-tight">En Aktif Okullar</p>
+                                    </div>
+                                  </div>
+                                  <div className="space-y-3.5 mt-2">
+                                    {selectedYearData.topSchools.slice(0, 5).map((school, i) => (
+                                      <div key={school.name} className="flex items-center gap-3 group">
+                                        <span className="text-[10px] font-black text-slate-400 w-3">{i + 1}.</span>
+                                        <div className="flex-1 min-w-0">
+                                          <div className="flex justify-between items-start text-xs mb-1.5 gap-2">
+                                            <span className="font-bold text-slate-700 group-hover:text-blue-600 transition-colors" style={{ wordBreak: 'break-word', lineHeight: '1.2' }}>{school.name}</span>
+                                            <span className="text-[10px] whitespace-nowrap pt-0.5 font-black text-slate-900">{school.val} Kişi</span>
+                                          </div>
+                                          <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                            <motion.div
+                                              initial={{ width: 0 }}
+                                              whileInView={{ width: `${(school.val / selectedYearData.topSchools[0].val) * 100}%` }}
+                                              transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
+                                              className="h-full rounded-full bg-blue-500"
+                                            />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+
+                            {/* En Aktif Bölümler */}
+                            {selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0 && (
+                              <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
+                                <div>
+                                  <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
+                                      <GraduationCap className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Akademik Profil</p>
+                                      <p className="text-xs font-bold text-slate-900 leading-tight">En Aktif Bölümler</p>
+                                    </div>
+                                  </div>
+                                  <div className="space-y-3.5 mt-2">
+                                    {selectedYearData.topDepartments.slice(0, 5).map((dept, i) => {
+                                      const deptName = typeof dept === 'string' ? dept : dept.name;
+                                      const deptVal = typeof dept === 'string' ? null : dept.val;
+                                      const maxVal = typeof selectedYearData.topDepartments[0] === 'string' ? 100 : selectedYearData.topDepartments[0].val;
+                                      const widthVal = deptVal === null ? `${100 - (i * 15)}%` : `${(deptVal / maxVal) * 100}%`;
+
+                                      return (
+                                        <div key={deptName} className="flex items-center gap-3 group">
+                                          <span className="text-[10px] font-black text-slate-400 w-3">{i + 1}.</span>
+                                          <div className="flex-1 min-w-0">
+                                            <div className="flex justify-between items-start text-xs mb-1.5 gap-2">
+                                              <span className="font-bold text-slate-700 group-hover:text-blue-600 transition-colors" style={{ wordBreak: 'break-word', lineHeight: '1.2' }}>{deptName}</span>
+                                              {deptVal !== null && (
+                                                <span className="text-[10px] whitespace-nowrap pt-0.5 font-black text-slate-900">{deptVal} Kişi</span>
+                                              )}
+                                            </div>
+                                            <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                              <motion.div
+                                                initial={{ width: 0 }}
+                                                whileInView={{ width: widthVal }}
+                                                transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
+                                                className="h-full rounded-full bg-blue-500"
+                                              />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          </motion.div>
+                        )}
+
+                        {/* EmpowerMe 2025: Özel Etkileşimli Değerlendirme Raporu */}
+                        {isEmpowerMe2025 && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="w-full bg-white/80 backdrop-blur-3xl border border-slate-200/80 shadow-[0_16px_45px_rgba(15,23,42,0.08)] rounded-[2.5rem] p-6 sm:p-8 md:p-10 relative overflow-hidden mt-8"
+                          >
+                            <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-indigo-50/50 to-transparent pointer-events-none" />
+                            
+                            {/* Başlık ve Badge */}
+                            <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                              <div>
+                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-indigo-50 text-indigo-600 border border-indigo-100/80 mb-3 tracking-wider uppercase">
+                                  <Sparkles className="w-3.5 h-3.5 animate-pulse" /> Genel Değerlendirme Raporu
+                                </span>
+                                <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-tight">
+                                  EmpowerMe Zirvesi Beceriler Analizi
+                                </h3>
+                                <p className="text-xs sm:text-sm text-slate-500 font-semibold mt-1">
+                                  Aralık 2025 · 21. Yüzyıl Yetkinlikleri Eğitmen Eğitimi Detaylı Çıktıları
+                                </p>
+                              </div>
+                              
+                              {/* Sekme Butonları (Tabs) */}
+                              <div className="flex flex-wrap gap-1.5 p-1 bg-slate-100/80 rounded-2xl border border-slate-200/40 self-start md:self-center">
+                                <button
+                                  onClick={() => setEmpowerMeTab('summary')}
+                                  className={cn(
+                                    "px-4 py-2 text-xs font-black rounded-xl transition-all flex items-center gap-2",
+                                    empowerMeTab === 'summary'
+                                      ? "bg-white text-indigo-600 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-slate-200/20"
+                                      : "text-slate-600 hover:text-indigo-600 hover:bg-white/50"
+                                  )}
+                                >
+                                  <Info className="w-3.5 h-3.5" />
+                                  Yönetici Özeti
+                                </button>
+                                <button
+                                  onClick={() => setEmpowerMeTab('program')}
+                                  className={cn(
+                                    "px-4 py-2 text-xs font-black rounded-xl transition-all flex items-center gap-2",
+                                    empowerMeTab === 'program'
+                                      ? "bg-white text-indigo-600 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-slate-200/20"
+                                      : "text-slate-600 hover:text-indigo-600 hover:bg-white/50"
+                                  )}
+                                >
+                                  <Presentation className="w-3.5 h-3.5" />
+                                  Eğitim Akışı
+                                </button>
+                                <button
+                                  onClick={() => setEmpowerMeTab('metrics')}
+                                  className={cn(
+                                    "px-4 py-2 text-xs font-black rounded-xl transition-all flex items-center gap-2",
+                                    empowerMeTab === 'metrics'
+                                      ? "bg-white text-indigo-600 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-slate-200/20"
+                                      : "text-slate-600 hover:text-indigo-600 hover:bg-white/50"
+                                  )}
+                                >
+                                  <TrendingUp className="w-3.5 h-3.5" />
+                                  Ön / Son Test
+                                </button>
+                                <button
+                                  onClick={() => setEmpowerMeTab('outcomes')}
+                                  className={cn(
+                                    "px-4 py-2 text-xs font-black rounded-xl transition-all flex items-center gap-2",
+                                    empowerMeTab === 'outcomes'
+                                      ? "bg-white text-indigo-600 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-slate-200/20"
+                                      : "text-slate-600 hover:text-indigo-600 hover:bg-white/50"
+                                  )}
+                                >
+                                  <Sparkles className="w-3.5 h-3.5" />
+                                  Çıktı & Öneri
+                                </button>
+                              </div>
+                            </div>
+
+                            {/* Sekme İçerikleri */}
+                            <div className="relative mt-6 min-h-[300px]">
+                              {/* 1. Yönetici Özeti & Künye */}
+                              {empowerMeTab === 'summary' && (
+                                <motion.div
+                                  initial={{ opacity: 0, x: 10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  exit={{ opacity: 0, x: -10 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+                                >
+                                  {/* Künye Bölümü */}
+                                  <div className="lg:col-span-1 space-y-4">
+                                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Program Künyesi</div>
+                                    <div className="bg-slate-50/80 border border-slate-100 rounded-3xl p-5 space-y-4 shadow-inner">
+                                      <div className="flex justify-between items-center text-xs pb-3.5 border-b border-slate-200/60">
+                                        <span className="text-slate-500 font-bold">Program Adı</span>
+                                        <span className="font-black text-slate-800 text-right">EmpowerMe - Gençlik Zirvesi</span>
+                                      </div>
+                                      <div className="flex justify-between items-center text-xs pb-3.5 border-b border-slate-200/60">
+                                        <span className="text-slate-500 font-bold">Tarih</span>
+                                        <span className="font-black text-slate-800">27–29 Kasım 2025</span>
+                                      </div>
+                                      <div className="flex justify-between items-center text-xs pb-3.5 border-b border-slate-200/60">
+                                        <span className="text-slate-500 font-bold">Süre</span>
+                                        <span className="font-black text-slate-800">3 Tam Gün</span>
+                                      </div>
+                                      <div className="flex justify-between items-center text-xs pb-3.5 border-b border-slate-200/60">
+                                        <span className="text-slate-500 font-bold">Katılımcı</span>
+                                        <span className="font-black text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100">30 Genç Lider</span>
+                                      </div>
+                                      <div className="flex justify-between items-center text-xs pb-3.5 border-b border-slate-200/60">
+                                        <span className="text-slate-500 font-bold">Eğitmen Kadrosu</span>
+                                        <span className="font-black text-slate-800">2 Eğitmen, 1 Kolaylaştırıcı</span>
+                                      </div>
+                                      <div className="flex justify-between items-center text-xs">
+                                        <span className="text-slate-500 font-bold">Uygulama Türü</span>
+                                        <span className="font-black text-slate-800">Yüz Yüze (İstanbul)</span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  {/* Yönetici Özeti ve Program Amacı */}
+                                  <div className="lg:col-span-2 space-y-6">
+                                    <div>
+                                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3">Yönetici Özeti</div>
+                                      <div className="bg-white border border-slate-100 rounded-3xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50/30 rounded-full blur-xl pointer-events-none" />
+                                        <p className="text-sm text-slate-600 leading-relaxed font-medium">
+                                          21. Yüzyıl Yetkinlikleri Eğitmen Eğitimi, gençlerin hızla değişen dünyada yalnızca bilgi sahibi bireyler olarak kalmayıp; 
+                                          kendini tanıyan, ekiplerle etkili biçimde çalışabilen, teknolojiyi bilinçli kullanan ve öğrendiklerini akranlarına 
+                                          aktarabilen toplumsal dönüşüm öncüleri olarak yetişmelerini hedefleyen kapsamlı bir programdır.
+                                        </p>
+                                        <p className="text-sm text-slate-600 leading-relaxed font-medium mt-4">
+                                          İstanbul merkezli olarak gerçekleştirilen bu 3 günlük yüz yüze zirve, katılımcılara hem teorik altyapıyı 
+                                          kazandırmış hem de mikro-öğretim simülasyonları ile eğitmenlik reflekslerini pratik bir düzlemde geliştirme 
+                                          fırsatı sunmuştur.
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                      <div className="bg-slate-50/60 rounded-2xl border border-slate-100 p-5 flex gap-4">
+                                        <div className="w-10 h-10 rounded-xl bg-violet-100 text-violet-600 flex items-center justify-center shrink-0">
+                                          <Target className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                          <h4 className="text-xs font-black text-slate-800 uppercase tracking-wider">Temel Hedef</h4>
+                                          <p className="text-xs text-slate-500 font-semibold mt-1 leading-relaxed">
+                                            Gençlerin öz farkındalık, problem çözme ve hitabet gibi 21. yüzyıl yetkinliklerini edinerek eğitici roller üstlenmesi.
+                                          </p>
+                                        </div>
+                                      </div>
+                                      <div className="bg-slate-50/60 rounded-2xl border border-slate-100 p-5 flex gap-4">
+                                        <div className="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center shrink-0">
+                                          <Brain className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                          <h4 className="text-xs font-black text-slate-800 uppercase tracking-wider">Teknolojik Boyut</h4>
+                                          <p className="text-xs text-slate-500 font-semibold mt-1 leading-relaxed">
+                                            Eğitimde yapay zekâ entegrasyonu, Padlet ve Genially gibi interaktif araçlarla dijital üretim becerilerinin artırılması.
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </motion.div>
+                              )}
+
+                              {/* 2. 3 Günlük Eğitim Akışı */}
+                              {empowerMeTab === 'program' && (
+                                <motion.div
+                                  initial={{ opacity: 0, x: 10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  exit={{ opacity: 0, x: -10 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="space-y-6"
+                                >
+                                  <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Program Takvimi ve Akışı</div>
+                                  <div className="relative pl-6 sm:pl-8 border-l border-slate-200 space-y-8">
+                                    
+                                    {/* 1. Gün */}
+                                    <div className="relative group">
+                                      <div className="absolute -left-[31px] sm:-left-[39px] top-1 w-6 h-6 rounded-full bg-indigo-500 text-white flex items-center justify-center text-[10px] font-black border-4 border-white shadow-md transition-transform group-hover:scale-110">
+                                        1
+                                      </div>
+                                      <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all">
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                          <div>
+                                            <span className="text-xs font-black text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100">1. GÜN</span>
+                                            <h4 className="text-base font-black text-slate-900 tracking-tight mt-1.5">
+                                              Temel Yetkinlikler, Öz Farkındalık & Uyum
+                                            </h4>
+                                          </div>
+                                          <span className="text-xs font-bold text-slate-400">27 Kasım 2025 · 09:30 - 17:00</span>
+                                        </div>
+                                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-semibold">
+                                          İlk gün, katılımcıların birbirleriyle ve YetGen kültürüyle kaynaşması adına buz kırıcılar ve akran öğrenmesi kurgularıyla başladı. 
+                                          Öz farkındalık çalışmaları kapsamında SWOT analizleri yapıldı ve etkili iletişim, takımdaşlık pratikleri gerçekleştirildi.
+                                        </p>
+                                        <div className="mt-4 flex items-start gap-2 bg-indigo-50/40 border border-indigo-100/50 rounded-2xl p-3">
+                                          <span className="text-indigo-600 text-base shrink-0 pt-0.5">🌱</span>
+                                          <div>
+                                            <strong className="text-xs font-black text-indigo-900">Öne Çıkan Çalışma: Yetkinlik Ağacı</strong>
+                                            <p className="text-xs text-indigo-700 font-semibold mt-0.5">
+                                              Katılımcıların kendi güçlü yetkinliklerini ağacın kökleri, geliştirilmesi gereken alanları ise yaprakları olarak modeledikleri interaktif görselleştirme seansı.
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    {/* 2. Gün */}
+                                    <div className="relative group">
+                                      <div className="absolute -left-[31px] sm:-left-[39px] top-1 w-6 h-6 rounded-full bg-violet-500 text-white flex items-center justify-center text-[10px] font-black border-4 border-white shadow-md transition-transform group-hover:scale-110">
+                                        2
+                                      </div>
+                                      <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all">
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                          <div>
+                                            <span className="text-xs font-black text-violet-600 bg-violet-50 px-2.5 py-0.5 rounded-full border border-violet-100">2. GÜN</span>
+                                            <h4 className="text-base font-black text-slate-900 tracking-tight mt-1.5">
+                                              Tasarım Odaklı Düşünme & Dijital Araç Entegrasyonu
+                                            </h4>
+                                          </div>
+                                          <span className="text-xs font-bold text-slate-400">28 Kasım 2025 · 09:30 - 17:30</span>
+                                        </div>
+                                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-semibold">
+                                          İkinci gün, problem çözme odaklı Tasarım Odaklı Düşünme (Design Thinking) metodolojisiyle başladı. 
+                                          Katılımcılar Genially, Canva ve Padlet gibi interaktif dijital araçları kullanarak eğitim içeriği 
+                                          tasarlama ve sunum becerilerini güçlendiren atölyelere katıldılar.
+                                        </p>
+                                        <div className="mt-4 flex items-start gap-2 bg-violet-50/40 border border-violet-100/50 rounded-2xl p-3">
+                                          <span className="text-violet-600 text-base shrink-0 pt-0.5">📺</span>
+                                          <div>
+                                            <strong className="text-xs font-black text-violet-900">Öne Çıkan Çalışma: Sosyal İnovasyon Haber Bülteni</strong>
+                                            <p className="text-xs text-violet-700 font-semibold mt-0.5">
+                                              Sürdürülebilir Kalkınma Amaçları doğrultusunda tasarlanan sosyal fayda projelerinin, gruplar tarafından canlı bir haber bülteni sunumu şeklinde sahnede canlandırılması.
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    {/* 3. Gün */}
+                                    <div className="relative group">
+                                      <div className="absolute -left-[31px] sm:-left-[39px] top-1 w-6 h-6 rounded-full bg-teal-500 text-white flex items-center justify-center text-[10px] font-black border-4 border-white shadow-md transition-transform group-hover:scale-110">
+                                        3
+                                      </div>
+                                      <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all">
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                          <div>
+                                            <span className="text-xs font-black text-teal-600 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-100">3. GÜN</span>
+                                            <h4 className="text-base font-black text-slate-900 tracking-tight mt-1.5">
+                                              Mikro-Öğretim Simülasyonları & Liderlik
+                                            </h4>
+                                          </div>
+                                          <span className="text-xs font-bold text-slate-400">29 Kasım 2025 · 09:30 - 18:00</span>
+                                        </div>
+                                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-semibold">
+                                          Son günde kolaylaştırıcılık ve eğitmenlik rolleri ele alındı. Her bir katılımcının sahnede ve dijital mecralarda 
+                                          10'ar dakikalık mikro-öğretim simülasyonları gerçekleştirdiği ve akranlarından anlık yapılandırılmış geri bildirim 
+                                          aldığı yoğun bir pratik seansı uygulandı. Kapanışta ise sertifika töreni heyecanı paylaşıldı.
+                                        </p>
+                                        <div className="mt-4 flex items-start gap-2 bg-teal-50/40 border border-teal-100/50 rounded-2xl p-3">
+                                          <span className="text-teal-600 text-base shrink-0 pt-0.5">🎓</span>
+                                          <div>
+                                            <strong className="text-xs font-black text-teal-900">Öne Çıkan Çalışma: Mikro-Öğretim ve Geri Bildirim Döngüsü</strong>
+                                            <p className="text-xs text-teal-700 font-semibold mt-0.5">
+                                              Her katılımcının eğitici şapkasını giydiği, beden dili, hitabet ve sunum becerilerini sergilediği ve eğitmenler tarafından video analizleri ile değerlendirildiği simülasyon.
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </motion.div>
+                              )}
+
+                              {/* 3. Ön Test - Son Test Bulguları */}
+                              {empowerMeTab === 'metrics' && (
+                                <motion.div
+                                  initial={{ opacity: 0, x: 10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  exit={{ opacity: 0, x: -10 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
+                                >
+                                  {/* İlerleme Barları (Progress metrics) */}
+                                  <div className="lg:col-span-7 space-y-6">
+                                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Yetkinlik Gelişim Oranları (Ön Test / Son Test)</div>
+                                    
+                                    {/* 1. Metrik */}
+                                    <div className="space-y-2">
+                                      <div className="flex justify-between items-center text-xs sm:text-sm">
+                                        <span className="font-black text-slate-800">Algoritmik Düşünme Becerisi</span>
+                                        <span className="font-black text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs border border-indigo-100">%70,3 Artış</span>
+                                      </div>
+                                      <div className="space-y-1.5 bg-slate-50 border border-slate-100 rounded-2xl p-3 shadow-inner">
+                                        <div className="flex items-center gap-3">
+                                          <span className="text-[10px] font-black text-slate-400 w-12 shrink-0">Ön Test</span>
+                                          <div className="flex-1 h-3 bg-slate-200/50 rounded-full overflow-hidden">
+                                            <motion.div initial={{ width: 0 }} animate={{ width: '45%' }} className="h-full bg-slate-400 rounded-full" transition={{ duration: 1 }} />
+                                          </div>
+                                          <span className="text-xs font-black text-slate-600 w-8 text-right">%45</span>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                          <span className="text-[10px] font-black text-indigo-500 w-12 shrink-0">Son Test</span>
+                                          <div className="flex-1 h-3 bg-slate-200/50 rounded-full overflow-hidden">
+                                            <motion.div initial={{ width: 0 }} animate={{ width: '76.6%' }} className="h-full bg-indigo-500 rounded-full" transition={{ duration: 1, delay: 0.1 }} />
+                                          </div>
+                                          <span className="text-xs font-black text-indigo-600 w-8 text-right">%76,6</span>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    {/* 2. Metrik */}
+                                    <div className="space-y-2">
+                                      <div className="flex justify-between items-center text-xs sm:text-sm">
+                                        <span className="font-black text-slate-800">21. Yüzyıl Yetkinlikleri Farkındalığı</span>
+                                        <span className="font-black text-violet-600 bg-violet-50 px-2.5 py-0.5 rounded-full text-xs border border-violet-100">%46,8 Artış</span>
+                                      </div>
+                                      <div className="space-y-1.5 bg-slate-50 border border-slate-100 rounded-2xl p-3 shadow-inner">
+                                        <div className="flex items-center gap-3">
+                                          <span className="text-[10px] font-black text-slate-400 w-12 shrink-0">Ön Test</span>
+                                          <div className="flex-1 h-3 bg-slate-200/50 rounded-full overflow-hidden">
+                                            <motion.div initial={{ width: 0 }} animate={{ width: '62%' }} className="h-full bg-slate-400 rounded-full" transition={{ duration: 1 }} />
+                                          </div>
+                                          <span className="text-xs font-black text-slate-600 w-8 text-right">%62</span>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                          <span className="text-[10px] font-black text-violet-500 w-12 shrink-0">Son Test</span>
+                                          <div className="flex-1 h-3 bg-slate-200/50 rounded-full overflow-hidden">
+                                            <motion.div initial={{ width: 0 }} animate={{ width: '91%' }} className="h-full bg-violet-500 rounded-full" transition={{ duration: 1, delay: 0.1 }} />
+                                          </div>
+                                          <span className="text-xs font-black text-violet-600 w-8 text-right">%91</span>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    {/* 3. Metrik */}
+                                    <div className="space-y-2">
+                                      <div className="flex justify-between items-center text-xs sm:text-sm">
+                                        <span className="font-black text-slate-800">Eğitmenlik Özgüveni & Sınıf Yönetimi</span>
+                                        <span className="font-black text-teal-600 bg-teal-50 px-2.5 py-0.5 rounded-full text-xs border border-teal-100">%76,0 Artış</span>
+                                      </div>
+                                      <div className="space-y-1.5 bg-slate-50 border border-slate-100 rounded-2xl p-3 shadow-inner">
+                                        <div className="flex items-center gap-3">
+                                          <span className="text-[10px] font-black text-slate-400 w-12 shrink-0">Ön Test</span>
+                                          <div className="flex-1 h-3 bg-slate-200/50 rounded-full overflow-hidden">
+                                            <motion.div initial={{ width: 0 }} animate={{ width: '50%' }} className="h-full bg-slate-400 rounded-full" transition={{ duration: 1 }} />
+                                          </div>
+                                          <span className="text-xs font-black text-slate-600 w-8 text-right">%50</span>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                          <span className="text-[10px] font-black text-teal-500 w-12 shrink-0">Son Test</span>
+                                          <div className="flex-1 h-3 bg-slate-200/50 rounded-full overflow-hidden">
+                                            <motion.div initial={{ width: 0 }} animate={{ width: '88%' }} className="h-full bg-teal-500 rounded-full" transition={{ duration: 1, delay: 0.1 }} />
+                                          </div>
+                                          <span className="text-xs font-black text-teal-600 w-8 text-right">%88</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  {/* Memnuniyet Skalaları (Survey stats) */}
+                                  <div className="lg:col-span-5 space-y-4">
+                                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Zirve Değerlendirme Anketi Skorları</div>
+                                    
+                                    <div className="bg-white border border-slate-100 rounded-3xl p-5 shadow-sm space-y-4">
+                                      <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                                        <div>
+                                          <h5 className="text-xs font-black text-slate-700">Genel Zirve Memnuniyeti</h5>
+                                          <p className="text-[10px] font-bold text-slate-400 mt-0.5">30 katılımcının genel puanı</p>
+                                        </div>
+                                        <span className="text-lg font-black text-indigo-600 bg-indigo-50 border border-indigo-100 px-3 py-1 rounded-2xl">4,80 / 5</span>
+                                      </div>
+
+                                      <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                                        <div>
+                                          <h5 className="text-xs font-black text-slate-700">Eğitim İçeriği & Dokümanlar</h5>
+                                          <p className="text-[10px] font-bold text-slate-400 mt-0.5">Sunulan materyal kalitesi</p>
+                                        </div>
+                                        <span className="text-base font-black text-slate-800">4,85 / 5</span>
+                                      </div>
+
+                                      <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                                        <div>
+                                          <h5 className="text-xs font-black text-slate-700">Eğitmen & Kolaylaştırıcı Yetkinliği</h5>
+                                          <p className="text-[10px] font-bold text-slate-400 mt-0.5">Oturum liderleri değerlendirmesi</p>
+                                        </div>
+                                        <span className="text-base font-black text-slate-800">4,92 / 5</span>
+                                      </div>
+
+                                      <div className="flex items-center justify-between">
+                                        <div>
+                                          <h5 className="text-xs font-black text-slate-700">Fiziksel Ortam & Organizasyon</h5>
+                                          <p className="text-[10px] font-bold text-slate-400 mt-0.5">Eğitim mekanı ve ikramlar</p>
+                                        </div>
+                                        <span className="text-base font-black text-slate-800">4,64 / 5</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </motion.div>
+                              )}
+
+                              {/* 4. Çıktılar & Öneriler */}
+                              {empowerMeTab === 'outcomes' && (
+                                <motion.div
+                                  initial={{ opacity: 0, x: 10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  exit={{ opacity: 0, x: -10 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                                >
+                                  {/* Somut Çıktılar (Outcomes) */}
+                                  <div>
+                                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Zirve Sonrası Somut Çıktılar</div>
+                                    <div className="space-y-4">
+                                      
+                                      <div className="bg-white border border-slate-100 rounded-3xl p-5 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
+                                        <span className="text-2xl shrink-0">🎓</span>
+                                        <div>
+                                          <h5 className="text-xs sm:text-sm font-black text-slate-800 uppercase tracking-wide">30 Yeni Beceriler Eğitmeni</h5>
+                                          <p className="text-xs text-slate-500 font-semibold mt-1 leading-relaxed">
+                                            30 genç lider, 21. yüzyıl yetkinliklerini kendi topluluklarında akranlarına aktarabilecek teorik ve pratik donanıma kavuşarak sertifikalandırıldı.
+                                          </p>
+                                        </div>
+                                      </div>
+
+                                      <div className="bg-white border border-slate-100 rounded-3xl p-5 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
+                                        <span className="text-2xl shrink-0">📂</span>
+                                        <div>
+                                          <h5 className="text-xs sm:text-sm font-black text-slate-800 uppercase tracking-wide">Dijital Ders Tasarımları & Materyaller</h5>
+                                          <p className="text-xs text-slate-500 font-semibold mt-1 leading-relaxed">
+                                            Eğitim boyunca Genially ve Padlet üzerinde kurgulanan 10'dan fazla özgün ders kurgusu ve interaktif sunum açık kaynaklı bir kütüphaneye dönüştürüldü.
+                                          </p>
+                                        </div>
+                                      </div>
+
+                                      <div className="bg-white border border-slate-100 rounded-3xl p-5 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
+                                        <span className="text-2xl shrink-0">🤝</span>
+                                        <div>
+                                          <h5 className="text-xs sm:text-sm font-black text-slate-800 uppercase tracking-wide">Akran Dayanışma & İş Birliği Ağı</h5>
+                                          <p className="text-xs text-slate-500 font-semibold mt-1 leading-relaxed">
+                                            İstanbul genelinde yer alan farklı üniversitelerden 30 seçkin genç arasında sürdürülebilir bir iş birliği, bilgi ve materyal paylaşım ağı inşa edildi.
+                                          </p>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+
+                                  {/* Stratejik Öneriler (Recommendations) */}
+                                  <div>
+                                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Gelecek Programlar İçin Öneriler</div>
+                                    <div className="space-y-4">
+
+                                      <div className="bg-slate-50 border border-slate-100/60 rounded-3xl p-5 shadow-inner flex items-start gap-4">
+                                        <span className="text-2xl shrink-0">⏰</span>
+                                        <div>
+                                          <h5 className="text-xs sm:text-sm font-black text-slate-800 uppercase tracking-wide">Süre Genişletilmesi ve Derinleşme</h5>
+                                          <p className="text-xs text-slate-500 font-semibold mt-1 leading-relaxed">
+                                            Dijital araç eğitimleri (özellikle interaktif şablon tasarımları) ve mikro-öğretim pratikleri için ayrılan sürelerin yarımşar gün uzatılarak 3,5 veya 4 güne yayılması.
+                                          </p>
+                                        </div>
+                                      </div>
+
+                                      <div className="bg-slate-50 border border-slate-100/60 rounded-3xl p-5 shadow-inner flex items-start gap-4">
+                                        <span className="text-2xl shrink-0">🧭</span>
+                                        <div>
+                                          <h5 className="text-xs sm:text-sm font-black text-slate-800 uppercase tracking-wide">Sürekli Mentorluk & İzleme Programı</h5>
+                                          <p className="text-xs text-slate-500 font-semibold mt-1 leading-relaxed">
+                                            Sertifikasını alan yeni eğitmenlerin akran eğitimlerinde yalnız bırakılmaması; ilk 2 eğitim seansında YetGen kıdemli eğitmenlerince izlenip ara değerlendirme yapılması.
+                                          </p>
+                                        </div>
+                                      </div>
+
+                                      <div className="bg-slate-50 border border-slate-100/60 rounded-3xl p-5 shadow-inner flex items-start gap-4">
+                                        <span className="text-2xl shrink-0">💡</span>
+                                        <div>
+                                          <h5 className="text-xs sm:text-sm font-black text-slate-800 uppercase tracking-wide">Sosyal İnovasyon Projelerinin Kuluçkalanması</h5>
+                                          <p className="text-xs text-slate-500 font-semibold mt-1 leading-relaxed">
+                                            2. gün geliştirilen sürdürülebilir kalkınma projelerinin, YetGen girişimcilik dikeyine (Kuluçka Merkezi vb.) aktarılarak hayata geçirilmesi için fon/mentor desteği sağlanması.
+                                          </p>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </motion.div>
+                              )}
+                            </div>
+                          </motion.div>
+                        )}
+
                         {/* Age + education: one left column on 12-col map rows so a narrow "icon strip" never appears */}
                         {!isDoping2024Program && !isIlkDersProgram && !usesCompactNoMapLayout && mapRowLeftStack && (
                           <div className="lg:col-span-3 lg:order-1 flex flex-col gap-6 min-w-0">
@@ -9342,7 +10101,7 @@ export default function App() {
                         )}
 
                         {/* Gender Unstacked Contents */}
-                        {showGenderCard && !isDoping2024Program && (
+                        {showGenderCard && !isDoping2024Program && !isEmpowerMe2025 && (
                         <div className={cn(
                           isIyiNiyetProgram && usesTwelveColMapRow
                             ? "lg:col-span-12 lg:order-4"
@@ -9504,7 +10263,7 @@ export default function App() {
                         )}
                         
                         {/* Academic Profile Ranking - Schools */}
-                        {selectedYear !== '2016-2020' && !isIyiNiyetProgram && !isHabitatEmpowerProgram && !isIsbankFinans2024 && !isIlkDersProgram && selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 && (
+                        {selectedYear !== '2016-2020' && !isIyiNiyetProgram && !isHabitatEmpowerProgram && !isIsbankFinans2024 && !isIlkDersProgram && !isEmpowerMe2025 && selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 && (
                         <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
                           <div>
                             <div className="flex items-center gap-3 mb-4">
@@ -9542,7 +10301,7 @@ export default function App() {
                         )}
 
                         {/* Academic Profile Ranking - Departments */}
-                        {selectedYear !== '2016-2020' && !isIyiNiyetProgram && !isHabitatEmpowerProgram && !isIsbankFinans2024 && !isIlkDersProgram && selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0 && (
+                        {selectedYear !== '2016-2020' && !isIyiNiyetProgram && !isHabitatEmpowerProgram && !isIsbankFinans2024 && !isIlkDersProgram && !isEmpowerMe2025 && selectedYearData?.topDepartments && selectedYearData.topDepartments.length > 0 && (
                         <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
                           <div>
                             <div className="flex items-center gap-3 mb-4">
