@@ -945,6 +945,7 @@ const yearlyData: IYearlyData[] = [
       {
         "id": "jump-softtech-2021",
         "name": "Jump Softtech Programı",
+        "image": "/partners/yazılım.JPG",
         "participants": 245,
         "graduates": 121,
         "description": "Java ve .NET odaklı ilk dikey YetGen programıdır. 250 mezunla başlayıp 8 haftalık teknik eğitimler (171 Java, 77 .NET) verildi. Sertifika alan 121 katılımcının istihdam süreçleri devam etmektedir.",
