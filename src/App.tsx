@@ -8564,8 +8564,10 @@ export default function App() {
                       {/* 4 or 5 Interactive Charts Row */}
                       <div className={cn(
                         "mt-6 sm:mt-8 gap-6 md:gap-8",
-                        isDoping2024Program || isIlkDersProgram || usesCompactNoMapLayout || isBiSeminerProgram
+                        isDoping2024Program || isIlkDersProgram || usesCompactNoMapLayout
                           ? "flex flex-col"
+                          : isBiSeminerProgram
+                            ? "grid grid-cols-1 md:grid-cols-2 items-stretch"
                           : cn(
                               "grid",
                               usesTwelveColMapRow
@@ -8574,7 +8576,7 @@ export default function App() {
                             ),
                       )}>
                         {isBiSeminerProgram && (
-                          <div className="md:col-span-2 xl:col-span-4 relative bg-white/90 backdrop-blur-3xl border border-slate-200/80 shadow-[0_16px_45px_rgba(15,23,42,0.08)] rounded-[2rem] p-6 sm:p-8 md:p-10 overflow-hidden">
+                          <div className="md:col-span-2 relative bg-white/90 backdrop-blur-3xl border border-slate-200/80 shadow-[0_16px_45px_rgba(15,23,42,0.08)] rounded-[2rem] p-6 sm:p-8 md:p-10 overflow-hidden">
                             <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-violet-50/80 to-transparent pointer-events-none" />
                             <div className="relative flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
                               <div>
