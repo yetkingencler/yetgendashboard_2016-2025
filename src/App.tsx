@@ -147,8 +147,8 @@ const yearlyData: IYearlyData[] = [
     "year": "2021",
     "participants": 3906,
     "graduates": 2686,
-    "description": "Rekor katılım yılı! Dijital araçların kullanımıyla Türkiye genelinde 3 farklı programla binlerce gence ulaşıldı.",
-    "image": "/partners/online.jpg",
+    "description": "Rekor katılım yılı! Temel Eğitim Programı (TEP) ile 21. yüzyıl yetkinlikleri aktarılırken, ilk dikey teknik eğitimimiz olan Jump Softtech ile yazılım dünyasına güçlü adımlar atıldı.",
+    "image": "/partners/2021-g.JPG",
     "hasAgeData": true,
     "ageData": [
       { "age": "<18", "count": 245 },
@@ -5386,7 +5386,7 @@ const yearlyData: IYearlyData[] = [
     "participants": 2505,
     "graduates": 1042,
     "description": "Güncel dönem. Sürdürülebilir gelişim ve küresel yetkinlikler odağında eğitimler devam ediyor.",
-    "image": "/partners/2025_1.jpg",
+    "image": "/partners/12345.JPG",
     "hasAgeData": true,
     "ageData": [
       {
@@ -7159,6 +7159,7 @@ const yearlyData: IYearlyData[] = [
           }
         ],
         "sponsors": [
+          "İyi Niyet Derneği",
           "Yetkin Gençler"
         ]
       },
@@ -7210,6 +7211,45 @@ const yearlyData: IYearlyData[] = [
           { "name": "Eğitim Bilimleri", "val": 4 }
         ],
         "sponsors": ["Habitat Derneği", "Yetkin Gençler"]
+      },
+      {
+        "id": "uoml-2025",
+        "name": "UÖML Kariyer Becerileri",
+        "longName": "YetGen & Ulus Özel Musevi Lisesi Kariyer & Yaşam Becerileri Eğitim Programı",
+        "image": "/partners/yetgenphoto.webp",
+        "participants": 152,
+        "graduates": 152,
+        "certificationBased": true,
+        "summary": "5 Eylül - 22 Ekim 2025 tarihlerinde Ulus Özel Musevi Lisesi iş birliğiyle gerçekleştirilen Kariyer & Yaşam Becerileri Eğitim Programı kapsamında katılım ve değerlendirme özeti.",
+        "description": "Katılımcılara teknik beceriler kazandırmak, sürdürülebilirlik ve tasarım odaklı düşünce aşılamak, 21. yüzyıl yetkinlikleri ile tanışmalarını ve kariyer planlaması yapmalarını sağlamak hedeflenmiştir.",
+        "gender": {
+          "female": 84,
+          "male": 68,
+          "other": 0
+        },
+        "hasAgeData": true,
+        "ageData": [
+          { "age": "2012 (13 Yaş)", "count": 1 },
+          { "age": "2011 (14 Yaş)", "count": 52 },
+          { "age": "2010 (15 Yaş)", "count": 37 },
+          { "age": "2009 (16 Yaş)", "count": 26 },
+          { "age": "2008 (17 Yaş)", "count": 36 }
+        ],
+        "cities": [
+          { "name": "İstanbul", "count": 152 }
+        ],
+        "educationLevels": [
+          { "name": "9. Sınıf", "count": 45 },
+          { "name": "10. Sınıf", "count": 32 },
+          { "name": "11. Sınıf", "count": 20 },
+          { "name": "12. Sınıf", "count": 24 },
+          { "name": "Mezun / Diğer", "count": 31 }
+        ],
+        "topSchools": [
+          { "name": "Ulus Özel Musevi Lisesi", "val": 152 }
+        ],
+        "topDepartments": [],
+        "sponsors": ["Ulus Özel Musevi Lisesi", "Yetkin Gençler"]
       }
     ]
   }
@@ -7367,6 +7407,11 @@ const PROGRAM_BANNER_COPY: Record<string, ProgramBannerCopy> = {
     badge: 'EmpowerMe · Eğitmen Eğitimi',
     headline: ['Gençlik Zirvesi', 'Eğitmen Eğitimi'],
     tagline: '21. Yüzyıl Yetkinlikleri Eğitmen Eğitimi — gençlerin yapay zekâ, dijital üretim ve algoritmik düşünmeyle dönüştürücü liderler olarak güçlenmesi.',
+  },
+  'uoml-2025': {
+    badge: 'YetGen & UÖML',
+    headline: ['Kariyer & Yaşam', 'Becerileri'],
+    tagline: 'Ulus Özel Musevi Lisesi iş birliğiyle tüm lise kademelerine yönelik; Excel ile modelleme, sürdürülebilirlik, tasarım odaklı düşünce, teknoloji okuryazarlığı ve etkili sunum tekniklerini kapsayan eğitim programı.',
   },
 };
 
@@ -7751,6 +7796,8 @@ export default function App() {
       'doping-2025': ['Doping Hafıza'],
       'isbank-finansal-okuryazarlik-2024': ['İş Bankası'],
       'habitat-empower-me-2024': ['Habitat Derneği'],
+      'uoml-2025': ['Ulus Özel Musevi Lisesi'],
+      'iyi-niyet-2025': ['İyi Niyet Derneği'],
     };
 
     const mapSponsorToLogo = (sponsor: string) => {
@@ -7763,7 +7810,9 @@ export default function App() {
       if (normalizedSponsor === 'softtech' || normalizedSponsor === 'softech') return '/partners/softech.png';
       if (sponsor === 'Zorlu Holding') return '/partners/Zorlu_Logo.png';
       if (sponsor === 'GAİN') return '/partners/GAİN_LOGO.jpg';
-      return `/partners/${normalizedSponsor.replace(/ /g, '-')}.png`;
+      if (sponsor === 'Ulus Özel Musevi Lisesi' || normalizedSponsor.includes('musevi') || normalizedSponsor.includes('uöml')) return '/partners/ulusmusevilogo.svg';
+      if (sponsor === 'İyi Niyet Derneği' || normalizedSponsor.includes('iyi niyet') || normalizedSponsor.includes('iyiniyet')) return '/partners/iyiniyetlogo.png';
+      return `/partners/${normalizedSponsor.replace(/ /g, '-').replace(/ğ/g, 'g').replace(/ı/g, 'i').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ö/g, 'o').replace(/ç/g, 'c')}.png`;
     };
 
     if (selectedYear === 'all') {
@@ -7782,6 +7831,8 @@ export default function App() {
         { name: 'Softtech', logo: '/partners/softech.png' },
         { name: 'GAİN', logo: '/partners/GAİN_LOGO.jpg' },
         { name: 'Habitat Derneği', logo: '/partners/Habitat_logo.jpg' },
+        { name: 'Ulus Özel Musevi Lisesi', logo: '/partners/ulusmusevilogo.svg' },
+        { name: 'İyi Niyet Derneği', logo: '/partners/iyiniyetlogo.png' },
       ];
     }
 
@@ -7895,6 +7946,7 @@ export default function App() {
   const isIyiNiyetProgram = selectedProgram === 'iyi-niyet-2025';
   const isHabitatEmpowerProgram = selectedProgram === 'habitat-empower-me-2024';
   const isEmpowerMe2025 = selectedProgram === 'empowerme-2025';
+  const isUomlProgram = selectedProgram === 'uoml-2025';
   const isIsbankFinans2024 = selectedProgram === 'isbank-finansal-okuryazarlik-2024';
   const isCorePython3_2024 = selectedProgram === 'core-python-3-2024';
   const isPythonProgram = !!selectedProgram?.includes('core-python');
@@ -7902,7 +7954,7 @@ export default function App() {
   const isDopingProgram = selectedProgram === 'doping-2024' || selectedProgram === 'doping-2025';
   const usesWideMapProgramLayout = isIyiNiyetProgram || isIsbankFinans2024;
   const usesTwelveColMapRow = isIyiNiyetProgram || isIsbankFinans2024;
-  const usesHabitatCompactLayout = isHabitatEmpowerProgram || isEmpowerMe2025;
+  const usesHabitatCompactLayout = isHabitatEmpowerProgram || isEmpowerMe2025 || isUomlProgram;
   const usesGalatasarayCompactLayout = isGalatasarayProgram;
   const usesCompactNoMapLayout = usesHabitatCompactLayout || usesGalatasarayCompactLayout;
 
@@ -8391,6 +8443,37 @@ export default function App() {
                     delay={0.4}
                   />
                 </>
+              ) : isUomlProgram ? (
+                <>
+                  <StatCard
+                    title="Katılımcı"
+                    value={selectedYearData?.participants.toLocaleString('tr-TR') || '152'}
+                    subValue="9, 10, 11, 12. Sınıf & Mezun"
+                    icon={Users}
+                    delay={0.1}
+                  />
+                  <StatCard
+                    title="Eğitim Metodu"
+                    value="Yüz Yüze & Online"
+                    subValue="Hibrit Kurgu"
+                    icon={Target}
+                    delay={0.2}
+                  />
+                  <StatCard
+                    title="Eğitim Takvimi"
+                    value="5 Eylül - 22 Ekim"
+                    subValue="2025 Güz Dönemi"
+                    icon={Presentation}
+                    delay={0.3}
+                  />
+                  <StatCard
+                    title="Sertifika Kriteri"
+                    value="Canlı + Asenkron + Ödev"
+                    subValue="Düzenli katılım ve takip"
+                    icon={TrendingUp}
+                    delay={0.4}
+                  />
+                </>
               ) : isEmpowerMe2025 ? (
                 <>
                   <StatCard
@@ -8489,7 +8572,6 @@ export default function App() {
                   <StatCard
                     title="Toplam Katılımcı"
                     value={selectedYearData?.participants.toLocaleString('tr-TR') || '0'}
-                    subValue="CSV katılımcı listesi"
                     icon={Users}
                     delay={0.1}
                   />
@@ -8584,6 +8666,7 @@ export default function App() {
                             className={cn(
                               "absolute inset-0 w-full h-full object-cover brightness-[1.05] contrast-[1.1] saturate-[1.1] transition-transform duration-[2s] group-hover:scale-110",
                               selectedProgram === 'doping-2024' ? "object-[right_35%]" :
+                              selectedYear === '2025' ? "object-[center_45%]" :
                               selectedYear === 'all' ? "object-[center_70%]" : 
                               selectedYear === '2022' ? "object-[center_75%]" : 
                               "object-[center_20%]"
@@ -8878,7 +8961,10 @@ export default function App() {
                             initial={{ opacity: 0, y: 12 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full items-stretch"
+                            className={cn(
+                              "grid grid-cols-1 gap-6 md:gap-8 w-full items-stretch",
+                              isUomlProgram ? "sm:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3"
+                            )}
                           >
                             {showAgeChart && (
                               <motion.div
@@ -8950,6 +9036,115 @@ export default function App() {
                                 </div>
                               </motion.div>
                             )}
+                            {isUomlProgram && (
+                              <motion.div
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="min-w-0 bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col h-full relative overflow-hidden hover:shadow-xl hover:shadow-indigo-100/40 transition-all justify-between"
+                              >
+                                <div>
+                                  {/* Card Header */}
+                                  <div className="flex items-center gap-3 mb-5">
+                                    <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-100 text-indigo-500 flex items-center justify-center shrink-0 shadow-inner">
+                                      <Users className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Kitle Profili</p>
+                                      <p className="text-xs font-bold text-slate-900 leading-tight">Cinsiyet & Okul</p>
+                                    </div>
+                                  </div>
+
+                                  {/* Gender Section */}
+                                  <div className="space-y-3">
+                                    <div className="flex justify-between items-center text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">
+                                      <span>Cinsiyet Dengesi</span>
+                                      <span className="text-slate-500 font-bold tracking-normal">{genderKnownTotal} Kişi</span>
+                                    </div>
+                                    
+                                    {/* Multi-segment compact horizontal bar */}
+                                    <div className="h-3.5 bg-slate-100 rounded-full flex overflow-hidden border border-slate-200/30 shadow-inner">
+                                      <motion.div
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${(genderFemale / genderKnownTotal) * 100}%` }}
+                                        transition={{ duration: 1 }}
+                                        className="h-full bg-gradient-to-r from-pink-400 to-pink-500 relative group cursor-help"
+                                        title={`Kadın: ${genderFemale} kişi (%${Math.round((genderFemale / genderKnownTotal) * 100)})`}
+                                      />
+                                      <motion.div
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${(genderMale / genderKnownTotal) * 100}%` }}
+                                        transition={{ duration: 1, delay: 0.1 }}
+                                        className="h-full bg-gradient-to-r from-blue-400 to-blue-500 relative group cursor-help"
+                                        title={`Erkek: ${genderMale} kişi (%${Math.round((genderMale / genderKnownTotal) * 100)})`}
+                                      />
+                                    </div>
+
+                                    {/* Gender Legend */}
+                                    <div className="grid grid-cols-2 gap-2 text-xs">
+                                      <div className="flex items-center gap-1.5">
+                                        <span className="w-2.5 h-2.5 rounded-full bg-pink-500 shrink-0" />
+                                        <div className="flex flex-col">
+                                          <span className="font-bold text-slate-700">Kadın</span>
+                                          <span className="text-[10px] font-black text-pink-600 leading-none">
+                                            %{Math.round((genderFemale / genderKnownTotal) * 100)} <span className="text-slate-400 font-normal">({genderFemale})</span>
+                                          </span>
+                                        </div>
+                                      </div>
+                                      <div className="flex items-center gap-1.5 justify-end text-right">
+                                        <div className="flex flex-col items-end">
+                                          <span className="font-bold text-slate-700">Erkek</span>
+                                          <span className="text-[10px] font-black text-blue-600 leading-none">
+                                            %{Math.round((genderMale / genderKnownTotal) * 100)} <span className="text-slate-400 font-normal">({genderMale})</span>
+                                          </span>
+                                        </div>
+                                        <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  {/* Divider */}
+                                  <div className="border-t border-slate-100 my-4" />
+
+                                  {/* School Section */}
+                                  <div className="space-y-2.5">
+                                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">
+                                      En Aktif Okul
+                                    </div>
+                                    {selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 ? (
+                                      <div className="bg-slate-50/70 border border-slate-100 rounded-2xl p-3 flex flex-col gap-2 hover:bg-slate-50 transition-colors">
+                                        <div className="flex items-start gap-2.5">
+                                          <div className="w-6 h-6 rounded-lg bg-blue-50 text-blue-500 flex items-center justify-center shrink-0 border border-blue-100/30">
+                                            <Globe className="w-3.5 h-3.5" />
+                                          </div>
+                                          <div className="flex-1 min-w-0">
+                                            <p className="text-xs font-bold text-slate-800 leading-snug break-words">
+                                              {selectedYearData.topSchools[0].name}
+                                            </p>
+                                            <p className="text-[10px] font-black text-blue-600 mt-0.5">
+                                              {selectedYearData.topSchools[0].val} Katılımcı <span className="text-slate-400 font-normal">(%100)</span>
+                                            </p>
+                                          </div>
+                                        </div>
+                                        <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                          <motion.div
+                                            initial={{ width: 0 }}
+                                            animate={{ width: "100%" }}
+                                            transition={{ duration: 1, delay: 0.2 }}
+                                            className="h-full bg-blue-500 rounded-full"
+                                          />
+                                        </div>
+                                      </div>
+                                    ) : (
+                                      <div className="text-xs text-slate-500">Okul bilgisi bulunamadı.</div>
+                                    )}
+                                  </div>
+                                </div>
+                                <p className="mt-4 text-[9px] font-medium text-slate-400 leading-snug uppercase tracking-[0.1em]">
+                                  Tek okul üzerinden tam katılım sağlanmıştır.
+                                </p>
+                              </motion.div>
+                            )}
                             <motion.div
                               initial={{ opacity: 0, y: 16 }}
                               whileInView={{ opacity: 1, y: 0 }}
@@ -8963,7 +9158,7 @@ export default function App() {
                                 <div>
                                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Program Özeti</p>
                                   <p className="text-xs font-bold text-slate-900 leading-tight">
-                                    {isEmpowerMe2025 ? "EmpowerMe Zirvesi" : "Empower Me · Yüz Yüze"}
+                                    {isUomlProgram ? "UÖML Eğitim Programı" : isEmpowerMe2025 ? "EmpowerMe Zirvesi" : "Empower Me · Yüz Yüze"}
                                   </p>
                                 </div>
                               </div>
@@ -8975,18 +9170,27 @@ export default function App() {
                                 <li className="flex justify-between gap-3 border-b border-slate-100 pb-3">
                                   <span className="text-slate-600 font-medium">Süre</span>
                                   <span className="font-black text-slate-900 text-right">
-                                    {isEmpowerMe2025 ? "27–29 Kasım 2025" : "12–14 Ara 2024"}
+                                    {isUomlProgram ? "5 Eylül - 22 Ekim 2025" : isEmpowerMe2025 ? "27–29 Kasım 2025" : "12–14 Ara 2024"}
                                   </span>
                                 </li>
                                 <li className="flex justify-between gap-3 border-b border-slate-100 pb-3">
                                   <span className="text-slate-600 font-medium">Konum</span>
-                                  <span className="font-black text-slate-900">İstanbul</span>
+                                  <span className="font-black text-slate-900">{isUomlProgram ? "UÖML Salonu & Meet" : "İstanbul"}</span>
                                 </li>
                                 <li className="flex justify-between gap-3">
-                                  <span className="text-slate-600 font-medium">Memnuniyet</span>
-                                  <span className="font-black text-teal-700">
-                                    {isEmpowerMe2025 ? "4,80 / 5" : "4,57 / 5"}
-                                  </span>
+                                  {isUomlProgram ? (
+                                    <>
+                                      <span className="text-slate-600 font-medium">Format</span>
+                                      <span className="font-black text-teal-700">Yüz Yüze + Online</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <span className="text-slate-600 font-medium">Memnuniyet</span>
+                                      <span className="font-black text-teal-700">
+                                        {isEmpowerMe2025 ? "4,80 / 5" : "4,57 / 5"}
+                                      </span>
+                                    </>
+                                  )}
                                 </li>
                               </ul>
                               <p className="mt-5 text-[11px] text-slate-500 leading-relaxed">
@@ -10101,7 +10305,7 @@ export default function App() {
                         )}
 
                         {/* Gender Unstacked Contents */}
-                        {showGenderCard && !isDoping2024Program && !isEmpowerMe2025 && (
+                        {showGenderCard && !isDoping2024Program && !isEmpowerMe2025 && !isUomlProgram && (
                         <div className={cn(
                           isIyiNiyetProgram && usesTwelveColMapRow
                             ? "lg:col-span-12 lg:order-4"
@@ -10263,7 +10467,7 @@ export default function App() {
                         )}
                         
                         {/* Academic Profile Ranking - Schools */}
-                        {selectedYear !== '2016-2020' && !isIyiNiyetProgram && !isHabitatEmpowerProgram && !isIsbankFinans2024 && !isIlkDersProgram && !isEmpowerMe2025 && selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 && (
+                        {selectedYear !== '2016-2020' && !isIyiNiyetProgram && !isHabitatEmpowerProgram && !isIsbankFinans2024 && !isIlkDersProgram && !isEmpowerMe2025 && !isUomlProgram && selectedYearData?.topSchools && selectedYearData.topSchools.length > 0 && (
                         <div className="bg-white/70 backdrop-blur-3xl border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] border p-6 sm:p-8 md:p-10 shadow-sm flex flex-col min-w-0 h-full relative overflow-hidden hover:shadow-xl hover:shadow-blue-100/40 transition-all justify-start">
                           <div>
                             <div className="flex items-center gap-3 mb-4">
