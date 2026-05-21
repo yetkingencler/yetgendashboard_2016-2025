@@ -314,7 +314,7 @@ export default function App() {
     const mapSponsorToLogo = (sponsor: string) => {
       const normalizedSponsor = sponsor.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
       if (sponsor === 'Mehmet Zorlu Vakfı') return '/partners/mzv-logo.png';
-      if (sponsor === 'MEF Üniversitesi') return '/partners/mefunii_transparent.png';
+      if (sponsor === 'MEF Üniversitesi') return '/partners/mefu\u0308nii.png';
       if (normalizedSponsor.includes('doping')) return '/partners/doping.png';
       if (normalizedSponsor.includes('habitat')) return '/partners/Habitat_logo.jpg';
       if (normalizedSponsor.includes('is bank')) return '/partners/isb.png';
@@ -331,7 +331,7 @@ export default function App() {
     if (selectedYear === 'all') {
       return [
         { name: 'Mehmet Zorlu Vakfı', logo: '/partners/mzv-logo.png' },
-        { name: 'MEF Üniversitesi', logo: '/partners/mefunii_transparent.png' },
+        { name: 'MEF Üniversitesi', logo: '/partners/mefu\u0308nii.png' },
         { name: 'Zorlu Holding', logo: '/partners/Zorlu_Logo.png' },
         { name: 'Akbank', logo: '/partners/akbank.png' },
         { name: 'Paribu', logo: '/partners/paribu.png' },

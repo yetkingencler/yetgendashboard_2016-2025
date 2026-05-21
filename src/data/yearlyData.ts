@@ -2291,7 +2291,7 @@ export const yearlyData: IYearlyData[] = [
             "val": 53
           }
         ],
-        "sponsors": ["Zorlu Holding", "Yetkin Gençler"]
+        "sponsors": ["Zorlu Holding", "MEF Üniversitesi", "Yetkin Gençler"]
       }
     ]
   },
@@ -3450,7 +3450,7 @@ export const yearlyData: IYearlyData[] = [
           }
         ],
         "topDepartments": [],
-        "sponsors": ["Zorlu Holding", "Yetkin Gençler"]
+        "sponsors": ["Zorlu Holding", "MEF Üniversitesi", "Yetkin Gençler"]
       },
       {
         "id": "core-python-2-2023",
@@ -4865,7 +4865,7 @@ export const yearlyData: IYearlyData[] = [
             "val": 17
           }
         ],
-        "sponsors": ["Zorlu Holding", "Yetkin Gençler"]
+        "sponsors": ["Zorlu Holding", "MEF Üniversitesi", "Yetkin Gençler"]
       },
       {
         "id": "doping-2024",
@@ -6396,7 +6396,7 @@ export const yearlyData: IYearlyData[] = [
             "val": 27
           }
         ],
-        "sponsors": ["Zorlu Holding", "Yetkin Gençler"]
+        "sponsors": ["Zorlu Holding", "MEF Üniversitesi", "Yetkin Gençler"]
       },
       {
         "id": "doping-2025",
