@@ -5337,7 +5337,7 @@ export const yearlyData: IYearlyData[] = [
     "participants": 2505,
     "graduates": 1042,
     "description": "Güncel dönem. Sürdürülebilir gelişim ve küresel yetkinlikler odağında eğitimler devam ediyor.",
-    "image": "/partners/12345.JPG",
+    "image": "/partners/2025.jpg",
     "hasAgeData": true,
     "ageData": [
       {

@@ -507,7 +507,8 @@ export default function App() {
     (hasEduData ? 1 : 0) +
     (showGenderCard ? 1 : 0) +
     (showAcademicSchools ? 1 : 0) +
-    (showAcademicDepts ? 1 : 0);
+    (showAcademicDepts ? 1 : 0) +
+    (selectedYear === '2016-2020' ? 1 : 0);
   const computedGridCols = Math.min(Math.max(standardChartCellCount, 1), 5);
   const standardGridColsClass =
     (['xl:grid-cols-1', 'xl:grid-cols-2', 'xl:grid-cols-3', 'xl:grid-cols-4', 'xl:grid-cols-5'] as const)[
